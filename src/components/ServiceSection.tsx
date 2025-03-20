@@ -14,7 +14,7 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, delay }) => {
   return (
     <div 
-      className="service-card bg-white dark:bg-card/80 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/5 animate-fade-in hover-lift" 
+      className="service-card bg-white dark:bg-card/90 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/5 animate-fade-in" 
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-primary/20 flex items-center justify-center mb-5 text-blue-500 dark:text-primary service-card-icon">

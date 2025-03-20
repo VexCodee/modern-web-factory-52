@@ -39,16 +39,16 @@
   }
 
   .dark {
-    --background: 222 47% 8%;
+    --background: 222 47% 10%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 10%;
+    --card: 222 47% 13%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 47% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 222 89% 70%;
+    --primary: 222 89% 65%;
     --primary-foreground: 222 47% 11%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -57,7 +57,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 243 75% 66%;
+    --accent: 243 75% 59%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -188,6 +188,15 @@
   @apply bg-background/50;
 }
 
+.dark .service-card {
+  @apply bg-card/95 backdrop-blur-sm border-white/10 hover:bg-card/90;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark .service-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
 .dark .service-card-icon {
   @apply bg-primary/20 text-primary;
 }
@@ -202,12 +211,28 @@
 }
 
 /* Testimonials dark mode */
+.dark .testimonial-section {
+  @apply bg-gradient-to-b from-background via-background/95 to-background;
+}
+
 .dark .testimonial-card {
-  @apply bg-card/80 backdrop-blur-sm border-white/5;
+  @apply bg-card/90 backdrop-blur-sm border-white/10 shadow-lg;
 }
 
 .dark .testimonial-quote {
-  @apply text-white/80;
+  @apply text-white/90;
+}
+
+.dark .testimonial-navigation {
+  @apply bg-card/80 text-white border-white/10;
+}
+
+.dark .testimonial-dot {
+  @apply bg-gray-600;
+}
+
+.dark .testimonial-dot.active {
+  @apply bg-primary;
 }
 
 /* CTA section dark mode */
