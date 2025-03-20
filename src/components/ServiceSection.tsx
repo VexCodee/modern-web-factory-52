@@ -1,11 +1,12 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useIsMobile } from '../hooks/use-mobile';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 interface ServiceCardProps {
@@ -13,41 +14,53 @@ interface ServiceCardProps {
   title: string;
   description: string;
   learnMoreText: string;
+  iconBgColor: string;
+  gradientColors: string;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   icon,
   title,
   description,
-  learnMoreText
+  learnMoreText,
+  iconBgColor,
+  gradientColors
 }) => {
   return (
-    <div className="bg-white rounded-lg border border-gray-100 p-6 h-full hover:shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col transform hover:-translate-y-2 hover:border-primary/20">
-      <div className="mb-5">
-        <div className="w-16 h-16 rounded-lg bg-blue-50 flex items-center justify-center transition-all duration-300 hover:bg-indigo-100 group">
-          <div className="transition-transform duration-500 group-hover:rotate-12">
-            {icon}
+    <Card className="overflow-hidden border-0 shadow-md transition-all duration-300 h-full hover:shadow-xl group">
+      <CardContent className="p-0 h-full">
+        <div className="flex flex-col h-full">
+          {/* Top gradient header */}
+          <div className={`h-2 w-full ${gradientColors}`}></div>
+          
+          {/* Card body with icon and content */}
+          <div className="p-6 flex flex-col h-full">
+            {/* Icon with background */}
+            <div className={`${iconBgColor} w-14 h-14 rounded-lg flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 shadow-sm`}>
+              <div className="text-white">
+                {icon}
+              </div>
+            </div>
+            
+            {/* Title and description */}
+            <h3 className="text-xl font-semibold mb-3 text-gray-800">{title}</h3>
+            <p className="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">{description}</p>
+            
+            {/* Button/link at the bottom */}
+            <div className="pt-2 mt-auto">
+              <Link 
+                to="/services" 
+                className="inline-flex items-center text-primary hover:text-primary/80 font-medium text-sm transition-all duration-300"
+                aria-label={`${learnMoreText} ${title}`}
+              >
+                <ArrowRight className="h-4 w-4 mr-2 transition-all duration-300 group-hover:translate-x-1" />
+                <span>{learnMoreText}</span>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <h3 className="text-xl font-semibold mb-3 dark:text-gray-800">{title}</h3>
-      
-      <p className="text-gray-600 mb-6 flex-grow">{description}</p>
-      
-      <div className="pt-2 mt-auto">
-        <Link to="/services" className="text-indigo-500 hover:text-indigo-700 font-medium inline-flex items-center text-sm overflow-hidden group" aria-label={`${learnMoreText} ${title}`}>
-          <span className="relative inline-flex items-center">
-            <span className="mr-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-              <ArrowRight className="h-4 w-4" />
-            </span>
-            <span className="opacity-0 max-w-0 group-hover:opacity-100 group-hover:max-w-xs transition-all duration-300 ease-in-out">
-              {learnMoreText}
-            </span>
-          </span>
-        </Link>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -62,42 +75,56 @@ const ServiceSection = () => {
     stopOnInteraction: false
   }));
 
-  // Define services with translation keys instead of hardcoded Polish text
+  // Define services with translation keys, colors and gradients
   const services = [
     {
-      icon: <UserPlus size={24} className="text-indigo-600" />,
+      icon: <UserPlus size={24} className="text-white" />,
       titleKey: "services.items.outsourcing.title",
-      descriptionKey: "services.items.outsourcing.description"
+      descriptionKey: "services.items.outsourcing.description",
+      iconBgColor: "bg-blue-500",
+      gradientColors: "bg-gradient-to-r from-blue-400 to-blue-600"
     }, 
     {
-      icon: <Globe size={24} className="text-indigo-600" />,
+      icon: <Globe size={24} className="text-white" />,
       titleKey: "services.items.webDev.title",
-      descriptionKey: "services.items.webDev.description"
+      descriptionKey: "services.items.webDev.description",
+      iconBgColor: "bg-indigo-500",
+      gradientColors: "bg-gradient-to-r from-indigo-400 to-indigo-600"
     }, 
     {
-      icon: <Palette size={24} className="text-indigo-600" />,
+      icon: <Palette size={24} className="text-white" />,
       titleKey: "services.items.graphic.title",
-      descriptionKey: "services.items.graphic.description"
+      descriptionKey: "services.items.graphic.description",
+      iconBgColor: "bg-purple-500",
+      gradientColors: "bg-gradient-to-r from-purple-400 to-purple-600"
     }, 
     {
-      icon: <Wrench size={24} className="text-indigo-600" />,
+      icon: <Wrench size={24} className="text-white" />,
       titleKey: "services.items.hardware.title",
-      descriptionKey: "services.items.hardware.description"
+      descriptionKey: "services.items.hardware.description",
+      iconBgColor: "bg-orange-500",
+      gradientColors: "bg-gradient-to-r from-orange-400 to-amber-500"
     }, 
     {
-      icon: <Lock size={24} className="text-indigo-600" />,
+      icon: <Lock size={24} className="text-white" />,
       titleKey: "whyChooseUs.features.security.title",
-      descriptionKey: "services.items.outsourcing.description"
+      descriptionKey: "services.items.outsourcing.description",
+      iconBgColor: "bg-teal-500",
+      gradientColors: "bg-gradient-to-r from-teal-400 to-teal-600"
     }, 
     {
-      icon: <Database size={24} className="text-indigo-600" />,
+      icon: <Database size={24} className="text-white" />,
       titleKey: "technologies.cloud.title",
-      descriptionKey: "technologies.cloud.description"
+      descriptionKey: "technologies.cloud.description",
+      iconBgColor: "bg-emerald-500",
+      gradientColors: "bg-gradient-to-r from-emerald-400 to-emerald-600"
     }, 
     {
-      icon: <LineChart size={24} className="text-indigo-600" />,
+      icon: <LineChart size={24} className="text-white" />,
       titleKey: "services.items.ai.title",
-      descriptionKey: "services.items.ai.description"
+      descriptionKey: "services.items.ai.description",
+      iconBgColor: "bg-rose-500",
+      gradientColors: "bg-gradient-to-r from-rose-400 to-rose-600"
     }
   ];
 
@@ -143,16 +170,16 @@ const ServiceSection = () => {
         
         {/* Animated floating particles */}
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-blue-200 mix-blend-multiply filter blur-3xl opacity-40 animate-float" style={{
-        animationDuration: '15s'
-      }}></div>
+          animationDuration: '15s'
+        }}></div>
         <div className="absolute top-40 right-10 w-32 h-32 rounded-full bg-purple-200 mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{
-        animationDuration: '20s',
-        animationDelay: '2s'
-      }}></div>
+          animationDuration: '20s',
+          animationDelay: '2s'
+        }}></div>
         <div className="absolute bottom-10 left-1/3 w-36 h-36 rounded-full bg-indigo-200 mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{
-        animationDuration: '18s',
-        animationDelay: '1s'
-      }}></div>
+          animationDuration: '18s',
+          animationDelay: '1s'
+        }}></div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -162,17 +189,17 @@ const ServiceSection = () => {
           </span>
           
           <h2 className="mt-6 text-3xl md:text-4xl font-bold animate-fade-in relative inline-block dark:text-gray-800" style={{
-          animationDelay: '100ms'
-        }}>
+            animationDelay: '100ms'
+          }}>
             {t('services.subtitle')}
             <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent transform scale-x-0 transition-transform duration-700 group-hover:scale-x-100 animate-scale-in" style={{
-            animationDelay: '400ms'
-          }}></span>
+              animationDelay: '400ms'
+            }}></span>
           </h2>
           
           <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{
-          animationDelay: '200ms'
-        }}>
+            animationDelay: '200ms'
+          }}>
             {t('services.description')}
           </p>
         </div>
@@ -180,39 +207,40 @@ const ServiceSection = () => {
         {/* Adding padding-top to prevent cards from being cut off when they hover and transform upwards */}
         <div className="w-full pt-4">
           <Carousel className="w-full" opts={{
-          align: "start",
-          loop: true
-        }} plugins={[autoplayPlugin.current]}>
+            align: "start",
+            loop: true
+          }} plugins={[autoplayPlugin.current]}>
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[420px] pt-2">
-                  <div className="p-1 h-full transform transition-all duration-500 hover:scale-[1.02]">
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[340px] pt-2">
+                  <div className="p-1 h-full">
                     <ServiceCard 
                       icon={service.icon} 
                       title={t(service.titleKey)} 
                       description={t(service.descriptionKey)}
                       learnMoreText={learnMoreText}
+                      iconBgColor={service.iconBgColor}
+                      gradientColors={service.gradientColors}
                     />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             <div className="flex justify-center mt-8">
-              <CarouselPrevious className="relative static left-0 translate-y-0 mr-2 transition-all duration-300 hover:-translate-x-1" />
-              <CarouselNext className="relative static right-0 translate-y-0 transition-all duration-300 hover:translate-x-1" />
+              <CarouselPrevious className="relative static left-0 translate-y-0 mr-4 transition-all duration-300 hover:-translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
+              <CarouselNext className="relative static right-0 translate-y-0 transition-all duration-300 hover:translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
             </div>
           </Carousel>
         </div>
 
         <div className="mt-16 text-center animate-fade-in" style={{
-        animationDelay: '900ms'
-      }}>
-          <Link to="/services" className="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-lg transition-all hover:shadow-lg relative overflow-hidden group">
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span className="relative flex items-center">
+          animationDelay: '900ms'
+        }}>
+          <Link to="/services">
+            <Button variant="default" size="lg" className="group">
               {t('services.viewAll')}
-              <ArrowRight className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-            </span>
+              <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
           </Link>
         </div>
       </div>
