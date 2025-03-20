@@ -4,61 +4,64 @@ import Layout from '../components/Layout';
 import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
+import { useLanguage } from '../context/LanguageContext';
 
 const ServicePage = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: <UserPlus size={24} />,
-      title: "Outsourcing IT",
+      title: t('services.items.outsourcing.title'),
       description: "Wykorzystaj nasze doświadczenie do zarządzania operacjami IT, co pozwoli Ci skupić się na kluczowej działalności biznesowej. Oferujemy dedykowane zespoły, usługi projektowe i zarządzane rozwiązania IT dostosowane do Twoich konkretnych potrzeb.",
       benefits: ["Redukcja kosztów", "Dostęp do specjalistycznej wiedzy", "Skalowalne zasoby", "Skupienie się na głównej działalności"],
       delay: 100
     },
     {
       icon: <Globe size={24} />,
-      title: "Tworzenie Stron WWW",
+      title: t('services.items.webDev.title'),
       description: "Od responsywnych stron internetowych po złożone aplikacje webowe i platformy e-commerce, dostarczamy niestandardowe rozwiązania internetowe, które są zgodne z Twoimi celami biznesowymi i zapewniają wyjątkowe doświadczenia użytkownika.",
       benefits: ["Responsywny design", "Optymalizacja SEO", "Bezpieczne transakcje", "Niestandardowe funkcjonalności"],
       delay: 200
     },
     {
       icon: <Palette size={24} />,
-      title: "Projektowanie Graficzne",
+      title: t('services.items.graphic.title'),
       description: "Nasz kreatywny zespół tworzy zachwycające wizualnie projekty, które wzmacniają tożsamość Twojej marki i skutecznie komunikują Twoje przesłanie we wszystkich mediach cyfrowych i drukowanych.",
       benefits: ["Spójność marki", "Design zorientowany na użytkownika", "Kreatywne koncepcje", "Zasoby wieloplatformowe"],
       delay: 300
     },
     {
       icon: <Wrench size={24} />,
-      title: "Naprawa Sprzętu",
+      title: t('services.items.hardware.title'),
       description: "Szybkie i niezawodne usługi diagnozy i naprawy całego sprzętu IT. Minimalizujemy przestoje i zapewniamy optymalną wydajność Twojego sprzętu.",
       benefits: ["Szybka realizacja", "Certyfikowani technicy", "Wysokiej jakości części zamienne", "Konserwacja zapobiegawcza"],
       delay: 400
     },
     {
       icon: <Bot size={24} />,
-      title: "Rozwiązania AI",
+      title: t('services.items.ai.title'),
       description: "Wykorzystaj moc sztucznej inteligencji do automatyzacji procesów, uzyskiwania informacji z danych i tworzenia inteligentnych systemów, które uczą się i dostosowują do Twojego środowiska biznesowego.",
       benefits: ["Automatyzacja procesów", "Analityka predykcyjna", "Przetwarzanie języka naturalnego", "Integracja uczenia maszynowego"],
       delay: 500
     },
     {
       icon: <BarChart3 size={24} />,
-      title: "Marketing",
+      title: t('services.items.marketing.title'),
       description: "Strategiczne kampanie marketingu cyfrowego, które generują ruch, pozyskują potencjalnych klientów i zwiększają współczynniki konwersji. Łączymy kreatywność z podejściem opartym na danych, aby zmaksymalizować Twój zwrot z inwestycji.",
       benefits: ["Ukierunkowane kampanie", "Śledzenie wydajności", "Strategia treści", "Optymalizacja konwersji"],
       delay: 600
     },
     {
       icon: <Share2 size={24} />,
-      title: "Zarządzanie Mediami Społecznościowymi",
+      title: t('services.items.social.title'),
       description: "Kompleksowe strategie mediów społecznościowych, które budują obecność Twojej marki, angażują odbiorców i napędzają rozwój biznesu poprzez efektywne zarządzanie treścią i społecznością.",
       benefits: ["Kalendarz treści", "Zaangażowanie społeczności", "Optymalizacja platform", "Analityka wydajności"],
       delay: 700
     },
     {
       icon: <ClipboardList size={24} />,
-      title: "Zarządzanie Projektami",
+      title: t('services.items.project.title'),
       description: "Profesjonalne planowanie, realizacja i nadzór nad projektami technologicznymi, zapewniające terminową dostawę, w ramach budżetu i zgodnie z najwyższymi standardami jakości.",
       benefits: ["Jasna komunikacja", "Zarządzanie ryzykiem", "Optymalizacja zasobów", "Zapewnienie jakości"],
       delay: 800
@@ -75,13 +78,13 @@ const ServicePage = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Nasze Usługi
+              {t('services.title')}
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Kompleksowe Rozwiązania IT dla Nowoczesnych Firm
+              {t('services.subtitle')}
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Od tworzenia stron internetowych po integrację z AI, oferujemy pełne spektrum usług technologicznych, które pomogą Twojej firmie prosperować w erze cyfrowej.
+              {t('services.description')}
             </p>
           </div>
         </div>
@@ -120,7 +123,7 @@ const ServicePage = () => {
                     to="/contact" 
                     className="inline-flex items-center text-primary font-medium hover:underline"
                   >
-                    Dowiedz się więcej
+                    {t('cta.getStarted')}
                     <ArrowRight size={16} className="ml-1" />
                   </Link>
                 </div>
@@ -135,13 +138,13 @@ const ServicePage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Nasz Proces
+              {t('whyChooseUs.title')}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Jak Dostarczamy Doskonałość
+              {t('whyChooseUs.subtitle')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Nasze strukturalne podejście zapewnia, że każdy projekt jest realizowany efektywnie i spełnia najwyższe standardy jakości.
+              {t('whyChooseUs.description')}
             </p>
           </div>
 
@@ -149,26 +152,26 @@ const ServicePage = () => {
             {[
               {
                 number: "01",
-                title: "Odkrycie",
-                description: "Zaczynamy od dogłębnego zrozumienia Twoich celów biznesowych, wyzwań i wymagań.",
+                title: t('whyChooseUs.features.expertise.title'),
+                description: t('whyChooseUs.features.expertise.description'),
                 delay: 300
               },
               {
                 number: "02",
-                title: "Planowanie",
-                description: "Nasz zespół tworzy kompleksową strategię i mapę drogową projektu z jasnymi rezultatami i terminami.",
+                title: t('whyChooseUs.features.innovative.title'),
+                description: t('whyChooseUs.features.innovative.description'),
                 delay: 400
               },
               {
                 number: "03",
-                title: "Realizacja",
-                description: "Wdrażamy rozwiązanie wykorzystując najlepsze praktyki i najnowocześniejsze technologie, z regularnymi aktualizacjami postępu.",
+                title: t('whyChooseUs.features.team.title'),
+                description: t('whyChooseUs.features.team.description'),
                 delay: 500
               },
               {
                 number: "04",
-                title: "Wsparcie",
-                description: "Po wdrożeniu zapewniamy bieżącą konserwację i wsparcie, aby zagwarantować optymalną wydajność.",
+                title: t('whyChooseUs.features.results.title'),
+                description: t('whyChooseUs.features.results.description'),
                 delay: 600
               }
             ].map((step, index) => (

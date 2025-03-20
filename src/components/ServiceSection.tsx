@@ -2,7 +2,7 @@
 import React from 'react';
 import { UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLanguage, getTranslation } from '../context/LanguageContext';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -27,62 +27,56 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
 };
 
 const ServiceSection = () => {
-  const { translations } = useLanguage();
+  const { t } = useLanguage();
   
-  // Pobieranie tekstów z kontekstu
-  const title = getTranslation(translations, 'services.title');
-  const subtitle = getTranslation(translations, 'services.subtitle');
-  const description = getTranslation(translations, 'services.description');
-  const viewAll = getTranslation(translations, 'services.viewAll');
-  
-  // Definicje usług
+  // Define services using the t function
   const services = [
     {
       icon: <UserPlus size={22} />,
-      title: getTranslation(translations, 'services.items.outsourcing.title'),
-      description: getTranslation(translations, 'services.items.outsourcing.description'),
+      title: t('services.items.outsourcing.title'),
+      description: t('services.items.outsourcing.description'),
       delay: 100
     },
     {
       icon: <Globe size={22} />,
-      title: getTranslation(translations, 'services.items.webDev.title'),
-      description: getTranslation(translations, 'services.items.webDev.description'),
+      title: t('services.items.webDev.title'),
+      description: t('services.items.webDev.description'),
       delay: 200
     },
     {
       icon: <Palette size={22} />,
-      title: getTranslation(translations, 'services.items.graphic.title'),
-      description: getTranslation(translations, 'services.items.graphic.description'),
+      title: t('services.items.graphic.title'),
+      description: t('services.items.graphic.description'),
       delay: 300
     },
     {
       icon: <Wrench size={22} />,
-      title: getTranslation(translations, 'services.items.hardware.title'),
-      description: getTranslation(translations, 'services.items.hardware.description'),
+      title: t('services.items.hardware.title'),
+      description: t('services.items.hardware.description'),
       delay: 400
     },
     {
       icon: <Bot size={22} />,
-      title: getTranslation(translations, 'services.items.ai.title'),
-      description: getTranslation(translations, 'services.items.ai.description'),
+      title: t('services.items.ai.title'),
+      description: t('services.items.ai.description'),
       delay: 500
     },
     {
       icon: <BarChart3 size={22} />,
-      title: getTranslation(translations, 'services.items.marketing.title'),
-      description: getTranslation(translations, 'services.items.marketing.description'),
+      title: t('services.items.marketing.title'),
+      description: t('services.items.marketing.description'),
       delay: 600
     },
     {
       icon: <Share2 size={22} />,
-      title: getTranslation(translations, 'services.items.social.title'),
-      description: getTranslation(translations, 'services.items.social.description'),
+      title: t('services.items.social.title'),
+      description: t('services.items.social.description'),
       delay: 700
     },
     {
       icon: <ClipboardList size={22} />,
-      title: getTranslation(translations, 'services.items.project.title'),
-      description: getTranslation(translations, 'services.items.project.description'),
+      title: t('services.items.project.title'),
+      description: t('services.items.project.description'),
       delay: 800
     }
   ];
@@ -92,13 +86,13 @@ const ServiceSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-            {title}
+            {t('services.title')}
           </span>
           <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-            {subtitle}
+            {t('services.subtitle')}
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-            {description}
+            {t('services.description')}
           </p>
         </div>
 
@@ -119,7 +113,7 @@ const ServiceSection = () => {
             to="/services" 
             className="inline-flex items-center text-primary font-medium hover:underline"
           >
-            {viewAll}
+            {t('services.viewAll')}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
