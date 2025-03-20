@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -89,6 +88,26 @@
 .service-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.service-card-new {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.service-card-new:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card-new .service-icon {
+  transition: all 0.3s ease;
+}
+
+.service-card-new:hover .service-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
 .nav-link {
@@ -362,4 +381,33 @@
   100% {
     transform: translateX(100%);
   }
+}
+
+/* Innovation section specific styles */
+.innovation-card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+.innovation-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark mode adjustments */
+.dark .service-card-new {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .service-card-new:hover {
+  @apply shadow-lg shadow-indigo-900/10;
+}
+
+.dark .innovation-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(30, 41, 59, 0.2);
 }
