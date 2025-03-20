@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { Card, CardContent } from './ui/card';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -26,10 +27,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         animationDelay: `${index * 100}ms`
       }}
     >
-      <div className="bg-white h-full w-full p-6 rounded-xl border border-gray-100 group-hover:border-transparent transition-all duration-300 dark:bg-gray-800 dark:border-gray-700 relative z-10">
+      <Card className="h-full group-hover:border-transparent transition-all duration-300 relative z-10 overflow-hidden">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur-sm group-hover:blur"></div>
         
-        <div className="relative z-10">
+        <CardContent className="p-6 relative z-10 bg-white dark:bg-gray-800">
           <div className="w-14 h-14 flex items-center justify-center mb-5 rounded-lg bg-gradient-to-br from-blue-100 to-indigo-100 text-indigo-600 transition-all group-hover:text-white group-hover:from-blue-500 group-hover:to-indigo-600 dark:from-blue-900/40 dark:to-indigo-900/40 dark:text-blue-300">
             {icon}
           </div>
@@ -49,8 +50,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               </svg>
             </Link>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
