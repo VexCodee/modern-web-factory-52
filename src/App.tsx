@@ -18,12 +18,12 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="system">
       <LanguageProvider>
         <TooltipProvider>
           <BrowserRouter>
             <Toaster />
-            <Sonner />
+            <Sonner theme="system" />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
