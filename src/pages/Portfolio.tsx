@@ -2,16 +2,18 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
+import { useLanguage } from '../context/LanguageContext';
 
 const Portfolio = () => {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   
   const filters = [
-    { id: 'all', label: 'Wszystkie Projekty' },
-    { id: 'web', label: 'Rozwój Stron WWW' },
-    { id: 'ai', label: 'Rozwiązania AI' },
-    { id: 'marketing', label: 'Marketing' },
-    { id: 'design', label: 'Projektowanie Graficzne' }
+    { id: 'all', label: t('portfolio.categories.all') },
+    { id: 'web', label: t('portfolio.categories.web') },
+    { id: 'ai', label: t('portfolio.categories.ai') },
+    { id: 'marketing', label: t('services.items.marketing.title') },
+    { id: 'design', label: t('portfolio.categories.design') }
   ];
   
   const projects = [
@@ -95,13 +97,13 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Nasze Portfolio
+              {t('portfolio.title')}
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Prezentacja Naszych Prac
+              {t('portfolio.subtitle')}
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Odkryj nasze zróżnicowane portfolio projektów, które pomogły firmom przekształcić się i prosperować w cyfrowym krajobrazie.
+              {t('portfolio.description')}
             </p>
           </div>
         </div>
@@ -163,13 +165,13 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Nasi Klienci
+              {t('testimonials.title')}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Zaufały Nam Wiodące Marki
+              {t('testimonials.subtitle')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Jesteśmy dumni z partnerstwa z organizacjami z różnych branż, aby napędzać ich cyfrowy sukces.
+              {t('testimonials.description')}
             </p>
           </div>
 

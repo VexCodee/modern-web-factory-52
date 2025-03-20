@@ -1,30 +1,32 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import { Shield, Users, Target, Award } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
+  
   const values = [
     {
       icon: <Shield size={24} className="text-primary" />,
-      title: "Uczciwość",
-      description: "Działamy z przejrzystością i uczciwością we wszystkich naszych interakcjach, budując zaufanie z naszymi klientami i partnerami."
+      title: t('about.values.integrity'),
+      description: t('about.values.integrityDesc')
     },
     {
       icon: <Users size={24} className="text-primary" />,
-      title: "Współpraca",
-      description: "Wierzymy w ścisłą współpracę z naszymi klientami, budując partnerstwo prowadzące do wspólnego sukcesu."
+      title: t('about.values.collaboration'),
+      description: t('about.values.collaborationDesc')
     },
     {
       icon: <Target size={24} className="text-primary" />,
-      title: "Doskonałość",
-      description: "Jesteśmy zobowiązani do dostarczania rozwiązań najwyższej jakości i przekraczania oczekiwań klientów we wszystkim, co robimy."
+      title: t('about.values.quality'),
+      description: t('about.values.qualityDesc')
     },
     {
       icon: <Award size={24} className="text-primary" />,
-      title: "Innowacja",
-      description: "Nieustannie odkrywamy nowe technologie i kreatywne podejścia do rozwiązywania złożonych wyzwań biznesowych."
+      title: t('about.values.innovation'),
+      description: t('about.values.innovationDesc')
     }
   ];
 
@@ -65,13 +67,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              O Nas
+              {t('about.title')}
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Nasza Historia i Misja
+              {t('about.subtitle')}
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Poznaj naszą podróż, wartości i pełen pasji zespół odpowiedzialny za sukces TechPrime.
+              {t('about.description')}
             </p>
           </div>
         </div>
@@ -83,21 +85,14 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-                Nasza Historia
+                {t('about.history.title')}
               </span>
               <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-                Budujemy Cyfrową Doskonałość od 2010 roku
+                {t('about.mission.title')}
               </h2>
               <div className="mt-6 space-y-6 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-                <p>
-                  TechPrime zostało założone z jasną wizją: pomóc firmom wykorzystać pełny potencjał technologii w szybko zmieniającym się cyfrowym krajobrazie. To, co zaczęło się jako mała agencja tworzenia stron internetowych, rozrosło się w kompleksowego dostawcę rozwiązań IT obsługującego klientów z wielu branż.
-                </p>
-                <p>
-                  Nasza podróż była naznaczona ciągłymi innowacjami, nauką i adaptacją do nowych technologii i potrzeb rynkowych. Na każdym etapie naszego rozwoju utrzymywaliśmy nasze zobowiązanie do dostarczania wyjątkowych wartości i budowania trwałych relacji z naszymi klientami.
-                </p>
-                <p>
-                  Dziś z dumą prowadzimy firmy przez ich cyfrowe transformacje, łącząc wiedzę techniczną ze strategicznym myśleniem, aby tworzyć rozwiązania, które napędzają rzeczywiste wyniki biznesowe.
-                </p>
+                <p>{t('about.history.description')}</p>
+                <p>{t('about.mission.description')}</p>
               </div>
             </div>
             
@@ -105,7 +100,7 @@ const About = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
-                  alt="Biuro TechPrime" 
+                  alt="TechPrime Office" 
                   className="w-full h-auto"
                 />
               </div>
@@ -123,13 +118,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Nasze Wartości
+              {t('about.values.title')}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Co Nas Napędza
+              {t('whyChooseUs.subtitle')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Nasze podstawowe wartości kształtują naszą kulturę i kierują każdą decyzją, którą podejmujemy jako firma.
+              {t('whyChooseUs.description')}
             </p>
           </div>
 
@@ -156,13 +151,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Nasz Zespół
+              {t('about.team.title')}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Poznaj Ekspertów
+              {t('about.team.description')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Nasz zróżnicowany zespół profesjonalistów łączy wiedzę specjalistyczną z zakresu technologii, projektowania i strategii biznesowej.
+              {t('whyChooseUs.features.team.description')}
             </p>
           </div>
 
@@ -196,10 +191,10 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { number: "200+", label: "Obsłużonych Klientów" },
-              { number: "450+", label: "Zakończonych Projektów" },
-              { number: "35+", label: "Ekspertów w Zespole" },
-              { number: "10+", label: "Lat Doświadczenia" }
+              { number: "200+", label: t('whyChooseUs.stats.clients') },
+              { number: "450+", label: t('portfolio.title') },
+              { number: "35+", label: t('about.team.title') },
+              { number: "10+", label: t('whyChooseUs.stats.experience') }
             ].map((stat, index) => (
               <div 
                 key={index} 

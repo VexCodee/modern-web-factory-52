@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { toast } from 'sonner';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,7 +33,7 @@ const Contact = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      toast.success('Dziękujemy za Twoją wiadomość! Skontaktujemy się wkrótce.');
+      toast.success(t('contact.form.success'));
       
       // Reset form
       setFormData({
@@ -57,13 +60,13 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Kontakt
+              {t('contact.title')}
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Rozpocznijmy Rozmowę
+              {t('contact.subtitle')}
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Masz projekt w głowie lub pytania dotyczące naszych usług? Skontaktuj się z nami, a nasz zespół wkrótce się z Tobą skontaktuje.
+              {t('contact.description')}
             </p>
           </div>
         </div>
@@ -75,7 +78,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-8">Skontaktuj się z nami</h2>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-8">{t('contact.info.title')}</h2>
               
               <div className="space-y-8 mb-12">
                 <div className="flex items-start">
@@ -83,7 +86,7 @@ const Contact = () => {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Nasze Biuro</h3>
+                    <h3 className="font-semibold text-lg mb-1">{t('contact.info.address')}</h3>
                     <p className="text-gray-600">ul. Biznesowa 123, Dzielnica Technologiczna</p>
                     <p className="text-gray-600">Warszawa, 00-001</p>
                   </div>
@@ -94,8 +97,8 @@ const Contact = () => {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Napisz do nas</h3>
-                    <p className="text-gray-600 mb-1">info@techprime.com</p>
+                    <h3 className="font-semibold text-lg mb-1">{t('contact.form.email')}</h3>
+                    <p className="text-gray-600 mb-1">{t('contact.info.email')}</p>
                     <p className="text-gray-600">wsparcie@techprime.com</p>
                   </div>
                 </div>
@@ -105,9 +108,9 @@ const Contact = () => {
                     <Phone size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Zadzwoń do nas</h3>
-                    <p className="text-gray-600 mb-1">+48 555 123 456</p>
-                    <p className="text-gray-600">Pon-Pt, 9:00 - 18:00</p>
+                    <h3 className="font-semibold text-lg mb-1">{t('contact.form.phone')}</h3>
+                    <p className="text-gray-600 mb-1">{t('contact.info.phone')}</p>
+                    <p className="text-gray-600">{t('contact.info.hours')}</p>
                   </div>
                 </div>
               </div>
@@ -122,13 +125,13 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 animate-fade-in" style={{ animationDelay: '400ms' }}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">Wyślij Nam Wiadomość</h2>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">{t('contact.form.submit')}</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Imię i Nazwisko
+                      {t('contact.form.name')}
                     </label>
                     <input
                       type="text"
@@ -138,13 +141,13 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      placeholder="Twoje imię i nazwisko"
+                      placeholder={t('contact.form.name')}
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Adres Email
+                      {t('contact.form.email')}
                     </label>
                     <input
                       type="email"
@@ -162,7 +165,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Numer Telefonu (Opcjonalnie)
+                      {t('contact.form.phone')}
                     </label>
                     <input
                       type="tel"
@@ -177,7 +180,7 @@ const Contact = () => {
                   
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                      Interesująca Cię Usługa
+                      {t('services.title')}
                     </label>
                     <select
                       id="service"
@@ -187,14 +190,14 @@ const Contact = () => {
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                     >
                       <option value="default" disabled>Wybierz usługę</option>
-                      <option value="outsourcing">Outsourcing IT</option>
-                      <option value="webdev">Tworzenie Stron WWW</option>
-                      <option value="design">Projektowanie Graficzne</option>
-                      <option value="repair">Naprawa Sprzętu</option>
-                      <option value="ai">Rozwiązania AI</option>
-                      <option value="marketing">Marketing</option>
-                      <option value="social">Zarządzanie Mediami Społecznościowymi</option>
-                      <option value="project">Zarządzanie Projektami</option>
+                      <option value="outsourcing">{t('services.items.outsourcing.title')}</option>
+                      <option value="webdev">{t('services.items.webDev.title')}</option>
+                      <option value="design">{t('services.items.graphic.title')}</option>
+                      <option value="repair">{t('services.items.hardware.title')}</option>
+                      <option value="ai">{t('services.items.ai.title')}</option>
+                      <option value="marketing">{t('services.items.marketing.title')}</option>
+                      <option value="social">{t('services.items.social.title')}</option>
+                      <option value="project">{t('services.items.project.title')}</option>
                       <option value="other">Inne</option>
                     </select>
                   </div>
@@ -202,7 +205,7 @@ const Contact = () => {
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Temat
+                    {t('contact.form.subject')}
                   </label>
                   <input
                     type="text"
@@ -212,13 +215,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                    placeholder="W czym możemy pomóc?"
+                    placeholder={t('contact.form.subject')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Wiadomość
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     id="message"
@@ -228,7 +231,7 @@ const Contact = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                    placeholder="Opisz swój projekt lub pytania..."
+                    placeholder={t('contact.form.message')}
                   ></textarea>
                 </div>
                 
@@ -251,12 +254,12 @@ const Contact = () => {
                     ) : isSubmitted ? (
                       <span className="flex items-center">
                         <Check size={18} className="mr-2" />
-                        Wiadomość Wysłana
+                        {t('contact.form.success')}
                       </span>
                     ) : (
                       <span className="flex items-center">
                         <Send size={18} className="mr-2" />
-                        Wyślij Wiadomość
+                        {t('contact.form.submit')}
                       </span>
                     )}
                   </button>
@@ -275,10 +278,10 @@ const Contact = () => {
               FAQ
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Często Zadawane Pytania
+              {t('contact.title')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług i procesów.
+              {t('contact.description')}
             </p>
           </div>
 
