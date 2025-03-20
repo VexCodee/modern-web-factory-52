@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
   const satisfactionLabel = getTranslation(translations.whyChooseUs[language].stats, language, 'satisfaction');
   const experienceLabel = getTranslation(translations.whyChooseUs[language].stats, language, 'experience');
   
-  // For features section
+  // For features section - use string paths to safely access nested translations
   const expertiseTitle = getTranslation(translations.whyChooseUs[language].features.expertise, language, 'title');
   const expertiseDesc = getTranslation(translations.whyChooseUs[language].features.expertise, language, 'description');
   

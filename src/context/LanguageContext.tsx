@@ -1,28 +1,39 @@
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 type Language = 'pl' | 'en';
 
-interface TranslationObject {
-  [key: string]: string | TranslationObject;
+// More flexible type definitions for deeply nested translations
+interface NestedTranslations {
+  [key: string]: string | NestedTranslations;
 }
 
-type TranslationSection = {
-  [section: string]: {
-    [language in Language]: {
-      [key: string]: string | {
-        [nestedKey: string]: string;
-      };
-    };
-  };
-};
+interface LanguageSpecificTranslations {
+  [key: string]: string | NestedTranslations;
+}
+
+interface TranslationByLanguage {
+  en: LanguageSpecificTranslations;
+  pl: LanguageSpecificTranslations;
+}
+
+interface TranslationsObject {
+  [section: string]: TranslationByLanguage;
+}
 
 type LanguageContextType = {
   language: Language;
   setLanguage: (language: Language) => void;
-  translations: TranslationSection;
+  translations: TranslationsObject;
 };
 
+// Helper function to safely access nested translations
 export function getTranslation(obj: any, language: Language, path: string): string {
+  if (!obj) {
+    console.warn(`Translation object is undefined for path: ${path}, language: ${language}`);
+    return '';
+  }
+  
   const parts = path.split('.');
   let current = obj;
   
