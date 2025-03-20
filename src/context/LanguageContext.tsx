@@ -494,6 +494,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const storedLanguage = localStorage.getItem('language') as Language;
     if (storedLanguage && (storedLanguage === 'pl' || storedLanguage === 'en')) {
       setLanguage(storedLanguage);
+    } else {
+      // Set the default language to Polish
+      localStorage.setItem('language', defaultLanguage);
     }
   }, []);
 
@@ -502,6 +505,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem('language', language);
     // Update html lang attribute
     document.documentElement.lang = language;
+    console.log('Language changed to:', language);
   }, [language]);
 
   return (

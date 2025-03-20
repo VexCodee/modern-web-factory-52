@@ -29,69 +29,63 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
 const ServiceSection = () => {
   const { language, translations } = useLanguage();
   
-  // Safely access translations
+  // Safely access translations using dot notation
   const title = getTranslation(translations.services[language], language, 'title');
   const subtitle = getTranslation(translations.services[language], language, 'subtitle');
   const description = getTranslation(translations.services[language], language, 'description');
   const viewAll = getTranslation(translations.services[language], language, 'viewAll');
   
-  // Safely access nested translations for each service
-  const items = translations.services[language].items;
-  
-  // Check if items is an object before proceeding
-  const isValidItems = items && typeof items === 'object';
-  
-  // Define services with safe type checking
-  const services = isValidItems ? [
+  // Define services with safe dot notation access
+  const services = [
     {
       icon: <UserPlus size={22} />,
-      title: getTranslation(items, language, 'outsourcing.title'),
-      description: getTranslation(items, language, 'outsourcing.description'),
+      title: getTranslation(translations.services[language], language, 'items.outsourcing.title'),
+      description: getTranslation(translations.services[language], language, 'items.outsourcing.description'),
       delay: 100
     },
     {
       icon: <Globe size={22} />,
-      title: getTranslation(items, language, 'webDev.title'),
-      description: getTranslation(items, language, 'webDev.description'),
+      title: getTranslation(translations.services[language], language, 'items.webDev.title'),
+      description: getTranslation(translations.services[language], language, 'items.webDev.description'),
       delay: 200
     },
     {
       icon: <Palette size={22} />,
-      title: getTranslation(items, language, 'graphic.title'),
-      description: getTranslation(items, language, 'graphic.description'),
+      title: getTranslation(translations.services[language], language, 'items.graphic.title'),
+      description: getTranslation(translations.services[language], language, 'items.graphic.description'),
       delay: 300
     },
     {
       icon: <Wrench size={22} />,
-      title: getTranslation(items, language, 'hardware.title'),
-      description: getTranslation(items, language, 'hardware.description'),
+      title: getTranslation(translations.services[language], language, 'items.hardware.title'),
+      description: getTranslation(translations.services[language], language, 'items.hardware.description'),
       delay: 400
     },
     {
       icon: <Bot size={22} />,
-      title: getTranslation(items, language, 'ai.title'),
-      description: getTranslation(items, language, 'ai.description'),
+      title: getTranslation(translations.services[language], language, 'items.ai.title'),
+      description: getTranslation(translations.services[language], language, 'items.ai.description'),
       delay: 500
     },
     {
       icon: <BarChart3 size={22} />,
-      title: getTranslation(items, language, 'marketing.title'),
-      description: getTranslation(items, language, 'marketing.description'),
+      title: getTranslation(translations.services[language], language, 'items.marketing.title'),
+      description: getTranslation(translations.services[language], language, 'items.marketing.description'),
       delay: 600
     },
     {
       icon: <Share2 size={22} />,
-      title: getTranslation(items, language, 'social.title'),
-      description: getTranslation(items, language, 'social.description'),
+      title: getTranslation(translations.services[language], language, 'items.social.title'),
+      description: getTranslation(translations.services[language], language, 'items.social.description'),
       delay: 700
     },
     {
       icon: <ClipboardList size={22} />,
-      title: getTranslation(items, language, 'project.title'),
-      description: getTranslation(items, language, 'project.description'),
+      title: getTranslation(translations.services[language], language, 'items.project.title'),
+      description: getTranslation(translations.services[language], language, 'items.project.description'),
       delay: 800
     }
-  ] : [];
+  ];
 
   return (
     <section className="py-24 bg-gray-50">
