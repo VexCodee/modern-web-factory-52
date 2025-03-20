@@ -12,22 +12,22 @@ const WhyChooseUs = () => {
   const description = getTranslation(translations.whyChooseUs[language], language, 'description');
   
   // Safely access nested translations for stats
-  const clientsLabel = getTranslation(translations.whyChooseUs[language].stats, language, 'clients');
-  const satisfactionLabel = getTranslation(translations.whyChooseUs[language].stats, language, 'satisfaction');
-  const experienceLabel = getTranslation(translations.whyChooseUs[language].stats, language, 'experience');
+  const clientsLabel = getTranslation(translations.whyChooseUs[language], language, 'stats.clients');
+  const satisfactionLabel = getTranslation(translations.whyChooseUs[language], language, 'stats.satisfaction');
+  const experienceLabel = getTranslation(translations.whyChooseUs[language], language, 'stats.experience');
   
-  // For features section - use string paths to safely access nested translations
-  const expertiseTitle = getTranslation(translations.whyChooseUs[language].features.expertise, language, 'title');
-  const expertiseDesc = getTranslation(translations.whyChooseUs[language].features.expertise, language, 'description');
+  // For features section - use dot notation for nested paths
+  const expertiseTitle = getTranslation(translations.whyChooseUs[language], language, 'features.expertise.title');
+  const expertiseDesc = getTranslation(translations.whyChooseUs[language], language, 'features.expertise.description');
   
-  const innovativeTitle = getTranslation(translations.whyChooseUs[language].features.innovative, language, 'title');
-  const innovativeDesc = getTranslation(translations.whyChooseUs[language].features.innovative, language, 'description');
+  const innovativeTitle = getTranslation(translations.whyChooseUs[language], language, 'features.innovative.title');
+  const innovativeDesc = getTranslation(translations.whyChooseUs[language], language, 'features.innovative.description');
   
-  const teamTitle = getTranslation(translations.whyChooseUs[language].features.team, language, 'title');
-  const teamDesc = getTranslation(translations.whyChooseUs[language].features.team, language, 'description');
+  const teamTitle = getTranslation(translations.whyChooseUs[language], language, 'features.team.title');
+  const teamDesc = getTranslation(translations.whyChooseUs[language], language, 'features.team.description');
   
-  const resultsTitle = getTranslation(translations.whyChooseUs[language].features.results, language, 'title');
-  const resultsDesc = getTranslation(translations.whyChooseUs[language].features.results, language, 'description');
+  const resultsTitle = getTranslation(translations.whyChooseUs[language], language, 'features.results.title');
+  const resultsDesc = getTranslation(translations.whyChooseUs[language], language, 'features.results.description');
 
   const features = [
     {
