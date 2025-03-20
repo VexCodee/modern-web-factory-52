@@ -1,17 +1,22 @@
 
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-// Uproszczona struktura tłumaczeń - tylko polski język
+// Struktura tłumaczeń dla obu języków
 export interface Translations {
   [key: string]: string | { [key: string]: string | Translations };
 }
 
 interface LanguageContextType {
-  translations: Translations;
+  language: 'pl' | 'en';
+  setLanguage: (lang: 'pl' | 'en') => void;
+  translations: {
+    pl: Translations;
+    en: Translations;
+  };
 }
 
-// Wszystkie tłumaczenia w języku polskim
-const translations: Translations = {
+// Tłumaczenia w języku polskim
+const polishTranslations: Translations = {
   navbar: {
     home: 'Strona Główna',
     services: 'Usługi',
@@ -213,15 +218,218 @@ const translations: Translations = {
   }
 };
 
+// Tłumaczenia w języku angielskim
+const englishTranslations: Translations = {
+  navbar: {
+    home: 'Home',
+    services: 'Services',
+    solutions: 'Solutions',
+    aboutUs: 'About Us',
+    portfolio: 'Portfolio',
+    contact: 'Contact',
+    getStarted: 'Get Started'
+  },
+  hero: {
+    innovativeIt: 'Innovative IT Solutions',
+    transformBusiness: 'Transform Your Business Through Technology',
+    description: 'We deliver advanced IT services and solutions that help businesses thrive in the digital world. From web development to AI integration, we are your strategic technology partner.',
+    getStarted: 'Get Started',
+    ourServices: 'Our Services',
+    innovation: 'Innovation',
+    futureReady: 'Future-ready solutions',
+    performance: 'Performance',
+    optimized: 'Optimized processes'
+  },
+  contact: {
+    title: 'Contact',
+    subtitle: 'Get in Touch',
+    description: 'Have questions or want to discuss your project? Fill out the form below and our team will get back to you soon.',
+    form: {
+      name: 'Full Name',
+      email: 'Email Address',
+      phone: 'Phone Number',
+      subject: 'Subject',
+      message: 'Your Message',
+      submit: 'Send Message',
+      success: 'Your message has been sent successfully. We\'ll get back to you soon!',
+      error: 'Something went wrong. Please try again later.'
+    },
+    info: {
+      title: 'Contact Information',
+      description: 'You can reach us through any of these channels:',
+      address: '123 Business St., Technology District, 00-001',
+      email: 'info@techprime.com',
+      phone: '+48 555 123 456',
+      hours: 'Monday-Friday, 9:00-18:00'
+    }
+  },
+  about: {
+    title: 'About Us',
+    subtitle: 'Who We Are',
+    description: 'TechPrime is a forward-thinking IT company dedicated to helping businesses leverage technology for growth and innovation.',
+    history: {
+      title: 'Our History',
+      description: 'Founded in 2012, TechPrime started as a small web development studio and has since grown into a full-service IT solutions provider, serving clients across various industries worldwide.'
+    },
+    mission: {
+      title: 'Our Mission',
+      description: 'Empowering businesses with innovative technological solutions that drive growth, efficiency, and competitive advantage.'
+    },
+    values: {
+      title: 'Our Values',
+      innovation: 'Innovation',
+      innovationDesc: 'We embrace cutting-edge technologies and creative thinking',
+      quality: 'Quality',
+      qualityDesc: 'We deliver excellence in every project and interaction',
+      integrity: 'Integrity',
+      integrityDesc: 'We conduct business in an honest and transparent manner',
+      collaboration: 'Collaboration',
+      collaborationDesc: 'We build strong partnerships with our clients and within our team'
+    },
+    team: {
+      title: 'Our Team',
+      description: 'Meet the talented professionals behind TechPrime\'s success.'
+    }
+  },
+  portfolio: {
+    title: 'Portfolio',
+    subtitle: 'Our Work',
+    description: 'Explore our featured projects and see how we've helped businesses across different industries achieve their goals through technology.',
+    categories: {
+      all: 'All Projects',
+      web: 'Web Development',
+      mobile: 'Mobile Apps',
+      design: 'Design',
+      ai: 'AI Solutions'
+    },
+    viewProject: 'View Project',
+    noProjects: 'No projects found in this category.'
+  },
+  services: {
+    title: 'Our Services',
+    subtitle: 'Comprehensive IT Solutions For Your Business',
+    description: 'We offer a wide range of services that help businesses leverage technology for sustainable growth and competitive advantage.',
+    viewAll: 'View All Services',
+    items: {
+      outsourcing: {
+        title: 'IT Outsourcing',
+        description: 'Leverage our expertise to manage your IT operations, allowing you to focus on your core business and growth strategy.'
+      },
+      webDev: {
+        title: 'Web Development',
+        description: 'Custom websites and e-commerce solutions with stunning design, optimized performance, and seamless user experience.'
+      },
+      graphic: {
+        title: 'Graphic Design',
+        description: 'Eye-catching visual content that strengthens your brand identity and effectively communicates your message.'
+      },
+      hardware: {
+        title: 'Hardware Repair',
+        description: 'Professional diagnosis and repair services for all IT equipment, minimizing downtime for your business.'
+      },
+      ai: {
+        title: 'AI Solutions',
+        description: 'Advanced artificial intelligence implementations to automate processes and gain valuable insights from data.'
+      },
+      marketing: {
+        title: 'Marketing',
+        description: 'Strategic digital marketing campaigns that drive traffic, generate leads, and increase conversion rates.'
+      },
+      social: {
+        title: 'Social Media Management',
+        description: 'Comprehensive social media strategies that build your brand presence, engage audiences, and drive business growth.'
+      },
+      project: {
+        title: 'Project Management',
+        description: 'Professional planning, execution, and oversight of technology projects, ensuring on-time delivery within budget.'
+      }
+    }
+  },
+  solutions: {
+    title: 'Our Solutions',
+    subtitle: 'Technology Tailored to Your Industry',
+    description: 'Discover how our specialized IT solutions can address the unique challenges and opportunities in your industry.',
+    industries: {
+      title: 'Industries We Serve',
+      finance: 'Financial Services',
+      healthcare: 'Healthcare',
+      retail: 'Retail & E-commerce',
+      manufacturing: 'Manufacturing',
+      education: 'Education',
+      logistics: 'Logistics & Transportation'
+    },
+    features: {
+      title: 'Solution Features',
+      scalable: 'Scalable Infrastructure',
+      secure: 'Enterprise-Grade Security',
+      integrated: 'Seamless Integration',
+      support: '24/7 Technical Support'
+    }
+  },
+  whyChooseUs: {
+    title: 'Why Choose Us',
+    subtitle: 'Your Strategic Partner in Technological Excellence',
+    description: 'At TechPrime, we don\'t just provide IT services – we build lasting partnerships with our clients, understanding their business goals and delivering solutions that drive growth and efficiency.',
+    features: {
+      expertise: {
+        title: 'Proven Expertise',
+        description: 'With over 10 years of experience, we\'ve built a reputation for reliable service and technical excellence.'
+      },
+      innovative: {
+        title: 'Innovative Approach',
+        description: 'We stay ahead of technology trends to deliver cutting-edge solutions that bring real results.'
+      },
+      team: {
+        title: 'Dedicated Team',
+        description: 'Our skilled specialists are committed to understanding your unique needs and exceeding your expectations.'
+      },
+      results: {
+        title: 'Measurable Results',
+        description: 'We focus on delivering solutions that provide tangible business value and return on investment.'
+      }
+    },
+    stats: {
+      clients: 'Satisfied Clients',
+      satisfaction: 'Satisfaction Rate',
+      experience: 'Years of Experience'
+    }
+  },
+  testimonials: {
+    title: 'Testimonials',
+    subtitle: 'What Our Clients Say',
+    description: 'Don\'t just take our word for it. Hear what our satisfied clients have to say about working with TechPrime.'
+  },
+  cta: {
+    title: 'Ready to Transform Your Business Through Technology?',
+    description: 'Partner with TechPrime to leverage cutting-edge IT solutions that drive growth, efficiency, and innovation in your business.',
+    getStarted: 'Get Started',
+    portfolio: 'View Our Portfolio'
+  },
+  footer: {
+    description: 'We deliver innovative IT solutions that drive business growth and digital transformation.',
+    services: 'Services',
+    company: 'Company',
+    contact: 'Contact',
+    rights: 'All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service'
+  },
+  notFound: {
+    title: 'Page Not Found',
+    description: 'The page you are looking for doesn\'t exist or has been moved. Let\'s get you back on track.',
+    backHome: 'Back to Home'
+  }
+};
+
 // Funkcja pomocnicza do bezpiecznego dostępu do tłumaczeń
-export const getTranslation = (obj: any, path: string): string => {
-  if (!obj) {
+export const getTranslation = (translations: any, path: string): string => {
+  if (!translations) {
     console.warn(`Brak obiektu tłumaczeń dla ścieżki: ${path}`);
     return '';
   }
   
   const parts = path.split('.');
-  let current = obj;
+  let current = translations;
   
   for (const part of parts) {
     if (current[part] === undefined) {
@@ -240,18 +448,50 @@ export const getTranslation = (obj: any, path: string): string => {
 };
 
 export const LanguageContext = createContext<LanguageContextType>({
-  translations
+  language: 'pl',
+  setLanguage: () => {},
+  translations: {
+    pl: polishTranslations,
+    en: englishTranslations
+  }
 });
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<'pl' | 'en'>('pl');
+  
   // Ustawienie atrybutu lang dla dokumentu HTML
-  document.documentElement.lang = 'pl';
+  document.documentElement.lang = language;
   
   return (
-    <LanguageContext.Provider value={{ translations }}>
+    <LanguageContext.Provider 
+      value={{ 
+        language, 
+        setLanguage, 
+        translations: {
+          pl: polishTranslations,
+          en: englishTranslations
+        }
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );
 };
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  
+  // Zwracamy funkcję, która ułatwia korzystanie z tłumaczeń aktualnego języka
+  const t = (path: string): string => {
+    const currentTranslations = context.language === 'pl' 
+      ? context.translations.pl 
+      : context.translations.en;
+    
+    return getTranslation(currentTranslations, path);
+  };
+  
+  return {
+    ...context,
+    t
+  };
+};
