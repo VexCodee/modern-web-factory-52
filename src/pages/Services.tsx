@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles, FileText, Server, Lightbulb, Truck, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
@@ -74,7 +73,6 @@ const ServicePage = () => {
         t('services.items.outsourcing.benefits.scalability'),
         t('services.items.outsourcing.benefits.focus')
       ],
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       iconBgColor: "bg-blue-500",
       gradient: "bg-gradient-to-r from-blue-500 to-indigo-600",
       delay: 100
@@ -89,7 +87,6 @@ const ServicePage = () => {
         t('services.items.webDev.benefits.secure'),
         t('services.items.webDev.benefits.custom')
       ],
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       iconBgColor: "bg-purple-500",
       gradient: "bg-gradient-to-r from-purple-500 to-pink-500",
       delay: 200
@@ -104,7 +101,6 @@ const ServicePage = () => {
         t('services.items.graphic.benefits.creative'),
         t('services.items.graphic.benefits.cross')
       ],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1164&q=80",
       iconBgColor: "bg-pink-500",
       gradient: "bg-gradient-to-r from-pink-500 to-rose-500",
       delay: 300
@@ -119,7 +115,6 @@ const ServicePage = () => {
         t('services.items.hardware.benefits.quality'),
         t('services.items.hardware.benefits.preventive')
       ],
-      image: "https://images.unsplash.com/photo-1597424216809-3ba9864aee7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
       iconBgColor: "bg-amber-500",
       gradient: "bg-gradient-to-r from-amber-500 to-orange-600",
       delay: 400
@@ -134,7 +129,6 @@ const ServicePage = () => {
         t('services.items.ai.benefits.nlp'),
         t('services.items.ai.benefits.ml')
       ],
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
       iconBgColor: "bg-teal-500",
       gradient: "bg-gradient-to-r from-teal-500 to-green-500",
       delay: 500
@@ -149,7 +143,6 @@ const ServicePage = () => {
         t('services.items.marketing.benefits.content'),
         t('services.items.marketing.benefits.conversion')
       ],
-      image: "https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80",
       iconBgColor: "bg-red-500",
       gradient: "bg-gradient-to-r from-red-500 to-orange-500",
       delay: 600
@@ -164,7 +157,6 @@ const ServicePage = () => {
         t('services.items.social.benefits.optimization'),
         t('services.items.social.benefits.analytics')
       ],
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
       iconBgColor: "bg-blue-400",
       gradient: "bg-gradient-to-r from-blue-400 to-blue-600",
       delay: 700
@@ -179,7 +171,6 @@ const ServicePage = () => {
         t('services.items.project.benefits.resource'),
         t('services.items.project.benefits.quality')
       ],
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
       iconBgColor: "bg-indigo-500",
       gradient: "bg-gradient-to-r from-indigo-500 to-violet-600",
       delay: 800
@@ -284,7 +275,7 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Services Section with Completely Redesigned Cards */}
+      {/* Services Section with New Minimalist Design */}
       <section id="services" ref={servicesRef} className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
@@ -296,68 +287,49 @@ const ServicePage = () => {
             {services.map((service, index) => (
               <div 
                 key={index} 
-                className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 h-full"
+                className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="group h-full perspective-1000">
-                  <div className="h-full transform-style-3d transition-transform duration-700 group-hover:rotate-y-7 group-hover:rotate-x-3">
-                    {/* Card with 3D effect */}
-                    <div className="rounded-2xl overflow-hidden shadow-xl h-full bg-white flex flex-col transform hover:-translate-y-2 transition-all duration-500 relative">
-                      {/* Gradient accent line */}
-                      <div className={`h-1.5 w-full ${service.gradient}`}></div>
+                <Card className="h-full overflow-hidden border-0 shadow-lg transition-all duration-300 hover:shadow-xl group">
+                  <CardContent className="p-0 h-full">
+                    {/* Top gradient bar */}
+                    <div className={`h-2 w-full ${service.gradient}`}></div>
+                    
+                    <div className="p-8 flex flex-col h-full">
+                      {/* Large floating icon with gradient background */}
+                      <div className={`w-16 h-16 rounded-xl ${service.iconBgColor} flex items-center justify-center mb-6 shadow-md transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                        <div className="text-white">
+                          {service.icon}
+                        </div>
+                      </div>
                       
-                      {/* Top background image with color overlay */}
-                      <div className="relative h-48 overflow-hidden">
-                        <div 
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                          style={{ backgroundImage: `url(${service.image})` }}
-                        ></div>
-                        <div className={`absolute inset-0 opacity-90 ${service.gradient} mix-blend-overlay`}></div>
-                        
-                        {/* Floating icon */}
-                        <div className="absolute -bottom-8 right-6">
-                          <div className={`w-16 h-16 ${service.iconBgColor} rounded-full drop-shadow-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}>
-                            {service.icon}
+                      {/* Title and description */}
+                      <h3 className="text-xl font-bold text-gray-800 mb-4">{service.title}</h3>
+                      <p className="text-gray-600 mb-6 text-sm">{service.description}</p>
+                      
+                      {/* Benefits list with custom bullets */}
+                      <div className="mt-auto space-y-4 mb-8">
+                        {service.benefits.map((benefit, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <div className={`w-5 h-5 rounded-full ${service.iconBgColor} bg-opacity-15 flex-shrink-0 flex items-center justify-center mt-0.5`}>
+                              <div className={`w-1.5 h-1.5 rounded-full ${service.iconBgColor}`}></div>
+                            </div>
+                            <span className="text-sm text-gray-600 font-medium">{benefit}</span>
                           </div>
-                        </div>
+                        ))}
                       </div>
                       
-                      {/* Content area */}
-                      <div className="p-6 pt-10 flex-grow flex flex-col">
-                        <h3 className="text-xl font-bold text-gray-800 mb-3">{service.title}</h3>
-                        <p className="text-gray-600 text-sm mb-6">{service.description}</p>
-                        
-                        {/* Benefits with elegant icons */}
-                        <div className="mt-auto">
-                          <h4 className="font-medium text-sm mb-4 text-gray-700 flex items-center">
-                            <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                            {t('services.mainBenefits')}
-                          </h4>
-                          <ul className="space-y-2 mb-6">
-                            {service.benefits.map((benefit, i) => (
-                              <li key={i} className="flex items-start text-sm text-gray-600">
-                                <span className={`w-4 h-4 mr-2 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 ${service.iconBgColor} bg-opacity-20`}>
-                                  <span className={`w-1.5 h-1.5 rounded-full ${service.iconBgColor}`}></span>
-                                </span>
-                                {benefit}
-                              </li>
-                            ))}
-                          </ul>
-                          
-                          {/* Action button at the bottom */}
-                          <Link 
-                            to="/contact" 
-                            className={`inline-flex items-center text-sm font-medium ${service.iconBgColor} bg-opacity-10 hover:bg-opacity-20 px-4 py-2 rounded-full transition-all duration-300`}
-                            style={{ color: service.iconBgColor.replace('bg-', 'text-') }}
-                          >
-                            {t('cta.getStarted')}
-                            <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                          </Link>
-                        </div>
-                      </div>
+                      {/* Button with matching color */}
+                      <Link 
+                        to="/contact" 
+                        className={`mt-auto inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${service.iconBgColor} text-white transform group-hover:scale-105`}
+                      >
+                        {t('cta.getStarted')}
+                        <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
