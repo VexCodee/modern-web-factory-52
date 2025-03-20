@@ -1,11 +1,14 @@
-
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 type Language = 'pl' | 'en';
 
+type TranslationObject = {
+  [key: string]: string | TranslationObject;
+};
+
 type TranslationSection = {
   [key: string]: {
-    [language: string]: any;
+    [language: string]: TranslationObject;
   };
 };
 
@@ -58,6 +61,142 @@ const translations = {
       futureReady: 'Rozwiązania przyszłości',
       performance: 'Wydajność',
       optimized: 'Zoptymalizowane procesy'
+    }
+  },
+  contact: {
+    en: {
+      title: 'Contact Us',
+      subtitle: 'Get in Touch',
+      description: 'Have questions or want to discuss your project? Fill out the form below and our team will get back to you shortly.',
+      form: {
+        name: 'Full Name',
+        email: 'Email Address',
+        phone: 'Phone Number',
+        subject: 'Subject',
+        message: 'Your Message',
+        submit: 'Send Message',
+        success: 'Your message has been sent successfully. We\'ll get back to you soon!',
+        error: 'Something went wrong. Please try again later.'
+      },
+      info: {
+        title: 'Contact Information',
+        description: 'Feel free to contact us through any of these channels:',
+        address: '123 Business Avenue, Tech District, 10001',
+        email: 'info@techprime.com',
+        phone: '+1 (555) 123-4567',
+        hours: 'Monday-Friday, 9am-6pm'
+      }
+    },
+    pl: {
+      title: 'Kontakt',
+      subtitle: 'Skontaktuj się z Nami',
+      description: 'Masz pytania lub chcesz omówić swój projekt? Wypełnij poniższy formularz, a nasz zespół skontaktuje się z Tobą wkrótce.',
+      form: {
+        name: 'Imię i Nazwisko',
+        email: 'Adres Email',
+        phone: 'Numer Telefonu',
+        subject: 'Temat',
+        message: 'Twoja Wiadomość',
+        submit: 'Wyślij Wiadomość',
+        success: 'Twoja wiadomość została wysłana pomyślnie. Odezwiemy się wkrótce!',
+        error: 'Coś poszło nie tak. Spróbuj ponownie później.'
+      },
+      info: {
+        title: 'Informacje Kontaktowe',
+        description: 'Możesz skontaktować się z nami przez dowolny z tych kanałów:',
+        address: 'ul. Biznesowa 123, Dzielnica Technologiczna, 00-001',
+        email: 'info@techprime.com',
+        phone: '+48 555 123 456',
+        hours: 'Poniedziałek-Piątek, 9:00-18:00'
+      }
+    }
+  },
+  about: {
+    en: {
+      title: 'About Us',
+      subtitle: 'Who We Are',
+      description: 'TechPrime is a forward-thinking IT company dedicated to helping businesses leverage technology for growth and innovation.',
+      history: {
+        title: 'Our History',
+        description: 'Founded in 2012, TechPrime began as a small web development studio and has since grown into a full-service IT solutions provider, serving clients across industries worldwide.'
+      },
+      mission: {
+        title: 'Our Mission',
+        description: 'To empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage.'
+      },
+      values: {
+        title: 'Our Values',
+        innovation: 'Innovation',
+        innovationDesc: 'We embrace cutting-edge technologies and creative thinking',
+        quality: 'Quality',
+        qualityDesc: 'We deliver excellence in every project and interaction',
+        integrity: 'Integrity',
+        integrityDesc: 'We conduct business with honesty and transparency',
+        collaboration: 'Collaboration',
+        collaborationDesc: 'We build strong partnerships with our clients and within our team'
+      },
+      team: {
+        title: 'Our Team',
+        description: 'Meet the talented professionals behind TechPrime\'s success.'
+      }
+    },
+    pl: {
+      title: 'O Nas',
+      subtitle: 'Kim Jesteśmy',
+      description: 'TechPrime to zorientowana na przyszłość firma IT, dedykowana pomaganiu firmom w wykorzystaniu technologii do wzrostu i innowacji.',
+      history: {
+        title: 'Nasza Historia',
+        description: 'Założona w 2012 roku, TechPrime rozpoczęła działalność jako małe studio tworzenia stron internetowych, a od tego czasu rozwinęła się w pełnowymiarowego dostawcę rozwiązań IT, obsługując klientów z różnych branż na całym świecie.'
+      },
+      mission: {
+        title: 'Nasza Misja',
+        description: 'Wzmacnianie firm innowacyjnymi rozwiązaniami technologicznymi, które napędzają wzrost, efektywność i przewagę konkurencyjną.'
+      },
+      values: {
+        title: 'Nasze Wartości',
+        innovation: 'Innowacyjność',
+        innovationDesc: 'Przyjmujemy najnowocześniejsze technologie i kreatywne myślenie',
+        quality: 'Jakość',
+        qualityDesc: 'Dostarczamy doskonałość w każdym projekcie i interakcji',
+        integrity: 'Uczciwość',
+        integrityDesc: 'Prowadzimy biznes w sposób uczciwy i przejrzysty',
+        collaboration: 'Współpraca',
+        collaborationDesc: 'Budujemy silne partnerstwa z naszymi klientami i w ramach naszego zespołu'
+      },
+      team: {
+        title: 'Nasz Zespół',
+        description: 'Poznaj utalentowanych profesjonalistów stojących za sukcesem TechPrime.'
+      }
+    }
+  },
+  portfolio: {
+    en: {
+      title: 'Portfolio',
+      subtitle: 'Our Work',
+      description: 'Explore our featured projects and see how we\'ve helped businesses across industries achieve their goals through technology.',
+      categories: {
+        all: 'All Projects',
+        web: 'Web Development',
+        mobile: 'Mobile Apps',
+        design: 'Design',
+        ai: 'AI Solutions'
+      },
+      viewProject: 'View Project',
+      noProjects: 'No projects found in this category.'
+    },
+    pl: {
+      title: 'Portfolio',
+      subtitle: 'Nasze Prace',
+      description: 'Poznaj nasze wyróżnione projekty i zobacz, jak pomogliśmy firmom z różnych branż osiągnąć ich cele dzięki technologii.',
+      categories: {
+        all: 'Wszystkie Projekty',
+        web: 'Tworzenie Stron WWW',
+        mobile: 'Aplikacje Mobilne',
+        design: 'Projektowanie',
+        ai: 'Rozwiązania AI'
+      },
+      viewProject: 'Zobacz Projekt',
+      noProjects: 'Nie znaleziono projektów w tej kategorii.'
     }
   },
   services: {
@@ -139,6 +278,50 @@ const translations = {
           title: 'Zarządzanie Projektami',
           description: 'Profesjonalne planowanie, realizacja i nadzór nad projektami technologicznymi, zapewniające ich terminowe dostarczanie w ramach budżetu.'
         }
+      }
+    }
+  },
+  solutions: {
+    en: {
+      title: 'Our Solutions',
+      subtitle: 'Tailored Technology for Your Industry',
+      description: 'Discover how our specialized IT solutions can address the unique challenges and opportunities in your industry.',
+      industries: {
+        title: 'Industries We Serve',
+        finance: 'Financial Services',
+        healthcare: 'Healthcare',
+        retail: 'Retail & E-commerce',
+        manufacturing: 'Manufacturing',
+        education: 'Education',
+        logistics: 'Logistics & Transportation'
+      },
+      features: {
+        title: 'Solution Features',
+        scalable: 'Scalable Infrastructure',
+        secure: 'Enterprise-Grade Security',
+        integrated: 'Seamless Integration',
+        support: '24/7 Technical Support'
+      }
+    },
+    pl: {
+      title: 'Nasze Rozwiązania',
+      subtitle: 'Technologia Dostosowana do Twojej Branży',
+      description: 'Odkryj, jak nasze wyspecjalizowane rozwiązania IT mogą sprostać unikalnym wyzwaniom i możliwościom w Twojej branży.',
+      industries: {
+        title: 'Branże, Które Obsługujemy',
+        finance: 'Usługi Finansowe',
+        healthcare: 'Ochrona Zdrowia',
+        retail: 'Handel Detaliczny i E-commerce',
+        manufacturing: 'Produkcja',
+        education: 'Edukacja',
+        logistics: 'Logistyka i Transport'
+      },
+      features: {
+        title: 'Cechy Rozwiązań',
+        scalable: 'Skalowalna Infrastruktura',
+        secure: 'Bezpieczeństwo Klasy Korporacyjnej',
+        integrated: 'Bezproblemowa Integracja',
+        support: 'Wsparcie Techniczne 24/7'
       }
     }
   },
