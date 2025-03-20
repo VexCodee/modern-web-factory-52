@@ -5,13 +5,13 @@ import { ArrowRight } from 'lucide-react';
 import { useLanguage, getTranslation } from '../context/LanguageContext';
 
 const CTASection = () => {
-  const { language, translations } = useLanguage();
+  const { translations } = useLanguage();
   
-  // Use string paths to safely access translations
-  const title = getTranslation(translations.cta[language], language, 'title');
-  const description = getTranslation(translations.cta[language], language, 'description');
-  const getStarted = getTranslation(translations.cta[language], language, 'getStarted');
-  const portfolio = getTranslation(translations.cta[language], language, 'portfolio');
+  // Pobieranie tekstów z kontekstu
+  const title = getTranslation(translations, 'cta.title');
+  const description = getTranslation(translations, 'cta.description');
+  const getStarted = getTranslation(translations, 'cta.getStarted');
+  const portfolio = getTranslation(translations, 'cta.portfolio');
 
   return (
     <section className="py-20 relative overflow-hidden">

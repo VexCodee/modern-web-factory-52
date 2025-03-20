@@ -9,16 +9,16 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { language, translations } = useLanguage();
+  const { translations } = useLanguage();
   
-  // Safely access translations
-  const home = getTranslation(translations.navbar[language], language, 'home');
-  const services = getTranslation(translations.navbar[language], language, 'services');
-  const solutions = getTranslation(translations.navbar[language], language, 'solutions');
-  const aboutUs = getTranslation(translations.navbar[language], language, 'aboutUs');
-  const portfolio = getTranslation(translations.navbar[language], language, 'portfolio');
-  const contact = getTranslation(translations.navbar[language], language, 'contact');
-  const getStarted = getTranslation(translations.navbar[language], language, 'getStarted');
+  // Pobieranie tekstów z kontekstu
+  const home = getTranslation(translations, 'navbar.home');
+  const services = getTranslation(translations, 'navbar.services');
+  const solutions = getTranslation(translations, 'navbar.solutions');
+  const aboutUs = getTranslation(translations, 'navbar.aboutUs');
+  const portfolio = getTranslation(translations, 'navbar.portfolio');
+  const contact = getTranslation(translations, 'navbar.contact');
+  const getStarted = getTranslation(translations, 'navbar.getStarted');
 
   const navLinks = [
     { title: home, path: '/' },

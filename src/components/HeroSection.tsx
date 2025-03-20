@@ -6,18 +6,18 @@ import { useLanguage, getTranslation } from '../context/LanguageContext';
 
 const HeroSection = () => {
   const blobRef = useRef<HTMLDivElement>(null);
-  const { language, translations } = useLanguage();
+  const { translations } = useLanguage();
   
-  // Safely access translations with the helper function
-  const innovativeIt = getTranslation(translations.hero[language], language, 'innovativeIt');
-  const transformBusiness = getTranslation(translations.hero[language], language, 'transformBusiness');
-  const description = getTranslation(translations.hero[language], language, 'description');
-  const getStarted = getTranslation(translations.hero[language], language, 'getStarted');
-  const ourServices = getTranslation(translations.hero[language], language, 'ourServices');
-  const innovation = getTranslation(translations.hero[language], language, 'innovation');
-  const futureReady = getTranslation(translations.hero[language], language, 'futureReady');
-  const performance = getTranslation(translations.hero[language], language, 'performance');
-  const optimized = getTranslation(translations.hero[language], language, 'optimized');
+  // Pobieranie tekstów z kontekstu
+  const innovativeIt = getTranslation(translations, 'hero.innovativeIt');
+  const transformBusiness = getTranslation(translations, 'hero.transformBusiness');
+  const description = getTranslation(translations, 'hero.description');
+  const getStarted = getTranslation(translations, 'hero.getStarted');
+  const ourServices = getTranslation(translations, 'hero.ourServices');
+  const innovation = getTranslation(translations, 'hero.innovation');
+  const futureReady = getTranslation(translations, 'hero.futureReady');
+  const performance = getTranslation(translations, 'hero.performance');
+  const optimized = getTranslation(translations, 'hero.optimized');
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -53,9 +53,7 @@ const HeroSection = () => {
               {innovativeIt}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {transformBusiness.split(' ')[0]} <span className="text-gradient">
-                {language === 'en' ? 'With Technology' : 'Za Pomocą Technologii'}
-              </span>
+              {transformBusiness.split(' ')[0]} <span className="text-gradient">Za Pomocą Technologii</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-xl animate-fade-in" style={{ animationDelay: '400ms' }}>
               {description}

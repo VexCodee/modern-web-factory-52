@@ -27,62 +27,62 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
 };
 
 const ServiceSection = () => {
-  const { language, translations } = useLanguage();
+  const { translations } = useLanguage();
   
-  // Safely access translations using dot notation
-  const title = getTranslation(translations.services[language], language, 'title');
-  const subtitle = getTranslation(translations.services[language], language, 'subtitle');
-  const description = getTranslation(translations.services[language], language, 'description');
-  const viewAll = getTranslation(translations.services[language], language, 'viewAll');
+  // Pobieranie tekstów z kontekstu
+  const title = getTranslation(translations, 'services.title');
+  const subtitle = getTranslation(translations, 'services.subtitle');
+  const description = getTranslation(translations, 'services.description');
+  const viewAll = getTranslation(translations, 'services.viewAll');
   
-  // Define services with safe dot notation access
+  // Definicje usług
   const services = [
     {
       icon: <UserPlus size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.outsourcing.title'),
-      description: getTranslation(translations.services[language], language, 'items.outsourcing.description'),
+      title: getTranslation(translations, 'services.items.outsourcing.title'),
+      description: getTranslation(translations, 'services.items.outsourcing.description'),
       delay: 100
     },
     {
       icon: <Globe size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.webDev.title'),
-      description: getTranslation(translations.services[language], language, 'items.webDev.description'),
+      title: getTranslation(translations, 'services.items.webDev.title'),
+      description: getTranslation(translations, 'services.items.webDev.description'),
       delay: 200
     },
     {
       icon: <Palette size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.graphic.title'),
-      description: getTranslation(translations.services[language], language, 'items.graphic.description'),
+      title: getTranslation(translations, 'services.items.graphic.title'),
+      description: getTranslation(translations, 'services.items.graphic.description'),
       delay: 300
     },
     {
       icon: <Wrench size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.hardware.title'),
-      description: getTranslation(translations.services[language], language, 'items.hardware.description'),
+      title: getTranslation(translations, 'services.items.hardware.title'),
+      description: getTranslation(translations, 'services.items.hardware.description'),
       delay: 400
     },
     {
       icon: <Bot size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.ai.title'),
-      description: getTranslation(translations.services[language], language, 'items.ai.description'),
+      title: getTranslation(translations, 'services.items.ai.title'),
+      description: getTranslation(translations, 'services.items.ai.description'),
       delay: 500
     },
     {
       icon: <BarChart3 size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.marketing.title'),
-      description: getTranslation(translations.services[language], language, 'items.marketing.description'),
+      title: getTranslation(translations, 'services.items.marketing.title'),
+      description: getTranslation(translations, 'services.items.marketing.description'),
       delay: 600
     },
     {
       icon: <Share2 size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.social.title'),
-      description: getTranslation(translations.services[language], language, 'items.social.description'),
+      title: getTranslation(translations, 'services.items.social.title'),
+      description: getTranslation(translations, 'services.items.social.description'),
       delay: 700
     },
     {
       icon: <ClipboardList size={22} />,
-      title: getTranslation(translations.services[language], language, 'items.project.title'),
-      description: getTranslation(translations.services[language], language, 'items.project.description'),
+      title: getTranslation(translations, 'services.items.project.title'),
+      description: getTranslation(translations, 'services.items.project.description'),
       delay: 800
     }
   ];

@@ -4,30 +4,30 @@ import { Shield, Zap, Users, BarChart } from 'lucide-react';
 import { useLanguage, getTranslation } from '../context/LanguageContext';
 
 const WhyChooseUs = () => {
-  const { language, translations } = useLanguage();
+  const { translations } = useLanguage();
   
-  // Safely access translations
-  const title = getTranslation(translations.whyChooseUs[language], language, 'title');
-  const subtitle = getTranslation(translations.whyChooseUs[language], language, 'subtitle');
-  const description = getTranslation(translations.whyChooseUs[language], language, 'description');
+  // Pobieranie tekstów z kontekstu
+  const title = getTranslation(translations, 'whyChooseUs.title');
+  const subtitle = getTranslation(translations, 'whyChooseUs.subtitle');
+  const description = getTranslation(translations, 'whyChooseUs.description');
   
-  // Safely access nested translations for stats
-  const clientsLabel = getTranslation(translations.whyChooseUs[language], language, 'stats.clients');
-  const satisfactionLabel = getTranslation(translations.whyChooseUs[language], language, 'stats.satisfaction');
-  const experienceLabel = getTranslation(translations.whyChooseUs[language], language, 'stats.experience');
+  // Teksty dla statystyk
+  const clientsLabel = getTranslation(translations, 'whyChooseUs.stats.clients');
+  const satisfactionLabel = getTranslation(translations, 'whyChooseUs.stats.satisfaction');
+  const experienceLabel = getTranslation(translations, 'whyChooseUs.stats.experience');
   
-  // For features section - use dot notation for nested paths
-  const expertiseTitle = getTranslation(translations.whyChooseUs[language], language, 'features.expertise.title');
-  const expertiseDesc = getTranslation(translations.whyChooseUs[language], language, 'features.expertise.description');
+  // Teksty dla funkcji
+  const expertiseTitle = getTranslation(translations, 'whyChooseUs.features.expertise.title');
+  const expertiseDesc = getTranslation(translations, 'whyChooseUs.features.expertise.description');
   
-  const innovativeTitle = getTranslation(translations.whyChooseUs[language], language, 'features.innovative.title');
-  const innovativeDesc = getTranslation(translations.whyChooseUs[language], language, 'features.innovative.description');
+  const innovativeTitle = getTranslation(translations, 'whyChooseUs.features.innovative.title');
+  const innovativeDesc = getTranslation(translations, 'whyChooseUs.features.innovative.description');
   
-  const teamTitle = getTranslation(translations.whyChooseUs[language], language, 'features.team.title');
-  const teamDesc = getTranslation(translations.whyChooseUs[language], language, 'features.team.description');
+  const teamTitle = getTranslation(translations, 'whyChooseUs.features.team.title');
+  const teamDesc = getTranslation(translations, 'whyChooseUs.features.team.description');
   
-  const resultsTitle = getTranslation(translations.whyChooseUs[language], language, 'features.results.title');
-  const resultsDesc = getTranslation(translations.whyChooseUs[language], language, 'features.results.description');
+  const resultsTitle = getTranslation(translations, 'whyChooseUs.features.results.title');
+  const resultsDesc = getTranslation(translations, 'whyChooseUs.features.results.description');
 
   const features = [
     {
