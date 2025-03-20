@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,14 +12,17 @@ interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  learnMoreText: string;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   icon,
   title,
-  description
+  description,
+  learnMoreText
 }) => {
-  return <div className="bg-white rounded-lg border border-gray-100 p-6 h-full hover:shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col transform hover:-translate-y-2 hover:border-primary/20">
+  return (
+    <div className="bg-white rounded-lg border border-gray-100 p-6 h-full hover:shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col transform hover:-translate-y-2 hover:border-primary/20">
       <div className="mb-5">
         <div className="w-16 h-16 rounded-lg bg-blue-50 flex items-center justify-center transition-all duration-300 hover:bg-indigo-100 group">
           <div className="transition-transform duration-500 group-hover:rotate-12">
@@ -32,24 +36,23 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       <p className="text-gray-600 mb-6 flex-grow">{description}</p>
       
       <div className="pt-2 mt-auto">
-        <Link to="/services" className="text-indigo-500 hover:text-indigo-700 font-medium inline-flex items-center text-sm overflow-hidden group" aria-label={`Zobacz więcej o ${title}`}>
+        <Link to="/services" className="text-indigo-500 hover:text-indigo-700 font-medium inline-flex items-center text-sm overflow-hidden group" aria-label={`${learnMoreText} ${title}`}>
           <span className="relative inline-flex items-center">
             <span className="mr-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
               <ArrowRight className="h-4 w-4" />
             </span>
             <span className="opacity-0 max-w-0 group-hover:opacity-100 group-hover:max-w-xs transition-all duration-300 ease-in-out">
-              Dowiedz się więcej
+              {learnMoreText}
             </span>
           </span>
         </Link>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 const ServiceSection = () => {
-  const {
-    t
-  } = useLanguage();
+  const { t, language } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
@@ -59,36 +62,46 @@ const ServiceSection = () => {
     stopOnInteraction: false
   }));
 
-  // Define services to match the image
-  const services = [{
-    icon: <UserPlus size={24} className="text-indigo-600" />,
-    title: "Outsourcing IT",
-    description: "Wykorzystaj nasze doświadczenie w zarządzaniu operacjami IT, co pozwoli Ci skupić się na podstawowej działalności i strategii rozwoju."
-  }, {
-    icon: <Globe size={24} className="text-indigo-600" />,
-    title: "Tworzenie Stron WWW",
-    description: "Niestandardowe strony internetowe i rozwiązania e-commerce z oszałamiającym designem, zoptymalizowaną wydajnością i płynnym doświadczeniem użytkownika."
-  }, {
-    icon: <Palette size={24} className="text-indigo-600" />,
-    title: "Projektowanie Graficzne",
-    description: "Przyciągające wzrok treści wizualne, które wzmacniają tożsamość Twojej marki i skutecznie komunikują Twoje przesłanie."
-  }, {
-    icon: <Wrench size={24} className="text-indigo-600" />,
-    title: "Naprawa Sprzętu",
-    description: "Profesjonalne usługi diagnozy i naprawy komputerów oraz sprzętu IT, minimalizujące przestoje w działalności Twojej firmy."
-  }, {
-    icon: <Lock size={24} className="text-indigo-600" />,
-    title: "Bezpieczeństwo IT",
-    description: "Kompleksowe rozwiązania chroniące Twoją firmę przed cyberzagrożeniami, audyty bezpieczeństwa i wdrażanie polityk bezpieczeństwa."
-  }, {
-    icon: <Database size={24} className="text-indigo-600" />,
-    title: "Usługi w Chmurze",
-    description: "Wdrażanie i zarządzanie rozwiązaniami chmurowymi, które zwiększają elastyczność, skalowalność i bezpieczeństwo Twojej infrastruktury IT."
-  }, {
-    icon: <LineChart size={24} className="text-indigo-600" />,
-    title: "Analityka Danych",
-    description: "Zaawansowana analiza danych biznesowych, dostarczanie wnikliwych raportów i rekomendacji dla świadomego podejmowania decyzji."
-  }];
+  // Define services with translation keys instead of hardcoded Polish text
+  const services = [
+    {
+      icon: <UserPlus size={24} className="text-indigo-600" />,
+      titleKey: "services.items.outsourcing.title",
+      descriptionKey: "services.items.outsourcing.description"
+    }, 
+    {
+      icon: <Globe size={24} className="text-indigo-600" />,
+      titleKey: "services.items.webDev.title",
+      descriptionKey: "services.items.webDev.description"
+    }, 
+    {
+      icon: <Palette size={24} className="text-indigo-600" />,
+      titleKey: "services.items.graphic.title",
+      descriptionKey: "services.items.graphic.description"
+    }, 
+    {
+      icon: <Wrench size={24} className="text-indigo-600" />,
+      titleKey: "services.items.hardware.title",
+      descriptionKey: "services.items.hardware.description"
+    }, 
+    {
+      icon: <Lock size={24} className="text-indigo-600" />,
+      titleKey: "whyChooseUs.features.security.title",
+      descriptionKey: "services.items.outsourcing.description"
+    }, 
+    {
+      icon: <Database size={24} className="text-indigo-600" />,
+      titleKey: "technologies.cloud.title",
+      descriptionKey: "technologies.cloud.description"
+    }, 
+    {
+      icon: <LineChart size={24} className="text-indigo-600" />,
+      titleKey: "services.items.ai.title",
+      descriptionKey: "services.items.ai.description"
+    }
+  ];
+
+  // IntersectionObserver setup
   useEffect(() => {
     if (!sectionRef.current) return;
     const observer = new IntersectionObserver(entries => {
@@ -114,7 +127,14 @@ const ServiceSection = () => {
       }
     };
   }, []);
-  return <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-neutral-50">
+
+  // Get "Learn more" text in current language
+  const learnMoreText = language === 'pl' ? 'Dowiedz się więcej' : 
+                        language === 'en' ? 'Learn more' : 
+                        'Mehr erfahren';
+
+  return (
+    <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-neutral-50">
       {/* Background with animated gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950/10 dark:to-purple-950/10"></div>
@@ -167,7 +187,12 @@ const ServiceSection = () => {
               {services.map((service, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[420px] pt-2">
                   <div className="p-1 h-full transform transition-all duration-500 hover:scale-[1.02]">
-                    <ServiceCard icon={service.icon} title={service.title} description={service.description} />
+                    <ServiceCard 
+                      icon={service.icon} 
+                      title={t(service.titleKey)} 
+                      description={t(service.descriptionKey)}
+                      learnMoreText={learnMoreText}
+                    />
                   </div>
                 </CarouselItem>
               ))}
@@ -191,7 +216,8 @@ const ServiceSection = () => {
           </Link>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default ServiceSection;
