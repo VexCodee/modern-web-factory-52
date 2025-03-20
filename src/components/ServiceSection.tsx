@@ -111,7 +111,7 @@ const ServiceSection = () => {
       }
     };
   }, []);
-  return <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-slate-100">
+  return <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-neutral-50">
       {/* Background with animated gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950/10 dark:to-purple-950/10"></div>
