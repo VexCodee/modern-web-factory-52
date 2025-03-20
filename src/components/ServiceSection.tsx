@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
@@ -11,7 +11,8 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { ScrollArea } from './ui/scroll-area';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -53,6 +54,11 @@ const ServiceSection = () => {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  
+  // Configure autoplay plugin
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false })
+  );
 
   // Define services to match the image
   const services = [
@@ -146,11 +152,18 @@ const ServiceSection = () => {
           </p>
         </div>
 
-        {isMobile ? (
-          <Carousel className="w-full">
+        <div className="w-full">
+          <Carousel 
+            className="w-full" 
+            opts={{ 
+              align: "start",
+              loop: true
+            }} 
+            plugins={[autoplayPlugin.current]}
+          >
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[420px]">
                   <div className="p-1 h-full">
                     <ServiceCard 
                       icon={service.icon} 
@@ -161,26 +174,12 @@ const ServiceSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-8">
               <CarouselPrevious className="relative static left-0 translate-y-0 mr-2" />
               <CarouselNext className="relative static right-0 translate-y-0" />
             </div>
           </Carousel>
-        ) : (
-          <ScrollArea className="w-full pb-6">
-            <div className="flex space-x-6 pb-4 min-h-[350px]">
-              {services.map((service, index) => (
-                <div key={index} className="min-w-[300px] max-w-[350px] opacity-0 service-card h-full">
-                  <ServiceCard 
-                    icon={service.icon} 
-                    title={service.title} 
-                    description={service.description} 
-                  />
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
-        )}
+        </div>
 
         <div className="mt-16 text-center animate-fade-in" style={{
           animationDelay: '900ms'
