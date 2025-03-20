@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Sparkle, Leaf, Star, Wave } from 'lucide-react';
+import { Sparkle, Leaf, Star, Waves } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const TechnologiesSection = () => {
@@ -20,7 +20,7 @@ const TechnologiesSection = () => {
       delay: 200
     },
     {
-      icon: <Wave className="w-7 h-7 text-teal-500" />,
+      icon: <Waves className="w-7 h-7 text-teal-500" />,
       name: "IoT & Edge Computing",
       description: "Connect and manage all your devices with our advanced IoT platform",
       delay: 300
