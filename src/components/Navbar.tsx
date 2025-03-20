@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageSelector from './LanguageSelector';
-import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +86,6 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
             <LanguageSelector />
             <Link 
               to="/contact" 
@@ -99,7 +97,6 @@ const Navbar = () => {
 
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
             <LanguageSelector />
             <button 
               className="text-foreground"

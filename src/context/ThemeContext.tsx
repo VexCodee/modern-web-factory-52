@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 
 type Theme = "light";
 
@@ -27,7 +27,8 @@ export function ThemeProvider({
   storageKey = "theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme] = useState<Theme>("light");
+  // Always use light theme, no state needed
+  const theme: Theme = "light";
 
   const value = {
     theme,
