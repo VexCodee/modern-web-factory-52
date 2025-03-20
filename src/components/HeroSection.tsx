@@ -2,9 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 const HeroSection = () => {
   const blobRef = useRef<HTMLDivElement>(null);
+  const { language, translations } = useLanguage();
+  const t = translations.hero[language];
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -37,29 +40,29 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-10 z-10">
             <div className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 inline-block mb-6 font-medium animate-fade-in">
-              Innovative IT Solutions
+              {t.innovativeIt}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Transform Your Business <span className="text-gradient">With Technology</span>
+              {t.transformBusiness.split(' With ')[0]} <span className="text-gradient">
+                {language === 'en' ? 'With Technology' : 'Za Pomocą Technologii'}
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-xl animate-fade-in" style={{ animationDelay: '400ms' }}>
-              We deliver cutting-edge IT services and solutions to help businesses 
-              thrive in the digital landscape. From web development to AI integration, 
-              we're your strategic tech partner.
+              {t.description}
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in" style={{ animationDelay: '600ms' }}>
               <Link 
                 to="/contact" 
                 className="bg-primary text-white px-8 py-3 rounded-full font-medium flex items-center justify-center transition-all hover:bg-primary/90 hover:shadow-lg"
               >
-                Get Started
+                {t.getStarted}
                 <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
                 to="/services" 
                 className="bg-white text-gray-800 border border-gray-200 px-8 py-3 rounded-full font-medium flex items-center justify-center transition-all hover:bg-gray-50 hover:shadow"
               >
-                Our Services
+                {t.ourServices}
               </Link>
             </div>
           </div>
@@ -83,8 +86,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">Innovation</p>
-                      <p className="text-xs text-gray-500">Future-ready solutions</p>
+                      <p className="font-medium text-sm">{t.innovation}</p>
+                      <p className="text-xs text-gray-500">{t.futureReady}</p>
                     </div>
                   </div>
                 </div>
@@ -96,8 +99,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">Performance</p>
-                      <p className="text-xs text-gray-500">Optimized processes</p>
+                      <p className="font-medium text-sm">{t.performance}</p>
+                      <p className="text-xs text-gray-500">{t.optimized}</p>
                     </div>
                   </div>
                 </div>

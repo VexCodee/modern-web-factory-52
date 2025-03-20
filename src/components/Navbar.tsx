@@ -2,19 +2,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { language, translations } = useLanguage();
+  const t = translations.navbar[language];
 
   const navLinks = [
-    { title: 'Home', path: '/' },
-    { title: 'Services', path: '/services' },
-    { title: 'Solutions', path: '/solutions' },
-    { title: 'About Us', path: '/about' },
-    { title: 'Portfolio', path: '/portfolio' },
-    { title: 'Contact', path: '/contact' },
+    { title: t.home, path: '/' },
+    { title: t.services, path: '/services' },
+    { title: t.solutions, path: '/solutions' },
+    { title: t.aboutUs, path: '/about' },
+    { title: t.portfolio, path: '/portfolio' },
+    { title: t.contact, path: '/contact' },
   ];
 
   useEffect(() => {
@@ -69,23 +73,27 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center space-x-4">
+            <LanguageSelector />
             <Link 
               to="/contact" 
               className="bg-primary text-white px-5 py-2 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
             >
-              Get Started
+              {t.getStarted}
             </Link>
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <button 
-            className="md:hidden text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center space-x-4">
+            <LanguageSelector />
+            <button 
+              className="text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -114,7 +122,7 @@ const Navbar = () => {
               to="/contact" 
               className="block w-full bg-primary text-white text-center px-5 py-3 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
             >
-              Get Started
+              {t.getStarted}
             </Link>
           </div>
         </div>

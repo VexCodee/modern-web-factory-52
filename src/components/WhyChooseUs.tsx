@@ -1,28 +1,32 @@
 
 import React from 'react';
 import { Shield, Zap, Users, BarChart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const WhyChooseUs = () => {
+  const { language, translations } = useLanguage();
+  const t = translations.whyChooseUs[language];
+
   const features = [
     {
       icon: <Shield size={24} className="text-primary" />,
-      title: "Trusted Expertise",
-      description: "With over 10 years of experience, we've built a reputation for reliable service and technical excellence."
+      title: t.features.expertise.title,
+      description: t.features.expertise.description
     },
     {
       icon: <Zap size={24} className="text-primary" />,
-      title: "Innovative Approach",
-      description: "We stay at the forefront of technology trends to deliver cutting-edge solutions that drive real results."
+      title: t.features.innovative.title,
+      description: t.features.innovative.description
     },
     {
       icon: <Users size={24} className="text-primary" />,
-      title: "Dedicated Team",
-      description: "Our skilled professionals are committed to understanding your unique needs and exceeding your expectations."
+      title: t.features.team.title,
+      description: t.features.team.description
     },
     {
       icon: <BarChart size={24} className="text-primary" />,
-      title: "Measurable Results",
-      description: "We focus on delivering solutions that provide tangible business value and return on investment."
+      title: t.features.results.title,
+      description: t.features.results.description
     }
   ];
 
@@ -37,13 +41,13 @@ const WhyChooseUs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Why Choose Us
+              {t.title}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Your Strategic Partner in Technology Excellence
+              {t.subtitle}
             </h2>
             <p className="mt-6 text-lg text-gray-600 leading-relaxed animate-fade-in" style={{ animationDelay: '200ms' }}>
-              At TechPrime, we don't just provide IT services – we build lasting partnerships with our clients, understanding their business goals and delivering solutions that drive growth and efficiency.
+              {t.description}
             </p>
             
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -77,15 +81,15 @@ const WhyChooseUs = () => {
                 <div className="grid grid-cols-3 divide-x divide-gray-200">
                   <div className="px-4 text-center">
                     <div className="text-3xl font-bold text-primary">200+</div>
-                    <div className="text-sm text-gray-600 mt-1">Happy Clients</div>
+                    <div className="text-sm text-gray-600 mt-1">{t.stats.clients}</div>
                   </div>
                   <div className="px-4 text-center">
                     <div className="text-3xl font-bold text-primary">98%</div>
-                    <div className="text-sm text-gray-600 mt-1">Satisfaction</div>
+                    <div className="text-sm text-gray-600 mt-1">{t.stats.satisfaction}</div>
                   </div>
                   <div className="px-4 text-center">
                     <div className="text-3xl font-bold text-primary">10+</div>
-                    <div className="text-sm text-gray-600 mt-1">Years Experience</div>
+                    <div className="text-sm text-gray-600 mt-1">{t.stats.experience}</div>
                   </div>
                 </div>
               </div>
