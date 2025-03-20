@@ -110,6 +110,23 @@
   color: white;
 }
 
+.service-card-redesigned {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.service-card-redesigned:hover {
+  transform: translateY(-5px);
+}
+
+.service-card-redesigned .service-icon {
+  transition: all 0.3s ease;
+}
+
+.service-card-redesigned:hover .service-icon {
+  transform: scale(1.1);
+}
+
 .nav-link {
   position: relative;
 }

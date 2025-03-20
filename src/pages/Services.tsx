@@ -65,7 +65,7 @@ const ServicePage = () => {
 
   const services = [
     {
-      icon: <UserPlus size={24} />,
+      icon: <UserPlus size={24} className="text-white" />,
       title: t('services.items.outsourcing.title'),
       description: t('services.items.outsourcing.description'),
       benefits: [
@@ -75,11 +75,12 @@ const ServicePage = () => {
         t('services.items.outsourcing.benefits.focus')
       ],
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      color: "from-blue-500 to-indigo-600",
+      iconBgColor: "bg-blue-500",
+      gradient: "bg-gradient-to-r from-blue-500 to-indigo-600",
       delay: 100
     },
     {
-      icon: <Globe size={24} />,
+      icon: <Globe size={24} className="text-white" />,
       title: t('services.items.webDev.title'),
       description: t('services.items.webDev.description'),
       benefits: [
@@ -89,11 +90,12 @@ const ServicePage = () => {
         t('services.items.webDev.benefits.custom')
       ],
       image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      color: "from-purple-500 to-pink-500",
+      iconBgColor: "bg-purple-500",
+      gradient: "bg-gradient-to-r from-purple-500 to-pink-500",
       delay: 200
     },
     {
-      icon: <Palette size={24} />,
+      icon: <Palette size={24} className="text-white" />,
       title: t('services.items.graphic.title'),
       description: t('services.items.graphic.description'),
       benefits: [
@@ -103,11 +105,12 @@ const ServicePage = () => {
         t('services.items.graphic.benefits.cross')
       ],
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1164&q=80",
-      color: "from-pink-500 to-rose-500",
+      iconBgColor: "bg-pink-500",
+      gradient: "bg-gradient-to-r from-pink-500 to-rose-500",
       delay: 300
     },
     {
-      icon: <Wrench size={24} />,
+      icon: <Wrench size={24} className="text-white" />,
       title: t('services.items.hardware.title'),
       description: t('services.items.hardware.description'),
       benefits: [
@@ -117,11 +120,12 @@ const ServicePage = () => {
         t('services.items.hardware.benefits.preventive')
       ],
       image: "https://images.unsplash.com/photo-1597424216809-3ba9864aee7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-      color: "from-amber-500 to-orange-600",
+      iconBgColor: "bg-amber-500",
+      gradient: "bg-gradient-to-r from-amber-500 to-orange-600",
       delay: 400
     },
     {
-      icon: <Bot size={24} />,
+      icon: <Bot size={24} className="text-white" />,
       title: t('services.items.ai.title'),
       description: t('services.items.ai.description'),
       benefits: [
@@ -131,11 +135,12 @@ const ServicePage = () => {
         t('services.items.ai.benefits.ml')
       ],
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
-      color: "from-teal-500 to-green-500",
+      iconBgColor: "bg-teal-500",
+      gradient: "bg-gradient-to-r from-teal-500 to-green-500",
       delay: 500
     },
     {
-      icon: <BarChart3 size={24} />,
+      icon: <BarChart3 size={24} className="text-white" />,
       title: t('services.items.marketing.title'),
       description: t('services.items.marketing.description'),
       benefits: [
@@ -145,11 +150,12 @@ const ServicePage = () => {
         t('services.items.marketing.benefits.conversion')
       ],
       image: "https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80",
-      color: "from-red-500 to-orange-500",
+      iconBgColor: "bg-red-500",
+      gradient: "bg-gradient-to-r from-red-500 to-orange-500",
       delay: 600
     },
     {
-      icon: <Share2 size={24} />,
+      icon: <Share2 size={24} className="text-white" />,
       title: t('services.items.social.title'),
       description: t('services.items.social.description'),
       benefits: [
@@ -159,11 +165,12 @@ const ServicePage = () => {
         t('services.items.social.benefits.analytics')
       ],
       image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-      color: "from-blue-400 to-blue-600",
+      iconBgColor: "bg-blue-400",
+      gradient: "bg-gradient-to-r from-blue-400 to-blue-600",
       delay: 700
     },
     {
-      icon: <ClipboardList size={24} />,
+      icon: <ClipboardList size={24} className="text-white" />,
       title: t('services.items.project.title'),
       description: t('services.items.project.description'),
       benefits: [
@@ -173,7 +180,8 @@ const ServicePage = () => {
         t('services.items.project.benefits.quality')
       ],
       image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
-      color: "from-indigo-500 to-violet-600",
+      iconBgColor: "bg-indigo-500",
+      gradient: "bg-gradient-to-r from-indigo-500 to-violet-600",
       delay: 800
     }
   ];
@@ -284,51 +292,64 @@ const ServicePage = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('services.discoverSolutions')}</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <Card 
                 key={index} 
-                className={`service-card-new overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 border-0 shadow-lg hover:shadow-xl group`}
+                className="service-card-redesigned overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 border-0 rounded-2xl shadow-sm hover:shadow-md group"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="flex flex-col md:flex-row h-full">
-                  <div className="md:w-2/5 relative overflow-hidden">
+                  {/* Left side with background image and overlay */}
+                  <div className="md:w-2/5 relative overflow-hidden rounded-l-2xl">
                     <div 
-                      className="w-full h-60 md:h-full bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110" 
+                      className="w-full h-48 md:h-full bg-cover bg-center transform transition-transform duration-700 group-hover:scale-105" 
                       style={{ backgroundImage: `url(${service.image})` }}
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-60 mix-blend-multiply`}></div>
-                    <div className="absolute inset-0 flex items-center justify-center p-6 text-white">
-                      <div className="text-center">
-                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 service-icon">
+                    <div className={`absolute inset-0 ${service.gradient} opacity-80 mix-blend-multiply`}></div>
+                    
+                    {/* Overlay content with icon and title */}
+                    <div className="absolute inset-0 flex items-center justify-center p-4 text-white">
+                      <div className="text-center w-full">
+                        {/* Circular icon */}
+                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4">
                           {service.icon}
                         </div>
-                        <h3 className="text-xl font-bold">{service.title}</h3>
+                        {/* Title on mobile and small devices */}
+                        <h3 className="text-xl font-bold md:hidden">
+                          {service.title}
+                        </h3>
                       </div>
                     </div>
                   </div>
                   
-                  <CardContent className="md:w-3/5 p-6 flex flex-col">
-                    <div className="mb-4">
-                      <h3 className="text-2xl font-display font-semibold mb-3 hidden md:block">{service.title}</h3>
-                      <p className="text-gray-600 mb-4">{service.description}</p>
+                  {/* Right side with content */}
+                  <CardContent className="md:w-3/5 p-6 flex flex-col bg-white">
+                    {/* Title (hidden on mobile) */}
+                    <h3 className="text-2xl font-display font-semibold mb-3 hidden md:block">{service.title}</h3>
+                    
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm md:text-base mb-4">{service.description}</p>
+                    
+                    {/* Benefits list */}
+                    <div className="mb-6 flex-grow">
+                      <h4 className="font-medium text-base mb-3 text-gray-800">{t('services.mainBenefits')}:</h4>
+                      <ul className="space-y-2">
+                        {service.benefits.map((benefit, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="text-blue-500 mr-2 flex-shrink-0">
+                              <Sparkles className="h-5 w-5" />
+                            </span>
+                            <span className="text-gray-600 text-sm">{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     
-                    <h4 className="font-medium text-lg mb-3">{t('services.mainBenefits')}:</h4>
-                    <ul className="space-y-2 mb-6 flex-grow">
-                      {service.benefits.map((benefit, i) => (
-                        <li key={i} className="flex items-start group">
-                          <span className="h-6 w-6 text-primary mr-2 flex-shrink-0 transition-all duration-300 group-hover:scale-110">
-                            <Sparkles className="h-6 w-6" />
-                          </span>
-                          <span className="text-gray-600">{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
+                    {/* Action button */}
                     <Link 
                       to="/contact" 
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-indigo-600 text-white font-medium hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 button-shine"
+                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white border border-gray-200 text-primary font-medium hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 mt-2 text-sm"
                     >
                       {t('cta.getStarted')}
                       <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
