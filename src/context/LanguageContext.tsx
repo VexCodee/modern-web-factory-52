@@ -1,16 +1,18 @@
+
 import React, { createContext, useContext, useState } from 'react';
 
-// Struktura tłumaczeń dla obu języków
+// Struktura tłumaczeń dla wszystkich języków
 export interface Translations {
   [key: string]: string | { [key: string]: string | Translations };
 }
 
 interface LanguageContextType {
-  language: 'pl' | 'en';
-  setLanguage: (lang: 'pl' | 'en') => void;
+  language: 'pl' | 'en' | 'de';
+  setLanguage: (lang: 'pl' | 'en' | 'de') => void;
   translations: {
     pl: Translations;
     en: Translations;
+    de: Translations;
   };
 }
 
@@ -48,15 +50,45 @@ const polishTranslations: Translations = {
       message: 'Twoja Wiadomość',
       submit: 'Wyślij Wiadomość',
       success: 'Twoja wiadomość została wysłana pomyślnie. Odezwiemy się wkrótce!',
-      error: 'Coś poszło nie tak. Spróbuj ponownie później.'
+      error: 'Coś poszło nie tak. Spróbuj ponownie później.',
+      sending: 'Wysyłanie...',
+      selectService: 'Wybierz usługę',
+      other: 'Inne'
     },
     info: {
       title: 'Informacje Kontaktowe',
       description: 'Możesz skontaktować się z nami przez dowolny z tych kanałów:',
-      address: 'ul. Biznesowa 123, Dzielnica Technologiczna, 00-001',
+      address: 'Adres',
       email: 'info@techprime.com',
       phone: '+48 555 123 456',
-      hours: 'Poniedziałek-Piątek, 9:00-18:00'
+      hours: 'Poniedziałek-Piątek, 9:00-18:00',
+      map: 'Mapa Lokalizacji'
+    },
+    faq: {
+      title: 'Często Zadawane Pytania',
+      description: 'Odpowiedzi na najczęściej zadawane pytania'
+    }
+  },
+  faq: {
+    development: {
+      question: 'Jak długo zwykle trwa realizacja projektu tworzenia strony internetowej?',
+      answer: 'Czas realizacji projektów różni się w zależności od złożoności i zakresu. Prosta strona internetowa może zająć 4-6 tygodni, podczas gdy bardziej złożone platformy mogą trwać 3-6 miesięcy. Podczas naszej początkowej konsultacji przedstawimy szczegółowy harmonogram dostosowany do wymagań Twojego projektu.'
+    },
+    support: {
+      question: 'Czy oferujecie bieżącą konserwację i wsparcie po zakończeniu projektu?',
+      answer: 'Tak, oferujemy różne pakiety utrzymania, aby zapewnić, że Twoje produkty cyfrowe pozostaną bezpieczne, aktualne i optymalne. Nasze usługi wsparcia obejmują regularne aktualizacje, monitorowanie bezpieczeństwa, zmiany treści i pomoc techniczną.'
+    },
+    pricing: {
+      question: 'Jak wygląda wycena projektów?',
+      answer: 'Przedstawiamy indywidualne oferty na podstawie konkretnych wymagań. Czynniki wpływające na cenę obejmują złożoność projektu, harmonogram, potrzebne funkcje i poziom wymaganej personalizacji. Oferujemy zarówno kontrakty o stałej cenie, jak i rozliczenia według czasu i materiałów.'
+    },
+    industries: {
+      question: 'W jakich branżach się specjalizujecie?',
+      answer: 'Współpracowaliśmy z klientami z różnych sektorów, w tym opieki zdrowotnej, finansów, handlu detalicznego, edukacji, produkcji i hotelarstwa. Nasz zespół szybko dostosowuje się, aby zrozumieć specyficzne dla danej branży wyzwania i wymagania.'
+    },
+    ai: {
+      question: 'Czy możecie zintegrować sztuczną inteligencję z naszymi istniejącymi systemami?',
+      answer: 'Tak, specjalizujemy się w integracji rozwiązań AI z istniejącymi systemami biznesowymi. Nasze podejście koncentruje się na identyfikacji najbardziej wartościowych zastosowań AI dla Twoich konkretnych potrzeb i wdrażaniu ich w sposób, który uzupełnia Twoje obecne procesy.'
     }
   },
   about: {
@@ -251,15 +283,45 @@ const englishTranslations: Translations = {
       message: 'Your Message',
       submit: 'Send Message',
       success: 'Your message has been sent successfully. We\'ll get back to you soon!',
-      error: 'Something went wrong. Please try again later.'
+      error: 'Something went wrong. Please try again later.',
+      sending: 'Sending...',
+      selectService: 'Select a service',
+      other: 'Other'
     },
     info: {
       title: 'Contact Information',
       description: 'You can reach us through any of these channels:',
-      address: '123 Business St., Technology District, 00-001',
+      address: 'Address',
       email: 'info@techprime.com',
       phone: '+48 555 123 456',
-      hours: 'Monday-Friday, 9:00-18:00'
+      hours: 'Monday-Friday, 9:00-18:00',
+      map: 'Location Map'
+    },
+    faq: {
+      title: 'Frequently Asked Questions',
+      description: 'Answers to the most common questions'
+    }
+  },
+  faq: {
+    development: {
+      question: 'How long does a typical website development project take?',
+      answer: 'Project timelines vary depending on complexity and scope. A simple website may take 4-6 weeks, while more complex platforms can take 3-6 months. During our initial consultation, we\'ll provide a detailed timeline tailored to your project requirements.'
+    },
+    support: {
+      question: 'Do you offer ongoing maintenance and support after the project is completed?',
+      answer: 'Yes, we offer various maintenance packages to ensure your digital products remain secure, up-to-date, and optimal. Our support services include regular updates, security monitoring, content changes, and technical assistance.'
+    },
+    pricing: {
+      question: 'How does project pricing work?',
+      answer: 'We provide individualized quotes based on specific requirements. Factors that influence pricing include project complexity, timeline, features needed, and the level of customization required. We offer both fixed-price contracts and time-and-materials billing.'
+    },
+    industries: {
+      question: 'What industries do you specialize in?',
+      answer: 'We\'ve worked with clients across diverse sectors, including healthcare, finance, retail, education, manufacturing, and hospitality. Our team quickly adapts to understand industry-specific challenges and requirements.'
+    },
+    ai: {
+      question: 'Can you integrate artificial intelligence with our existing systems?',
+      answer: 'Yes, we specialize in integrating AI solutions with existing business systems. Our approach focuses on identifying the most valuable AI applications for your specific needs and implementing them in a way that complements your current processes.'
     }
   },
   about: {
@@ -420,6 +482,240 @@ const englishTranslations: Translations = {
   }
 };
 
+// Tłumaczenia w języku niemieckim
+const germanTranslations: Translations = {
+  navbar: {
+    home: 'Startseite',
+    services: 'Dienstleistungen',
+    solutions: 'Lösungen',
+    aboutUs: 'Über Uns',
+    portfolio: 'Portfolio',
+    contact: 'Kontakt',
+    getStarted: 'Jetzt Starten'
+  },
+  hero: {
+    innovativeIt: 'Innovative IT-Lösungen',
+    transformBusiness: 'Transformieren Sie Ihr Unternehmen durch Technologie',
+    description: 'Wir bieten fortschrittliche IT-Dienstleistungen und Lösungen, die Unternehmen helfen, in der digitalen Welt zu gedeihen. Von der Webentwicklung bis zur KI-Integration sind wir Ihr strategischer Technologiepartner.',
+    getStarted: 'Jetzt Starten',
+    ourServices: 'Unsere Dienstleistungen',
+    innovation: 'Innovation',
+    futureReady: 'Zukunftssichere Lösungen',
+    performance: 'Leistung',
+    optimized: 'Optimierte Prozesse'
+  },
+  contact: {
+    title: 'Kontakt',
+    subtitle: 'Kontaktieren Sie Uns',
+    description: 'Haben Sie Fragen oder möchten Sie Ihr Projekt besprechen? Füllen Sie das untenstehende Formular aus, und unser Team wird sich in Kürze bei Ihnen melden.',
+    form: {
+      name: 'Vollständiger Name',
+      email: 'E-Mail-Adresse',
+      phone: 'Telefonnummer',
+      subject: 'Betreff',
+      message: 'Ihre Nachricht',
+      submit: 'Nachricht Senden',
+      success: 'Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei Ihnen!',
+      error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.',
+      sending: 'Senden...',
+      selectService: 'Dienstleistung auswählen',
+      other: 'Andere'
+    },
+    info: {
+      title: 'Kontaktinformationen',
+      description: 'Sie können uns über einen dieser Kanäle erreichen:',
+      address: 'Adresse',
+      email: 'info@techprime.com',
+      phone: '+48 555 123 456',
+      hours: 'Montag-Freitag, 9:00-18:00 Uhr',
+      map: 'Standortkarte'
+    },
+    faq: {
+      title: 'Häufig Gestellte Fragen',
+      description: 'Antworten auf die häufigsten Fragen'
+    }
+  },
+  faq: {
+    development: {
+      question: 'Wie lange dauert ein typisches Webentwicklungsprojekt?',
+      answer: 'Die Projektdauer variiert je nach Komplexität und Umfang. Eine einfache Website kann 4-6 Wochen dauern, während komplexere Plattformen 3-6 Monate in Anspruch nehmen können. Bei unserem ersten Beratungsgespräch erstellen wir einen detaillierten Zeitplan, der auf Ihre Projektanforderungen zugeschnitten ist.'
+    },
+    support: {
+      question: 'Bieten Sie nach Abschluss des Projekts laufende Wartung und Support an?',
+      answer: 'Ja, wir bieten verschiedene Wartungspakete an, um sicherzustellen, dass Ihre digitalen Produkte sicher, aktuell und optimal bleiben. Unsere Supportleistungen umfassen regelmäßige Updates, Sicherheitsüberwachung, Inhaltsänderungen und technische Unterstützung.'
+    },
+    pricing: {
+      question: 'Wie funktioniert die Projektpreisgestaltung?',
+      answer: 'Wir erstellen individuelle Angebote auf Basis spezifischer Anforderungen. Faktoren, die den Preis beeinflussen, sind Projektkomplexität, Zeitplan, benötigte Funktionen und der Grad der erforderlichen Anpassung. Wir bieten sowohl Festpreisverträge als auch Abrechnung nach Aufwand.'
+    },
+    industries: {
+      question: 'Auf welche Branchen sind Sie spezialisiert?',
+      answer: 'Wir haben mit Kunden aus verschiedenen Branchen zusammengearbeitet, darunter Gesundheitswesen, Finanzen, Einzelhandel, Bildung, Fertigung und Gastgewerbe. Unser Team passt sich schnell an, um branchenspezifische Herausforderungen und Anforderungen zu verstehen.'
+    },
+    ai: {
+      question: 'Können Sie künstliche Intelligenz in unsere bestehenden Systeme integrieren?',
+      answer: 'Ja, wir sind darauf spezialisiert, KI-Lösungen in bestehende Geschäftssysteme zu integrieren. Unser Ansatz konzentriert sich darauf, die wertvollsten KI-Anwendungen für Ihre spezifischen Bedürfnisse zu identifizieren und sie so zu implementieren, dass sie Ihre aktuellen Prozesse ergänzen.'
+    }
+  },
+  about: {
+    title: 'Über Uns',
+    subtitle: 'Wer Wir Sind',
+    description: 'TechPrime ist ein zukunftsorientiertes IT-Unternehmen, das sich darauf konzentriert, Unternehmen dabei zu helfen, Technologie für Wachstum und Innovation zu nutzen.',
+    history: {
+      title: 'Unsere Geschichte',
+      description: 'TechPrime wurde 2012 gegründet, begann als kleines Webentwicklungsstudio und hat sich seitdem zu einem Full-Service-IT-Lösungsanbieter entwickelt, der Kunden aus verschiedenen Branchen weltweit bedient.'
+    },
+    mission: {
+      title: 'Unsere Mission',
+      description: 'Wir stärken Unternehmen mit innovativen technologischen Lösungen, die Wachstum, Effizienz und Wettbewerbsvorteile fördern.'
+    },
+    values: {
+      title: 'Unsere Werte',
+      innovation: 'Innovation',
+      innovationDesc: 'Wir setzen auf modernste Technologien und kreatives Denken',
+      quality: 'Qualität',
+      qualityDesc: 'Wir liefern Exzellenz in jedem Projekt und jeder Interaktion',
+      integrity: 'Integrität',
+      integrityDesc: 'Wir führen unser Geschäft auf ehrliche und transparente Weise',
+      collaboration: 'Zusammenarbeit',
+      collaborationDesc: 'Wir bauen starke Partnerschaften mit unseren Kunden und innerhalb unseres Teams auf'
+    },
+    team: {
+      title: 'Unser Team',
+      description: 'Lernen Sie die talentierten Fachleute kennen, die hinter dem Erfolg von TechPrime stehen.'
+    }
+  },
+  portfolio: {
+    title: 'Portfolio',
+    subtitle: 'Unsere Arbeit',
+    description: 'Entdecken Sie unsere vorgestellten Projekte und sehen Sie, wie wir Unternehmen aus verschiedenen Branchen geholfen haben, ihre Ziele durch Technologie zu erreichen.',
+    categories: {
+      all: 'Alle Projekte',
+      web: 'Webentwicklung',
+      mobile: 'Mobile Apps',
+      design: 'Design',
+      ai: 'KI-Lösungen'
+    },
+    viewProject: 'Projekt Ansehen',
+    noProjects: 'Keine Projekte in dieser Kategorie gefunden.'
+  },
+  services: {
+    title: 'Unsere Dienstleistungen',
+    subtitle: 'Umfassende IT-Lösungen für Ihr Unternehmen',
+    description: 'Wir bieten ein breites Spektrum an Dienstleistungen, die Unternehmen dabei helfen, Technologie für nachhaltiges Wachstum und Wettbewerbsvorteile zu nutzen.',
+    viewAll: 'Alle Dienstleistungen Anzeigen',
+    items: {
+      outsourcing: {
+        title: 'IT-Outsourcing',
+        description: 'Nutzen Sie unser Know-how für die Verwaltung Ihrer IT-Abläufe, damit Sie sich auf Ihr Kerngeschäft und Ihre Wachstumsstrategie konzentrieren können.'
+      },
+      webDev: {
+        title: 'Webentwicklung',
+        description: 'Maßgeschneiderte Websites und E-Commerce-Lösungen mit beeindruckendem Design, optimierter Leistung und nahtloser Benutzererfahrung.'
+      },
+      graphic: {
+        title: 'Grafikdesign',
+        description: 'Auffällige visuelle Inhalte, die Ihre Markenidentität stärken und Ihre Botschaft effektiv kommunizieren.'
+      },
+      hardware: {
+        title: 'Hardware-Reparatur',
+        description: 'Professionelle Diagnose- und Reparaturdienste für alle IT-Geräte, die Ausfallzeiten für Ihr Unternehmen minimieren.'
+      },
+      ai: {
+        title: 'KI-Lösungen',
+        description: 'Fortschrittliche Implementierungen künstlicher Intelligenz zur Automatisierung von Prozessen und zur Gewinnung wertvoller Erkenntnisse aus Daten.'
+      },
+      marketing: {
+        title: 'Marketing',
+        description: 'Strategische digitale Marketingkampagnen, die Traffic generieren, Leads erzeugen und Konversionsraten erhöhen.'
+      },
+      social: {
+        title: 'Social-Media-Management',
+        description: 'Umfassende Social-Media-Strategien, die Ihre Markenpräsenz aufbauen, Zielgruppen ansprechen und das Unternehmenswachstum fördern.'
+      },
+      project: {
+        title: 'Projektmanagement',
+        description: 'Professionelle Planung, Ausführung und Überwachung von Technologieprojekten, die eine termingerechte Lieferung im Rahmen des Budgets gewährleisten.'
+      }
+    }
+  },
+  solutions: {
+    title: 'Unsere Lösungen',
+    subtitle: 'Technologie maßgeschneidert für Ihre Branche',
+    description: 'Entdecken Sie, wie unsere spezialisierten IT-Lösungen die einzigartigen Herausforderungen und Möglichkeiten in Ihrer Branche adressieren können.',
+    industries: {
+      title: 'Branchen, die wir bedienen',
+      finance: 'Finanzdienstleistungen',
+      healthcare: 'Gesundheitswesen',
+      retail: 'Einzelhandel & E-Commerce',
+      manufacturing: 'Fertigung',
+      education: 'Bildung',
+      logistics: 'Logistik & Transport'
+    },
+    features: {
+      title: 'Lösungsmerkmale',
+      scalable: 'Skalierbare Infrastruktur',
+      secure: 'Unternehmensklasse-Sicherheit',
+      integrated: 'Nahtlose Integration',
+      support: '24/7 Technischer Support'
+    }
+  },
+  whyChooseUs: {
+    title: 'Warum Uns Wählen',
+    subtitle: 'Ihr strategischer Partner für technologische Exzellenz',
+    description: 'Bei TechPrime bieten wir nicht nur IT-Dienstleistungen an – wir bauen dauerhafte Partnerschaften mit unseren Kunden auf, verstehen ihre Geschäftsziele und liefern Lösungen, die Wachstum und Effizienz fördern.',
+    features: {
+      expertise: {
+        title: 'Bewährte Expertise',
+        description: 'Mit über 10 Jahren Erfahrung haben wir uns einen Ruf für zuverlässigen Service und technische Exzellenz aufgebaut.'
+      },
+      innovative: {
+        title: 'Innovativer Ansatz',
+        description: 'Wir bleiben Technologietrends voraus, um modernste Lösungen zu liefern, die echte Ergebnisse bringen.'
+      },
+      team: {
+        title: 'Engagiertes Team',
+        description: 'Unsere qualifizierten Spezialisten sind bestrebt, Ihre einzigartigen Bedürfnisse zu verstehen und Ihre Erwartungen zu übertreffen.'
+      },
+      results: {
+        title: 'Messbare Ergebnisse',
+        description: 'Wir konzentrieren uns darauf, Lösungen zu liefern, die einen greifbaren Geschäftswert und Return on Investment bieten.'
+      }
+    },
+    stats: {
+      clients: 'Zufriedene Kunden',
+      satisfaction: 'Zufriedenheitsrate',
+      experience: 'Jahre Erfahrung'
+    }
+  },
+  testimonials: {
+    title: 'Referenzen',
+    subtitle: 'Was Unsere Kunden Sagen',
+    description: 'Verlassen Sie sich nicht nur auf unser Wort. Hören Sie, was unsere zufriedenen Kunden über die Zusammenarbeit mit TechPrime zu sagen haben.'
+  },
+  cta: {
+    title: 'Bereit, Ihr Unternehmen durch Technologie zu transformieren?',
+    description: 'Arbeiten Sie mit TechPrime zusammen, um modernste IT-Lösungen zu nutzen, die Wachstum, Effizienz und Innovation in Ihrem Unternehmen fördern.',
+    getStarted: 'Jetzt Starten',
+    portfolio: 'Unser Portfolio Ansehen'
+  },
+  footer: {
+    description: 'Wir liefern innovative IT-Lösungen, die Unternehmenswachstum und digitale Transformation fördern.',
+    services: 'Dienstleistungen',
+    company: 'Unternehmen',
+    contact: 'Kontakt',
+    rights: 'Alle Rechte vorbehalten.',
+    privacy: 'Datenschutzrichtlinie',
+    terms: 'Nutzungsbedingungen'
+  },
+  notFound: {
+    title: 'Seite Nicht Gefunden',
+    description: 'Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. Lassen Sie uns Sie wieder auf den richtigen Weg bringen.',
+    backHome: 'Zurück zur Startseite'
+  }
+};
+
+
 // Funkcja pomocnicza do bezpiecznego dostępu do tłumaczeń
 export const getTranslation = (translations: any, path: string): string => {
   if (!translations) {
@@ -451,12 +747,13 @@ export const LanguageContext = createContext<LanguageContextType>({
   setLanguage: () => {},
   translations: {
     pl: polishTranslations,
-    en: englishTranslations
+    en: englishTranslations,
+    de: germanTranslations
   }
 });
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<'pl' | 'en'>('pl');
+  const [language, setLanguage] = useState<'pl' | 'en' | 'de'>('pl');
   
   // Ustawienie atrybutu lang dla dokumentu HTML
   document.documentElement.lang = language;
@@ -468,7 +765,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setLanguage, 
         translations: {
           pl: polishTranslations,
-          en: englishTranslations
+          en: englishTranslations,
+          de: germanTranslations
         }
       }}
     >
@@ -482,9 +780,10 @@ export const useLanguage = () => {
   
   // Zwracamy funkcję, która ułatwia korzystanie z tłumaczeń aktualnego języka
   const t = (path: string): string => {
-    const currentTranslations = context.language === 'pl' 
-      ? context.translations.pl 
-      : context.translations.en;
+    const currentTranslations = 
+      context.language === 'pl' ? context.translations.pl : 
+      context.language === 'en' ? context.translations.en : 
+      context.translations.de;
     
     return getTranslation(currentTranslations, path);
   };

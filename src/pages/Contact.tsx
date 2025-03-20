@@ -118,7 +118,7 @@ const Contact = () => {
               <div className="rounded-xl overflow-hidden h-72 shadow-sm">
                 {/* Placeholder for a map - would implement Google Maps or similar in a real project */}
                 <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500">Mapa Lokalizacji</span>
+                  <span className="text-gray-500">{t('contact.info.map')}</span>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                     >
-                      <option value="default" disabled>Wybierz usługę</option>
+                      <option value="default" disabled>{t('contact.form.selectService')}</option>
                       <option value="outsourcing">{t('services.items.outsourcing.title')}</option>
                       <option value="webdev">{t('services.items.webDev.title')}</option>
                       <option value="design">{t('services.items.graphic.title')}</option>
@@ -198,7 +198,7 @@ const Contact = () => {
                       <option value="marketing">{t('services.items.marketing.title')}</option>
                       <option value="social">{t('services.items.social.title')}</option>
                       <option value="project">{t('services.items.project.title')}</option>
-                      <option value="other">Inne</option>
+                      <option value="other">{t('contact.form.other')}</option>
                     </select>
                   </div>
                 </div>
@@ -249,7 +249,7 @@ const Contact = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Wysyłanie...
+                        {t('contact.form.sending')}
                       </span>
                     ) : isSubmitted ? (
                       <span className="flex items-center">
@@ -278,10 +278,10 @@ const Contact = () => {
               FAQ
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              {t('contact.title')}
+              {t('contact.faq.title')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {t('contact.description')}
+              {t('contact.faq.description')}
             </p>
           </div>
 
@@ -289,24 +289,24 @@ const Contact = () => {
             <div className="space-y-6">
               {[
                 {
-                  question: "Jak długo zwykle trwa realizacja projektu tworzenia strony internetowej?",
-                  answer: "Czas realizacji projektów różni się w zależności od złożoności i zakresu. Prosta strona internetowa może zająć 4-6 tygodni, podczas gdy bardziej złożone platformy mogą trwać 3-6 miesięcy. Podczas naszej początkowej konsultacji przedstawimy szczegółowy harmonogram dostosowany do wymagań Twojego projektu."
+                  question: "faq.development.question",
+                  answer: "faq.development.answer"
                 },
                 {
-                  question: "Czy oferujecie bieżącą konserwację i wsparcie po zakończeniu projektu?",
-                  answer: "Tak, oferujemy różne pakiety utrzymania, aby zapewnić, że Twoje produkty cyfrowe pozostaną bezpieczne, aktualne i optymalne. Nasze usługi wsparcia obejmują regularne aktualizacje, monitorowanie bezpieczeństwa, zmiany treści i pomoc techniczną."
+                  question: "faq.support.question",
+                  answer: "faq.support.answer"
                 },
                 {
-                  question: "Jak wygląda wycena projektów?",
-                  answer: "Przedstawiamy indywidualne oferty na podstawie konkretnych wymagań. Czynniki wpływające na cenę obejmują złożoność projektu, harmonogram, potrzebne funkcje i poziom wymaganej personalizacji. Oferujemy zarówno kontrakty o stałej cenie, jak i rozliczenia według czasu i materiałów."
+                  question: "faq.pricing.question",
+                  answer: "faq.pricing.answer"
                 },
                 {
-                  question: "W jakich branżach się specjalizujecie?",
-                  answer: "Współpracowaliśmy z klientami z różnych sektorów, w tym opieki zdrowotnej, finansów, handlu detalicznego, edukacji, produkcji i hotelarstwa. Nasz zespół szybko dostosowuje się, aby zrozumieć specyficzne dla danej branży wyzwania i wymagania."
+                  question: "faq.industries.question",
+                  answer: "faq.industries.answer"
                 },
                 {
-                  question: "Czy możecie zintegrować sztuczną inteligencję z naszymi istniejącymi systemami?",
-                  answer: "Tak, specjalizujemy się w integracji rozwiązań AI z istniejącymi systemami biznesowymi. Nasze podejście koncentruje się na identyfikacji najbardziej wartościowych zastosowań AI dla Twoich konkretnych potrzeb i wdrażaniu ich w sposób, który uzupełnia Twoje obecne procesy."
+                  question: "faq.ai.question",
+                  answer: "faq.ai.answer"
                 }
               ].map((faq, index) => (
                 <div 
@@ -314,8 +314,8 @@ const Contact = () => {
                   className="bg-white rounded-xl p-6 shadow-sm animate-fade-in" 
                   style={{ animationDelay: `${300 + index * 100}ms` }}
                 >
-                  <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                  <p className="text-gray-600">{faq.answer}</p>
+                  <h3 className="text-lg font-semibold mb-3">{t(faq.question)}</h3>
+                  <p className="text-gray-600">{t(faq.answer)}</p>
                 </div>
               ))}
             </div>
