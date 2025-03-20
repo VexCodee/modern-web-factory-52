@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles } from 'lucide-react';
@@ -151,16 +150,45 @@ const ServicePage = () => {
     }
   ];
 
+  const processSteps = [
+    {
+      number: "01",
+      title: "Analiza i odkrywanie potrzeb",
+      description: "Zaczynamy od dokładnego zrozumienia Twoich potrzeb biznesowych i celów projektu.",
+      icon: <Code size={24} />,
+      align: "right"
+    },
+    {
+      number: "02",
+      title: "Planowanie i strategia",
+      description: "Opracowujemy szczegółowy plan projektu, definiując zasoby, terminy i kluczowe etapy.",
+      icon: <ClipboardList size={24} />,
+      align: "left"
+    },
+    {
+      number: "03",
+      title: "Realizacja i rozwój",
+      description: "Nasz zespół ekspertów pracuje nad realizacją projektu, regularnie informując o postępach.",
+      icon: <Wrench size={24} />,
+      align: "right"
+    },
+    {
+      number: "04",
+      title: "Wdrożenie i optymalizacja",
+      description: "Finalizujemy projekt, wdrażamy rozwiązanie i zapewniamy wsparcie posprzedażowe.",
+      icon: <Zap size={24} />,
+      align: "left"
+    }
+  ];
+
   return (
     <Layout>
       {/* Hero Section with Animated Background */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 to-white">
-          {/* Animated floating elements */}
           <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full mix-blend-multiply blur-3xl animate-float"></div>
           <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent/5 rounded-full mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
           
-          {/* Animated particles */}
           <div className="absolute top-20 left-20 w-4 h-4 rounded-full bg-blue-400 opacity-30 animate-pulse-subtle"></div>
           <div className="absolute top-40 right-40 w-6 h-6 rounded-full bg-purple-400 opacity-20 animate-pulse-subtle" style={{ animationDelay: '1s' }}></div>
           <div className="absolute bottom-40 left-1/3 w-5 h-5 rounded-full bg-indigo-400 opacity-25 animate-pulse-subtle" style={{ animationDelay: '1.5s' }}></div>
@@ -179,7 +207,6 @@ const ServicePage = () => {
               {t('services.description')}
             </p>
             
-            {/* Scroll down indicator */}
             <div className="mt-12 animate-fade-in scroll-down-animation" style={{ animationDelay: '400ms' }}>
               <a href="#services" className="inline-flex flex-col items-center text-gray-500 hover:text-primary transition-colors">
                 <span className="text-sm mb-2">{t('common.scrollDown')}</span>
@@ -206,7 +233,6 @@ const ServicePage = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="flex flex-col md:flex-row h-full">
-                  {/* Service image with overlay */}
                   <div className="md:w-2/5 relative overflow-hidden">
                     <div 
                       className="w-full h-60 md:h-full bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110" 
@@ -223,7 +249,6 @@ const ServicePage = () => {
                     </div>
                   </div>
                   
-                  {/* Service details */}
                   <CardContent className="md:w-3/5 p-6 flex flex-col">
                     <div className="mb-4">
                       <h3 className="text-2xl font-display font-semibold mb-3 hidden md:block">{service.title}</h3>
@@ -265,53 +290,27 @@ const ServicePage = () => {
               {t('whyChooseUs.process')}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold">{t('whyChooseUs.howWeWork')}</h2>
-            <p className="mt-4 text-lg text-gray-600">{t('whyChooseUs.description')}</p>
+            <p className="mt-4 text-lg text-gray-600">
+              W TechPrime nie tylko świadczymy usługi IT – budujemy trwałe partnerstwa z naszymi
+              klientami, rozumiejąc ich cele biznesowe i dostarczając rozwiązania, które napędzają
+              wzrost i efektywność.
+            </p>
           </div>
 
           <div className="relative">
-            {/* Timeline connector */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/30 to-accent/30 hidden md:block"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-100 hidden md:block"></div>
             
             <div className="space-y-12 md:space-y-0 relative">
-              {[
-                {
-                  number: "01",
-                  title: t('process.discovery.title'),
-                  description: t('process.discovery.description'),
-                  icon: <Code size={24} />,
-                  align: "right"
-                },
-                {
-                  number: "02",
-                  title: t('process.planning.title'),
-                  description: t('process.planning.description'),
-                  icon: <ClipboardList size={24} />,
-                  align: "left"
-                },
-                {
-                  number: "03",
-                  title: t('process.execution.title'),
-                  description: t('process.execution.description'),
-                  icon: <Wrench size={24} />,
-                  align: "right"
-                },
-                {
-                  number: "04",
-                  title: t('process.delivery.title'),
-                  description: t('process.delivery.description'),
-                  icon: <Zap size={24} />,
-                  align: "left"
-                }
-              ].map((step, index) => (
+              {processSteps.map((step, index) => (
                 <div 
                   key={index} 
-                  className={`flex items-center mb-8 md:mb-24 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700`}
+                  className={`flex items-center mb-16 md:mb-32 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   <div className={`w-full md:w-1/2 ${step.align === "right" ? "md:pr-12 md:text-right" : "md:pl-12 order-2 md:order-none"}`}>
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
-                      <div className="flex items-center mb-4">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-white font-bold text-lg mr-4 md:order-last md:ml-4 md:mr-0">
+                    <div className="p-6 transition-all duration-300 relative">
+                      <div className="flex items-center mb-4 gap-4">
+                        <div className={`w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl ${step.align === "right" ? "md:order-last md:ml-4" : "md:mr-4"}`}>
                           {step.number}
                         </div>
                         <h3 className="text-xl font-display font-semibold">{step.title}</h3>
@@ -320,8 +319,7 @@ const ServicePage = () => {
                     </div>
                   </div>
                   
-                  {/* Timeline node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-md border-4 border-primary/30 flex items-center justify-center z-10 hidden md:flex">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-md border-4 border-blue-100 flex items-center justify-center z-10 hidden md:flex">
                     {step.icon}
                   </div>
                   
@@ -390,7 +388,6 @@ const ServicePage = () => {
           </div>
         </div>
 
-        {/* Decorative elements */}
         <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-accent/5 mix-blend-multiply blur-3xl"></div>
         <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-primary/5 mix-blend-multiply blur-3xl"></div>
       </section>
