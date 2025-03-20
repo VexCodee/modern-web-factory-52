@@ -1,6 +1,7 @@
+
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
-import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles } from 'lucide-react';
+import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles, FileText, Server, Lightbulb, Truck, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
@@ -174,9 +175,37 @@ const ServicePage = () => {
     },
     {
       number: "04",
+      title: "Testowanie i kontrola jakości",
+      description: "Przeprowadzamy rygorystyczne testy, aby zapewnić najwyższą jakość dostarczanych rozwiązań.",
+      icon: <CheckCircle2 size={24} />,
+      align: "left"
+    },
+    {
+      number: "05",
+      title: "Szkolenia i dokumentacja",
+      description: "Przygotowujemy pełną dokumentację techniczną i przeprowadzamy szkolenia dla zespołu.",
+      icon: <BookOpen size={24} />,
+      align: "right"
+    },
+    {
+      number: "06",
       title: "Wdrożenie i optymalizacja",
-      description: "Finalizujemy projekt, wdrażamy rozwiązanie i zapewniamy wsparcie posprzedażowe.",
+      description: "Finalizujemy projekt, wdrażamy rozwiązanie i optymalizujemy jego działanie w środowisku produkcyjnym.",
       icon: <Zap size={24} />,
+      align: "left"
+    },
+    {
+      number: "07",
+      title: "Monitoring i utrzymanie",
+      description: "Stale monitorujemy rozwiązanie, dbając o jego stabilność i optymalną wydajność.",
+      icon: <Monitor size={24} />,
+      align: "right"
+    },
+    {
+      number: "08",
+      title: "Wsparcie posprzedażowe i rozwój",
+      description: "Zapewniamy stałe wsparcie techniczne oraz rozwijamy rozwiązanie wraz z ewolucją Twojego biznesu.",
+      icon: <Lightbulb size={24} />,
       align: "left"
     }
   ];
