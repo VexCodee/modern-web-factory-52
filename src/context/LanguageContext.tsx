@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 // Struktura tłumaczeń dla obu języków
@@ -294,7 +293,7 @@ const englishTranslations: Translations = {
   portfolio: {
     title: 'Portfolio',
     subtitle: 'Our Work',
-    description: 'Explore our featured projects and see how we've helped businesses across different industries achieve their goals through technology.',
+    description: 'Explore our featured projects and see how we\'ve helped businesses across different industries achieve their goals through technology.',
     categories: {
       all: 'All Projects',
       web: 'Web Development',
@@ -495,3 +494,4 @@ export const useLanguage = () => {
     t
   };
 };
+
