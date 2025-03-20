@@ -411,3 +411,31 @@
   background: rgba(30, 41, 59, 0.8);
   border: 1px solid rgba(30, 41, 59, 0.2);
 }
+
+/* New animation for floating dots */
+@keyframes float-around {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(15px, -15px);
+  }
+  40% {
+    transform: translate(-10px, -20px);
+  }
+  60% {
+    transform: translate(-20px, 5px);
+  }
+  80% {
+    transform: translate(10px, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.floating-dot {
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+  filter: blur(0.5px);
+}
