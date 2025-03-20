@@ -5,23 +5,19 @@ import HeroSection from '../components/HeroSection';
 import ServiceSection from '../components/ServiceSection';
 import TechnologiesSection from '../components/TechnologiesSection';
 import WhyChooseUs from '../components/WhyChooseUs';
-import AwardsSection from '../components/AwardsSection';
 import Testimonials from '../components/Testimonials';
 import CTASection from '../components/CTASection';
-import StatsSection from '../components/StatsSection';
 import InnovationShowcase from '../components/InnovationShowcase';
 
 const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      <StatsSection />
       <ServiceSection />
       <InnovationShowcase />
       <TechnologiesSection />
       <WhyChooseUs />
       <Testimonials />
-      <AwardsSection />
       <CTASection />
     </Layout>
   );
