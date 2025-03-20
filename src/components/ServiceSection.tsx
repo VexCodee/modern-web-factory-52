@@ -14,14 +14,14 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, delay }) => {
   return (
     <div 
-      className="service-card bg-white dark:bg-card/90 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/5 animate-fade-in" 
+      className="service-card bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-fade-in" 
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-primary/20 flex items-center justify-center mb-5 text-blue-500 dark:text-primary service-card-icon">
+      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-5 text-blue-500 service-card-icon">
         {icon}
       </div>
-      <h3 className="text-xl font-display font-semibold mb-3 dark:text-white">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
+      <h3 className="text-xl font-display font-semibold mb-3">{title}</h3>
+      <p className="text-gray-600 leading-relaxed">{description}</p>
     </div>
   );
 };
@@ -82,16 +82,16 @@ const ServiceSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-50 dark:bg-background/50 service-section">
+    <section className="py-24 bg-gray-50 service-section">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm rounded-full bg-primary/10 dark:bg-primary/20 text-primary px-4 py-1.5 font-medium animate-fade-in">
+          <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
             {t('services.title')}
           </span>
-          <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in dark:text-white" style={{ animationDelay: '100ms' }}>
+          <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
             {t('services.subtitle')}
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
             {t('services.description')}
           </p>
         </div>
