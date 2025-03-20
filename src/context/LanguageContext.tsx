@@ -138,38 +138,87 @@ const polishTranslations: Translations = {
     subtitle: 'Kompleksowe Rozwiązania IT Dla Twojej Firmy',
     description: 'Oferujemy szeroki zakres usług, które pomagają firmom wykorzystać technologię do zrównoważonego wzrostu i przewagi konkurencyjnej.',
     viewAll: 'Zobacz Wszystkie Usługi',
+    mainBenefits: 'Główne Korzyści',
     items: {
       outsourcing: {
         title: 'Outsourcing IT',
-        description: 'Wykorzystaj nasze doświadczenie w zarządzaniu operacjami IT, co pozwoli Ci skupić się na podstawowej działalności i strategii rozwoju.'
+        description: 'Wykorzystaj nasze doświadczenie w zarządzaniu operacjami IT, co pozwoli Ci skupić się na podstawowej działalności i strategii rozwoju.',
+        benefits: {
+          cost: 'Redukcja kosztów',
+          expertise: 'Dostęp do specjalistycznej wiedzy',
+          scalability: 'Skalowalne zasoby',
+          focus: 'Skupienie się na głównej działalności'
+        }
       },
       webDev: {
         title: 'Tworzenie Stron WWW',
-        description: 'Niestandardowe strony internetowe i rozwiązania e-commerce z oszałamiającym designem, zoptymalizowaną wydajnością i płynnym doświadczeniem użytkownika.'
+        description: 'Niestandardowe strony internetowe i rozwiązania e-commerce z oszałamiającym designem, zoptymalizowaną wydajnością i płynnym doświadczeniem użytkownika.',
+        benefits: {
+          responsive: 'Responsywny design',
+          seo: 'Optymalizacja SEO',
+          secure: 'Bezpieczne transakcje',
+          custom: 'Niestandardowe funkcjonalności'
+        }
       },
       graphic: {
         title: 'Projektowanie Graficzne',
-        description: 'Przyciągające wzrok treści wizualne, które wzmacniają tożsamość Twojej marki i skutecznie komunikują Twoje przesłanie.'
+        description: 'Przyciągające wzrok treści wizualne, które wzmacniają tożsamość Twojej marki i skutecznie komunikują Twoje przesłanie.',
+        benefits: {
+          brand: 'Spójność marki',
+          user: 'Design zorientowany na użytkownika',
+          creative: 'Kreatywne koncepcje',
+          cross: 'Zasoby wieloplatformowe'
+        }
       },
       hardware: {
         title: 'Naprawa Sprzętu',
-        description: 'Profesjonalne usługi diagnozy i naprawy komputerów oraz sprzętu IT, minimalizujące przestoje w działalności Twojej firmy.'
+        description: 'Profesjonalne usługi diagnozy i naprawy komputerów oraz sprzętu IT, minimalizujące przestoje w działalności Twojej firmy.',
+        benefits: {
+          quick: 'Szybka realizacja',
+          certified: 'Certyfikowani technicy',
+          quality: 'Wysokiej jakości części zamienne',
+          preventive: 'Konserwacja zapobiegawcza'
+        }
       },
       ai: {
         title: 'Rozwiązania AI',
-        description: 'Zaawansowane wdrożenia sztucznej inteligencji do automatyzacji procesów i pozyskiwania cennych informacji z danych.'
+        description: 'Zaawansowane wdrożenia sztucznej inteligencji do automatyzacji procesów i pozyskiwania cennych informacji z danych.',
+        benefits: {
+          automation: 'Automatyzacja procesów',
+          analytics: 'Analityka predykcyjna',
+          nlp: 'Przetwarzanie języka naturalnego',
+          ml: 'Integracja uczenia maszynowego'
+        }
       },
       marketing: {
         title: 'Marketing',
-        description: 'Strategiczne kampanie marketingu cyfrowego, które zwiększają ruch, generują leady i zwiększają współczynniki konwersji.'
+        description: 'Strategiczne kampanie marketingu cyfrowego, które zwiększają ruch, generują leady i zwiększają współczynniki konwersji.',
+        benefits: {
+          targeted: 'Ukierunkowane kampanie',
+          performance: 'Śledzenie wydajności',
+          content: 'Strategia treści',
+          conversion: 'Optymalizacja konwersji'
+        }
       },
       social: {
         title: 'Zarządzanie Mediami Społecznościowymi',
-        description: 'Kompleksowe strategie mediów społecznościowych budujące obecność Twojej marki, angażujące odbiorców i napędzające rozwój biznesu.'
+        description: 'Kompleksowe strategie mediów społecznościowych budujące obecność Twojej marki, angażujące odbiorców i napędzające rozwój biznesu.',
+        benefits: {
+          calendar: 'Kalendarz treści',
+          engagement: 'Zaangażowanie społeczności',
+          optimization: 'Optymalizacja platform',
+          analytics: 'Analityka wydajności'
+        }
       },
       project: {
         title: 'Zarządzanie Projektami',
-        description: 'Profesjonalne planowanie, realizacja i nadzór nad projektami technologicznymi, zapewniające ich terminowe dostarczanie w ramach budżetu.'
+        description: 'Profesjonalne planowanie, realizacja i nadzór nad projektami technologicznymi, zapewniające ich terminowe dostarczanie w ramach budżetu.',
+        benefits: {
+          communication: 'Jasna komunikacja',
+          risk: 'Zarządzanie ryzykiem',
+          resource: 'Optymalizacja zasobów',
+          quality: 'Zapewnienie jakości'
+        }
       }
     }
   },
@@ -186,18 +235,73 @@ const polishTranslations: Translations = {
       education: 'Edukacja',
       logistics: 'Logistyka i Transport'
     },
+    industriesDesc: {
+      healthcare: 'Bezpieczne systemy zarządzania pacjentami, platformy telemedyczne i rozwiązania analityczne dla zdrowia.',
+      finance: 'Bezpieczne systemy transakcyjne, wykrywanie oszustw i narzędzia do zarządzania finansami klientów.',
+      retail: 'Zarządzanie zapasami, platformy e-commerce i programy lojalnościowe dla klientów.',
+      manufacturing: 'Optymalizacja produkcji, zarządzanie łańcuchem dostaw i systemy kontroli jakości.',
+      education: 'Systemy zarządzania nauczaniem, narzędzia do oceny studentów i rozwiązania administracyjne.',
+      logistics: 'Optymalizacja tras, śledzenie przesyłek i zarządzanie flotą dla firm transportowych.'
+    },
     features: {
       title: 'Cechy Rozwiązań',
       scalable: 'Skalowalna Infrastruktura',
       secure: 'Bezpieczeństwo Klasy Korporacyjnej',
       integrated: 'Bezproblemowa Integracja',
       support: 'Wsparcie Techniczne 24/7'
+    },
+    items: {
+      digitalTransformation: {
+        title: 'Transformacja Cyfrowa',
+        description: 'Kompleksowa strategia i wdrożenie transformacji cyfrowej dla przedsiębiorstw pragnących unowocześnić swoje działania i pozostać konkurencyjnymi w erze cyfrowej.',
+        features: {
+          infrastructure: 'Ocena i modernizacja infrastruktury technologicznej',
+          processes: 'Przeprojektowanie procesów biznesowych',
+          migration: 'Migracja do chmury i optymalizacja',
+          change: 'Zarządzanie zmianą i szkolenia pracowników',
+          workflow: 'Wdrażanie cyfrowych przepływów pracy'
+        }
+      },
+      aiCustomerExperience: {
+        title: 'AI dla Obsługi Klienta',
+        description: 'Wykorzystaj sztuczną inteligencję, aby przekształcić interakcje z klientami, zapewniając spersonalizowane doświadczenia przy jednoczesnym zwiększeniu efektywności operacyjnej.',
+        features: {
+          chatbots: 'Inteligentne chatboty i wirtualni asystenci',
+          analytics: 'Predykcyjna analityka klientów',
+          recommendations: 'Spersonalizowane systemy rekomendacji',
+          automation: 'Zautomatyzowane przepływy obsługi klienta',
+          sentiment: 'Analiza sentymentu i przetwarzanie opinii'
+        }
+      },
+      ecommerce: {
+        title: 'Rozwiązania E-commerce',
+        description: 'Kompleksowe rozwiązanie e-commerce, które płynnie integruje Twoją witrynę sklepową online z zarządzaniem zapasami, przetwarzaniem płatności, logistyką i systemami zarządzania klientami.',
+        features: {
+          responsive: 'Responsywny i zoptymalizowany pod kątem konwersji sklep online',
+          inventory: 'Integracja z systemem zarządzania zapasami',
+          payment: 'Implementacja bezpiecznej bramki płatności',
+          fulfillment: 'Automatyzacja realizacji zamówień i logistyki',
+          crm: 'Zarządzanie relacjami z klientami'
+        }
+      },
+      dataAnalytics: {
+        title: 'Analityka Danych',
+        description: 'Przekształć surowe dane w przydatne wnioski dzięki naszym kompleksowym rozwiązaniom analitycznym i business intelligence, które wspierają podejmowanie decyzji w oparciu o dane.',
+        features: {
+          warehouse: 'Wdrożenie hurtowni danych',
+          dashboards: 'Tworzenie niestandardowych dashboardów',
+          predictive: 'Modele analityki predykcyjnej',
+          reporting: 'Zautomatyzowane systemy raportowania',
+          visualization: 'Narzędzia do wizualizacji danych'
+        }
+      }
     }
   },
   whyChooseUs: {
     title: 'Dlaczego My',
     subtitle: 'Twój Strategiczny Partner w Doskonałości Technologicznej',
     description: 'W TechPrime nie tylko świadczymy usługi IT – budujemy trwałe partnerstwa z naszymi klientami, rozumiejąc ich cele biznesowe i dostarczając rozwiązania, które napędzają wzrost i efektywność.',
+    imageAlt: 'Współpraca zespołowa',
     features: {
       expertise: {
         title: 'Sprawdzone Doświadczenie',
@@ -371,38 +475,87 @@ const englishTranslations: Translations = {
     subtitle: 'Comprehensive IT Solutions For Your Business',
     description: 'We offer a wide range of services that help businesses leverage technology for sustainable growth and competitive advantage.',
     viewAll: 'View All Services',
+    mainBenefits: 'Main Benefits',
     items: {
       outsourcing: {
         title: 'IT Outsourcing',
-        description: 'Leverage our expertise to manage your IT operations, allowing you to focus on your core business and growth strategy.'
+        description: 'Leverage our expertise to manage your IT operations, allowing you to focus on your core business and growth strategy.',
+        benefits: {
+          cost: 'Cost reduction',
+          expertise: 'Access to specialized expertise',
+          scalability: 'Scalable resources',
+          focus: 'Focus on core business'
+        }
       },
       webDev: {
         title: 'Web Development',
-        description: 'Custom websites and e-commerce solutions with stunning design, optimized performance, and seamless user experience.'
+        description: 'Custom websites and e-commerce solutions with stunning design, optimized performance, and seamless user experience.',
+        benefits: {
+          responsive: 'Responsive design',
+          seo: 'SEO optimization',
+          secure: 'Secure transactions',
+          custom: 'Custom functionality'
+        }
       },
       graphic: {
         title: 'Graphic Design',
-        description: 'Eye-catching visual content that strengthens your brand identity and effectively communicates your message.'
+        description: 'Eye-catching visual content that strengthens your brand identity and effectively communicates your message.',
+        benefits: {
+          brand: 'Brand consistency',
+          user: 'User-centered design',
+          creative: 'Creative concepts',
+          cross: 'Cross-platform assets'
+        }
       },
       hardware: {
         title: 'Hardware Repair',
-        description: 'Professional diagnosis and repair services for all IT equipment, minimizing downtime for your business.'
+        description: 'Professional diagnosis and repair services for all IT equipment, minimizing downtime for your business.',
+        benefits: {
+          quick: 'Quick turnaround',
+          certified: 'Certified technicians',
+          quality: 'High-quality replacement parts',
+          preventive: 'Preventive maintenance'
+        }
       },
       ai: {
         title: 'AI Solutions',
-        description: 'Advanced artificial intelligence implementations to automate processes and gain valuable insights from data.'
+        description: 'Advanced artificial intelligence implementations to automate processes and gain valuable insights from data.',
+        benefits: {
+          automation: 'Process automation',
+          analytics: 'Predictive analytics',
+          nlp: 'Natural language processing',
+          ml: 'Machine learning integration'
+        }
       },
       marketing: {
         title: 'Marketing',
-        description: 'Strategic digital marketing campaigns that drive traffic, generate leads, and increase conversion rates.'
+        description: 'Strategic digital marketing campaigns that drive traffic, generate leads, and increase conversion rates.',
+        benefits: {
+          targeted: 'Targeted campaigns',
+          performance: 'Performance tracking',
+          content: 'Content strategy',
+          conversion: 'Conversion optimization'
+        }
       },
       social: {
         title: 'Social Media Management',
-        description: 'Comprehensive social media strategies that build your brand presence, engage audiences, and drive business growth.'
+        description: 'Comprehensive social media strategies that build your brand presence, engage audiences, and drive business growth.',
+        benefits: {
+          calendar: 'Content calendar',
+          engagement: 'Community engagement',
+          optimization: 'Platform optimization',
+          analytics: 'Performance analytics'
+        }
       },
       project: {
         title: 'Project Management',
-        description: 'Professional planning, execution, and oversight of technology projects, ensuring on-time delivery within budget.'
+        description: 'Professional planning, execution, and oversight of technology projects, ensuring on-time delivery within budget.',
+        benefits: {
+          communication: 'Clear communication',
+          risk: 'Risk management',
+          resource: 'Resource optimization',
+          quality: 'Quality assurance'
+        }
       }
     }
   },
@@ -419,18 +572,73 @@ const englishTranslations: Translations = {
       education: 'Education',
       logistics: 'Logistics & Transportation'
     },
+    industriesDesc: {
+      healthcare: 'Secure patient management systems, telemedicine platforms, and health analytics solutions.',
+      finance: 'Secure transaction systems, fraud detection, and customer financial management tools.',
+      retail: 'Inventory management, e-commerce platforms, and customer loyalty programs.',
+      manufacturing: 'Production optimization, supply chain management, and quality control systems.',
+      education: 'Learning management systems, student assessment tools, and administrative solutions.',
+      logistics: 'Route optimization, shipment tracking, and fleet management for transportation companies.'
+    },
     features: {
       title: 'Solution Features',
       scalable: 'Scalable Infrastructure',
       secure: 'Enterprise-Grade Security',
       integrated: 'Seamless Integration',
       support: '24/7 Technical Support'
+    },
+    items: {
+      digitalTransformation: {
+        title: 'Digital Transformation',
+        description: 'Comprehensive strategy and implementation of digital transformation for enterprises looking to modernize their operations and stay competitive in the digital era.',
+        features: {
+          infrastructure: 'Technology infrastructure assessment and modernization',
+          processes: 'Business process redesign',
+          migration: 'Cloud migration and optimization',
+          change: 'Change management and employee training',
+          workflow: 'Digital workflow implementation'
+        }
+      },
+      aiCustomerExperience: {
+        title: 'AI Customer Experience',
+        description: 'Leverage artificial intelligence to transform customer interactions, providing personalized experiences while increasing operational efficiency.',
+        features: {
+          chatbots: 'Intelligent chatbots and virtual assistants',
+          analytics: 'Predictive customer analytics',
+          recommendations: 'Personalized recommendation systems',
+          automation: 'Automated customer service workflows',
+          sentiment: 'Sentiment analysis and feedback processing'
+        }
+      },
+      ecommerce: {
+        title: 'E-commerce Solutions',
+        description: 'Comprehensive e-commerce solution that seamlessly integrates your online storefront with inventory management, payment processing, logistics, and customer management systems.',
+        features: {
+          responsive: 'Responsive and conversion-optimized online store',
+          inventory: 'Inventory management system integration',
+          payment: 'Secure payment gateway implementation',
+          fulfillment: 'Order fulfillment and logistics automation',
+          crm: 'Customer relationship management'
+        }
+      },
+      dataAnalytics: {
+        title: 'Data Analytics',
+        description: 'Transform raw data into actionable insights with our comprehensive analytics and business intelligence solutions that support data-driven decision making.',
+        features: {
+          warehouse: 'Data warehouse implementation',
+          dashboards: 'Custom dashboard creation',
+          predictive: 'Predictive analytics models',
+          reporting: 'Automated reporting systems',
+          visualization: 'Data visualization tools'
+        }
+      }
     }
   },
   whyChooseUs: {
     title: 'Why Choose Us',
     subtitle: 'Your Strategic Partner in Technological Excellence',
     description: 'At TechPrime, we don\'t just provide IT services – we build lasting partnerships with our clients, understanding their business goals and delivering solutions that drive growth and efficiency.',
+    imageAlt: 'Team collaboration',
     features: {
       expertise: {
         title: 'Proven Expertise',
@@ -604,38 +812,87 @@ const germanTranslations: Translations = {
     subtitle: 'Umfassende IT-Lösungen für Ihr Unternehmen',
     description: 'Wir bieten ein breites Spektrum an Dienstleistungen, die Unternehmen dabei helfen, Technologie für nachhaltiges Wachstum und Wettbewerbsvorteile zu nutzen.',
     viewAll: 'Alle Dienstleistungen Anzeigen',
+    mainBenefits: 'Hauptvorteile',
     items: {
       outsourcing: {
         title: 'IT-Outsourcing',
-        description: 'Nutzen Sie unser Know-how für die Verwaltung Ihrer IT-Abläufe, damit Sie sich auf Ihr Kerngeschäft und Ihre Wachstumsstrategie konzentrieren können.'
+        description: 'Nutzen Sie unser Know-how für die Verwaltung Ihrer IT-Abläufe, damit Sie sich auf Ihr Kerngeschäft und Ihre Wachstumsstrategie konzentrieren können.',
+        benefits: {
+          cost: 'Kostenreduzierung',
+          expertise: 'Zugang zu Fachwissen',
+          scalability: 'Skalierbare Ressourcen',
+          focus: 'Fokus auf Kerngeschäft'
+        }
       },
       webDev: {
         title: 'Webentwicklung',
-        description: 'Maßgeschneiderte Websites und E-Commerce-Lösungen mit beeindruckendem Design, optimierter Leistung und nahtloser Benutzererfahrung.'
+        description: 'Maßgeschneiderte Websites und E-Commerce-Lösungen mit beeindruckendem Design, optimierter Leistung und nahtloser Benutzererfahrung.',
+        benefits: {
+          responsive: 'Responsives Design',
+          seo: 'SEO-Optimierung',
+          secure: 'Sichere Transaktionen',
+          custom: 'Individuelle Funktionalität'
+        }
       },
       graphic: {
         title: 'Grafikdesign',
-        description: 'Auffällige visuelle Inhalte, die Ihre Markenidentität stärken und Ihre Botschaft effektiv kommunizieren.'
+        description: 'Auffällige visuelle Inhalte, die Ihre Markenidentität stärken und Ihre Botschaft effektiv kommunizieren.',
+        benefits: {
+          brand: 'Markenkonsistenz',
+          user: 'Nutzerzentriertes Design',
+          creative: 'Kreative Konzepte',
+          cross: 'Plattformübergreifende Assets'
+        }
       },
       hardware: {
         title: 'Hardware-Reparatur',
-        description: 'Professionelle Diagnose- und Reparaturdienste für alle IT-Geräte, die Ausfallzeiten für Ihr Unternehmen minimieren.'
+        description: 'Professionelle Diagnose- und Reparaturdienste für alle IT-Geräte, die Ausfallzeiten für Ihr Unternehmen minimieren.',
+        benefits: {
+          quick: 'Schnelle Bearbeitung',
+          certified: 'Zertifizierte Techniker',
+          quality: 'Hochwertige Ersatzteile',
+          preventive: 'Vorbeugende Wartung'
+        }
       },
       ai: {
         title: 'KI-Lösungen',
-        description: 'Fortschrittliche Implementierungen künstlicher Intelligenz zur Automatisierung von Prozessen und zur Gewinnung wertvoller Erkenntnisse aus Daten.'
+        description: 'Fortschrittliche Implementierungen künstlicher Intelligenz zur Automatisierung von Prozessen und zur Gewinnung wertvoller Erkenntnisse aus Daten.',
+        benefits: {
+          automation: 'Prozessautomatisierung',
+          analytics: 'Prädiktive Analytik',
+          nlp: 'Verarbeitung natürlicher Sprache',
+          ml: 'Integration von maschinellem Lernen'
+        }
       },
       marketing: {
         title: 'Marketing',
-        description: 'Strategische digitale Marketingkampagnen, die Traffic generieren, Leads erzeugen und Konversionsraten erhöhen.'
+        description: 'Strategische digitale Marketingkampagnen, die Traffic generieren, Leads erzeugen und Konversionsraten erhöhen.',
+        benefits: {
+          targeted: 'Gezielte Kampagnen',
+          performance: 'Leistungsverfolgung',
+          content: 'Content-Strategie',
+          conversion: 'Konversionsoptimierung'
+        }
       },
       social: {
         title: 'Social-Media-Management',
-        description: 'Umfassende Social-Media-Strategien, die Ihre Markenpräsenz aufbauen, Zielgruppen ansprechen und das Unternehmenswachstum fördern.'
+        description: 'Umfassende Social-Media-Strategien, die Ihre Markenpräsenz aufbauen, Zielgruppen ansprechen und das Unternehmenswachstum fördern.',
+        benefits: {
+          calendar: 'Content-Kalender',
+          engagement: 'Community-Engagement',
+          optimization: 'Plattformoptimierung',
+          analytics: 'Leistungsanalyse'
+        }
       },
       project: {
         title: 'Projektmanagement',
-        description: 'Professionelle Planung, Ausführung und Überwachung von Technologieprojekten, die eine termingerechte Lieferung im Rahmen des Budgets gewährleisten.'
+        description: 'Professionelle Planung, Ausführung und Überwachung von Technologieprojekten, die eine termingerechte Lieferung im Rahmen des Budgets gewährleisten.',
+        benefits: {
+          communication: 'Klare Kommunikation',
+          risk: 'Risikomanagement',
+          resource: 'Ressourcenoptimierung',
+          quality: 'Qualitätssicherung'
+        }
       }
     }
   },
@@ -652,18 +909,73 @@ const germanTranslations: Translations = {
       education: 'Bildung',
       logistics: 'Logistik & Transport'
     },
+    industriesDesc: {
+      healthcare: 'Sichere Patientenmanagementsysteme, Telemedizin-Plattformen und Gesundheitsanalytik-Lösungen.',
+      finance: 'Sichere Transaktionssysteme, Betrugserkennung und Kundenfinanzmanagement-Tools.',
+      retail: 'Bestandsverwaltung, E-Commerce-Plattformen und Kundenbindungsprogramme.',
+      manufacturing: 'Produktionsoptimierung, Lieferkettenmanagement und Qualitätskontrollsysteme.',
+      education: 'Lernmanagementsysteme, Beurteilungswerkzeuge für Schüler und Verwaltungslösungen.',
+      logistics: 'Routenoptimierung, Sendungsverfolgung und Flottenmanagement für Transportunternehmen.'
+    },
     features: {
       title: 'Lösungsmerkmale',
       scalable: 'Skalierbare Infrastruktur',
       secure: 'Unternehmensklasse-Sicherheit',
       integrated: 'Nahtlose Integration',
       support: '24/7 Technischer Support'
+    },
+    items: {
+      digitalTransformation: {
+        title: 'Digitale Transformation',
+        description: 'Umfassende Strategie und Implementierung der digitalen Transformation für Unternehmen, die ihre Abläufe modernisieren und im digitalen Zeitalter wettbewerbsfähig bleiben wollen.',
+        features: {
+          infrastructure: 'Bewertung und Modernisierung der technologischen Infrastruktur',
+          processes: 'Neugestaltung von Geschäftsprozessen',
+          migration: 'Cloud-Migration und -Optimierung',
+          change: 'Änderungsmanagement und Mitarbeiterschulung',
+          workflow: 'Implementierung digitaler Arbeitsabläufe'
+        }
+      },
+      aiCustomerExperience: {
+        title: 'KI-Kundenerfahrung',
+        description: 'Nutzen Sie künstliche Intelligenz, um Kundeninteraktionen zu transformieren, personalisierte Erfahrungen zu bieten und gleichzeitig die betriebliche Effizienz zu steigern.',
+        features: {
+          chatbots: 'Intelligente Chatbots und virtuelle Assistenten',
+          analytics: 'Prädiktive Kundenanalyse',
+          recommendations: 'Personalisierte Empfehlungssysteme',
+          automation: 'Automatisierte Kundenservice-Arbeitsabläufe',
+          sentiment: 'Stimmungsanalyse und Feedback-Verarbeitung'
+        }
+      },
+      ecommerce: {
+        title: 'E-Commerce-Lösungen',
+        description: 'Umfassende E-Commerce-Lösung, die Ihre Online-Präsenz nahtlos mit Bestandsverwaltung, Zahlungsabwicklung, Logistik und Kundenmanagementsystemen integriert.',
+        features: {
+          responsive: 'Responsive und konversionsoptimierter Online-Shop',
+          inventory: 'Integration des Bestandsverwaltungssystems',
+          payment: 'Implementierung sicherer Zahlungsgateways',
+          fulfillment: 'Auftragsabwicklung und Logistikautomatisierung',
+          crm: 'Kundenbeziehungsmanagement'
+        }
+      },
+      dataAnalytics: {
+        title: 'Datenanalyse',
+        description: 'Verwandeln Sie Rohdaten in umsetzbare Erkenntnisse mit unseren umfassenden Analyse- und Business-Intelligence-Lösungen, die datengestützte Entscheidungsfindung unterstützen.',
+        features: {
+          warehouse: 'Implementierung von Data Warehouses',
+          dashboards: 'Erstellung benutzerdefinierter Dashboards',
+          predictive: 'Prädiktive Analysemodelle',
+          reporting: 'Automatisierte Berichtssysteme',
+          visualization: 'Datenvisualisierungstools'
+        }
+      }
     }
   },
   whyChooseUs: {
     title: 'Warum Uns Wählen',
     subtitle: 'Ihr strategischer Partner für technologische Exzellenz',
     description: 'Bei TechPrime bieten wir nicht nur IT-Dienstleistungen an – wir bauen dauerhafte Partnerschaften mit unseren Kunden auf, verstehen ihre Geschäftsziele und liefern Lösungen, die Wachstum und Effizienz fördern.',
+    imageAlt: 'Teamzusammenarbeit',
     features: {
       expertise: {
         title: 'Bewährte Expertise',

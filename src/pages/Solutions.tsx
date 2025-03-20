@@ -11,54 +11,54 @@ const Solution = () => {
 
   const solutions = [
     {
-      title: t('solutions.industries.finance'),
-      description: t('Kompleksowa strategia i wdrożenie transformacji cyfrowej dla przedsiębiorstw pragnących unowocześnić swoje działania i pozostać konkurencyjnymi w erze cyfrowej.'),
+      title: t('solutions.items.digitalTransformation.title'),
+      description: t('solutions.items.digitalTransformation.description'),
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2015&q=80",
       features: [
-        t("Ocena i modernizacja infrastruktury technologicznej"),
-        t("Przeprojektowanie procesów biznesowych"),
-        t("Migracja do chmury i optymalizacja"),
-        t("Zarządzanie zmianą i szkolenia pracowników"),
-        t("Wdrażanie cyfrowych przepływów pracy")
+        t('solutions.items.digitalTransformation.features.infrastructure'),
+        t('solutions.items.digitalTransformation.features.processes'),
+        t('solutions.items.digitalTransformation.features.migration'),
+        t('solutions.items.digitalTransformation.features.change'),
+        t('solutions.items.digitalTransformation.features.workflow')
       ],
       delay: 100
     },
     {
-      title: t('solutions.industries.healthcare'),
-      description: t("Wykorzystaj sztuczną inteligencję, aby przekształcić interakcje z klientami, zapewniając spersonalizowane doświadczenia przy jednoczesnym zwiększeniu efektywności operacyjnej."),
+      title: t('solutions.items.aiCustomerExperience.title'),
+      description: t('solutions.items.aiCustomerExperience.description'),
       image: "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       features: [
-        t("Inteligentne chatboty i wirtualni asystenci"),
-        t("Predykcyjna analityka klientów"),
-        t("Spersonalizowane systemy rekomendacji"),
-        t("Zautomatyzowane przepływy obsługi klienta"),
-        t("Analiza sentymentu i przetwarzanie opinii")
+        t('solutions.items.aiCustomerExperience.features.chatbots'),
+        t('solutions.items.aiCustomerExperience.features.analytics'),
+        t('solutions.items.aiCustomerExperience.features.recommendations'),
+        t('solutions.items.aiCustomerExperience.features.automation'),
+        t('solutions.items.aiCustomerExperience.features.sentiment')
       ],
       delay: 200
     },
     {
-      title: t('solutions.industries.retail'),
-      description: t("Kompleksowe rozwiązanie e-commerce, które płynnie integruje Twoją witrynę sklepową online z zarządzaniem zapasami, przetwarzaniem płatności, logistyką i systemami zarządzania klientami."),
+      title: t('solutions.items.ecommerce.title'),
+      description: t('solutions.items.ecommerce.description'),
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        t("Responsywny i zoptymalizowany pod kątem konwersji sklep online"),
-        t("Integracja z systemem zarządzania zapasami"),
-        t("Implementacja bezpiecznej bramki płatności"),
-        t("Automatyzacja realizacji zamówień i logistyki"),
-        t("Zarządzanie relacjami z klientami")
+        t('solutions.items.ecommerce.features.responsive'),
+        t('solutions.items.ecommerce.features.inventory'),
+        t('solutions.items.ecommerce.features.payment'),
+        t('solutions.items.ecommerce.features.fulfillment'),
+        t('solutions.items.ecommerce.features.crm')
       ],
       delay: 300
     },
     {
-      title: t('solutions.industries.education'),
-      description: t("Przekształć surowe dane w przydatne wnioski dzięki naszym kompleksowym rozwiązaniom analitycznym i business intelligence, które wspierają podejmowanie decyzji w oparciu o dane."),
+      title: t('solutions.items.dataAnalytics.title'),
+      description: t('solutions.items.dataAnalytics.description'),
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        t("Wdrożenie hurtowni danych"),
-        t("Tworzenie niestandardowych dashboardów"),
-        t("Modele analityki predykcyjnej"),
-        t("Zautomatyzowane systemy raportowania"),
-        t("Narzędzia do wizualizacji danych")
+        t('solutions.items.dataAnalytics.features.warehouse'),
+        t('solutions.items.dataAnalytics.features.dashboards'),
+        t('solutions.items.dataAnalytics.features.predictive'),
+        t('solutions.items.dataAnalytics.features.reporting'),
+        t('solutions.items.dataAnalytics.features.visualization')
       ],
       delay: 400
     }
@@ -68,32 +68,32 @@ const Solution = () => {
     {
       name: t('solutions.industries.healthcare'),
       icon: "🏥",
-      description: t("Bezpieczne systemy zarządzania pacjentami, platformy telemedyczne i rozwiązania analityczne dla zdrowia.")
+      description: t('solutions.industriesDesc.healthcare')
     },
     {
       name: t('solutions.industries.finance'),
       icon: "💼",
-      description: t("Bezpieczne systemy transakcyjne, wykrywanie oszustw i narzędzia do zarządzania finansami klientów.")
+      description: t('solutions.industriesDesc.finance')
     },
     {
       name: t('solutions.industries.retail'),
       icon: "🛍️",
-      description: t("Zarządzanie zapasami, platformy e-commerce i programy lojalnościowe dla klientów.")
+      description: t('solutions.industriesDesc.retail')
     },
     {
       name: t('solutions.industries.manufacturing'),
       icon: "🏭",
-      description: t("Optymalizacja produkcji, zarządzanie łańcuchem dostaw i systemy kontroli jakości.")
+      description: t('solutions.industriesDesc.manufacturing')
     },
     {
       name: t('solutions.industries.education'),
       icon: "🎓",
-      description: t("Systemy zarządzania nauczaniem, narzędzia do oceny studentów i rozwiązania administracyjne.")
+      description: t('solutions.industriesDesc.education')
     },
     {
       name: t('solutions.industries.logistics'),
-      icon: "🏨",
-      description: t("Systemy rezerwacji, platformy dla doświadczeń gości i rozwiązania zarządzania obiektami.")
+      icon: "🚚",
+      description: t('solutions.industriesDesc.logistics')
     }
   ];
 

@@ -71,7 +71,7 @@ const WhyChooseUs = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 mix-blend-multiply"></div>
               <img 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" 
-                alt="Team collaboration" 
+                alt={t('whyChooseUs.imageAlt')} 
                 className="w-full h-auto rounded-2xl"
               />
               

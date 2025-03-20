@@ -14,56 +14,96 @@ const ServicePage = () => {
       icon: <UserPlus size={24} />,
       title: t('services.items.outsourcing.title'),
       description: t('services.items.outsourcing.description'),
-      benefits: [t("Redukcja kosztów"), t("Dostęp do specjalistycznej wiedzy"), t("Skalowalne zasoby"), t("Skupienie się na głównej działalności")],
+      benefits: [
+        t('services.items.outsourcing.benefits.cost'),
+        t('services.items.outsourcing.benefits.expertise'),
+        t('services.items.outsourcing.benefits.scalability'),
+        t('services.items.outsourcing.benefits.focus')
+      ],
       delay: 100
     },
     {
       icon: <Globe size={24} />,
       title: t('services.items.webDev.title'),
       description: t('services.items.webDev.description'),
-      benefits: [t("Responsywny design"), t("Optymalizacja SEO"), t("Bezpieczne transakcje"), t("Niestandardowe funkcjonalności")],
+      benefits: [
+        t('services.items.webDev.benefits.responsive'),
+        t('services.items.webDev.benefits.seo'),
+        t('services.items.webDev.benefits.secure'),
+        t('services.items.webDev.benefits.custom')
+      ],
       delay: 200
     },
     {
       icon: <Palette size={24} />,
       title: t('services.items.graphic.title'),
       description: t('services.items.graphic.description'),
-      benefits: [t("Spójność marki"), t("Design zorientowany na użytkownika"), t("Kreatywne koncepcje"), t("Zasoby wieloplatformowe")],
+      benefits: [
+        t('services.items.graphic.benefits.brand'),
+        t('services.items.graphic.benefits.user'),
+        t('services.items.graphic.benefits.creative'),
+        t('services.items.graphic.benefits.cross')
+      ],
       delay: 300
     },
     {
       icon: <Wrench size={24} />,
       title: t('services.items.hardware.title'),
       description: t('services.items.hardware.description'),
-      benefits: [t("Szybka realizacja"), t("Certyfikowani technicy"), t("Wysokiej jakości części zamienne"), t("Konserwacja zapobiegawcza")],
+      benefits: [
+        t('services.items.hardware.benefits.quick'),
+        t('services.items.hardware.benefits.certified'),
+        t('services.items.hardware.benefits.quality'),
+        t('services.items.hardware.benefits.preventive')
+      ],
       delay: 400
     },
     {
       icon: <Bot size={24} />,
       title: t('services.items.ai.title'),
       description: t('services.items.ai.description'),
-      benefits: [t("Automatyzacja procesów"), t("Analityka predykcyjna"), t("Przetwarzanie języka naturalnego"), t("Integracja uczenia maszynowego")],
+      benefits: [
+        t('services.items.ai.benefits.automation'),
+        t('services.items.ai.benefits.analytics'),
+        t('services.items.ai.benefits.nlp'),
+        t('services.items.ai.benefits.ml')
+      ],
       delay: 500
     },
     {
       icon: <BarChart3 size={24} />,
       title: t('services.items.marketing.title'),
       description: t('services.items.marketing.description'),
-      benefits: [t("Ukierunkowane kampanie"), t("Śledzenie wydajności"), t("Strategia treści"), t("Optymalizacja konwersji")],
+      benefits: [
+        t('services.items.marketing.benefits.targeted'),
+        t('services.items.marketing.benefits.performance'),
+        t('services.items.marketing.benefits.content'),
+        t('services.items.marketing.benefits.conversion')
+      ],
       delay: 600
     },
     {
       icon: <Share2 size={24} />,
       title: t('services.items.social.title'),
       description: t('services.items.social.description'),
-      benefits: [t("Kalendarz treści"), t("Zaangażowanie społeczności"), t("Optymalizacja platform"), t("Analityka wydajności")],
+      benefits: [
+        t('services.items.social.benefits.calendar'),
+        t('services.items.social.benefits.engagement'),
+        t('services.items.social.benefits.optimization'),
+        t('services.items.social.benefits.analytics')
+      ],
       delay: 700
     },
     {
       icon: <ClipboardList size={24} />,
       title: t('services.items.project.title'),
       description: t('services.items.project.description'),
-      benefits: [t("Jasna komunikacja"), t("Zarządzanie ryzykiem"), t("Optymalizacja zasobów"), t("Zapewnienie jakości")],
+      benefits: [
+        t('services.items.project.benefits.communication'),
+        t('services.items.project.benefits.risk'),
+        t('services.items.project.benefits.resource'),
+        t('services.items.project.benefits.quality')
+      ],
       delay: 800
     }
   ];
@@ -107,7 +147,7 @@ const ServicePage = () => {
                   <h3 className="text-2xl font-display font-semibold mb-4">{service.title}</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
                   
-                  <h4 className="font-medium text-lg mb-3">{t('Główne Korzyści')}:</h4>
+                  <h4 className="font-medium text-lg mb-3">{t('services.mainBenefits')}:</h4>
                   <ul className="space-y-2 mb-6">
                     {service.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start">
