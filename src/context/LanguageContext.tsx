@@ -1,12 +1,17 @@
-
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 type Language = 'pl' | 'en';
 
+type TranslationSection = {
+  [key: string]: {
+    [language: string]: any;
+  };
+};
+
 type LanguageContextType = {
   language: Language;
   setLanguage: (language: Language) => void;
-  translations: Record<string, Record<string, string>>;
+  translations: TranslationSection;
 };
 
 const translations = {
