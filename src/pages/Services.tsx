@@ -284,7 +284,7 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Services Section with Redesigned Cards */}
+      {/* Services Section with Completely Redesigned Cards */}
       <section id="services" ref={servicesRef} className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
@@ -292,71 +292,73 @@ const ServicePage = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('services.discoverSolutions')}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card 
+              <div 
                 key={index} 
-                className="service-card-redesigned overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 border-0 rounded-2xl shadow-sm hover:shadow-md group"
+                className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 h-full"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="flex flex-col md:flex-row h-full">
-                  {/* Left side with background image and overlay */}
-                  <div className="md:w-2/5 relative overflow-hidden rounded-l-2xl">
-                    <div 
-                      className="w-full h-48 md:h-full bg-cover bg-center transform transition-transform duration-700 group-hover:scale-105" 
-                      style={{ backgroundImage: `url(${service.image})` }}
-                    />
-                    <div className={`absolute inset-0 ${service.gradient} opacity-80 mix-blend-multiply`}></div>
-                    
-                    {/* Overlay content with icon and title */}
-                    <div className="absolute inset-0 flex items-center justify-center p-4 text-white">
-                      <div className="text-center w-full">
-                        {/* Circular icon */}
-                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4">
-                          {service.icon}
+                <div className="group h-full perspective-1000">
+                  <div className="h-full transform-style-3d transition-transform duration-700 group-hover:rotate-y-7 group-hover:rotate-x-3">
+                    {/* Card with 3D effect */}
+                    <div className="rounded-2xl overflow-hidden shadow-xl h-full bg-white flex flex-col transform hover:-translate-y-2 transition-all duration-500 relative">
+                      {/* Gradient accent line */}
+                      <div className={`h-1.5 w-full ${service.gradient}`}></div>
+                      
+                      {/* Top background image with color overlay */}
+                      <div className="relative h-48 overflow-hidden">
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                          style={{ backgroundImage: `url(${service.image})` }}
+                        ></div>
+                        <div className={`absolute inset-0 opacity-90 ${service.gradient} mix-blend-overlay`}></div>
+                        
+                        {/* Floating icon */}
+                        <div className="absolute -bottom-8 right-6">
+                          <div className={`w-16 h-16 ${service.iconBgColor} rounded-full drop-shadow-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}>
+                            {service.icon}
+                          </div>
                         </div>
-                        {/* Title on mobile and small devices */}
-                        <h3 className="text-xl font-bold md:hidden">
-                          {service.title}
-                        </h3>
+                      </div>
+                      
+                      {/* Content area */}
+                      <div className="p-6 pt-10 flex-grow flex flex-col">
+                        <h3 className="text-xl font-bold text-gray-800 mb-3">{service.title}</h3>
+                        <p className="text-gray-600 text-sm mb-6">{service.description}</p>
+                        
+                        {/* Benefits with elegant icons */}
+                        <div className="mt-auto">
+                          <h4 className="font-medium text-sm mb-4 text-gray-700 flex items-center">
+                            <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                            {t('services.mainBenefits')}
+                          </h4>
+                          <ul className="space-y-2 mb-6">
+                            {service.benefits.map((benefit, i) => (
+                              <li key={i} className="flex items-start text-sm text-gray-600">
+                                <span className={`w-4 h-4 mr-2 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 ${service.iconBgColor} bg-opacity-20`}>
+                                  <span className={`w-1.5 h-1.5 rounded-full ${service.iconBgColor}`}></span>
+                                </span>
+                                {benefit}
+                              </li>
+                            ))}
+                          </ul>
+                          
+                          {/* Action button at the bottom */}
+                          <Link 
+                            to="/contact" 
+                            className={`inline-flex items-center text-sm font-medium ${service.iconBgColor} bg-opacity-10 hover:bg-opacity-20 px-4 py-2 rounded-full transition-all duration-300`}
+                            style={{ color: service.iconBgColor.replace('bg-', 'text-') }}
+                          >
+                            {t('cta.getStarted')}
+                            <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Right side with content */}
-                  <CardContent className="md:w-3/5 p-6 flex flex-col bg-white">
-                    {/* Title (hidden on mobile) */}
-                    <h3 className="text-2xl font-display font-semibold mb-3 hidden md:block">{service.title}</h3>
-                    
-                    {/* Description */}
-                    <p className="text-gray-600 text-sm md:text-base mb-4">{service.description}</p>
-                    
-                    {/* Benefits list */}
-                    <div className="mb-6 flex-grow">
-                      <h4 className="font-medium text-base mb-3 text-gray-800">{t('services.mainBenefits')}:</h4>
-                      <ul className="space-y-2">
-                        {service.benefits.map((benefit, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="text-blue-500 mr-2 flex-shrink-0">
-                              <Sparkles className="h-5 w-5" />
-                            </span>
-                            <span className="text-gray-600 text-sm">{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    {/* Action button */}
-                    <Link 
-                      to="/contact" 
-                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white border border-gray-200 text-primary font-medium hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 mt-2 text-sm"
-                    >
-                      {t('cta.getStarted')}
-                      <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </CardContent>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
