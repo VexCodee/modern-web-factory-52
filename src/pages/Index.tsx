@@ -7,15 +7,15 @@ import TechnologiesSection from '../components/TechnologiesSection';
 import WhyChooseUs from '../components/WhyChooseUs';
 import Testimonials from '../components/Testimonials';
 import CTASection from '../components/CTASection';
-import TechnologySection from '../components/TechnologySection';
+import InnovationShowcase from '../components/InnovationShowcase';
 
 const Index = () => {
   return (
     <Layout>
       <HeroSection />
       <ServiceSection />
-      <TechnologySection />
       <WhyChooseUs />
+      <InnovationShowcase />
       <TechnologiesSection />
       <Testimonials />
       <CTASection />
