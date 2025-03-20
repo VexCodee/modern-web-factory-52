@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles, FileText, Server, Lightbulb, Truck, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
@@ -356,32 +357,65 @@ const ServicePage = () => {
           </div>
 
           <div className="relative">
+            {/* Vertical timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-100 hidden md:block"></div>
             
             <div className="space-y-12 md:space-y-0 relative">
               {processSteps.map((step, index) => (
                 <div 
                   key={index} 
-                  className={`flex items-center mb-16 md:mb-32 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700`}
+                  className={`flex flex-col md:flex-row md:items-center mb-16 md:mb-32 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
-                  <div className={`w-full md:w-1/2 ${step.align === "right" ? "md:pr-12 md:text-right" : "md:pl-12 order-2 md:order-none"}`}>
-                    <div className="p-6 transition-all duration-300 relative">
-                      <div className="flex items-center mb-4 gap-4">
-                        <div className={`w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl ${step.align === "right" ? "md:order-last md:ml-4" : "md:mr-4"}`}>
-                          {step.number}
-                        </div>
-                        <h3 className="text-xl font-display font-semibold">{step.title}</h3>
+                  {step.align === "right" ? (
+                    // Right-aligned step (content on the right)
+                    <>
+                      {/* Empty left side */}
+                      <div className="md:w-1/2"></div>
+                      
+                      {/* Center icon */}
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-md border-4 border-blue-100 flex items-center justify-center z-10 hidden md:flex">
+                        {step.icon}
                       </div>
-                      <p className="text-gray-600">{step.description}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-md border-4 border-blue-100 flex items-center justify-center z-10 hidden md:flex">
-                    {step.icon}
-                  </div>
-                  
-                  <div className="w-0 md:w-1/2"></div>
+                      
+                      {/* Right content */}
+                      <div className="md:w-1/2 md:pl-12">
+                        <div className="p-6 transition-all duration-300 relative">
+                          <div className="flex items-center mb-4 gap-4">
+                            <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
+                              {step.number}
+                            </div>
+                            <h3 className="text-xl font-display font-semibold">{step.title}</h3>
+                          </div>
+                          <p className="text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    // Left-aligned step (content on the left)
+                    <>
+                      {/* Left content */}
+                      <div className="md:w-1/2 md:pr-12 md:text-right">
+                        <div className="p-6 transition-all duration-300 relative">
+                          <div className="flex items-center mb-4 gap-4 md:flex-row-reverse">
+                            <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
+                              {step.number}
+                            </div>
+                            <h3 className="text-xl font-display font-semibold">{step.title}</h3>
+                          </div>
+                          <p className="text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                      
+                      {/* Center icon */}
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-md border-4 border-blue-100 flex items-center justify-center z-10 hidden md:flex">
+                        {step.icon}
+                      </div>
+                      
+                      {/* Empty right side */}
+                      <div className="md:w-1/2"></div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
