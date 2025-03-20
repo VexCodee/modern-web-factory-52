@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 
 const Portfolio = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   
   const filters = [
@@ -16,72 +16,210 @@ const Portfolio = () => {
     { id: 'design', label: t('portfolio.categories.design') }
   ];
   
-  const projects = [
-    {
-      id: 1,
-      title: "Platforma E-commerce",
-      category: "web",
-      image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
-      client: "RetailMax",
-      description: "Niestandardowe rozwiązanie e-commerce ze zintegrowanym zarządzaniem inwentarzem i pulpitem analitycznym klienta."
-    },
-    {
-      id: 2,
-      title: "Bot AI Obsługi Klienta",
-      category: "ai",
-      image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80",
-      client: "ServiceFirst Inc.",
-      description: "Chatbot oparty na sztucznej inteligencji obsługujący zapytania klientów i zgłoszenia serwisowe z 85% skutecznością rozwiązań."
-    },
-    {
-      id: 3,
-      title: "Kampania Marketingu Cyfrowego",
-      category: "marketing",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      client: "GrowthBrand",
-      description: "Kompleksowa strategia marketingu cyfrowego, która zwiększyła generowanie leadów o 150% w ciągu 6 miesięcy."
-    },
-    {
-      id: 4,
-      title: "Rebranding Korporacyjny",
-      category: "design",
-      image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      client: "InnovateFinance",
-      description: "Kompletne odświeżenie marki, w tym projektowanie logo, tożsamość wizualna i materiały marketingowe."
-    },
-    {
-      id: 5,
-      title: "Portal Medyczny",
-      category: "web",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      client: "MediCare Network",
-      description: "Bezpieczny portal pacjenta z integracją telemedycyny i zarządzaniem dokumentacją medyczną."
-    },
-    {
-      id: 6,
-      title: "Narzędzie Analityki Predykcyjnej",
-      category: "ai",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      client: "DataInsight Corp",
-      description: "Rozwiązanie uczenia maszynowego do prognozowania sprzedaży i optymalizacji zapasów."
-    },
-    {
-      id: 7,
-      title: "Strategia Mediów Społecznościowych",
-      category: "marketing",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
-      client: "TrendSetter Apparel",
-      description: "Strategia treści i zarządzanie na wielu platformach, zwiększające zaangażowanie o 200%."
-    },
-    {
-      id: 8,
-      title: "Projekt Opakowań Produktów",
-      category: "design",
-      image: "https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      client: "Organic Foods",
-      description: "Ekologiczny projekt opakowań, który poprawił rozpoznawalność marki i pozycjonowanie na rynku."
-    }
-  ];
+  // Multilingual project descriptions
+  const projectDescriptions = {
+    pl: [
+      {
+        id: 1,
+        title: "Platforma E-commerce",
+        category: "web",
+        image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+        client: "RetailMax",
+        description: "Niestandardowe rozwiązanie e-commerce ze zintegrowanym zarządzaniem inwentarzem i pulpitem analitycznym klienta."
+      },
+      {
+        id: 2,
+        title: "Bot AI Obsługi Klienta",
+        category: "ai",
+        image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80",
+        client: "ServiceFirst Inc.",
+        description: "Chatbot oparty na sztucznej inteligencji obsługujący zapytania klientów i zgłoszenia serwisowe z 85% skutecznością rozwiązań."
+      },
+      {
+        id: 3,
+        title: "Kampania Marketingu Cyfrowego",
+        category: "marketing",
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "GrowthBrand",
+        description: "Kompleksowa strategia marketingu cyfrowego, która zwiększyła generowanie leadów o 150% w ciągu 6 miesięcy."
+      },
+      {
+        id: 4,
+        title: "Rebranding Korporacyjny",
+        category: "design",
+        image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "InnovateFinance",
+        description: "Kompletne odświeżenie marki, w tym projektowanie logo, tożsamość wizualna i materiały marketingowe."
+      },
+      {
+        id: 5,
+        title: "Portal Medyczny",
+        category: "web",
+        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "MediCare Network",
+        description: "Bezpieczny portal pacjenta z integracją telemedycyny i zarządzaniem dokumentacją medyczną."
+      },
+      {
+        id: 6,
+        title: "Narzędzie Analityki Predykcyjnej",
+        category: "ai",
+        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "DataInsight Corp",
+        description: "Rozwiązanie uczenia maszynowego do prognozowania sprzedaży i optymalizacji zapasów."
+      },
+      {
+        id: 7,
+        title: "Strategia Mediów Społecznościowych",
+        category: "marketing",
+        image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+        client: "TrendSetter Apparel",
+        description: "Strategia treści i zarządzanie na wielu platformach, zwiększające zaangażowanie o 200%."
+      },
+      {
+        id: 8,
+        title: "Projekt Opakowań Produktów",
+        category: "design",
+        image: "https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "Organic Foods",
+        description: "Ekologiczny projekt opakowań, który poprawił rozpoznawalność marki i pozycjonowanie na rynku."
+      }
+    ],
+    en: [
+      {
+        id: 1,
+        title: "E-commerce Platform",
+        category: "web",
+        image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+        client: "RetailMax",
+        description: "Custom e-commerce solution with integrated inventory management and customer analytics dashboard."
+      },
+      {
+        id: 2,
+        title: "AI Customer Service Bot",
+        category: "ai",
+        image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80",
+        client: "ServiceFirst Inc.",
+        description: "AI-powered chatbot handling customer inquiries and service tickets with 85% resolution effectiveness."
+      },
+      {
+        id: 3,
+        title: "Digital Marketing Campaign",
+        category: "marketing",
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "GrowthBrand",
+        description: "Comprehensive digital marketing strategy that increased lead generation by 150% within 6 months."
+      },
+      {
+        id: 4,
+        title: "Corporate Rebranding",
+        category: "design",
+        image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "InnovateFinance",
+        description: "Complete brand refresh including logo design, visual identity, and marketing materials."
+      },
+      {
+        id: 5,
+        title: "Medical Portal",
+        category: "web",
+        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "MediCare Network",
+        description: "Secure patient portal with telemedicine integration and medical records management."
+      },
+      {
+        id: 6,
+        title: "Predictive Analytics Tool",
+        category: "ai",
+        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "DataInsight Corp",
+        description: "Machine learning solution for sales forecasting and inventory optimization."
+      },
+      {
+        id: 7,
+        title: "Social Media Strategy",
+        category: "marketing",
+        image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+        client: "TrendSetter Apparel",
+        description: "Content strategy and multi-platform management increasing engagement by 200%."
+      },
+      {
+        id: 8,
+        title: "Product Packaging Design",
+        category: "design",
+        image: "https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "Organic Foods",
+        description: "Eco-friendly packaging design that improved brand recognition and market positioning."
+      }
+    ],
+    de: [
+      {
+        id: 1,
+        title: "E-Commerce-Plattform",
+        category: "web",
+        image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+        client: "RetailMax",
+        description: "Maßgeschneiderte E-Commerce-Lösung mit integriertem Bestandsmanagement und Kunden-Analytics-Dashboard."
+      },
+      {
+        id: 2,
+        title: "KI-Kundenservice-Bot",
+        category: "ai",
+        image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80",
+        client: "ServiceFirst Inc.",
+        description: "KI-gesteuerter Chatbot, der Kundenanfragen und Servicetickets mit 85% Lösungseffektivität bearbeitet."
+      },
+      {
+        id: 3,
+        title: "Digitale Marketingkampagne",
+        category: "marketing",
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "GrowthBrand",
+        description: "Umfassende digitale Marketingstrategie, die die Lead-Generierung innerhalb von 6 Monaten um 150% steigerte."
+      },
+      {
+        id: 4,
+        title: "Unternehmens-Rebranding",
+        category: "design",
+        image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "InnovateFinance",
+        description: "Komplette Markenauffrischung einschließlich Logo-Design, visueller Identität und Marketingmaterialien."
+      },
+      {
+        id: 5,
+        title: "Medizinisches Portal",
+        category: "web",
+        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "MediCare Network",
+        description: "Sicheres Patientenportal mit Telemedizin-Integration und Verwaltung medizinischer Aufzeichnungen."
+      },
+      {
+        id: 6,
+        title: "Prädiktives Analysetool",
+        category: "ai",
+        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "DataInsight Corp",
+        description: "Machine-Learning-Lösung für Verkaufsprognosen und Bestandsoptimierung."
+      },
+      {
+        id: 7,
+        title: "Social-Media-Strategie",
+        category: "marketing",
+        image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+        client: "TrendSetter Apparel",
+        description: "Inhaltsstrategie und plattformübergreifendes Management, das das Engagement um 200% steigert."
+      },
+      {
+        id: 8,
+        title: "Produktverpackungsdesign",
+        category: "design",
+        image: "https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        client: "Organic Foods",
+        description: "Umweltfreundliches Verpackungsdesign, das die Markenerkennung und Marktpositionierung verbesserte."
+      }
+    ]
+  };
+  
+  // Get projects based on the current language
+  const projects = projectDescriptions[language] || projectDescriptions.en;
   
   const filteredProjects = activeFilter === 'all' 
     ? projects 
@@ -151,7 +289,7 @@ const Portfolio = () => {
                       {filters.find(f => f.id === project.category)?.label.split(' ')[0]}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500 mb-3">Klient: {project.client}</p>
+                  <p className="text-sm text-gray-500 mb-3">{t('portfolio.client')}: {project.client}</p>
                   <p className="text-gray-600">{project.description}</p>
                 </div>
               </div>

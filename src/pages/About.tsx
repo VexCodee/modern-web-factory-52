@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import { Shield, Users, Target, Award } from 'lucide-react';
@@ -5,7 +6,7 @@ import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const values = [
     {
@@ -30,32 +31,90 @@ const About = () => {
     }
   ];
 
-  const team = [
-    {
-      name: "Aleksander Kowalski",
-      position: "Prezes & Założyciel",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      bio: "Z ponad 15-letnim doświadczeniem w IT i zarządzaniu biznesem, Aleksander założył TechPrime z wizją pomocy firmom w wykorzystaniu technologii do zrównoważonego rozwoju."
-    },
-    {
-      name: "Sara Nowak",
-      position: "Dyrektor Technologiczna",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-      bio: "Sara kieruje naszą strategią techniczną i zespołami programistów, wnosząc bogate doświadczenie w architekturze oprogramowania, sztucznej inteligencji i technologiach chmurowych."
-    },
-    {
-      name: "Dawid Lewandowski",
-      position: "Dyrektor Kreatywny",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      bio: "Dawid nadzoruje wszystkie projekty graficzne, dbając o to, aby nasze rozwiązania nie tylko działały bezbłędnie, ale także zapewniały wyjątkowe doświadczenia użytkownika."
-    },
-    {
-      name: "Renata Tomczyk",
-      position: "Dyrektor Marketingu",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-      bio: "Renata opracowuje i wdraża nasze strategie marketingowe, pomagając klientom budować silne tożsamości marek i skuteczne kampanie marketingowe."
-    }
-  ];
+  // Multilingual team member descriptions
+  const teamMembers = {
+    pl: [
+      {
+        name: "Aleksander Kowalski",
+        position: "Prezes & Założyciel",
+        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        bio: "Z ponad 15-letnim doświadczeniem w IT i zarządzaniu biznesem, Aleksander założył TechPrime z wizją pomocy firmom w wykorzystaniu technologii do zrównoważonego rozwoju."
+      },
+      {
+        name: "Sara Nowak",
+        position: "Dyrektor Technologiczna",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+        bio: "Sara kieruje naszą strategią techniczną i zespołami programistów, wnosząc bogate doświadczenie w architekturze oprogramowania, sztucznej inteligencji i technologiach chmurowych."
+      },
+      {
+        name: "Dawid Lewandowski",
+        position: "Dyrektor Kreatywny",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        bio: "Dawid nadzoruje wszystkie projekty graficzne, dbając o to, aby nasze rozwiązania nie tylko działały bezbłędnie, ale także zapewniały wyjątkowe doświadczenia użytkownika."
+      },
+      {
+        name: "Renata Tomczyk",
+        position: "Dyrektor Marketingu",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
+        bio: "Renata opracowuje i wdraża nasze strategie marketingowe, pomagając klientom budować silne tożsamości marek i skuteczne kampanie marketingowe."
+      }
+    ],
+    en: [
+      {
+        name: "Alexander Smith",
+        position: "CEO & Founder",
+        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        bio: "With over 15 years of experience in IT and business management, Alexander founded TechPrime with a vision to help companies leverage technology for sustainable growth."
+      },
+      {
+        name: "Sarah Johnson",
+        position: "Chief Technology Officer",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+        bio: "Sarah leads our technical strategy and development teams, bringing extensive experience in software architecture, artificial intelligence, and cloud technologies."
+      },
+      {
+        name: "David Lewis",
+        position: "Creative Director",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        bio: "David oversees all design projects, ensuring our solutions not only work flawlessly but also provide exceptional user experiences."
+      },
+      {
+        name: "Renata Thompson",
+        position: "Marketing Director",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
+        bio: "Renata develops and implements our marketing strategies, helping clients build strong brand identities and effective marketing campaigns."
+      }
+    ],
+    de: [
+      {
+        name: "Alexander Schmidt",
+        position: "CEO & Gründer",
+        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        bio: "Mit über 15 Jahren Erfahrung in IT und Unternehmensführung gründete Alexander TechPrime mit der Vision, Unternehmen dabei zu helfen, Technologie für nachhaltiges Wachstum zu nutzen."
+      },
+      {
+        name: "Sara Wagner",
+        position: "Chief Technology Officer",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+        bio: "Sara leitet unsere technische Strategie und Entwicklungsteams und bringt umfassende Erfahrung in Softwarearchitektur, künstlicher Intelligenz und Cloud-Technologien mit."
+      },
+      {
+        name: "David Weber",
+        position: "Kreativdirektor",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        bio: "David überwacht alle Designprojekte und sorgt dafür, dass unsere Lösungen nicht nur einwandfrei funktionieren, sondern auch außergewöhnliche Benutzererlebnisse bieten."
+      },
+      {
+        name: "Renata Müller",
+        position: "Marketingdirektorin",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
+        bio: "Renata entwickelt und implementiert unsere Marketingstrategien und hilft Kunden dabei, starke Markenidentitäten und effektive Marketingkampagnen aufzubauen."
+      }
+    ]
+  };
+
+  // Get team members based on current language
+  const team = teamMembers[language] || teamMembers.en;
 
   return (
     <Layout>
