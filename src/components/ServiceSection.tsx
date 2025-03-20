@@ -17,7 +17,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
       className="service-card bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-fade-in hover-lift" 
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5 text-primary">
+      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-5 text-blue-500">
         {icon}
       </div>
       <h3 className="text-xl font-display font-semibold mb-3">{title}</h3>

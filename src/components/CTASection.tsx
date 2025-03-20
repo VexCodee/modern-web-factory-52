@@ -2,8 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const CTASection = () => {
+  const { language, translations } = useLanguage();
+  const t = translations.cta[language];
+
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Background with gradient overlay */}
@@ -20,24 +24,24 @@ const CTASection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6 animate-fade-in">
-            Ready to Transform Your Business With Technology?
+            {t.title}
           </h2>
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '100ms' }}>
-            Partner with TechPrime to leverage cutting-edge IT solutions that drive growth, efficiency, and innovation for your business.
+            {t.description}
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-5 animate-fade-in" style={{ animationDelay: '200ms' }}>
             <Link 
               to="/contact" 
               className="bg-white text-primary px-8 py-3.5 rounded-full font-medium flex items-center justify-center transition-all hover:bg-gray-100 hover:shadow-lg"
             >
-              Get Started
+              {t.getStarted}
               <ArrowRight size={18} className="ml-2" />
             </Link>
             <Link 
               to="/portfolio" 
               className="border border-white/30 bg-white/10 text-white px-8 py-3.5 rounded-full font-medium flex items-center justify-center backdrop-blur-sm transition-all hover:bg-white/20"
             >
-              View Our Portfolio
+              {t.portfolio}
             </Link>
           </div>
         </div>
