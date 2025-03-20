@@ -6,17 +6,19 @@ import { useIsMobile } from '../hooks/use-mobile';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
+
 const ServiceCard: React.FC<ServiceCardProps> = ({
   icon,
   title,
   description
 }) => {
-  return <div className="bg-white rounded-lg border border-gray-100 p-6 h-full hover:shadow-md transition-all duration-300 flex flex-col transform hover:-translate-y-2 hover:border-primary/20">
+  return <div className="bg-white rounded-lg border border-gray-100 p-6 h-full hover:shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col transform hover:-translate-y-2 hover:border-primary/20">
       <div className="mb-5">
         <div className="w-16 h-16 rounded-lg bg-blue-50 flex items-center justify-center transition-all duration-300 hover:bg-indigo-100 group">
           <div className="transition-transform duration-500 group-hover:rotate-12">
@@ -43,6 +45,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
     </div>;
 };
+
 const ServiceSection = () => {
   const {
     t
@@ -154,17 +157,20 @@ const ServiceSection = () => {
           </p>
         </div>
 
-        <div className="w-full">
+        {/* Adding padding-top to prevent cards from being cut off when they hover and transform upwards */}
+        <div className="w-full pt-4">
           <Carousel className="w-full" opts={{
           align: "start",
           loop: true
         }} plugins={[autoplayPlugin.current]}>
             <CarouselContent>
-              {services.map((service, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[420px]">
+              {services.map((service, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[420px] pt-2">
                   <div className="p-1 h-full transform transition-all duration-500 hover:scale-[1.02]">
                     <ServiceCard icon={service.icon} title={service.title} description={service.description} />
                   </div>
-                </CarouselItem>)}
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <div className="flex justify-center mt-8">
               <CarouselPrevious className="relative static left-0 translate-y-0 mr-2 transition-all duration-300 hover:-translate-x-1" />
@@ -187,4 +193,5 @@ const ServiceSection = () => {
       </div>
     </section>;
 };
+
 export default ServiceSection;
