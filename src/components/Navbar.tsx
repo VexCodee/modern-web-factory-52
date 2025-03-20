@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageSelector from './LanguageSelector';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +55,7 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm' 
+          ? 'bg-background/80 backdrop-blur-lg shadow-sm border-b border-border' 
           : 'bg-transparent'
       }`}
     >
@@ -86,10 +87,11 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <LanguageSelector />
             <Link 
               to="/contact" 
-              className="bg-primary text-white px-5 py-2 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
+              className="bg-primary text-primary-foreground px-5 py-2 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
             >
               {t('navbar.getStarted')}
             </Link>
@@ -97,6 +99,7 @@ const Navbar = () => {
 
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
             <LanguageSelector />
             <button 
               className="text-foreground"
@@ -133,7 +136,7 @@ const Navbar = () => {
           <div className="mt-auto pb-8">
             <Link 
               to="/contact" 
-              className="block w-full bg-primary text-white text-center px-5 py-3 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
+              className="block w-full bg-primary text-primary-foreground text-center px-5 py-3 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
             >
               {t('navbar.getStarted')}
             </Link>
