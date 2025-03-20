@@ -11,14 +11,14 @@ const InnovationShowcase = () => {
   // Define feature cards with translations
   const features = [
     {
-      title: t('innovation.efficiency.title', 'Wydajność'),
-      description: t('innovation.efficiency.description', 'Zoptymalizowane procesy'),
+      title: t('innovation.efficiency.title'),
+      description: t('innovation.efficiency.description'),
       icon: <Zap className="h-8 w-8 text-indigo-600" />,
       delay: 100
     }, 
     {
-      title: t('innovation.innovation.title', 'Innowacja'),
-      description: t('innovation.innovation.description', 'Rozwiązania przyszłości'),
+      title: t('innovation.innovation.title'),
+      description: t('innovation.innovation.description'),
       icon: <CheckCircle className="h-8 w-8 text-indigo-600" />,
       delay: 200
     }
@@ -26,10 +26,10 @@ const InnovationShowcase = () => {
   
   // List of benefits with translations
   const benefits = [
-    t('innovation.benefits.automated', 'Zautomatyzowane procesy biznesowe'),
-    t('innovation.benefits.ai', 'Inteligentne rozwiązania oparte na AI'),
-    t('innovation.benefits.cloud', 'Skalowalna infrastruktura w chmurze'),
-    t('innovation.benefits.security', 'Zabezpieczenia na poziomie korporacyjnym')
+    t('innovation.benefits.automated'),
+    t('innovation.benefits.ai'),
+    t('innovation.benefits.cloud'),
+    t('innovation.benefits.security')
   ];
 
   useEffect(() => {
@@ -62,17 +62,17 @@ const InnovationShowcase = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm rounded-full bg-indigo-100 text-indigo-700 px-4 py-1.5 font-medium animate-on-scroll opacity-0 dark:bg-indigo-900 dark:text-indigo-300">
-            {t('innovation.tag', 'Innowacyjna Technologia')}
+            {t('innovation.tag')}
           </span>
           <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-on-scroll opacity-0 dark:text-white" style={{
             animationDelay: '100ms'
           }}>
-            {t('innovation.title', 'Technologia, Która Wspiera Twój Biznes')}
+            {t('innovation.title')}
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-on-scroll opacity-0 dark:text-gray-300" style={{
             animationDelay: '200ms'
           }}>
-            {t('innovation.subtitle', 'Rozwiązania, które zmieniają sposób funkcjonowania biznesu')}
+            {t('innovation.subtitle')}
           </p>
         </div>
 
@@ -84,7 +84,7 @@ const InnovationShowcase = () => {
               }}>
                 {/* Updated image with better factory automation visual */}
                 <img 
-                  alt={t('innovation.imageAlt', 'Innowacyjna Technologia Przemysłowa')} 
+                  alt={t('innovation.imageAlt')} 
                   className="w-full h-auto object-cover"
                   src="/lovable-uploads/338eb6dc-d188-4e3d-9c14-b113b150ed9d.png" 
                 />
@@ -122,10 +122,10 @@ const InnovationShowcase = () => {
                   animationDelay: '400ms'
                 }}>
                   <h3 className="text-2xl font-bold mb-4 dark:text-white">
-                    {t('innovation.heading', 'Technologia, Która Wspiera Twój Biznes')}
+                    {t('innovation.heading')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    {t('innovation.description', 'Nasze innowacyjne rozwiązania są projektowane z myślą o przyspieszeniu wzrostu Twojej firmy i optymalizacji procesów biznesowych. Wykorzystując najnowsze technologie, pomagamy Ci osiągnąć przewagę konkurencyjną.')}
+                    {t('innovation.description')}
                   </p>
                 </div>
                 
@@ -157,7 +157,7 @@ const InnovationShowcase = () => {
                     animationDelay: '1000ms'
                   }}
                 >
-                  {t('innovation.cta', 'Odkryj Nasze Rozwiązania')}
+                  {t('innovation.cta')}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>

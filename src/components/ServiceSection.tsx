@@ -17,6 +17,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   description,
   delay
 }) => {
+  const { t } = useLanguage();
+  
   return (
     <div 
       className="service-card bg-white p-6 rounded-xl shadow-sm border border-gray-100 opacity-0 translate-y-4 hover:shadow-md transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-white" 
@@ -35,7 +37,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           to="/services" 
           className="text-primary font-medium hover:underline inline-flex items-center text-sm"
         >
-          {t('services.learnMore', 'Learn more')}
+          {t('services.learnMore')}
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
