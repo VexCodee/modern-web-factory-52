@@ -9,65 +9,65 @@ const ServicePage = () => {
   const services = [
     {
       icon: <UserPlus size={24} />,
-      title: "IT Outsourcing",
-      description: "Leverage our expertise to handle your IT operations, allowing you to focus on your core business activities. We provide dedicated teams, project-based services, and managed IT solutions tailored to your specific needs.",
-      benefits: ["Cost reduction", "Access to specialized expertise", "Scalable resources", "Focus on core business"],
+      title: "Outsourcing IT",
+      description: "Wykorzystaj nasze doświadczenie do zarządzania operacjami IT, co pozwoli Ci skupić się na kluczowej działalności biznesowej. Oferujemy dedykowane zespoły, usługi projektowe i zarządzane rozwiązania IT dostosowane do Twoich konkretnych potrzeb.",
+      benefits: ["Redukcja kosztów", "Dostęp do specjalistycznej wiedzy", "Skalowalne zasoby", "Skupienie się na głównej działalności"],
       delay: 100
     },
     {
       icon: <Globe size={24} />,
-      title: "Web Development",
-      description: "From responsive websites to complex web applications and e-commerce platforms, we deliver custom web solutions that align with your business objectives and provide exceptional user experiences.",
-      benefits: ["Responsive design", "SEO optimization", "Secure transactions", "Custom functionalities"],
+      title: "Tworzenie Stron WWW",
+      description: "Od responsywnych stron internetowych po złożone aplikacje webowe i platformy e-commerce, dostarczamy niestandardowe rozwiązania internetowe, które są zgodne z Twoimi celami biznesowymi i zapewniają wyjątkowe doświadczenia użytkownika.",
+      benefits: ["Responsywny design", "Optymalizacja SEO", "Bezpieczne transakcje", "Niestandardowe funkcjonalności"],
       delay: 200
     },
     {
       icon: <Palette size={24} />,
-      title: "Graphic Design",
-      description: "Our creative team develops visually stunning designs that strengthen your brand identity and effectively communicate your message across all digital and print media.",
-      benefits: ["Brand consistency", "User-centric design", "Creative concepts", "Multi-platform assets"],
+      title: "Projektowanie Graficzne",
+      description: "Nasz kreatywny zespół tworzy zachwycające wizualnie projekty, które wzmacniają tożsamość Twojej marki i skutecznie komunikują Twoje przesłanie we wszystkich mediach cyfrowych i drukowanych.",
+      benefits: ["Spójność marki", "Design zorientowany na użytkownika", "Kreatywne koncepcje", "Zasoby wieloplatformowe"],
       delay: 300
     },
     {
       icon: <Wrench size={24} />,
-      title: "Hardware Repair",
-      description: "Fast and reliable diagnosis and repair services for all your IT equipment. We minimize downtime and ensure your hardware operates at optimal performance levels.",
-      benefits: ["Quick turnaround", "Certified technicians", "Quality replacement parts", "Preventive maintenance"],
+      title: "Naprawa Sprzętu",
+      description: "Szybkie i niezawodne usługi diagnozy i naprawy całego sprzętu IT. Minimalizujemy przestoje i zapewniamy optymalną wydajność Twojego sprzętu.",
+      benefits: ["Szybka realizacja", "Certyfikowani technicy", "Wysokiej jakości części zamienne", "Konserwacja zapobiegawcza"],
       delay: 400
     },
     {
       icon: <Bot size={24} />,
-      title: "AI Solutions",
-      description: "Harness the power of artificial intelligence to automate processes, gain insights from your data, and create intelligent systems that learn and adapt to your business environment.",
-      benefits: ["Process automation", "Predictive analytics", "Natural language processing", "Machine learning integration"],
+      title: "Rozwiązania AI",
+      description: "Wykorzystaj moc sztucznej inteligencji do automatyzacji procesów, uzyskiwania informacji z danych i tworzenia inteligentnych systemów, które uczą się i dostosowują do Twojego środowiska biznesowego.",
+      benefits: ["Automatyzacja procesów", "Analityka predykcyjna", "Przetwarzanie języka naturalnego", "Integracja uczenia maszynowego"],
       delay: 500
     },
     {
       icon: <BarChart3 size={24} />,
       title: "Marketing",
-      description: "Strategic digital marketing campaigns that drive traffic, generate leads, and increase conversion rates. We combine creativity with data-driven approaches to maximize your ROI.",
-      benefits: ["Targeted campaigns", "Performance tracking", "Content strategy", "Conversion optimization"],
+      description: "Strategiczne kampanie marketingu cyfrowego, które generują ruch, pozyskują potencjalnych klientów i zwiększają współczynniki konwersji. Łączymy kreatywność z podejściem opartym na danych, aby zmaksymalizować Twój zwrot z inwestycji.",
+      benefits: ["Ukierunkowane kampanie", "Śledzenie wydajności", "Strategia treści", "Optymalizacja konwersji"],
       delay: 600
     },
     {
       icon: <Share2 size={24} />,
-      title: "Social Media Management",
-      description: "Comprehensive social media strategies to build your brand presence, engage your audience, and drive business growth through effective content and community management.",
-      benefits: ["Content calendar", "Community engagement", "Platform optimization", "Performance analytics"],
+      title: "Zarządzanie Mediami Społecznościowymi",
+      description: "Kompleksowe strategie mediów społecznościowych, które budują obecność Twojej marki, angażują odbiorców i napędzają rozwój biznesu poprzez efektywne zarządzanie treścią i społecznością.",
+      benefits: ["Kalendarz treści", "Zaangażowanie społeczności", "Optymalizacja platform", "Analityka wydajności"],
       delay: 700
     },
     {
       icon: <ClipboardList size={24} />,
-      title: "Project Management",
-      description: "Expert planning, execution, and oversight of your technology projects, ensuring they're delivered on time, within budget, and to the highest quality standards.",
-      benefits: ["Clear communication", "Risk management", "Resource optimization", "Quality assurance"],
+      title: "Zarządzanie Projektami",
+      description: "Profesjonalne planowanie, realizacja i nadzór nad projektami technologicznymi, zapewniające terminową dostawę, w ramach budżetu i zgodnie z najwyższymi standardami jakości.",
+      benefits: ["Jasna komunikacja", "Zarządzanie ryzykiem", "Optymalizacja zasobów", "Zapewnienie jakości"],
       delay: 800
     }
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Sekcja Hero */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
         <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
@@ -75,19 +75,19 @@ const ServicePage = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Services
+              Nasze Usługi
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Comprehensive IT Solutions for Modern Businesses
+              Kompleksowe Rozwiązania IT dla Nowoczesnych Firm
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              From web development to AI integration, we offer a full spectrum of technology services to help your business thrive in the digital era.
+              Od tworzenia stron internetowych po integrację z AI, oferujemy pełne spektrum usług technologicznych, które pomogą Twojej firmie prosperować w erze cyfrowej.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Services List */}
+      {/* Lista Usług */}
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -104,7 +104,7 @@ const ServicePage = () => {
                   <h3 className="text-2xl font-display font-semibold mb-4">{service.title}</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
                   
-                  <h4 className="font-medium text-lg mb-3">Key Benefits:</h4>
+                  <h4 className="font-medium text-lg mb-3">Główne Korzyści:</h4>
                   <ul className="space-y-2 mb-6">
                     {service.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start">
@@ -120,7 +120,7 @@ const ServicePage = () => {
                     to="/contact" 
                     className="inline-flex items-center text-primary font-medium hover:underline"
                   >
-                    Learn More
+                    Dowiedz się więcej
                     <ArrowRight size={16} className="ml-1" />
                   </Link>
                 </div>
@@ -130,18 +130,18 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Our Process */}
+      {/* Nasz Proces */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Process
+              Nasz Proces
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              How We Deliver Excellence
+              Jak Dostarczamy Doskonałość
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Our structured approach ensures that every project is completed efficiently and meets the highest quality standards.
+              Nasze strukturalne podejście zapewnia, że każdy projekt jest realizowany efektywnie i spełnia najwyższe standardy jakości.
             </p>
           </div>
 
@@ -149,26 +149,26 @@ const ServicePage = () => {
             {[
               {
                 number: "01",
-                title: "Discovery",
-                description: "We begin by understanding your business objectives, challenges, and requirements in detail.",
+                title: "Odkrycie",
+                description: "Zaczynamy od dogłębnego zrozumienia Twoich celów biznesowych, wyzwań i wymagań.",
                 delay: 300
               },
               {
                 number: "02",
-                title: "Planning",
-                description: "Our team creates a comprehensive strategy and project roadmap with clear deliverables and timelines.",
+                title: "Planowanie",
+                description: "Nasz zespół tworzy kompleksową strategię i mapę drogową projektu z jasnymi rezultatami i terminami.",
                 delay: 400
               },
               {
                 number: "03",
-                title: "Execution",
-                description: "We implement the solution using best practices and cutting-edge technologies, with regular progress updates.",
+                title: "Realizacja",
+                description: "Wdrażamy rozwiązanie wykorzystując najlepsze praktyki i najnowocześniejsze technologie, z regularnymi aktualizacjami postępu.",
                 delay: 500
               },
               {
                 number: "04",
-                title: "Support",
-                description: "After launch, we provide ongoing maintenance and support to ensure optimal performance.",
+                title: "Wsparcie",
+                description: "Po wdrożeniu zapewniamy bieżącą konserwację i wsparcie, aby zagwarantować optymalną wydajność.",
                 delay: 600
               }
             ].map((step, index) => (
