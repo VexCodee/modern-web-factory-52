@@ -2,7 +2,7 @@
 import React from 'react';
 import { UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage, getTranslation } from '../context/LanguageContext';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -28,72 +28,83 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
 
 const ServiceSection = () => {
   const { language, translations } = useLanguage();
-  const t = translations.services[language];
-  const items = t.items;
-
-  const services = [
+  
+  // Safely access translations
+  const title = getTranslation(translations.services[language], language, 'title');
+  const subtitle = getTranslation(translations.services[language], language, 'subtitle');
+  const description = getTranslation(translations.services[language], language, 'description');
+  const viewAll = getTranslation(translations.services[language], language, 'viewAll');
+  
+  // Safely access nested translations for each service
+  const items = translations.services[language].items;
+  
+  // Check if items is an object before proceeding
+  const isValidItems = items && typeof items === 'object';
+  
+  // Define services with safe type checking
+  const services = isValidItems ? [
     {
       icon: <UserPlus size={22} />,
-      title: items.outsourcing.title,
-      description: items.outsourcing.description,
+      title: getTranslation(items, language, 'outsourcing.title'),
+      description: getTranslation(items, language, 'outsourcing.description'),
       delay: 100
     },
     {
       icon: <Globe size={22} />,
-      title: items.webDev.title,
-      description: items.webDev.description,
+      title: getTranslation(items, language, 'webDev.title'),
+      description: getTranslation(items, language, 'webDev.description'),
       delay: 200
     },
     {
       icon: <Palette size={22} />,
-      title: items.graphic.title,
-      description: items.graphic.description,
+      title: getTranslation(items, language, 'graphic.title'),
+      description: getTranslation(items, language, 'graphic.description'),
       delay: 300
     },
     {
       icon: <Wrench size={22} />,
-      title: items.hardware.title,
-      description: items.hardware.description,
+      title: getTranslation(items, language, 'hardware.title'),
+      description: getTranslation(items, language, 'hardware.description'),
       delay: 400
     },
     {
       icon: <Bot size={22} />,
-      title: items.ai.title,
-      description: items.ai.description,
+      title: getTranslation(items, language, 'ai.title'),
+      description: getTranslation(items, language, 'ai.description'),
       delay: 500
     },
     {
       icon: <BarChart3 size={22} />,
-      title: items.marketing.title,
-      description: items.marketing.description,
+      title: getTranslation(items, language, 'marketing.title'),
+      description: getTranslation(items, language, 'marketing.description'),
       delay: 600
     },
     {
       icon: <Share2 size={22} />,
-      title: items.social.title,
-      description: items.social.description,
+      title: getTranslation(items, language, 'social.title'),
+      description: getTranslation(items, language, 'social.description'),
       delay: 700
     },
     {
       icon: <ClipboardList size={22} />,
-      title: items.project.title,
-      description: items.project.description,
+      title: getTranslation(items, language, 'project.title'),
+      description: getTranslation(items, language, 'project.description'),
       delay: 800
     }
-  ];
+  ] : [];
 
   return (
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-            {t.title}
+            {title}
           </span>
           <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-            {t.subtitle}
+            {subtitle}
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-            {t.description}
+            {description}
           </p>
         </div>
 
@@ -114,7 +125,7 @@ const ServiceSection = () => {
             to="/services" 
             className="inline-flex items-center text-primary font-medium hover:underline"
           >
-            {t.viewAll}
+            {viewAll}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage, getTranslation } from '../context/LanguageContext';
 import LanguageSelector from './LanguageSelector';
 
 const Navbar = () => {
@@ -10,15 +10,23 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { language, translations } = useLanguage();
-  const t = translations.navbar[language];
+  
+  // Safely access translations
+  const home = getTranslation(translations.navbar[language], language, 'home');
+  const services = getTranslation(translations.navbar[language], language, 'services');
+  const solutions = getTranslation(translations.navbar[language], language, 'solutions');
+  const aboutUs = getTranslation(translations.navbar[language], language, 'aboutUs');
+  const portfolio = getTranslation(translations.navbar[language], language, 'portfolio');
+  const contact = getTranslation(translations.navbar[language], language, 'contact');
+  const getStarted = getTranslation(translations.navbar[language], language, 'getStarted');
 
   const navLinks = [
-    { title: t.home, path: '/' },
-    { title: t.services, path: '/services' },
-    { title: t.solutions, path: '/solutions' },
-    { title: t.aboutUs, path: '/about' },
-    { title: t.portfolio, path: '/portfolio' },
-    { title: t.contact, path: '/contact' },
+    { title: home, path: '/' },
+    { title: services, path: '/services' },
+    { title: solutions, path: '/solutions' },
+    { title: aboutUs, path: '/about' },
+    { title: portfolio, path: '/portfolio' },
+    { title: contact, path: '/contact' },
   ];
 
   useEffect(() => {
@@ -79,7 +87,7 @@ const Navbar = () => {
               to="/contact" 
               className="bg-primary text-white px-5 py-2 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
             >
-              {t.getStarted}
+              {getStarted}
             </Link>
           </div>
 
@@ -122,7 +130,7 @@ const Navbar = () => {
               to="/contact" 
               className="block w-full bg-primary text-white text-center px-5 py-3 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
             >
-              {t.getStarted}
+              {getStarted}
             </Link>
           </div>
         </div>

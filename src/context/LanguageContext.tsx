@@ -2,13 +2,17 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 type Language = 'pl' | 'en';
 
-type TranslationObject = {
+interface TranslationObject {
   [key: string]: string | TranslationObject;
-};
+}
 
 type TranslationSection = {
-  [key: string]: {
-    [language: string]: TranslationObject;
+  [section: string]: {
+    [language in Language]: {
+      [key: string]: string | {
+        [nestedKey: string]: string;
+      };
+    };
   };
 };
 
@@ -17,6 +21,26 @@ type LanguageContextType = {
   setLanguage: (language: Language) => void;
   translations: TranslationSection;
 };
+
+export function getTranslation(obj: any, language: Language, path: string): string {
+  const parts = path.split('.');
+  let current = obj;
+  
+  for (const part of parts) {
+    if (current[part] === undefined) {
+      console.warn(`Translation missing for path: ${path}, language: ${language}`);
+      return '';
+    }
+    current = current[part];
+  }
+  
+  if (typeof current !== 'string') {
+    console.warn(`Expected string at path: ${path}, language: ${language}, got:`, current);
+    return '';
+  }
+  
+  return current;
+}
 
 const translations = {
   navbar: {

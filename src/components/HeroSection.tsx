@@ -2,12 +2,22 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage, getTranslation } from '../context/LanguageContext';
 
 const HeroSection = () => {
   const blobRef = useRef<HTMLDivElement>(null);
   const { language, translations } = useLanguage();
-  const t = translations.hero[language];
+  
+  // Safely access translations with the helper function
+  const innovativeIt = getTranslation(translations.hero[language], language, 'innovativeIt');
+  const transformBusiness = getTranslation(translations.hero[language], language, 'transformBusiness');
+  const description = getTranslation(translations.hero[language], language, 'description');
+  const getStarted = getTranslation(translations.hero[language], language, 'getStarted');
+  const ourServices = getTranslation(translations.hero[language], language, 'ourServices');
+  const innovation = getTranslation(translations.hero[language], language, 'innovation');
+  const futureReady = getTranslation(translations.hero[language], language, 'futureReady');
+  const performance = getTranslation(translations.hero[language], language, 'performance');
+  const optimized = getTranslation(translations.hero[language], language, 'optimized');
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -40,29 +50,29 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-10 z-10">
             <div className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 inline-block mb-6 font-medium animate-fade-in">
-              {t.innovativeIt}
+              {innovativeIt}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {t.transformBusiness.split(' With ')[0]} <span className="text-gradient">
+              {transformBusiness.split(' ')[0]} <span className="text-gradient">
                 {language === 'en' ? 'With Technology' : 'Za Pomocą Technologii'}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-xl animate-fade-in" style={{ animationDelay: '400ms' }}>
-              {t.description}
+              {description}
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in" style={{ animationDelay: '600ms' }}>
               <Link 
                 to="/contact" 
                 className="bg-primary text-white px-8 py-3 rounded-full font-medium flex items-center justify-center transition-all hover:bg-primary/90 hover:shadow-lg"
               >
-                {t.getStarted}
+                {getStarted}
                 <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
                 to="/services" 
                 className="bg-white text-gray-800 border border-gray-200 px-8 py-3 rounded-full font-medium flex items-center justify-center transition-all hover:bg-gray-50 hover:shadow"
               >
-                {t.ourServices}
+                {ourServices}
               </Link>
             </div>
           </div>
@@ -86,8 +96,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">{t.innovation}</p>
-                      <p className="text-xs text-gray-500">{t.futureReady}</p>
+                      <p className="font-medium text-sm">{innovation}</p>
+                      <p className="text-xs text-gray-500">{futureReady}</p>
                     </div>
                   </div>
                 </div>
@@ -99,8 +109,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">{t.performance}</p>
-                      <p className="text-xs text-gray-500">{t.optimized}</p>
+                      <p className="font-medium text-sm">{performance}</p>
+                      <p className="text-xs text-gray-500">{optimized}</p>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage, getTranslation } from '../context/LanguageContext';
 
 interface TestimonialProps {
   quote: string;
@@ -40,7 +40,11 @@ const Testimonials = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const timeoutRef = useRef<number | null>(null);
   const { language, translations } = useLanguage();
-  const t = translations.testimonials[language];
+  
+  // Safely access translations
+  const title = getTranslation(translations.testimonials[language], language, 'title');
+  const subtitle = getTranslation(translations.testimonials[language], language, 'subtitle');
+  const description = getTranslation(translations.testimonials[language], language, 'description');
 
   const nextSlide = () => {
     if (isAnimating) return;
@@ -74,13 +78,13 @@ const Testimonials = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-            {t.title}
+            {title}
           </span>
           <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-            {t.subtitle}
+            {subtitle}
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-            {t.description}
+            {description}
           </p>
         </div>
 
