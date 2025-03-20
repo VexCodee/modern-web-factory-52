@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 // Struktura tłumaczeń dla wszystkich języków
@@ -37,6 +36,51 @@ const polishTranslations: Translations = {
     futureReady: 'Rozwiązania przyszłości',
     performance: 'Wydajność',
     optimized: 'Zoptymalizowane procesy'
+  },
+  technologies: {
+    tag: 'Zaawansowane Technologie',
+    title: 'Technologia, Która Wspiera Twój Biznes',
+    subtitle: 'Nasze innowacyjne rozwiązania są projektowane z myślą o przyspieszeniu wzrostu Twojej firmy i optymalizacji procesów biznesowych. Wykorzystując najnowsze technologie, pomagamy Ci osiągnąć przewagę konkurencyjną.',
+    cloud: {
+      title: 'Cloud Computing',
+      description: 'Wydajne rozwiązania infrastruktury chmurowej, które skalują się wraz z potrzebami Twojego biznesu'
+    },
+    ai: {
+      title: 'Sztuczna Inteligencja',
+      description: 'Inteligentne rozwiązania AI, które przekształcają dane w cenne spostrzeżenia biznesowe'
+    },
+    iot: {
+      title: 'IoT i Edge Computing',
+      description: 'Połącz i zarządzaj wszystkimi swoimi urządzeniami dzięki naszej zaawansowanej platformie IoT'
+    },
+    sustainable: {
+      title: 'Zrównoważone Technologie',
+      description: 'Ekologiczne rozwiązania technologiczne o minimalnym wpływie na środowisko'
+    },
+    cta: {
+      title: 'Gotowy na wykorzystanie tych technologii?',
+      description: 'Porozmawiajmy o tym, jak nasza wiedza techniczna może pomóc w rozwoju Twojego biznesu',
+      button: 'Zaplanuj Konsultację'
+    }
+  },
+  innovation: {
+    tag: 'Innowacje',
+    title: 'Transformacja Cyfrowa',
+    subtitle: 'Innowacyjne Rozwiązania Dla Nowoczesnych Biznesów',
+    description: 'Wykorzystując sztuczną inteligencję, automatyzację i najnowsze zdobycze technologiczne, dostarczamy rozwiązania, które transformują procesy biznesowe i zwiększają konkurencyjność.',
+    heading: 'Technologia, Która Wspiera Twój Biznes',
+    innovation: {
+      title: 'Innowacja',
+      description: 'Rozwiązania przyszłości'
+    },
+    benefits: {
+      automated: 'Zautomatyzowane procesy biznesowe',
+      ai: 'Inteligentne rozwiązania oparte o AI',
+      cloud: 'Skalowalna infrastruktura w chmurze',
+      security: 'Zabezpieczenia na poziomie enterprise'
+    },
+    cta: 'Odkryj Nasze Rozwiązania',
+    imageAlt: 'Innowacyjne rozwiązania technologiczne'
   },
   contact: {
     title: 'Kontakt',
@@ -375,6 +419,51 @@ const englishTranslations: Translations = {
     performance: 'Performance',
     optimized: 'Optimized processes'
   },
+  technologies: {
+    tag: 'Advanced Technologies',
+    title: 'Technology That Supports Your Business',
+    subtitle: 'Our innovative solutions are designed to accelerate your company\'s growth and optimize business processes. By leveraging the latest technologies, we help you achieve a competitive advantage.',
+    cloud: {
+      title: 'Cloud Computing',
+      description: 'Powerful cloud infrastructure solutions that scale with your business needs'
+    },
+    ai: {
+      title: 'Artificial Intelligence',
+      description: 'Smart AI solutions that transform data into valuable business insights'
+    },
+    iot: {
+      title: 'IoT & Edge Computing',
+      description: 'Connect and manage all your devices with our advanced IoT platform'
+    },
+    sustainable: {
+      title: 'Sustainable Tech',
+      description: 'Eco-friendly technology solutions with minimal environmental impact'
+    },
+    cta: {
+      title: 'Ready to leverage these technologies?',
+      description: 'Let\'s discuss how our tech expertise can help your business grow',
+      button: 'Schedule a Consultation'
+    }
+  },
+  innovation: {
+    tag: 'Innovation',
+    title: 'Digital Transformation',
+    subtitle: 'Innovative Solutions For Modern Businesses',
+    description: 'Leveraging artificial intelligence, automation, and the latest technological advancements, we deliver solutions that transform business processes and increase competitiveness.',
+    heading: 'Technology That Supports Your Business',
+    innovation: {
+      title: 'Innovation',
+      description: 'Future-ready solutions'
+    },
+    benefits: {
+      automated: 'Automated business processes',
+      ai: 'Intelligent AI-powered solutions',
+      cloud: 'Scalable cloud infrastructure',
+      security: 'Enterprise-grade security'
+    },
+    cta: 'Discover Our Solutions',
+    imageAlt: 'Innovative technology solutions'
+  },
   contact: {
     title: 'Contact',
     subtitle: 'Get in Touch',
@@ -712,6 +801,51 @@ const germanTranslations: Translations = {
     performance: 'Leistung',
     optimized: 'Optimierte Prozesse'
   },
+  technologies: {
+    tag: 'Fortschrittliche Technologien',
+    title: 'Technologie, Die Ihr Unternehmen Unterstützt',
+    subtitle: 'Unsere innovativen Lösungen sind darauf ausgerichtet, das Wachstum Ihres Unternehmens zu beschleunigen und Geschäftsprozesse zu optimieren. Durch den Einsatz der neuesten Technologien helfen wir Ihnen, einen Wettbewerbsvorteil zu erzielen.',
+    cloud: {
+      title: 'Cloud Computing',
+      description: 'Leistungsstarke Cloud-Infrastrukturlösungen, die mit den Bedürfnissen Ihres Unternehmens skalieren'
+    },
+    ai: {
+      title: 'Künstliche Intelligenz',
+      description: 'Intelligente KI-Lösungen, die Daten in wertvolle Geschäftseinblicke umwandeln'
+    },
+    iot: {
+      title: 'IoT & Edge Computing',
+      description: 'Verbinden und verwalten Sie alle Ihre Geräte mit unserer fortschrittlichen IoT-Plattform'
+    },
+    sustainable: {
+      title: 'Nachhaltige Technologie',
+      description: 'Umweltfreundliche Technologielösungen mit minimaler Umweltbelastung'
+    },
+    cta: {
+      title: 'Bereit, diese Technologien zu nutzen?',
+      description: 'Lassen Sie uns besprechen, wie unser technisches Know-how Ihrem Unternehmen beim Wachstum helfen kann',
+      button: 'Beratungsgespräch Vereinbaren'
+    }
+  },
+  innovation: {
+    tag: 'Innovation',
+    title: 'Digitale Transformation',
+    subtitle: 'Innovative Lösungen Für Moderne Unternehmen',
+    description: 'Durch den Einsatz von künstlicher Intelligenz, Automatisierung und den neuesten technologischen Errungenschaften liefern wir Lösungen, die Geschäftsprozesse transformieren und die Wettbewerbsfähigkeit steigern.',
+    heading: 'Technologie, Die Ihr Unternehmen Unterstützt',
+    innovation: {
+      title: 'Innovation',
+      description: 'Zukunftssichere Lösungen'
+    },
+    benefits: {
+      automated: 'Automatisierte Geschäftsprozesse',
+      ai: 'Intelligente KI-gestützte Lösungen',
+      cloud: 'Skalierbare Cloud-Infrastruktur',
+      security: 'Sicherheit auf Unternehmensniveau'
+    },
+    cta: 'Entdecken Sie Unsere Lösungen',
+    imageAlt: 'Innovative Technologielösungen'
+  },
   contact: {
     title: 'Kontakt',
     subtitle: 'Kontaktieren Sie Uns',
@@ -1026,7 +1160,6 @@ const germanTranslations: Translations = {
     backHome: 'Zurück zur Startseite'
   }
 };
-
 
 // Funkcja pomocnicza do bezpiecznego dostępu do tłumaczeń
 export const getTranslation = (translations: any, path: string): string => {
