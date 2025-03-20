@@ -12,53 +12,53 @@ const Solution = () => {
   const solutions = [
     {
       title: t('solutions.industries.finance'),
-      description: "Kompleksowa strategia i wdrożenie transformacji cyfrowej dla przedsiębiorstw pragnących unowocześnić swoje działania i pozostać konkurencyjnymi w erze cyfrowej.",
+      description: t('Kompleksowa strategia i wdrożenie transformacji cyfrowej dla przedsiębiorstw pragnących unowocześnić swoje działania i pozostać konkurencyjnymi w erze cyfrowej.'),
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2015&q=80",
       features: [
-        "Ocena i modernizacja infrastruktury technologicznej",
-        "Przeprojektowanie procesów biznesowych",
-        "Migracja do chmury i optymalizacja",
-        "Zarządzanie zmianą i szkolenia pracowników",
-        "Wdrażanie cyfrowych przepływów pracy"
+        t("Ocena i modernizacja infrastruktury technologicznej"),
+        t("Przeprojektowanie procesów biznesowych"),
+        t("Migracja do chmury i optymalizacja"),
+        t("Zarządzanie zmianą i szkolenia pracowników"),
+        t("Wdrażanie cyfrowych przepływów pracy")
       ],
       delay: 100
     },
     {
       title: t('solutions.industries.healthcare'),
-      description: "Wykorzystaj sztuczną inteligencję, aby przekształcić interakcje z klientami, zapewniając spersonalizowane doświadczenia przy jednoczesnym zwiększeniu efektywności operacyjnej.",
+      description: t("Wykorzystaj sztuczną inteligencję, aby przekształcić interakcje z klientami, zapewniając spersonalizowane doświadczenia przy jednoczesnym zwiększeniu efektywności operacyjnej."),
       image: "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       features: [
-        "Inteligentne chatboty i wirtualni asystenci",
-        "Predykcyjna analityka klientów",
-        "Spersonalizowane systemy rekomendacji",
-        "Zautomatyzowane przepływy obsługi klienta",
-        "Analiza sentymentu i przetwarzanie opinii"
+        t("Inteligentne chatboty i wirtualni asystenci"),
+        t("Predykcyjna analityka klientów"),
+        t("Spersonalizowane systemy rekomendacji"),
+        t("Zautomatyzowane przepływy obsługi klienta"),
+        t("Analiza sentymentu i przetwarzanie opinii")
       ],
       delay: 200
     },
     {
       title: t('solutions.industries.retail'),
-      description: "Kompleksowe rozwiązanie e-commerce, które płynnie integruje Twoją witrynę sklepową online z zarządzaniem zapasami, przetwarzaniem płatności, logistyką i systemami zarządzania klientami.",
+      description: t("Kompleksowe rozwiązanie e-commerce, które płynnie integruje Twoją witrynę sklepową online z zarządzaniem zapasami, przetwarzaniem płatności, logistyką i systemami zarządzania klientami."),
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        "Responsywny i zoptymalizowany pod kątem konwersji sklep online",
-        "Integracja z systemem zarządzania zapasami",
-        "Implementacja bezpiecznej bramki płatności",
-        "Automatyzacja realizacji zamówień i logistyki",
-        "Zarządzanie relacjami z klientami"
+        t("Responsywny i zoptymalizowany pod kątem konwersji sklep online"),
+        t("Integracja z systemem zarządzania zapasami"),
+        t("Implementacja bezpiecznej bramki płatności"),
+        t("Automatyzacja realizacji zamówień i logistyki"),
+        t("Zarządzanie relacjami z klientami")
       ],
       delay: 300
     },
     {
       title: t('solutions.industries.education'),
-      description: "Przekształć surowe dane w przydatne wnioski dzięki naszym kompleksowym rozwiązaniom analitycznym i business intelligence, które wspierają podejmowanie decyzji w oparciu o dane.",
+      description: t("Przekształć surowe dane w przydatne wnioski dzięki naszym kompleksowym rozwiązaniom analitycznym i business intelligence, które wspierają podejmowanie decyzji w oparciu o dane."),
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        "Wdrożenie hurtowni danych",
-        "Tworzenie niestandardowych dashboardów",
-        "Modele analityki predykcyjnej",
-        "Zautomatyzowane systemy raportowania",
-        "Narzędzia do wizualizacji danych"
+        t("Wdrożenie hurtowni danych"),
+        t("Tworzenie niestandardowych dashboardów"),
+        t("Modele analityki predykcyjnej"),
+        t("Zautomatyzowane systemy raportowania"),
+        t("Narzędzia do wizualizacji danych")
       ],
       delay: 400
     }
@@ -68,32 +68,32 @@ const Solution = () => {
     {
       name: t('solutions.industries.healthcare'),
       icon: "🏥",
-      description: "Bezpieczne systemy zarządzania pacjentami, platformy telemedyczne i rozwiązania analityczne dla zdrowia."
+      description: t("Bezpieczne systemy zarządzania pacjentami, platformy telemedyczne i rozwiązania analityczne dla zdrowia.")
     },
     {
       name: t('solutions.industries.finance'),
       icon: "💼",
-      description: "Bezpieczne systemy transakcyjne, wykrywanie oszustw i narzędzia do zarządzania finansami klientów."
+      description: t("Bezpieczne systemy transakcyjne, wykrywanie oszustw i narzędzia do zarządzania finansami klientów.")
     },
     {
       name: t('solutions.industries.retail'),
       icon: "🛍️",
-      description: "Zarządzanie zapasami, platformy e-commerce i programy lojalnościowe dla klientów."
+      description: t("Zarządzanie zapasami, platformy e-commerce i programy lojalnościowe dla klientów.")
     },
     {
       name: t('solutions.industries.manufacturing'),
       icon: "🏭",
-      description: "Optymalizacja produkcji, zarządzanie łańcuchem dostaw i systemy kontroli jakości."
+      description: t("Optymalizacja produkcji, zarządzanie łańcuchem dostaw i systemy kontroli jakości.")
     },
     {
       name: t('solutions.industries.education'),
       icon: "🎓",
-      description: "Systemy zarządzania nauczaniem, narzędzia do oceny studentów i rozwiązania administracyjne."
+      description: t("Systemy zarządzania nauczaniem, narzędzia do oceny studentów i rozwiązania administracyjne.")
     },
     {
       name: t('solutions.industries.logistics'),
       icon: "🏨",
-      description: "Systemy rezerwacji, platformy dla doświadczeń gości i rozwiązania zarządzania obiektami."
+      description: t("Systemy rezerwacji, platformy dla doświadczeń gości i rozwiązania zarządzania obiektami.")
     }
   ];
 

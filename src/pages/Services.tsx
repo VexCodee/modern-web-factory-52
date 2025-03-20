@@ -13,57 +13,57 @@ const ServicePage = () => {
     {
       icon: <UserPlus size={24} />,
       title: t('services.items.outsourcing.title'),
-      description: "Wykorzystaj nasze doświadczenie do zarządzania operacjami IT, co pozwoli Ci skupić się na kluczowej działalności biznesowej. Oferujemy dedykowane zespoły, usługi projektowe i zarządzane rozwiązania IT dostosowane do Twoich konkretnych potrzeb.",
-      benefits: ["Redukcja kosztów", "Dostęp do specjalistycznej wiedzy", "Skalowalne zasoby", "Skupienie się na głównej działalności"],
+      description: t('services.items.outsourcing.description'),
+      benefits: [t("Redukcja kosztów"), t("Dostęp do specjalistycznej wiedzy"), t("Skalowalne zasoby"), t("Skupienie się na głównej działalności")],
       delay: 100
     },
     {
       icon: <Globe size={24} />,
       title: t('services.items.webDev.title'),
-      description: "Od responsywnych stron internetowych po złożone aplikacje webowe i platformy e-commerce, dostarczamy niestandardowe rozwiązania internetowe, które są zgodne z Twoimi celami biznesowymi i zapewniają wyjątkowe doświadczenia użytkownika.",
-      benefits: ["Responsywny design", "Optymalizacja SEO", "Bezpieczne transakcje", "Niestandardowe funkcjonalności"],
+      description: t('services.items.webDev.description'),
+      benefits: [t("Responsywny design"), t("Optymalizacja SEO"), t("Bezpieczne transakcje"), t("Niestandardowe funkcjonalności")],
       delay: 200
     },
     {
       icon: <Palette size={24} />,
       title: t('services.items.graphic.title'),
-      description: "Nasz kreatywny zespół tworzy zachwycające wizualnie projekty, które wzmacniają tożsamość Twojej marki i skutecznie komunikują Twoje przesłanie we wszystkich mediach cyfrowych i drukowanych.",
-      benefits: ["Spójność marki", "Design zorientowany na użytkownika", "Kreatywne koncepcje", "Zasoby wieloplatformowe"],
+      description: t('services.items.graphic.description'),
+      benefits: [t("Spójność marki"), t("Design zorientowany na użytkownika"), t("Kreatywne koncepcje"), t("Zasoby wieloplatformowe")],
       delay: 300
     },
     {
       icon: <Wrench size={24} />,
       title: t('services.items.hardware.title'),
-      description: "Szybkie i niezawodne usługi diagnozy i naprawy całego sprzętu IT. Minimalizujemy przestoje i zapewniamy optymalną wydajność Twojego sprzętu.",
-      benefits: ["Szybka realizacja", "Certyfikowani technicy", "Wysokiej jakości części zamienne", "Konserwacja zapobiegawcza"],
+      description: t('services.items.hardware.description'),
+      benefits: [t("Szybka realizacja"), t("Certyfikowani technicy"), t("Wysokiej jakości części zamienne"), t("Konserwacja zapobiegawcza")],
       delay: 400
     },
     {
       icon: <Bot size={24} />,
       title: t('services.items.ai.title'),
-      description: "Wykorzystaj moc sztucznej inteligencji do automatyzacji procesów, uzyskiwania informacji z danych i tworzenia inteligentnych systemów, które uczą się i dostosowują do Twojego środowiska biznesowego.",
-      benefits: ["Automatyzacja procesów", "Analityka predykcyjna", "Przetwarzanie języka naturalnego", "Integracja uczenia maszynowego"],
+      description: t('services.items.ai.description'),
+      benefits: [t("Automatyzacja procesów"), t("Analityka predykcyjna"), t("Przetwarzanie języka naturalnego"), t("Integracja uczenia maszynowego")],
       delay: 500
     },
     {
       icon: <BarChart3 size={24} />,
       title: t('services.items.marketing.title'),
-      description: "Strategiczne kampanie marketingu cyfrowego, które generują ruch, pozyskują potencjalnych klientów i zwiększają współczynniki konwersji. Łączymy kreatywność z podejściem opartym na danych, aby zmaksymalizować Twój zwrot z inwestycji.",
-      benefits: ["Ukierunkowane kampanie", "Śledzenie wydajności", "Strategia treści", "Optymalizacja konwersji"],
+      description: t('services.items.marketing.description'),
+      benefits: [t("Ukierunkowane kampanie"), t("Śledzenie wydajności"), t("Strategia treści"), t("Optymalizacja konwersji")],
       delay: 600
     },
     {
       icon: <Share2 size={24} />,
       title: t('services.items.social.title'),
-      description: "Kompleksowe strategie mediów społecznościowych, które budują obecność Twojej marki, angażują odbiorców i napędzają rozwój biznesu poprzez efektywne zarządzanie treścią i społecznością.",
-      benefits: ["Kalendarz treści", "Zaangażowanie społeczności", "Optymalizacja platform", "Analityka wydajności"],
+      description: t('services.items.social.description'),
+      benefits: [t("Kalendarz treści"), t("Zaangażowanie społeczności"), t("Optymalizacja platform"), t("Analityka wydajności")],
       delay: 700
     },
     {
       icon: <ClipboardList size={24} />,
       title: t('services.items.project.title'),
-      description: "Profesjonalne planowanie, realizacja i nadzór nad projektami technologicznymi, zapewniające terminową dostawę, w ramach budżetu i zgodnie z najwyższymi standardami jakości.",
-      benefits: ["Jasna komunikacja", "Zarządzanie ryzykiem", "Optymalizacja zasobów", "Zapewnienie jakości"],
+      description: t('services.items.project.description'),
+      benefits: [t("Jasna komunikacja"), t("Zarządzanie ryzykiem"), t("Optymalizacja zasobów"), t("Zapewnienie jakości")],
       delay: 800
     }
   ];
@@ -107,7 +107,7 @@ const ServicePage = () => {
                   <h3 className="text-2xl font-display font-semibold mb-4">{service.title}</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
                   
-                  <h4 className="font-medium text-lg mb-3">Główne Korzyści:</h4>
+                  <h4 className="font-medium text-lg mb-3">{t('Główne Korzyści')}:</h4>
                   <ul className="space-y-2 mb-6">
                     {service.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start">

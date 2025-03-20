@@ -1,54 +1,31 @@
 
 import React from 'react';
 import { Shield, Zap, Users, BarChart } from 'lucide-react';
-import { useLanguage, getTranslation } from '../context/LanguageContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const WhyChooseUs = () => {
-  const { translations } = useLanguage();
+  const { t } = useLanguage();
   
-  // Pobieranie tekstów z kontekstu
-  const title = getTranslation(translations, 'whyChooseUs.title');
-  const subtitle = getTranslation(translations, 'whyChooseUs.subtitle');
-  const description = getTranslation(translations, 'whyChooseUs.description');
-  
-  // Teksty dla statystyk
-  const clientsLabel = getTranslation(translations, 'whyChooseUs.stats.clients');
-  const satisfactionLabel = getTranslation(translations, 'whyChooseUs.stats.satisfaction');
-  const experienceLabel = getTranslation(translations, 'whyChooseUs.stats.experience');
-  
-  // Teksty dla funkcji
-  const expertiseTitle = getTranslation(translations, 'whyChooseUs.features.expertise.title');
-  const expertiseDesc = getTranslation(translations, 'whyChooseUs.features.expertise.description');
-  
-  const innovativeTitle = getTranslation(translations, 'whyChooseUs.features.innovative.title');
-  const innovativeDesc = getTranslation(translations, 'whyChooseUs.features.innovative.description');
-  
-  const teamTitle = getTranslation(translations, 'whyChooseUs.features.team.title');
-  const teamDesc = getTranslation(translations, 'whyChooseUs.features.team.description');
-  
-  const resultsTitle = getTranslation(translations, 'whyChooseUs.features.results.title');
-  const resultsDesc = getTranslation(translations, 'whyChooseUs.features.results.description');
-
   const features = [
     {
       icon: <Shield size={24} className="text-primary" />,
-      title: expertiseTitle,
-      description: expertiseDesc
+      title: t('whyChooseUs.features.expertise.title'),
+      description: t('whyChooseUs.features.expertise.description')
     },
     {
       icon: <Zap size={24} className="text-primary" />,
-      title: innovativeTitle,
-      description: innovativeDesc
+      title: t('whyChooseUs.features.innovative.title'),
+      description: t('whyChooseUs.features.innovative.description')
     },
     {
       icon: <Users size={24} className="text-primary" />,
-      title: teamTitle,
-      description: teamDesc
+      title: t('whyChooseUs.features.team.title'),
+      description: t('whyChooseUs.features.team.description')
     },
     {
       icon: <BarChart size={24} className="text-primary" />,
-      title: resultsTitle,
-      description: resultsDesc
+      title: t('whyChooseUs.features.results.title'),
+      description: t('whyChooseUs.features.results.description')
     }
   ];
 
@@ -63,13 +40,13 @@ const WhyChooseUs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              {title}
+              {t('whyChooseUs.title')}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              {subtitle}
+              {t('whyChooseUs.subtitle')}
             </h2>
             <p className="mt-6 text-lg text-gray-600 leading-relaxed animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {description}
+              {t('whyChooseUs.description')}
             </p>
             
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -103,15 +80,15 @@ const WhyChooseUs = () => {
                 <div className="grid grid-cols-3 divide-x divide-gray-200">
                   <div className="px-4 text-center">
                     <div className="text-3xl font-bold text-primary">200+</div>
-                    <div className="text-sm text-gray-600 mt-1">{clientsLabel}</div>
+                    <div className="text-sm text-gray-600 mt-1">{t('whyChooseUs.stats.clients')}</div>
                   </div>
                   <div className="px-4 text-center">
                     <div className="text-3xl font-bold text-primary">98%</div>
-                    <div className="text-sm text-gray-600 mt-1">{satisfactionLabel}</div>
+                    <div className="text-sm text-gray-600 mt-1">{t('whyChooseUs.stats.satisfaction')}</div>
                   </div>
                   <div className="px-4 text-center">
                     <div className="text-3xl font-bold text-primary">10+</div>
-                    <div className="text-sm text-gray-600 mt-1">{experienceLabel}</div>
+                    <div className="text-sm text-gray-600 mt-1">{t('whyChooseUs.stats.experience')}</div>
                   </div>
                 </div>
               </div>
