@@ -7,77 +7,77 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   
   const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'web', label: 'Web Development' },
-    { id: 'ai', label: 'AI Solutions' },
+    { id: 'all', label: 'Wszystkie Projekty' },
+    { id: 'web', label: 'Rozwój Stron WWW' },
+    { id: 'ai', label: 'Rozwiązania AI' },
     { id: 'marketing', label: 'Marketing' },
-    { id: 'design', label: 'Graphic Design' }
+    { id: 'design', label: 'Projektowanie Graficzne' }
   ];
   
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
+      title: "Platforma E-commerce",
       category: "web",
       image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
       client: "RetailMax",
-      description: "Custom e-commerce solution with integrated inventory management and customer analytics dashboard."
+      description: "Niestandardowe rozwiązanie e-commerce ze zintegrowanym zarządzaniem inwentarzem i pulpitem analitycznym klienta."
     },
     {
       id: 2,
-      title: "Customer Service AI Bot",
+      title: "Bot AI Obsługi Klienta",
       category: "ai",
       image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80",
       client: "ServiceFirst Inc.",
-      description: "AI-powered chatbot handling customer inquiries and support tickets with 85% resolution rate."
+      description: "Chatbot oparty na sztucznej inteligencji obsługujący zapytania klientów i zgłoszenia serwisowe z 85% skutecznością rozwiązań."
     },
     {
       id: 3,
-      title: "Digital Marketing Campaign",
+      title: "Kampania Marketingu Cyfrowego",
       category: "marketing",
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       client: "GrowthBrand",
-      description: "Comprehensive digital marketing strategy that increased lead generation by 150% in 6 months."
+      description: "Kompleksowa strategia marketingu cyfrowego, która zwiększyła generowanie leadów o 150% w ciągu 6 miesięcy."
     },
     {
       id: 4,
-      title: "Corporate Rebranding",
+      title: "Rebranding Korporacyjny",
       category: "design",
       image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       client: "InnovateFinance",
-      description: "Complete brand refresh including logo design, visual identity, and marketing materials."
+      description: "Kompletne odświeżenie marki, w tym projektowanie logo, tożsamość wizualna i materiały marketingowe."
     },
     {
       id: 5,
-      title: "Healthcare Portal",
+      title: "Portal Medyczny",
       category: "web",
       image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       client: "MediCare Network",
-      description: "Secure patient portal with telemedicine integration and medical records management."
+      description: "Bezpieczny portal pacjenta z integracją telemedycyny i zarządzaniem dokumentacją medyczną."
     },
     {
       id: 6,
-      title: "Predictive Analytics Tool",
+      title: "Narzędzie Analityki Predykcyjnej",
       category: "ai",
       image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       client: "DataInsight Corp",
-      description: "Machine learning solution for sales forecasting and inventory optimization."
+      description: "Rozwiązanie uczenia maszynowego do prognozowania sprzedaży i optymalizacji zapasów."
     },
     {
       id: 7,
-      title: "Social Media Strategy",
+      title: "Strategia Mediów Społecznościowych",
       category: "marketing",
       image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
       client: "TrendSetter Apparel",
-      description: "Content strategy and management across multiple platforms, increasing engagement by 200%."
+      description: "Strategia treści i zarządzanie na wielu platformach, zwiększające zaangażowanie o 200%."
     },
     {
       id: 8,
-      title: "Product Packaging Design",
+      title: "Projekt Opakowań Produktów",
       category: "design",
       image: "https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       client: "Organic Foods",
-      description: "Eco-friendly packaging design that improved brand recognition and market positioning."
+      description: "Ekologiczny projekt opakowań, który poprawił rozpoznawalność marki i pozycjonowanie na rynku."
     }
   ];
   
@@ -95,13 +95,13 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Portfolio
+              Nasze Portfolio
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Showcasing Our Work
+              Prezentacja Naszych Prac
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Explore our diverse portfolio of projects that have helped businesses transform and thrive in the digital landscape.
+              Odkryj nasze zróżnicowane portfolio projektów, które pomogły firmom przekształcić się i prosperować w cyfrowym krajobrazie.
             </p>
           </div>
         </div>
@@ -149,7 +149,7 @@ const Portfolio = () => {
                       {filters.find(f => f.id === project.category)?.label.split(' ')[0]}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500 mb-3">Client: {project.client}</p>
+                  <p className="text-sm text-gray-500 mb-3">Klient: {project.client}</p>
                   <p className="text-gray-600">{project.description}</p>
                 </div>
               </div>
@@ -163,13 +163,13 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Clients
+              Nasi Klienci
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Trusted by Leading Brands
+              Zaufały Nam Wiodące Marki
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              We're proud to partner with organizations across various industries to drive their digital success.
+              Jesteśmy dumni z partnerstwa z organizacjami z różnych branż, aby napędzać ich cyfrowy sukces.
             </p>
           </div>
 

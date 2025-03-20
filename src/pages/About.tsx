@@ -8,50 +8,50 @@ const About = () => {
   const values = [
     {
       icon: <Shield size={24} className="text-primary" />,
-      title: "Integrity",
-      description: "We operate with transparency and honesty in all our interactions, building trust with our clients and partners."
+      title: "Uczciwość",
+      description: "Działamy z przejrzystością i uczciwością we wszystkich naszych interakcjach, budując zaufanie z naszymi klientami i partnerami."
     },
     {
       icon: <Users size={24} className="text-primary" />,
-      title: "Collaboration",
-      description: "We believe in working closely with our clients, fostering a partnership that leads to mutual success."
+      title: "Współpraca",
+      description: "Wierzymy w ścisłą współpracę z naszymi klientami, budując partnerstwo prowadzące do wspólnego sukcesu."
     },
     {
       icon: <Target size={24} className="text-primary" />,
-      title: "Excellence",
-      description: "We are committed to delivering the highest quality solutions and exceeding client expectations in everything we do."
+      title: "Doskonałość",
+      description: "Jesteśmy zobowiązani do dostarczania rozwiązań najwyższej jakości i przekraczania oczekiwań klientów we wszystkim, co robimy."
     },
     {
       icon: <Award size={24} className="text-primary" />,
-      title: "Innovation",
-      description: "We continuously explore emerging technologies and creative approaches to solve complex business challenges."
+      title: "Innowacja",
+      description: "Nieustannie odkrywamy nowe technologie i kreatywne podejścia do rozwiązywania złożonych wyzwań biznesowych."
     }
   ];
 
   const team = [
     {
-      name: "Alexander Mitchell",
-      position: "CEO & Founder",
+      name: "Aleksander Kowalski",
+      position: "Prezes & Założyciel",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      bio: "With over 15 years of experience in IT and business management, Alex founded TechPrime with a vision to help businesses leverage technology for sustainable growth."
+      bio: "Z ponad 15-letnim doświadczeniem w IT i zarządzaniu biznesem, Aleksander założył TechPrime z wizją pomocy firmom w wykorzystaniu technologii do zrównoważonego rozwoju."
     },
     {
-      name: "Sarah Johnson",
-      position: "CTO",
+      name: "Sara Nowak",
+      position: "Dyrektor Technologiczna",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-      bio: "Sarah leads our technical strategy and development teams, bringing extensive expertise in software architecture, AI, and cloud technologies."
+      bio: "Sara kieruje naszą strategią techniczną i zespołami programistów, wnosząc bogate doświadczenie w architekturze oprogramowania, sztucznej inteligencji i technologiach chmurowych."
     },
     {
-      name: "David Lee",
-      position: "Creative Director",
+      name: "Dawid Lewandowski",
+      position: "Dyrektor Kreatywny",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      bio: "David oversees all design projects, ensuring that our solutions not only function flawlessly but also provide exceptional user experiences."
+      bio: "Dawid nadzoruje wszystkie projekty graficzne, dbając o to, aby nasze rozwiązania nie tylko działały bezbłędnie, ale także zapewniały wyjątkowe doświadczenia użytkownika."
     },
     {
-      name: "Rebecca Torres",
-      position: "Marketing Director",
+      name: "Renata Tomczyk",
+      position: "Dyrektor Marketingu",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-      bio: "Rebecca develops and implements our marketing strategies, helping clients build strong brand identities and effective marketing campaigns."
+      bio: "Renata opracowuje i wdraża nasze strategie marketingowe, pomagając klientom budować silne tożsamości marek i skuteczne kampanie marketingowe."
     }
   ];
 
@@ -65,13 +65,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              About Us
+              O Nas
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Our Story & Mission
+              Nasza Historia i Misja
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Learn about our journey, values, and the passionate team behind TechPrime's success.
+              Poznaj naszą podróż, wartości i pełen pasji zespół odpowiedzialny za sukces TechPrime.
             </p>
           </div>
         </div>
@@ -83,20 +83,20 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-                Our Story
+                Nasza Historia
               </span>
               <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-                Building Digital Excellence Since 2010
+                Budujemy Cyfrową Doskonałość od 2010 roku
               </h2>
               <div className="mt-6 space-y-6 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <p>
-                  TechPrime was founded with a clear vision: to help businesses harness the full potential of technology in a rapidly evolving digital landscape. What began as a small web development agency has grown into a comprehensive IT solutions provider serving clients across multiple industries.
+                  TechPrime zostało założone z jasną wizją: pomóc firmom wykorzystać pełny potencjał technologii w szybko zmieniającym się cyfrowym krajobrazie. To, co zaczęło się jako mała agencja tworzenia stron internetowych, rozrosło się w kompleksowego dostawcę rozwiązań IT obsługującego klientów z wielu branż.
                 </p>
                 <p>
-                  Our journey has been marked by constant innovation, learning, and adaptation to emerging technologies and market needs. Through each phase of our growth, we've maintained our commitment to delivering exceptional value and building lasting relationships with our clients.
+                  Nasza podróż była naznaczona ciągłymi innowacjami, nauką i adaptacją do nowych technologii i potrzeb rynkowych. Na każdym etapie naszego rozwoju utrzymywaliśmy nasze zobowiązanie do dostarczania wyjątkowych wartości i budowania trwałych relacji z naszymi klientami.
                 </p>
                 <p>
-                  Today, we're proud to lead businesses through their digital transformation journeys, combining technical expertise with strategic thinking to create solutions that drive real business outcomes.
+                  Dziś z dumą prowadzimy firmy przez ich cyfrowe transformacje, łącząc wiedzę techniczną ze strategicznym myśleniem, aby tworzyć rozwiązania, które napędzają rzeczywiste wyniki biznesowe.
                 </p>
               </div>
             </div>
@@ -105,7 +105,7 @@ const About = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
-                  alt="TechPrime office" 
+                  alt="Biuro TechPrime" 
                   className="w-full h-auto"
                 />
               </div>
@@ -123,13 +123,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Values
+              Nasze Wartości
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              What Drives Us
+              Co Nas Napędza
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Our core values shape our culture and guide every decision we make as a company.
+              Nasze podstawowe wartości kształtują naszą kulturę i kierują każdą decyzją, którą podejmujemy jako firma.
             </p>
           </div>
 
@@ -156,13 +156,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Team
+              Nasz Zespół
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Meet the Experts
+              Poznaj Ekspertów
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Our diverse team of professionals brings together expertise across technology, design, and business strategy.
+              Nasz zróżnicowany zespół profesjonalistów łączy wiedzę specjalistyczną z zakresu technologii, projektowania i strategii biznesowej.
             </p>
           </div>
 
@@ -196,10 +196,10 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { number: "200+", label: "Clients Served" },
-              { number: "450+", label: "Projects Completed" },
-              { number: "35+", label: "Expert Team Members" },
-              { number: "10+", label: "Years of Experience" }
+              { number: "200+", label: "Obsłużonych Klientów" },
+              { number: "450+", label: "Zakończonych Projektów" },
+              { number: "35+", label: "Ekspertów w Zespole" },
+              { number: "10+", label: "Lat Doświadczenia" }
             ].map((stat, index) => (
               <div 
                 key={index} 

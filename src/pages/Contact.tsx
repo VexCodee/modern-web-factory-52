@@ -30,7 +30,7 @@ const Contact = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      toast.success('Thank you for your message! We will contact you soon.');
+      toast.success('Dziękujemy za Twoją wiadomość! Skontaktujemy się wkrótce.');
       
       // Reset form
       setFormData({
@@ -57,13 +57,13 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Contact Us
+              Kontakt
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Let's Start a Conversation
+              Rozpocznijmy Rozmowę
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Have a project in mind or questions about our services? Reach out to us and our team will get back to you soon.
+              Masz projekt w głowie lub pytania dotyczące naszych usług? Skontaktuj się z nami, a nasz zespół wkrótce się z Tobą skontaktuje.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-8">Get in Touch</h2>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-8">Skontaktuj się z nami</h2>
               
               <div className="space-y-8 mb-12">
                 <div className="flex items-start">
@@ -83,9 +83,9 @@ const Contact = () => {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Our Office</h3>
-                    <p className="text-gray-600">123 Business Avenue, Tech District</p>
-                    <p className="text-gray-600">New York, NY 10001</p>
+                    <h3 className="font-semibold text-lg mb-1">Nasze Biuro</h3>
+                    <p className="text-gray-600">ul. Biznesowa 123, Dzielnica Technologiczna</p>
+                    <p className="text-gray-600">Warszawa, 00-001</p>
                   </div>
                 </div>
                 
@@ -94,9 +94,9 @@ const Contact = () => {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Email Us</h3>
+                    <h3 className="font-semibold text-lg mb-1">Napisz do nas</h3>
                     <p className="text-gray-600 mb-1">info@techprime.com</p>
-                    <p className="text-gray-600">support@techprime.com</p>
+                    <p className="text-gray-600">wsparcie@techprime.com</p>
                   </div>
                 </div>
                 
@@ -105,9 +105,9 @@ const Contact = () => {
                     <Phone size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Call Us</h3>
-                    <p className="text-gray-600 mb-1">+1 (555) 123-4567</p>
-                    <p className="text-gray-600">Mon-Fri, 9:00 AM - 6:00 PM EST</p>
+                    <h3 className="font-semibold text-lg mb-1">Zadzwoń do nas</h3>
+                    <p className="text-gray-600 mb-1">+48 555 123 456</p>
+                    <p className="text-gray-600">Pon-Pt, 9:00 - 18:00</p>
                   </div>
                 </div>
               </div>
@@ -115,20 +115,20 @@ const Contact = () => {
               <div className="rounded-xl overflow-hidden h-72 shadow-sm">
                 {/* Placeholder for a map - would implement Google Maps or similar in a real project */}
                 <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500">Map Location</span>
+                  <span className="text-gray-500">Mapa Lokalizacji</span>
                 </div>
               </div>
             </div>
             
             {/* Contact Form */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 animate-fade-in" style={{ animationDelay: '400ms' }}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">Wyślij Nam Wiadomość</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
+                      Imię i Nazwisko
                     </label>
                     <input
                       type="text"
@@ -138,13 +138,13 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      placeholder="Your name"
+                      placeholder="Twoje imię i nazwisko"
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
+                      Adres Email
                     </label>
                     <input
                       type="email"
@@ -154,7 +154,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      placeholder="your.email@example.com"
+                      placeholder="twoj.email@przyklad.pl"
                     />
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number (Optional)
+                      Numer Telefonu (Opcjonalnie)
                     </label>
                     <input
                       type="tel"
@@ -171,13 +171,13 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+48 123 456 789"
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                      Service Interested In
+                      Interesująca Cię Usługa
                     </label>
                     <select
                       id="service"
@@ -186,23 +186,23 @@ const Contact = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                     >
-                      <option value="default" disabled>Select a service</option>
-                      <option value="outsourcing">IT Outsourcing</option>
-                      <option value="webdev">Web Development</option>
-                      <option value="design">Graphic Design</option>
-                      <option value="repair">Hardware Repair</option>
-                      <option value="ai">AI Solutions</option>
+                      <option value="default" disabled>Wybierz usługę</option>
+                      <option value="outsourcing">Outsourcing IT</option>
+                      <option value="webdev">Tworzenie Stron WWW</option>
+                      <option value="design">Projektowanie Graficzne</option>
+                      <option value="repair">Naprawa Sprzętu</option>
+                      <option value="ai">Rozwiązania AI</option>
                       <option value="marketing">Marketing</option>
-                      <option value="social">Social Media Management</option>
-                      <option value="project">Project Management</option>
-                      <option value="other">Other</option>
+                      <option value="social">Zarządzanie Mediami Społecznościowymi</option>
+                      <option value="project">Zarządzanie Projektami</option>
+                      <option value="other">Inne</option>
                     </select>
                   </div>
                 </div>
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject
+                    Temat
                   </label>
                   <input
                     type="text"
@@ -212,13 +212,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                    placeholder="How can we help you?"
+                    placeholder="W czym możemy pomóc?"
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
+                    Wiadomość
                   </label>
                   <textarea
                     id="message"
@@ -228,7 +228,7 @@ const Contact = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                    placeholder="Please describe your project or questions..."
+                    placeholder="Opisz swój projekt lub pytania..."
                   ></textarea>
                 </div>
                 
@@ -246,17 +246,17 @@ const Contact = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Sending...
+                        Wysyłanie...
                       </span>
                     ) : isSubmitted ? (
                       <span className="flex items-center">
                         <Check size={18} className="mr-2" />
-                        Message Sent
+                        Wiadomość Wysłana
                       </span>
                     ) : (
                       <span className="flex items-center">
                         <Send size={18} className="mr-2" />
-                        Send Message
+                        Wyślij Wiadomość
                       </span>
                     )}
                   </button>
@@ -275,10 +275,10 @@ const Contact = () => {
               FAQ
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Frequently Asked Questions
+              Często Zadawane Pytania
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Find answers to common questions about our services and process.
+              Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług i procesów.
             </p>
           </div>
 
@@ -286,24 +286,24 @@ const Contact = () => {
             <div className="space-y-6">
               {[
                 {
-                  question: "How long does it typically take to complete a web development project?",
-                  answer: "Project timelines vary based on complexity and scope. A simple website might take 4-6 weeks, while more complex platforms can take 3-6 months. During our initial consultation, we'll provide a detailed timeline specific to your project requirements."
+                  question: "Jak długo zwykle trwa realizacja projektu tworzenia strony internetowej?",
+                  answer: "Czas realizacji projektów różni się w zależności od złożoności i zakresu. Prosta strona internetowa może zająć 4-6 tygodni, podczas gdy bardziej złożone platformy mogą trwać 3-6 miesięcy. Podczas naszej początkowej konsultacji przedstawimy szczegółowy harmonogram dostosowany do wymagań Twojego projektu."
                 },
                 {
-                  question: "Do you offer ongoing maintenance and support after project completion?",
-                  answer: "Yes, we offer various maintenance packages to ensure your digital products remain secure, up-to-date, and performing optimally. Our support services include regular updates, security monitoring, content changes, and technical assistance."
+                  question: "Czy oferujecie bieżącą konserwację i wsparcie po zakończeniu projektu?",
+                  answer: "Tak, oferujemy różne pakiety utrzymania, aby zapewnić, że Twoje produkty cyfrowe pozostaną bezpieczne, aktualne i optymalne. Nasze usługi wsparcia obejmują regularne aktualizacje, monitorowanie bezpieczeństwa, zmiany treści i pomoc techniczną."
                 },
                 {
-                  question: "How do you handle project pricing?",
-                  answer: "We provide customized quotes based on your specific requirements. Factors affecting pricing include project complexity, timeline, features needed, and the level of customization required. We offer both fixed-price contracts and time-and-materials billing options."
+                  question: "Jak wygląda wycena projektów?",
+                  answer: "Przedstawiamy indywidualne oferty na podstawie konkretnych wymagań. Czynniki wpływające na cenę obejmują złożoność projektu, harmonogram, potrzebne funkcje i poziom wymaganej personalizacji. Oferujemy zarówno kontrakty o stałej cenie, jak i rozliczenia według czasu i materiałów."
                 },
                 {
-                  question: "What industries do you specialize in?",
-                  answer: "We've worked with clients across diverse sectors including healthcare, finance, retail, education, manufacturing, and hospitality. Our team adapts quickly to understand industry-specific challenges and requirements."
+                  question: "W jakich branżach się specjalizujecie?",
+                  answer: "Współpracowaliśmy z klientami z różnych sektorów, w tym opieki zdrowotnej, finansów, handlu detalicznego, edukacji, produkcji i hotelarstwa. Nasz zespół szybko dostosowuje się, aby zrozumieć specyficzne dla danej branży wyzwania i wymagania."
                 },
                 {
-                  question: "Can you integrate AI into our existing systems?",
-                  answer: "Yes, we specialize in integrating AI solutions with existing business systems. Our approach focuses on identifying the most valuable AI applications for your specific needs and implementing them in a way that complements your current processes."
+                  question: "Czy możecie zintegrować sztuczną inteligencję z naszymi istniejącymi systemami?",
+                  answer: "Tak, specjalizujemy się w integracji rozwiązań AI z istniejącymi systemami biznesowymi. Nasze podejście koncentruje się na identyfikacji najbardziej wartościowych zastosowań AI dla Twoich konkretnych potrzeb i wdrażaniu ich w sposób, który uzupełnia Twoje obecne procesy."
                 }
               ].map((faq, index) => (
                 <div 

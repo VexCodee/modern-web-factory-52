@@ -8,54 +8,54 @@ import CTASection from '../components/CTASection';
 const Solution = () => {
   const solutions = [
     {
-      title: "Enterprise Digital Transformation",
-      description: "Comprehensive digital transformation strategy and implementation for enterprises looking to modernize their operations and stay competitive in the digital age.",
+      title: "Transformacja Cyfrowa Przedsiębiorstw",
+      description: "Kompleksowa strategia i wdrożenie transformacji cyfrowej dla przedsiębiorstw pragnących unowocześnić swoje działania i pozostać konkurencyjnymi w erze cyfrowej.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2015&q=80",
       features: [
-        "Technology infrastructure assessment and modernization",
-        "Business process reengineering",
-        "Cloud migration and optimization",
-        "Change management and employee training",
-        "Digital workflow implementation"
+        "Ocena i modernizacja infrastruktury technologicznej",
+        "Przeprojektowanie procesów biznesowych",
+        "Migracja do chmury i optymalizacja",
+        "Zarządzanie zmianą i szkolenia pracowników",
+        "Wdrażanie cyfrowych przepływów pracy"
       ],
       delay: 100
     },
     {
-      title: "AI-Powered Customer Experience",
-      description: "Leverage artificial intelligence to transform your customer interactions, providing personalized experiences while increasing operational efficiency.",
+      title: "Doświadczenie Klienta Oparte na AI",
+      description: "Wykorzystaj sztuczną inteligencję, aby przekształcić interakcje z klientami, zapewniając spersonalizowane doświadczenia przy jednoczesnym zwiększeniu efektywności operacyjnej.",
       image: "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       features: [
-        "Intelligent chatbots and virtual assistants",
-        "Predictive customer analytics",
-        "Personalized recommendation engines",
-        "Automated customer service workflows",
-        "Sentiment analysis and feedback processing"
+        "Inteligentne chatboty i wirtualni asystenci",
+        "Predykcyjna analityka klientów",
+        "Spersonalizowane systemy rekomendacji",
+        "Zautomatyzowane przepływy obsługi klienta",
+        "Analiza sentymentu i przetwarzanie opinii"
       ],
       delay: 200
     },
     {
-      title: "Integrated E-Commerce Ecosystem",
-      description: "End-to-end e-commerce solution that seamlessly integrates your online storefront with inventory, payment processing, logistics, and customer management systems.",
+      title: "Zintegrowany Ekosystem E-commerce",
+      description: "Kompleksowe rozwiązanie e-commerce, które płynnie integruje Twoją witrynę sklepową online z zarządzaniem zapasami, przetwarzaniem płatności, logistyką i systemami zarządzania klientami.",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        "Responsive and conversion-optimized online store",
-        "Inventory management system integration",
-        "Secure payment gateway implementation",
-        "Order fulfillment and logistics automation",
-        "Customer relationship management"
+        "Responsywny i zoptymalizowany pod kątem konwersji sklep online",
+        "Integracja z systemem zarządzania zapasami",
+        "Implementacja bezpiecznej bramki płatności",
+        "Automatyzacja realizacji zamówień i logistyki",
+        "Zarządzanie relacjami z klientami"
       ],
       delay: 300
     },
     {
-      title: "Data Analytics & Business Intelligence",
-      description: "Transform your raw data into actionable insights with our comprehensive analytics and business intelligence solutions that drive informed decision-making.",
+      title: "Analityka Danych i Business Intelligence",
+      description: "Przekształć surowe dane w przydatne wnioski dzięki naszym kompleksowym rozwiązaniom analitycznym i business intelligence, które wspierają podejmowanie decyzji w oparciu o dane.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        "Data warehouse implementation",
-        "Custom dashboard development",
-        "Predictive analytics models",
-        "Automated reporting systems",
-        "Data visualization tools"
+        "Wdrożenie hurtowni danych",
+        "Tworzenie niestandardowych dashboardów",
+        "Modele analityki predykcyjnej",
+        "Zautomatyzowane systemy raportowania",
+        "Narzędzia do wizualizacji danych"
       ],
       delay: 400
     }
@@ -63,34 +63,34 @@ const Solution = () => {
 
   const industries = [
     {
-      name: "Healthcare",
+      name: "Ochrona Zdrowia",
       icon: "🏥",
-      description: "Secure patient management systems, telemedicine platforms, and health analytics solutions."
+      description: "Bezpieczne systemy zarządzania pacjentami, platformy telemedyczne i rozwiązania analityczne dla zdrowia."
     },
     {
-      name: "Finance",
+      name: "Finanse",
       icon: "💼",
-      description: "Secure transaction systems, fraud detection, and customer financial management tools."
+      description: "Bezpieczne systemy transakcyjne, wykrywanie oszustw i narzędzia do zarządzania finansami klientów."
     },
     {
-      name: "Retail",
+      name: "Handel Detaliczny",
       icon: "🛍️",
-      description: "Inventory management, e-commerce platforms, and customer loyalty programs."
+      description: "Zarządzanie zapasami, platformy e-commerce i programy lojalnościowe dla klientów."
     },
     {
-      name: "Manufacturing",
+      name: "Produkcja",
       icon: "🏭",
-      description: "Production optimization, supply chain management, and quality control systems."
+      description: "Optymalizacja produkcji, zarządzanie łańcuchem dostaw i systemy kontroli jakości."
     },
     {
-      name: "Education",
+      name: "Edukacja",
       icon: "🎓",
-      description: "Learning management systems, student assessment tools, and administrative solutions."
+      description: "Systemy zarządzania nauczaniem, narzędzia do oceny studentów i rozwiązania administracyjne."
     },
     {
-      name: "Hospitality",
+      name: "Hotelarstwo",
       icon: "🏨",
-      description: "Booking systems, guest experience platforms, and facility management solutions."
+      description: "Systemy rezerwacji, platformy dla doświadczeń gości i rozwiązania zarządzania obiektami."
     }
   ];
 
@@ -104,13 +104,13 @@ const Solution = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Our Solutions
+              Nasze Rozwiązania
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Tailored Technology Solutions for Every Business Need
+              Dostosowane Rozwiązania Technologiczne dla Każdej Potrzeby Biznesowej
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              We design and implement comprehensive solutions that address specific business challenges and drive measurable results.
+              Projektujemy i wdrażamy kompleksowe rozwiązania, które odpowiadają na konkretne wyzwania biznesowe i przynoszą wymierne rezultaty.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ const Solution = () => {
                     to="/contact" 
                     className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
                   >
-                    Learn More
+                    Dowiedz się więcej
                     <ArrowRight size={16} className="ml-2" />
                   </Link>
                 </div>
@@ -170,13 +170,13 @@ const Solution = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              Industries
+              Branże
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Serving Multiple Industries
+              Obsługa Wielu Branż
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              We have extensive experience delivering solutions across various sectors, each with unique requirements and challenges.
+              Mamy bogate doświadczenie w dostarczaniu rozwiązań w różnych sektorach, z których każdy ma unikalne wymagania i wyzwania.
             </p>
           </div>
 
