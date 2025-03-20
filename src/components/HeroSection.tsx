@@ -2,23 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLanguage, getTranslation } from '../context/LanguageContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const HeroSection = () => {
   const blobRef = useRef<HTMLDivElement>(null);
-  const { translations } = useLanguage();
-  
-  // Pobieranie tekstów z kontekstu
-  const innovativeIt = getTranslation(translations, 'hero.innovativeIt');
-  const transformBusiness = getTranslation(translations, 'hero.transformBusiness');
-  const description = getTranslation(translations, 'hero.description');
-  const getStarted = getTranslation(translations, 'hero.getStarted');
-  const ourServices = getTranslation(translations, 'hero.ourServices');
-  const innovation = getTranslation(translations, 'hero.innovation');
-  const futureReady = getTranslation(translations, 'hero.futureReady');
-  const performance = getTranslation(translations, 'hero.performance');
-  const optimized = getTranslation(translations, 'hero.optimized');
-  
+  const { t } = useLanguage();
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!blobRef.current) return;
@@ -50,27 +39,27 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-10 z-10">
             <div className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 inline-block mb-6 font-medium animate-fade-in">
-              {innovativeIt}
+              {t('hero.innovativeIt')}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {transformBusiness.split(' ')[0]} <span className="text-gradient">Za Pomocą Technologii</span>
+              {t('hero.transformBusiness')}
             </h1>
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-xl animate-fade-in" style={{ animationDelay: '400ms' }}>
-              {description}
+              {t('hero.description')}
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in" style={{ animationDelay: '600ms' }}>
               <Link 
                 to="/contact" 
                 className="bg-primary text-white px-8 py-3 rounded-full font-medium flex items-center justify-center transition-all hover:bg-primary/90 hover:shadow-lg"
               >
-                {getStarted}
+                {t('hero.getStarted')}
                 <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
                 to="/services" 
                 className="bg-white text-gray-800 border border-gray-200 px-8 py-3 rounded-full font-medium flex items-center justify-center transition-all hover:bg-gray-50 hover:shadow"
               >
-                {ourServices}
+                {t('hero.ourServices')}
               </Link>
             </div>
           </div>
@@ -94,8 +83,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">{innovation}</p>
-                      <p className="text-xs text-gray-500">{futureReady}</p>
+                      <p className="font-medium text-sm">{t('hero.innovation')}</p>
+                      <p className="text-xs text-gray-500">{t('hero.futureReady')}</p>
                     </div>
                   </div>
                 </div>
@@ -107,8 +96,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">{performance}</p>
-                      <p className="text-xs text-gray-500">{optimized}</p>
+                      <p className="font-medium text-sm">{t('hero.performance')}</p>
+                      <p className="text-xs text-gray-500">{t('hero.optimized')}</p>
                     </div>
                   </div>
                 </div>

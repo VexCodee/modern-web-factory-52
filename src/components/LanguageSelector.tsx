@@ -16,7 +16,7 @@ const LanguageSelector = () => {
       className="flex items-center space-x-1 text-foreground/70 hover:text-foreground transition-colors"
     >
       <Globe size={16} className="text-foreground/70" />
-      <span className="text-sm font-medium">{language === 'pl' ? 'Polski' : 'English'}</span>
+      <span className="text-sm font-medium">{language === 'pl' ? 'English' : 'Polski'}</span>
     </button>
   );
 };
