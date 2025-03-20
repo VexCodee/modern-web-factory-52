@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface TestimonialProps {
-  quoteKey: string;
+  quote: string;
   name: string;
   position: string;
   company: string;
@@ -19,21 +19,21 @@ const Testimonials = () => {
   
   const testimonials: TestimonialProps[] = [
     {
-      quoteKey: "Usługi tworzenia stron internetowych TechPrime pomogły nam zwiększyć sprzedaż online o 40%. Ich zespół był profesjonalny, responsywny i dostarczył więcej niż oczekiwaliśmy.",
+      quote: "Usługi tworzenia stron internetowych TechPrime pomogły nam zwiększyć sprzedaż online o 40%. Ich zespół był profesjonalny, responsywny i dostarczył więcej niż oczekiwaliśmy.",
       name: "Sarah Johnson",
       position: t("CEO"),
       company: "Retail Solutions Inc.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     },
     {
-      quoteKey: "Rozwiązanie AI zaimplementowane przez TechPrime zrewolucjonizowało nasze operacje obsługi klienta. Zauważyliśmy niesamowite usprawnienia w czasie reakcji i zadowoleniu klientów.",
+      quote: "Rozwiązanie AI zaimplementowane przez TechPrime zrewolucjonizowało nasze operacje obsługi klienta. Zauważyliśmy niesamowite usprawnienia w czasie reakcji i zadowoleniu klientów.",
       name: "Michael Chen",
       position: t("CTO"),
       company: "GlobalTech Enterprises",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     },
     {
-      quoteKey: "Ich strategie zarządzania mediami społecznościowymi całkowicie przekształciły obecność naszej marki. Zaobserwowaliśmy 200% wzrost zaangażowania i znaczący wzrost liczby potencjalnych klientów.",
+      quote: "Ich strategie zarządzania mediami społecznościowymi całkowicie przekształciły obecność naszej marki. Zaobserwowaliśmy 200% wzrost zaangażowania i znaczący wzrost liczby potencjalnych klientów.",
       name: "Emily Rodriguez",
       position: t("Dyrektor Marketingu"),
       company: "Innovate Media",
@@ -112,7 +112,7 @@ const Testimonials = () => {
                         ))}
                       </div>
                     </div>
-                    <p className="text-gray-700 text-lg leading-relaxed italic">"{t(testimonial.quoteKey)}"</p>
+                    <p className="text-gray-700 text-lg leading-relaxed italic">"{testimonial.quote}"</p>
                   </div>
                 </div>
               ))}
