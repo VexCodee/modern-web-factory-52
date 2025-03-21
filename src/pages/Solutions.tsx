@@ -1,13 +1,40 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
-import { Check, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
+import SolutionCard from '../components/SolutionCard';
 
 const Solution = () => {
   const { t } = useLanguage();
+  const solutionsRef = useRef<HTMLDivElement>(null);
+
+  // Set up intersection observer for animations
+  useEffect(() => {
+    if (!solutionsRef.current) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          entry.target.classList.remove('opacity-0');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const items = solutionsRef.current.querySelectorAll('.solution-item');
+    items.forEach(item => {
+      observer.observe(item);
+    });
+    
+    return () => {
+      items.forEach(item => {
+        observer.unobserve(item);
+      });
+    };
+  }, []);
 
   const solutions = [
     {
@@ -20,8 +47,7 @@ const Solution = () => {
         t('solutions.items.digitalTransformation.features.migration'),
         t('solutions.items.digitalTransformation.features.change'),
         t('solutions.items.digitalTransformation.features.workflow')
-      ],
-      delay: 100
+      ]
     },
     {
       title: t('solutions.items.aiCustomerExperience.title'),
@@ -33,8 +59,7 @@ const Solution = () => {
         t('solutions.items.aiCustomerExperience.features.recommendations'),
         t('solutions.items.aiCustomerExperience.features.automation'),
         t('solutions.items.aiCustomerExperience.features.sentiment')
-      ],
-      delay: 200
+      ]
     },
     {
       title: t('solutions.items.ecommerce.title'),
@@ -46,8 +71,7 @@ const Solution = () => {
         t('solutions.items.ecommerce.features.payment'),
         t('solutions.items.ecommerce.features.fulfillment'),
         t('solutions.items.ecommerce.features.crm')
-      ],
-      delay: 300
+      ]
     },
     {
       title: t('solutions.items.dataAnalytics.title'),
@@ -59,8 +83,7 @@ const Solution = () => {
         t('solutions.items.dataAnalytics.features.predictive'),
         t('solutions.items.dataAnalytics.features.reporting'),
         t('solutions.items.dataAnalytics.features.visualization')
-      ],
-      delay: 400
+      ]
     }
   ];
 
@@ -99,102 +122,98 @@ const Solution = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
-        <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
+      {/* Hero Section with parallax effect */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white pb-20 pt-32">
+        {/* Floating background elements */}
+        <div className="absolute -right-20 top-20 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl"></div>
+        <div className="absolute -left-20 bottom-10 h-64 w-64 rounded-full bg-purple-100/40 blur-3xl"></div>
         
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
+        <div className="container relative mx-auto px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="animate-fade-in rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               {t('solutions.title')}
             </span>
-            <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
+            <h1 
+              className="mt-6 animate-fade-in text-4xl font-bold leading-tight md:text-5xl" 
+              style={{ animationDelay: '100ms' }}
+            >
               {t('solutions.subtitle')}
             </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <p 
+              className="mx-auto mt-6 max-w-2xl animate-fade-in text-xl text-gray-600" 
+              style={{ animationDelay: '200ms' }}
+            >
               {t('solutions.description')}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Solutions */}
-      <section className="py-20">
+      {/* Solutions Section */}
+      <section ref={solutionsRef} className="py-20">
         <div className="container mx-auto px-6">
-          <div className="space-y-24">
+          <div className="space-y-16">
             {solutions.map((solution, index) => (
               <div 
                 key={index} 
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center animate-fade-in`}
-                style={{ animationDelay: `${solution.delay}ms` }}
+                className="solution-item opacity-0"
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="w-full lg:w-1/2 lg:pr-6">
-                  <h2 className="text-3xl font-display font-bold mb-6">{solution.title}</h2>
-                  <p className="text-lg text-gray-600 leading-relaxed mb-8">{solution.description}</p>
-                  
-                  <div className="space-y-3 mb-8">
-                    {solution.features.map((feature, i) => (
-                      <div key={i} className="flex items-start">
-                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 mt-0.5">
-                          <Check size={14} />
-                        </div>
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Link 
-                    to="/contact" 
-                    className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-full font-medium transition-all hover:bg-primary/90 hover:shadow-md"
-                  >
-                    {t('cta.getStarted')}
-                    <ArrowRight size={16} className="ml-2" />
-                  </Link>
-                </div>
-                
-                <div className="w-full lg:w-1/2">
-                  <div className="rounded-2xl overflow-hidden shadow-md">
-                    <img 
-                      src={solution.image} 
-                      alt={solution.title} 
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
+                <SolutionCard
+                  title={solution.title}
+                  description={solution.description}
+                  features={solution.features}
+                  image={solution.image}
+                  index={index}
+                  ctaText={t('cta.getStarted')}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
+      {/* Industries Section - Glass Card Design */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-indigo-50/30 to-purple-50/20"></div>
+        
+        {/* Animated particles */}
+        <div className="absolute top-20 right-10 h-32 w-32 rounded-full bg-blue-200/30 mix-blend-multiply blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 left-10 h-32 w-32 rounded-full bg-purple-200/30 mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        
+        <div className="container relative mx-auto px-6">
+          <div className="mb-16 mx-auto max-w-3xl text-center">
+            <span className="animate-fade-in rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               {t('solutions.industries.title')}
             </span>
-            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
+            <h2 
+              className="mt-6 animate-fade-in text-3xl font-bold md:text-4xl" 
+              style={{ animationDelay: '100ms' }}
+            >
               {t('solutions.features.title')}
             </h2>
-            <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <p 
+              className="mt-4 animate-fade-in text-lg text-gray-600" 
+              style={{ animationDelay: '200ms' }}
+            >
               {t('solutions.description')}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover-lift animate-fade-in" 
-                style={{ animationDelay: `${300 + index * 100}ms` }}
+                className="transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-3xl mb-6">
-                  {industry.icon}
+                <div className="group h-full overflow-hidden rounded-2xl bg-white/70 p-8 backdrop-blur-sm shadow-md border border-white/50 dark:bg-gray-800/70 dark:border-gray-700/50">
+                  <div className="mb-6 flex h-16 w-16 transform items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:from-indigo-500/20 group-hover:to-purple-500/20">
+                    {industry.icon}
+                  </div>
+                  <h3 className="mb-4 text-xl font-semibold">{industry.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{industry.description}</p>
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-3">{industry.name}</h3>
-                <p className="text-gray-600">{industry.description}</p>
               </div>
             ))}
           </div>
