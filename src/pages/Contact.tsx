@@ -1,11 +1,11 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock, ArrowUpRight, LayoutGrid, Image, Smartphone, Globe } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const { t, language } = useLanguage();
@@ -92,9 +92,8 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Redesigned */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-indigo-950">
-        {/* Background elements */}
+      {/* Hero Section - Updated to match Portfolio style */}
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-indigo-950">
         <div className="absolute inset-0 z-0">
           {/* Gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950"></div>
@@ -102,7 +101,7 @@ const Contact = () => {
           {/* Abstract pattern overlay */}
           <div className="absolute inset-0 opacity-20">
             <img 
-              src="public/lovable-uploads/76c04e32-9377-4978-856c-d9faa1c28501.png" 
+              src="public/lovable-uploads/6a4d001f-1d63-4780-9838-45c6df36ac5e.png" 
               alt="Hero background" 
               className="w-full h-full object-cover object-center"
             />
@@ -127,22 +126,19 @@ const Contact = () => {
           </div>
         </div>
         
-        {/* Content container */}
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left column: Text content */}
-            <div className="text-white pt-16 pb-8 lg:py-0">
-              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 mb-6">
-                <span className="mr-2 h-2 w-2 rounded-full bg-blue-400"></span>
-                <span className="text-blue-300 font-medium tracking-wide text-sm">
+            <div>
+              <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
+                <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                <span className="text-primary font-medium tracking-wide text-sm">
                   {language === 'pl' ? 'Skontaktuj się z nami' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
                 </span>
               </div>
               
-              <h1 className="text-6xl font-bold tracking-tight leading-none mb-4">
-                <span className="text-white">
-                  {language === 'pl' ? 'Jesteśmy' : language === 'de' ? 'Wir sind' : 'We\'re'}
-                </span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-white">
+                {language === 'pl' ? 'Jesteśmy' : language === 'de' ? 'Wir sind' : 'We\'re'}
                 <span className="block text-blue-400">
                   {language === 'pl' ? 'tutaj dla Ciebie' : language === 'de' ? 'für Sie da' : 'here to help'}
                 </span>
@@ -167,7 +163,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="text-sm text-blue-300">Email us</div>
-                    <div className="font-medium">info@techprime.com</div>
+                    <div className="font-medium text-white">info@techprime.com</div>
                   </div>
                 </a>
                 
@@ -180,7 +176,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="text-sm text-blue-300">Call us</div>
-                    <div className="font-medium">+48 22 123 45 67</div>
+                    <div className="font-medium text-white">+48 22 123 45 67</div>
                   </div>
                 </a>
               </div>
@@ -200,28 +196,25 @@ const Contact = () => {
             
             {/* Right column: Contact Card */}
             <div className="relative">
-              <Card className="relative overflow-hidden backdrop-blur-md border border-white/20 bg-white/10 text-white">
-                <div className="absolute inset-0 bg-indigo-600/5 backdrop-blur-sm"></div>
-                <CardContent className="p-8 z-10 relative">
-                  <div className="mb-4">
-                    <div className="w-16 h-1.5 bg-blue-400 mb-4"></div>
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {language === 'pl' ? 'Skontaktuj się' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
-                    </h3>
-                    <p className="text-blue-200 text-sm">
-                      {language === 'pl' ? 'Odpowiemy na wszystkie Twoje pytania' : 
-                       language === 'de' ? 'Wir beantworten alle Ihre Fragen' : 
-                       'We\'ll answer all your questions'}
-                    </p>
-                  </div>
+              <Card className="relative overflow-hidden border border-white/20 bg-white/10 text-white rounded-xl">
+                <CardContent className="p-8 relative">
+                  <div className="w-16 h-1.5 bg-blue-400 mb-4"></div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {language === 'pl' ? 'Skontaktuj się' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
+                  </h3>
+                  <p className="text-blue-200 text-sm mb-8">
+                    {language === 'pl' ? 'Odpowiemy na wszystkie Twoje pytania' : 
+                     language === 'de' ? 'Wir beantworten alle Ihre Fragen' : 
+                     'We\'ll answer all your questions'}
+                  </p>
                   
-                  <div className="space-y-4 mt-8">
+                  <div className="space-y-4 mb-8">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
                         <MapPin size={20} />
                       </div>
                       <div>
-                        <div className="font-medium">
+                        <div className="font-medium text-white">
                           {language === 'pl' ? 'Centrala Warszawa' : 
                            language === 'de' ? 'Hauptsitz Warschau' : 
                            'HQ Warsaw'}
@@ -235,7 +228,7 @@ const Contact = () => {
                         <Phone size={20} />
                       </div>
                       <div>
-                        <div className="font-medium">+48 22 123 45 67</div>
+                        <div className="font-medium text-white">+48 22 123 45 67</div>
                         <div className="text-sm text-blue-200/70">
                           {language === 'pl' ? 'Wsparcie techniczne' : 
                            language === 'de' ? 'Technischer Support' : 
@@ -249,7 +242,7 @@ const Contact = () => {
                         <Mail size={20} />
                       </div>
                       <div>
-                        <div className="font-medium">info@techprime.com</div>
+                        <div className="font-medium text-white">info@techprime.com</div>
                         <div className="text-sm text-blue-200/70">
                           {language === 'pl' ? 'Zapytania ogólne' : 
                            language === 'de' ? 'Allgemeine Anfragen' : 
@@ -259,16 +252,14 @@ const Contact = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-8">
-                    <Button 
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center justify-center gap-2"
-                    >
-                      {language === 'pl' ? 'Wyślij wiadomość' : 
-                       language === 'de' ? 'Nachricht senden' : 
-                       'Send message'}
-                      <ArrowRight size={16} />
-                    </Button>
-                  </div>
+                  <Button 
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center justify-center gap-2"
+                  >
+                    {language === 'pl' ? 'Wyślij wiadomość' : 
+                     language === 'de' ? 'Nachricht senden' : 
+                     'Send message'}
+                    <ArrowRight size={16} />
+                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -276,14 +267,14 @@ const Contact = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
-          <span className="text-sm mb-2">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+          <span className="text-sm mb-1">
             {language === 'pl' ? 'Przewiń w dół' : 
              language === 'de' ? 'Nach unten scrollen' : 
              'Scroll down'}
           </span>
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
-            <div className="w-1.5 h-3 bg-white/70 rounded-full animate-[float_2s_ease-in-out_infinite]"></div>
+            <div className="w-1.5 h-3 bg-white/70 rounded-full animate-bounce"></div>
           </div>
         </div>
       </section>
