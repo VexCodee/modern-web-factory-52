@@ -1,9 +1,7 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
-import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ArrowRight, ArrowUpRight, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -250,68 +248,57 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Portfolio Grid - Updated to match the provided images */}
+      {/* Portfolio Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={project.id} 
-                className="group"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                  animation: 'fade-in 0.6s ease-out forwards',
-                  opacity: 0,
-                  transform: 'translateY(20px)'
-                }}
-              >
-                <Card className="overflow-hidden border-none shadow-xl bg-gray-900 rounded-lg h-full">
-                  <div className="relative">
-                    {/* Project image with overlay */}
-                    <div className="relative h-[220px] overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover object-center"
-                      />
-                      <div className="absolute inset-0 bg-black/50"></div>
-                    </div>
-                    
-                    {/* Tags positioned at top left */}
-                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                      {project.tags.map((tag, idx) => (
-                        <span 
-                          key={idx} 
-                          className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* Arrow button at top right */}
-                    <div className="absolute top-4 right-4">
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white">
-                        <ArrowUpRight size={18} />
-                      </button>
-                    </div>
+              <div key={project.id} className="transition-all duration-300 hover:translate-y-[-5px]">
+                <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl group">
+                  {/* Project image with overlay */}
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
+                  
+                  {/* Tags positioned at top left */}
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag, idx) => (
+                      <span 
+                        key={idx} 
+                        className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                   
-                  <CardContent className="p-6">
+                  {/* Arrow button at top right */}
+                  <div className="absolute top-4 right-4">
+                    <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-transform duration-300 hover:scale-110 hover:bg-indigo-700">
+                      <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </button>
+                  </div>
+                  
+                  {/* Content overlayed on image */}
+                  <div className="absolute inset-x-0 bottom-0 p-6">
                     {/* Project Title and Subtitle */}
-                    <h2 className="text-2xl font-bold text-white mb-1">{project.title}</h2>
-                    <p className="text-gray-400 mb-6">{project.subtitle}</p>
+                    <h2 className="text-2xl font-bold text-white mb-1 transform transition-transform duration-300 group-hover:translate-y-[-2px]">{project.title}</h2>
+                    <p className="text-gray-300 mb-6 transform transition-transform duration-300 group-hover:translate-y-[-2px]">{project.subtitle}</p>
                     
                     {/* Stats/Metrics at bottom */}
-                    <div className="grid grid-cols-3 gap-4 mt-auto">
+                    <div className="grid grid-cols-3 gap-4 mt-4">
                       {project.stats.map((stat, idx) => (
-                        <div key={idx}>
-                          <div className="text-xl font-bold text-white">{stat}</div>
+                        <div key={idx} className="transform transition-all duration-300 group-hover:translate-y-[-3px]" style={{ transitionDelay: `${idx * 75}ms` }}>
+                          <div className="text-xl font-bold text-white group-hover:text-primary transition-colors duration-300">{stat}</div>
                           <div className="text-xs text-gray-400">{project.statsLabels[idx]}</div>
                         </div>
                       ))}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
