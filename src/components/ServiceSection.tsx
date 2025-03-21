@@ -28,7 +28,8 @@ const ServiceSection = () => {
       descriptionKey: "services.items.outsourcing.description",
       iconBgColor: "bg-blue-500",
       buttonBgColor: "bg-blue-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/outsourcing"
     }, 
     {
       icon: <Globe size={24} className="text-white" />,
@@ -36,7 +37,8 @@ const ServiceSection = () => {
       descriptionKey: "services.items.webDev.description",
       iconBgColor: "bg-indigo-500",
       buttonBgColor: "bg-indigo-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/web-development"
     }, 
     {
       icon: <Palette size={24} className="text-white" />,
@@ -44,7 +46,8 @@ const ServiceSection = () => {
       descriptionKey: "services.items.graphic.description",
       iconBgColor: "bg-purple-500",
       buttonBgColor: "bg-purple-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/graphic-design"
     }, 
     {
       icon: <Wrench size={24} className="text-white" />,
@@ -52,23 +55,26 @@ const ServiceSection = () => {
       descriptionKey: "services.items.hardware.description",
       iconBgColor: "bg-orange-500",
       buttonBgColor: "bg-orange-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/hardware"
     }, 
     {
       icon: <Lock size={24} className="text-white" />,
-      titleKey: "services.items.security.title", // Fixed the title key
-      descriptionKey: "services.items.security.description", // Added proper description key
+      titleKey: "services.items.security.title",
+      descriptionKey: "services.items.security.description",
       iconBgColor: "bg-teal-500",
       buttonBgColor: "bg-teal-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/security"
     }, 
     {
       icon: <Database size={24} className="text-white" />,
-      titleKey: "services.items.cloud.title", // Fixed the title key
-      descriptionKey: "services.items.cloud.description", // Added proper description key
+      titleKey: "services.items.cloud.title",
+      descriptionKey: "services.items.cloud.description",
       iconBgColor: "bg-emerald-500",
       buttonBgColor: "bg-emerald-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/cloud"
     }, 
     {
       icon: <LineChart size={24} className="text-white" />,
@@ -76,7 +82,8 @@ const ServiceSection = () => {
       descriptionKey: "services.items.ai.description",
       iconBgColor: "bg-rose-500",
       buttonBgColor: "bg-rose-600",
-      benefits: ["24/7", "99%", "+50%"]
+      benefits: ["24/7", "99%", "+50%"],
+      link: "/services/ai"
     }
   ];
 
@@ -177,6 +184,7 @@ const ServiceSection = () => {
                       dotColor=""
                       buttonBgColor={service.buttonBgColor}
                       delay={index * 50}
+                      link={service.link}
                     />
                   </div>
                 </CarouselItem>
