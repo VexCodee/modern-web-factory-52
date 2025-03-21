@@ -12,13 +12,15 @@ import InnovationShowcase from '../components/InnovationShowcase';
 const Index = () => {
   return (
     <Layout>
-      <HeroSection />
-      <ServiceSection />
-      <WhyChooseUs />
-      <InnovationShowcase />
-      <TechnologiesSection />
-      <Testimonials />
-      <CTASection />
+      <div className="flex flex-col w-full">
+        <HeroSection />
+        <ServiceSection />
+        <WhyChooseUs />
+        <InnovationShowcase />
+        <TechnologiesSection />
+        <Testimonials />
+        <CTASection />
+      </div>
     </Layout>
   );
 };
