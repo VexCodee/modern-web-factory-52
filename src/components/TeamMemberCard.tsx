@@ -31,13 +31,13 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
           <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
         </div>
         
-        {/* Tags */}
+        {/* Position tags */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2">
           <span className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80">
             {position.split(' ')[0]}
           </span>
           <span className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80">
-            Mobile
+            {position.includes(' ') ? position.split(' ').slice(1).join(' ') : 'Team Member'}
           </span>
         </div>
         
