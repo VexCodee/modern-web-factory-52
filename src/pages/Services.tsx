@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles, FileText, Server, Lightbulb, Truck, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
@@ -256,19 +257,19 @@ const ServicePage = () => {
 
   return (
     <Layout>
-      {/* Hero Section with Animated Background */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 to-white">
-          <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full mix-blend-multiply blur-3xl animate-float"></div>
-          <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent/5 rounded-full mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+      {/* Hero Section with Light Theme */}
+      <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-b from-gray-50/80 via-white to-white">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/4 right-10 w-96 h-96 bg-blue-100/30 rounded-full mix-blend-multiply blur-3xl animate-float"></div>
+          <div className="absolute bottom-0 left-10 w-96 h-96 bg-indigo-100/30 rounded-full mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
           
           {/* Floating dots with enhanced animation */}
-          <div className="absolute top-20 left-20 w-6 h-6 rounded-full bg-slate-300 opacity-50 floating-dot transition-transform duration-700"></div>
-          <div className="absolute top-40 right-40 w-8 h-8 rounded-full bg-gray-300 opacity-40 floating-dot transition-transform duration-700"></div>
-          <div className="absolute bottom-40 left-1/3 w-7 h-7 rounded-full bg-slate-300 opacity-45 floating-dot transition-transform duration-700"></div>
-          <div className="absolute bottom-20 right-1/4 w-5 h-5 rounded-full bg-zinc-300 opacity-40 floating-dot transition-transform duration-700"></div>
-          <div className="absolute top-60 left-1/4 w-4 h-4 rounded-full bg-stone-300 opacity-30 floating-dot transition-transform duration-700"></div>
-          <div className="absolute top-32 right-1/3 w-6 h-6 rounded-full bg-gray-300 opacity-35 floating-dot transition-transform duration-700"></div>
+          <div className="absolute top-20 left-20 w-6 h-6 rounded-full bg-blue-200 opacity-50 floating-dot transition-transform duration-700"></div>
+          <div className="absolute top-40 right-40 w-8 h-8 rounded-full bg-indigo-200 opacity-40 floating-dot transition-transform duration-700"></div>
+          <div className="absolute bottom-40 left-1/3 w-7 h-7 rounded-full bg-purple-200 opacity-45 floating-dot transition-transform duration-700"></div>
+          <div className="absolute bottom-20 right-1/4 w-5 h-5 rounded-full bg-teal-200 opacity-40 floating-dot transition-transform duration-700"></div>
+          <div className="absolute top-60 left-1/4 w-4 h-4 rounded-full bg-sky-200 opacity-30 floating-dot transition-transform duration-700"></div>
+          <div className="absolute top-32 right-1/3 w-6 h-6 rounded-full bg-amber-200 opacity-35 floating-dot transition-transform duration-700"></div>
         </div>
         
         <div className="container mx-auto px-6">
@@ -293,8 +294,8 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Services Section with New Card Design */}
-      <section id="services" ref={servicesRef} className="py-20 bg-gradient-to-b from-white to-gray-50">
+      {/* Services Section with Light Theme */}
+      <section id="services" ref={servicesRef} className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-slate-800">{t('services.ourServices')}</h2>
@@ -325,14 +326,14 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Process Section with Timeline */}
-      <section ref={processRef} className="py-20 bg-white">
+      {/* Process Section with Light Theme */}
+      <section ref={processRef} className="py-20 bg-gradient-to-b from-white to-gray-50/80">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium inline-block">
               {t('whyChooseUs.process')}
             </span>
-            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold">{t('whyChooseUs.howWeWork')}</h2>
+            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold text-slate-800">{t('whyChooseUs.howWeWork')}</h2>
             <p className="mt-4 text-lg text-gray-600">
               W TechPrime nie tylko świadczymy usługi IT – budujemy trwałe partnerstwa z naszymi
               klientami, rozumiejąc ich cele biznesowe i dostarczając rozwiązania, które napędzają
@@ -364,12 +365,12 @@ const ServicePage = () => {
                       
                       {/* Right content */}
                       <div className="md:w-1/2 md:pl-12">
-                        <div className="p-6 transition-all duration-300 relative">
+                        <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md relative">
                           <div className="flex items-center mb-4 gap-4">
                             <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
                               {step.number}
                             </div>
-                            <h3 className="text-xl font-display font-semibold">{step.title}</h3>
+                            <h3 className="text-xl font-display font-semibold text-slate-800">{step.title}</h3>
                           </div>
                           <p className="text-gray-600">{step.description}</p>
                         </div>
@@ -380,12 +381,12 @@ const ServicePage = () => {
                     <>
                       {/* Left content */}
                       <div className="md:w-1/2 md:pr-12 md:text-right">
-                        <div className="p-6 transition-all duration-300 relative">
+                        <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md relative">
                           <div className="flex items-center mb-4 gap-4 md:flex-row-reverse">
                             <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
                               {step.number}
                             </div>
-                            <h3 className="text-xl font-display font-semibold">{step.title}</h3>
+                            <h3 className="text-xl font-display font-semibold text-slate-800">{step.title}</h3>
                           </div>
                           <p className="text-gray-600">{step.description}</p>
                         </div>
@@ -407,14 +408,14 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section ref={featuresRef} className="py-20 bg-gray-50 overflow-hidden">
+      {/* Features Grid with Light Theme */}
+      <section ref={featuresRef} className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium inline-block">
               {t('whyChooseUs.title')}
             </span>
-            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold">{t('whyChooseUs.subtitle')}</h2>
+            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold text-slate-800">{t('whyChooseUs.subtitle')}</h2>
             <p className="mt-4 text-lg text-gray-600">{t('whyChooseUs.description')}</p>
           </div>
 
@@ -457,15 +458,15 @@ const ServicePage = () => {
                 <div className={`w-16 h-16 rounded-full ${feature.color} flex items-center justify-center mb-6`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-3">{feature.title}</h3>
+                <h3 className="text-xl font-display font-semibold mb-3 text-slate-800">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-accent/5 mix-blend-multiply blur-3xl"></div>
-        <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-primary/5 mix-blend-multiply blur-3xl"></div>
+        <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-indigo-100/30 mix-blend-multiply blur-3xl"></div>
+        <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-blue-100/30 mix-blend-multiply blur-3xl"></div>
       </section>
 
       <CTASection />
