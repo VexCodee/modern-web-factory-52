@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
@@ -193,7 +192,7 @@ const Contact = () => {
               <p className="text-gray-600 mb-6">
                 {language === 'pl' ? 'Wypełnij formularz, a odezwiemy się najszybciej jak to możliwe' : 
                 language === 'de' ? 'Füllen Sie das Formular aus und wir werden uns so schnell wie möglich bei Ihnen melden' : 
-                'Fill out the form and we'll get back to you as soon as possible'}
+                'Fill out the form and we\'ll get back to you as soon as possible'}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
