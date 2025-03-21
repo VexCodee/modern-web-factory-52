@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import { Github, Linkedin, Twitter, MapPin, Globe, Users, Calendar } from 'lucide-react';
@@ -290,8 +289,9 @@ const About = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
-          <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
+        {/* Updated scroll indicator with reduced spacing */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+          <span className="text-sm mb-2">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[bounce_2s_ease-in-out_infinite]"></div>
           </div>
@@ -444,11 +444,11 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section - Modern Grid with Gradients */}
-      <section className="py-24 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 text-white">
+      {/* Values Section - Updated to match design of other sections */}
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block text-sm font-medium px-3 py-1 rounded-full bg-white/20 text-white mb-4 backdrop-blur-sm">
+            <span className="inline-block text-sm font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 mb-4">
               {language === 'pl' ? "NASZE WARTOŚCI" : language === 'de' ? "UNSERE WERTE" : "OUR VALUES"}
             </span>
             <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-6">
@@ -456,7 +456,7 @@ const About = () => {
                language === 'de' ? "Was uns ausmacht" : 
                "What defines us"}
             </h2>
-            <p className="text-lg text-white/80">
+            <p className="text-lg text-gray-600">
               {language === 'pl' 
                 ? "Nasze wartości są fundamentem wszystkiego, co robimy, kształtując nasze podejście do pracy i relacji z klientami." 
                 : language === 'de' 
@@ -466,97 +466,29 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-10 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4">
+            <div className="bg-white rounded-xl p-10 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+              <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-6 text-indigo-600 group-hover:bg-indigo-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
                 {language === 'pl' ? "Innowacyjność" : language === 'de' ? "Innovation" : "Innovation"}
               </h3>
-              <p className="text-white/80 mb-6">
+              <p className="text-gray-600 mb-6">
                 {language === 'pl' 
                   ? "Nieustannie poszukujemy nowych, lepszych sposobów rozwiązywania problemów i tworzenia wartości poprzez technologię." 
                   : language === 'de' 
                   ? "Wir suchen ständig nach neuen, besseren Wegen, Probleme zu lösen und durch Technologie Mehrwert zu schaffen."
                   : "We constantly seek new, better ways to solve problems and create value through technology."}
               </p>
-              <div className="h-1 w-20 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"></div>
+              <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-10 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4">
-                {language === 'pl' ? "Współpraca" : language === 'de' ? "Zusammenarbeit" : "Collaboration"}
-              </h3>
-              <p className="text-white/80 mb-6">
-                {language === 'pl' 
-                  ? "Wierzymy w siłę różnorodnych zespołów i otwartą komunikację dla osiągania wyjątkowych rezultatów." 
-                  : language === 'de' 
-                  ? "Wir glauben an die Kraft vielfältiger Teams und offene Kommunikation, um außergewöhnliche Ergebnisse zu erzielen."
-                  : "We believe in the power of diverse teams and open communication to achieve exceptional results."}
-              </p>
-              <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full"></div>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-10 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4">
-                {language === 'pl' ? "Uczciwość" : language === 'de' ? "Integrität" : "Integrity"}
-              </h3>
-              <p className="text-white/80 mb-6">
-                {language === 'pl' 
-                  ? "Działamy z przejrzystością, odpowiedzialnością i autentycznością we wszystkich naszych relacjach." 
-                  : language === 'de' 
-                  ? "Wir handeln mit Transparenz, Verantwortung und Authentizität in all unseren Beziehungen."
-                  : "We act with transparency, accountability, and authenticity in all our relationships."}
-              </p>
-              <div className="h-1 w-20 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></div>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-10 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4">
-                {language === 'pl' ? "Doskonałość" : language === 'de' ? "Exzellenz" : "Excellence"}
-              </h3>
-              <p className="text-white/80 mb-6">
-                {language === 'pl' 
-                  ? "Dążymy do najwyższej jakości we wszystkim, co robimy, nieustannie podnosząc poprzeczkę dla siebie i branży." 
-                  : language === 'de' 
-                  ? "Wir streben in allem, was wir tun, nach höchster Qualität und heben ständig die Messlatte für uns selbst und die Branche."
-                  : "We strive for the highest quality in everything we do, continuously raising the bar for ourselves and the industry."}
-              </p>
-              <div className="h-1 w-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto bg-indigo-50 rounded-2xl p-10 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-indigo-100 rounded-full opacity-50"></div>
-            <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-indigo-100 rounded-full opacity-50"></div>
-            
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 relative z-10">
-              {language === 'pl' ? "Gotowi na współpracę?" : 
-               language === 'de' ? "Bereit für eine Zusammenarbeit?" : 
-               "Ready to collaborate?"}
-            </h2>
-            <p className="text-lg text-gray-700 mb-10 max-w-xl mx-auto relative z-10">
-              {language === 'pl' 
-                ? "Porozmawiajmy o tym, jak możemy wspólnie tworzyć innowacyjne rozwiązania dla Twojej firmy." 
-                : language === 'de' 
-                ? "Lassen Sie uns darüber sprechen, wie wir gemeinsam innovative Lösungen für Ihr Unternehmen entwickeln können."
-                : "Let's talk about how we can create innovative solutions for your business together."}
-            </p>
-            <a 
-              href="/contact" 
-              className="inline-block text-white bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 relative z-10"
-            >
-              {language === 'pl' ? "Skontaktuj się z nami" : 
-               language === 'de' ? "Kontaktieren Sie uns" : 
-               "Get in touch"}
-            </a>
-          </div>
-        </div>
-      </section>
-    </Layout>
-  );
-};
-
-export default About;
+            <div className="bg-white rounded-xl p-10 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h
