@@ -66,7 +66,7 @@ const ServicePage = () => {
 
   const services = [
     {
-      icon: <UserPlus size={24} className="text-slate-700" />,
+      icon: <UserPlus size={24} className="text-white" />,
       title: t('services.items.outsourcing.title'),
       description: t('services.items.outsourcing.description'),
       benefits: [
@@ -75,13 +75,14 @@ const ServicePage = () => {
         t('services.items.outsourcing.benefits.scalability'),
         t('services.items.outsourcing.benefits.focus')
       ],
-      iconBgColor: "bg-slate-50",
-      borderColor: "border-slate-200",
-      dotColor: "bg-slate-200",
+      iconBgColor: "bg-blue-500",
+      borderColor: "border-blue-100",
+      dotColor: "bg-blue-400",
+      buttonBgColor: "bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-100",
       delay: 100
     },
     {
-      icon: <Globe size={24} className="text-slate-700" />,
+      icon: <Globe size={24} className="text-white" />,
       title: t('services.items.webDev.title'),
       description: t('services.items.webDev.description'),
       benefits: [
@@ -90,13 +91,14 @@ const ServicePage = () => {
         t('services.items.webDev.benefits.secure'),
         t('services.items.webDev.benefits.custom')
       ],
-      iconBgColor: "bg-gray-50",
-      borderColor: "border-gray-200",
-      dotColor: "bg-gray-200",
+      iconBgColor: "bg-indigo-500",
+      borderColor: "border-indigo-100",
+      dotColor: "bg-indigo-400",
+      buttonBgColor: "bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border-indigo-100",
       delay: 200
     },
     {
-      icon: <Palette size={24} className="text-slate-700" />,
+      icon: <Palette size={24} className="text-white" />,
       title: t('services.items.graphic.title'),
       description: t('services.items.graphic.description'),
       benefits: [
@@ -105,13 +107,14 @@ const ServicePage = () => {
         t('services.items.graphic.benefits.creative'),
         t('services.items.graphic.benefits.cross')
       ],
-      iconBgColor: "bg-stone-50",
-      borderColor: "border-stone-200",
-      dotColor: "bg-stone-200",
+      iconBgColor: "bg-purple-500",
+      borderColor: "border-purple-100",
+      dotColor: "bg-purple-400",
+      buttonBgColor: "bg-purple-50 hover:bg-purple-100 text-purple-700 border-purple-100",
       delay: 300
     },
     {
-      icon: <Wrench size={24} className="text-slate-700" />,
+      icon: <Wrench size={24} className="text-white" />,
       title: t('services.items.hardware.title'),
       description: t('services.items.hardware.description'),
       benefits: [
@@ -120,13 +123,14 @@ const ServicePage = () => {
         t('services.items.hardware.benefits.quality'),
         t('services.items.hardware.benefits.preventive')
       ],
-      iconBgColor: "bg-zinc-50",
-      borderColor: "border-zinc-200",
-      dotColor: "bg-zinc-200",
+      iconBgColor: "bg-amber-500",
+      borderColor: "border-amber-100",
+      dotColor: "bg-amber-400",
+      buttonBgColor: "bg-amber-50 hover:bg-amber-100 text-amber-700 border-amber-100",
       delay: 400
     },
     {
-      icon: <Bot size={24} className="text-slate-700" />,
+      icon: <Bot size={24} className="text-white" />,
       title: t('services.items.ai.title'),
       description: t('services.items.ai.description'),
       benefits: [
@@ -135,13 +139,14 @@ const ServicePage = () => {
         t('services.items.ai.benefits.nlp'),
         t('services.items.ai.benefits.ml')
       ],
-      iconBgColor: "bg-slate-50",
-      borderColor: "border-slate-200",
-      dotColor: "bg-slate-200",
+      iconBgColor: "bg-teal-500",
+      borderColor: "border-teal-100",
+      dotColor: "bg-teal-400",
+      buttonBgColor: "bg-teal-50 hover:bg-teal-100 text-teal-700 border-teal-100",
       delay: 500
     },
     {
-      icon: <BarChart3 size={24} className="text-slate-700" />,
+      icon: <BarChart3 size={24} className="text-white" />,
       title: t('services.items.marketing.title'),
       description: t('services.items.marketing.description'),
       benefits: [
@@ -150,13 +155,14 @@ const ServicePage = () => {
         t('services.items.marketing.benefits.content'),
         t('services.items.marketing.benefits.conversion')
       ],
-      iconBgColor: "bg-gray-50",
-      borderColor: "border-gray-200",
-      dotColor: "bg-gray-200",
+      iconBgColor: "bg-emerald-500",
+      borderColor: "border-emerald-100",
+      dotColor: "bg-emerald-400",
+      buttonBgColor: "bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border-emerald-100",
       delay: 600
     },
     {
-      icon: <Share2 size={24} className="text-slate-700" />,
+      icon: <Share2 size={24} className="text-white" />,
       title: t('services.items.social.title'),
       description: t('services.items.social.description'),
       benefits: [
@@ -165,13 +171,14 @@ const ServicePage = () => {
         t('services.items.social.benefits.optimization'),
         t('services.items.social.benefits.analytics')
       ],
-      iconBgColor: "bg-stone-50",
-      borderColor: "border-stone-200",
-      dotColor: "bg-stone-200",
+      iconBgColor: "bg-sky-500",
+      borderColor: "border-sky-100",
+      dotColor: "bg-sky-400",
+      buttonBgColor: "bg-sky-50 hover:bg-sky-100 text-sky-700 border-sky-100",
       delay: 700
     },
     {
-      icon: <ClipboardList size={24} className="text-slate-700" />,
+      icon: <ClipboardList size={24} className="text-white" />,
       title: t('services.items.project.title'),
       description: t('services.items.project.description'),
       benefits: [
@@ -180,9 +187,10 @@ const ServicePage = () => {
         t('services.items.project.benefits.resource'),
         t('services.items.project.benefits.quality')
       ],
-      iconBgColor: "bg-zinc-50",
-      borderColor: "border-zinc-200",
-      dotColor: "bg-zinc-200",
+      iconBgColor: "bg-pink-500",
+      borderColor: "border-pink-100",
+      dotColor: "bg-pink-400",
+      buttonBgColor: "bg-pink-50 hover:bg-pink-100 text-pink-700 border-pink-100",
       delay: 800
     }
   ];
@@ -300,15 +308,15 @@ const ServicePage = () => {
                 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <Card className="h-full overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
+                <Card className="h-full overflow-hidden border shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
                   <CardContent className="p-0 h-full">
-                    {/* Top border instead of gradient */}
-                    <div className={`h-1 w-full ${service.borderColor}`}></div>
+                    {/* Top border with color */}
+                    <div className={`h-1.5 w-full ${service.borderColor} ${service.iconBgColor}`}></div>
                     
                     <div className="p-8 flex flex-col h-full">
-                      {/* Icon with subtle background */}
-                      <div className={`w-16 h-16 rounded-xl ${service.iconBgColor} flex items-center justify-center mb-6 border ${service.borderColor} transform transition-all duration-500 group-hover:scale-110`}>
-                        <div className="text-slate-700">
+                      {/* Icon with background color */}
+                      <div className={`w-16 h-16 rounded-xl ${service.iconBgColor} flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-sm`}>
+                        <div className="text-white">
                           {service.icon}
                         </div>
                       </div>
@@ -329,10 +337,10 @@ const ServicePage = () => {
                         ))}
                       </div>
                       
-                      {/* Button with subdued style */}
+                      {/* Button with color matched to the service */}
                       <Link 
                         to="/contact" 
-                        className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-medium text-slate-700 bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-all duration-300 transform group-hover:translate-y-0"
+                        className={`mt-auto inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-medium ${service.buttonBgColor} transition-all duration-300 transform group-hover:translate-y-0`}
                       >
                         {t('cta.getStarted')}
                         <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
