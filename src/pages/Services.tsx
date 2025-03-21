@@ -1,17 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
-import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles, FileText, Server, Lightbulb, Truck, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
+import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Server, Lightbulb, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import ServiceCard from '../components/ServiceCard';
+
 const ServicePage = () => {
-  const {
-    t,
-    language
-  } = useLanguage();
+  const { t, language } = useLanguage();
   const servicesRef = useRef<HTMLDivElement>(null);
   const processRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -62,6 +58,7 @@ const ServicePage = () => {
       });
     };
   }, []);
+  
   const services = [{
     icon: <UserPlus size={24} className="text-white" />,
     title: t('services.items.outsourcing.title'),
@@ -143,6 +140,7 @@ const ServicePage = () => {
     buttonBgColor: "bg-pink-50 hover:bg-pink-100 text-pink-700 border-pink-100",
     delay: 800
   }];
+
   const processSteps = [{
     number: "01",
     title: "Analiza i odkrywanie potrzeb",
@@ -192,40 +190,24 @@ const ServicePage = () => {
     icon: <Lightbulb size={24} />,
     align: "left"
   }];
+
   return <Layout>
-      {/* Hero Section - Updated to match the provided design */}
       <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white py-10">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-white opacity-95"></div>
-          {/* Subtle background elements */}
           <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-blue-100/30 mix-blend-multiply blur-3xl"></div>
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-indigo-100/30 mix-blend-multiply blur-3xl"></div>
-          {/* Decorative dots */}
-          <div className="absolute inset-0">
-            {Array.from({
-            length: 12
-          }).map((_, i) => <div key={i} className="absolute rounded-full bg-primary/10" style={{
-            width: `${Math.random() * 8 + 4}px`,
-            height: `${Math.random() * 8 + 4}px`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animation: `float-around ${Math.random() * 15 + 10}s infinite`,
-            animationDelay: `${Math.random() * 5}s`
-          }}></div>)}
-          </div>
         </div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              {/* Badge */}
               <div className="mb-5 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5">
                 <span className="text-primary font-medium tracking-wide text-sm">
                   {language === 'pl' ? 'Usługi' : language === 'de' ? 'Dienstleistungen' : 'Services'}
                 </span>
               </div>
               
-              {/* Heading with two parts */}
               <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight leading-tight text-gray-900">
                 {language === 'pl' ? 'Odkrywając' : language === 'de' ? 'Entdecken' : 'Discovering'}
                 <br />
@@ -234,21 +216,18 @@ const ServicePage = () => {
                 </span>
               </h1>
               
-              {/* Description text */}
               <p className="text-lg text-gray-600 mb-6 max-w-xl">
                 {language === 'pl' ? "Wierzymy w przyszłość, w której technologia harmonijnie integruje się z życiem codziennym, czyniąc je prostszym, bardziej wydajnym i zrównoważonym." : language === 'de' ? "Wir glauben an eine Zukunft, in der Technologie harmonisch in den Alltag integriert ist und ihn einfacher, effizienter und nachhaltiger macht." : "We believe in a future where technology seamlessly integrates with everyday life, making it simpler, more efficient, and sustainable."}
               </p>
               
-              {/* CTA Button */}
               <a href="#services" className="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300">
                 {language === 'pl' ? "Poznaj Nasze Usługi" : language === 'de' ? "Entdecken Sie Unsere Dienstleistungen" : "Discover Our Services"}
               </a>
             </div>
             
-            {/* Right side image card with overlay */}
             <div className="hidden lg:block relative">
               <div className="relative shadow-lg rounded-2xl overflow-hidden">
-                <img alt="Hardware Service" className="w-full h-auto object-cover rounded-2xl" src="/lovable-uploads/d4eb3031-c917-4b2c-af9b-63e6d2ab84b6.jpg" />
+                <img alt="Services" className="w-full h-auto object-cover rounded-2xl" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800&h=500" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm p-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -265,8 +244,7 @@ const ServicePage = () => {
           </div>
         </div>
         
-        {/* Scroll indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[bounce_2s_ease-in-out_infinite]"></div>
@@ -274,7 +252,6 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Services Section with Light Theme */}
       <section id="services" ref={servicesRef} className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
@@ -292,7 +269,6 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Process Section with Light Theme */}
       <section ref={processRef} className="py-20 bg-gradient-to-b from-white to-gray-50/80">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
@@ -308,7 +284,6 @@ const ServicePage = () => {
           </div>
 
           <div className="relative">
-            {/* Vertical timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-100 hidden md:block"></div>
             
             <div className="space-y-12 md:space-y-0 relative">
@@ -316,17 +291,13 @@ const ServicePage = () => {
               transitionDelay: `${index * 200}ms`
             }}>
                   {step.align === "right" ?
-              // Right-aligned step (content on the right)
               <>
-                      {/* Empty left side */}
                       <div className="md:w-1/2"></div>
                       
-                      {/* Center icon */}
                       <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-md border-4 border-blue-100 flex items-center justify-center z-10 hidden md:flex">
                         {step.icon}
                       </div>
                       
-                      {/* Right content */}
                       <div className="md:w-1/2 md:pl-12">
                         <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md relative">
                           <div className="flex items-center mb-4 gap-4">
@@ -339,9 +310,7 @@ const ServicePage = () => {
                         </div>
                       </div>
                     </> :
-              // Left-aligned step (content on the left)
               <>
-                      {/* Left content */}
                       <div className="md:w-1/2 md:pr-12 md:text-right">
                         <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md relative">
                           <div className="flex items-center mb-4 gap-4 md:flex-row-reverse">
@@ -354,12 +323,10 @@ const ServicePage = () => {
                         </div>
                       </div>
                       
-                      {/* Center icon */}
                       <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-md border-4 border-blue-100 flex items-center justify-center z-10 hidden md:flex">
                         {step.icon}
                       </div>
                       
-                      {/* Empty right side */}
                       <div className="md:w-1/2"></div>
                     </>}
                 </div>)}
@@ -368,7 +335,6 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Features Grid with Light Theme */}
       <section ref={featuresRef} className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">

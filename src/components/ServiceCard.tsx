@@ -28,6 +28,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   delay,
   link = '/services' // Default link to services page
 }) => {
+  // Skip rendering if title is just "title" placeholder
+  if (title === "title") {
+    return null;
+  }
+  
   return (
     <div className="group">
       <div 

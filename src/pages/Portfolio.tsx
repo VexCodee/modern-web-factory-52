@@ -34,6 +34,7 @@ const Portfolio = () => {
       tags: ["Music & Video", "Mobile"],
       image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=800&h=500",
       logo: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=120&h=120",
+      link: "/portfolio/dolby"
     },
     {
       id: 2,
@@ -47,6 +48,7 @@ const Portfolio = () => {
       categories: ["fintech", "web"],
       tags: ["Fintech", "Mobile", "Web"],
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=500",
+      link: "/portfolio/nextbank"
     },
     {
       id: 3,
@@ -132,6 +134,15 @@ const Portfolio = () => {
     ? projects 
     : projects.filter(project => project.categories.includes(activeCategory));
 
+  const clientLogos = [
+    "https://placeholder.pics/svg/200/DEDEDE/555555/Client%201",
+    "https://placeholder.pics/svg/200/DEDEDE/555555/Client%202",
+    "https://placeholder.pics/svg/200/DEDEDE/555555/Client%203",
+    "https://placeholder.pics/svg/200/DEDEDE/555555/Client%204",
+    "https://placeholder.pics/svg/200/DEDEDE/555555/Client%205",
+    "https://placeholder.pics/svg/200/DEDEDE/555555/Client%206",
+  ];
+
   return (
     <Layout>
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
@@ -139,22 +150,6 @@ const Portfolio = () => {
           <div className="absolute inset-0 bg-white opacity-90"></div>
           <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-30"></div>
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-20"></div>
-          <div className="absolute inset-0">
-            {Array.from({ length: 15 }).map((_, i) => (
-              <div 
-                key={i}
-                className="absolute rounded-full bg-primary/10"
-                style={{
-                  width: `${Math.random() * 10 + 5}px`,
-                  height: `${Math.random() * 10 + 5}px`,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animation: `float-around ${Math.random() * 15 + 10}s infinite`,
-                  animationDelay: `${Math.random() * 5}s`
-                }}
-              ></div>
-            ))}
-          </div>
         </div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -218,7 +213,7 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-1">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
@@ -230,7 +225,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredProjects.map((project, index) => (
-              <div key={project.id} className="group">
+              <Link key={project.id} to={project.link || `/portfolio/${project.id}`} className="group">
                 <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <img 
                     src={project.image} 
@@ -249,9 +244,9 @@ const Portfolio = () => {
                     ))}
                   </div>
                   <div className="absolute top-4 right-4">
-                    <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
                       <ArrowUpRight size={18} />
-                    </button>
+                    </div>
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{project.title}</h2>
@@ -266,15 +261,15 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-100">
+      <section className="py-12 bg-gray-100">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-lg mx-auto mb-10">
+          <div className="text-center max-w-lg mx-auto mb-8">
             <h2 className="text-2xl font-bold mb-2 text-gray-900">
               {language === 'pl' ? 'Zaufali nam' : language === 'de' ? 'Sie vertrauen uns' : 'They trust us'}
             </h2>
@@ -284,10 +279,10 @@ const Portfolio = () => {
                'We work with leading brands around the world'}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
-            {Array(6).fill(0).map((_, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center">
+            {clientLogos.map((logo, i) => (
               <div key={i} className="w-32 h-16 bg-white shadow-md rounded-lg flex items-center justify-center hover:bg-gray-50 transition-all duration-300 border border-gray-200">
-                <div className="w-16 h-8 bg-gray-100 rounded-md"></div>
+                <img src={logo} alt={`Client ${i+1}`} className="w-24 h-auto" />
               </div>
             ))}
           </div>
