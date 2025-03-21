@@ -135,7 +135,7 @@ const ServiceSection = () => {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium inline-block transform transition-all hover:scale-105 hover:shadow-sm animate-fade-in">
             {t('services.title')}
           </span>
@@ -156,35 +156,16 @@ const ServiceSection = () => {
           </p>
         </div>
 
-        {/* Services grid - desktop view */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-4">
-          {services.map((service, index) => (
-            <div key={index} className="service-card opacity-0 h-full">
-              <ServiceCard 
-                icon={service.icon} 
-                title={t(service.titleKey)} 
-                description={t(service.descriptionKey)}
-                benefits={service.benefits}
-                iconBgColor={service.iconBgColor}
-                borderColor=""
-                dotColor=""
-                buttonBgColor={service.buttonBgColor}
-                delay={index * 50}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile carousel view */}
-        <div className="md:hidden w-full pt-4">
+        {/* Single row carousel for all screen sizes */}
+        <div className="w-full pt-4">
           <Carousel className="w-full" opts={{
             align: "start",
             loop: true
           }} plugins={[autoplayPlugin.current]}>
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="basis-full h-[380px] pt-2">
-                  <div className="p-1 h-full service-card">
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[380px] pt-2">
+                  <div className="p-1 h-full service-card opacity-0">
                     <ServiceCard 
                       icon={service.icon} 
                       title={t(service.titleKey)} 
@@ -207,7 +188,7 @@ const ServiceSection = () => {
           </Carousel>
         </div>
 
-        <div className="mt-16 text-center animate-fade-in" style={{
+        <div className="mt-12 text-center animate-fade-in" style={{
           animationDelay: '900ms'
         }}>
           <Link to="/services">
