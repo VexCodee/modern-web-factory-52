@@ -257,20 +257,22 @@ const ServicePage = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Updated to match About Us page */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section - Updated to match the provided design */}
+      <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white py-10">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-white opacity-90"></div>
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-30"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-20"></div>
+          <div className="absolute inset-0 bg-white opacity-95"></div>
+          {/* Subtle background elements */}
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-blue-100/30 mix-blend-multiply blur-3xl"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-indigo-100/30 mix-blend-multiply blur-3xl"></div>
+          {/* Decorative dots */}
           <div className="absolute inset-0">
-            {Array.from({ length: 15 }).map((_, i) => (
+            {Array.from({ length: 12 }).map((_, i) => (
               <div 
                 key={i}
                 className="absolute rounded-full bg-primary/10"
                 style={{
-                  width: `${Math.random() * 10 + 5}px`,
-                  height: `${Math.random() * 10 + 5}px`,
+                  width: `${Math.random() * 8 + 4}px`,
+                  height: `${Math.random() * 8 + 4}px`,
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
                   animation: `float-around ${Math.random() * 15 + 10}s infinite`,
@@ -284,54 +286,58 @@ const ServicePage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
-                <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+              {/* Badge */}
+              <div className="mb-5 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5">
                 <span className="text-primary font-medium tracking-wide text-sm">
                   {language === 'pl' ? 'Usługi' : language === 'de' ? 'Dienstleistungen' : 'Services'}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
-                {language === 'pl' ? 'Odkrywając' : language === 'de' ? 'Entdecken' : 'Discovering'} 
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              
+              {/* Heading with two parts */}
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight leading-tight text-gray-900">
+                {language === 'pl' ? 'Odkrywając' : language === 'de' ? 'Entdecken' : 'Discovering'}
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   {language === 'pl' ? 'Nowe Możliwości' : language === 'de' ? 'Neue Möglichkeiten' : 'New Possibilities'}
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-xl">
+              
+              {/* Description text */}
+              <p className="text-lg text-gray-600 mb-6 max-w-xl">
                 {language === 'pl' 
                   ? "Wierzymy w przyszłość, w której technologia harmonijnie integruje się z życiem codziennym, czyniąc je prostszym, bardziej wydajnym i zrównoważonym."
                   : language === 'de' 
                   ? "Wir glauben an eine Zukunft, in der Technologie harmonisch in den Alltag integriert ist und ihn einfacher, effizienter und nachhaltiger macht."
                   : "We believe in a future where technology seamlessly integrates with everyday life, making it simpler, more efficient, and sustainable."}
               </p>
-              <div className="mt-6">
-                <a 
-                  href="#services" 
-                  className="inline-block bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
-                >
-                  {language === 'pl' ? "Poznaj Nasze Usługi" : 
-                   language === 'de' ? "Entdecken Sie Unsere Dienstleistungen" : 
-                   "Discover Our Services"}
-                </a>
-              </div>
+              
+              {/* CTA Button */}
+              <a 
+                href="#services" 
+                className="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                {language === 'pl' ? "Poznaj Nasze Usługi" : 
+                 language === 'de' ? "Entdecken Sie Unsere Dienstleistungen" : 
+                 "Discover Our Services"}
+              </a>
             </div>
+            
+            {/* Right side image card with overlay */}
             <div className="hidden lg:block relative">
-              <div className="relative transition-all duration-700">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
+              <div className="relative shadow-lg rounded-2xl overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
-                  alt="Services" 
-                  className="relative rounded-2xl shadow-2xl border border-gray-200"
+                  src="/lovable-uploads/3d0af5b4-74d4-4816-8fdd-922dcfb28ce2.png"
+                  alt="Hardware Service" 
+                  className="w-full h-auto object-cover rounded-2xl"
                 />
-                <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
-                  <div className="flex items-start justify-between">
+                <div className="absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm p-4">
+                  <div className="flex items-center justify-between">
                     <div>
                       <div className="text-gray-400 text-sm">{language === 'pl' ? 'Nasza Misja' : language === 'de' ? 'Unsere Mission' : 'Our Mission'}</div>
-                      <div className="text-white font-bold text-xl">{language === 'pl' ? 'Tworzymy Przyszłość' : language === 'de' ? 'Wir gestalten die Zukunft' : 'Shaping The Future'}</div>
+                      <div className="text-white font-semibold">{language === 'pl' ? 'Tworzymy Przyszłość' : language === 'de' ? 'Wir gestalten die Zukunft' : 'Shaping The Future'}</div>
                     </div>
                     <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
+                      <ArrowRight size={20} />
                     </div>
                   </div>
                 </div>
@@ -340,6 +346,7 @@ const ServicePage = () => {
           </div>
         </div>
         
+        {/* Scroll indicator */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
