@@ -198,40 +198,93 @@ const Contact = () => {
     <Layout>
       <div ref={pageRef} className="min-h-screen">
         {/* Header Section styled like other pages */}
-        <section className="relative py-24 bg-gray-100 overflow-hidden border-b border-gray-200">
-          <div className="container mx-auto px-4">
-            <div className="relative z-10 text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                {language === 'pl' ? 'Kontakt' : 
-                 language === 'de' ? 'Kontakt' : 
-                 'Contact'}
-              </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                {language === 'pl' ? 'Jesteśmy tutaj, aby pomóc. Skontaktuj się z nami w sprawie Twojego projektu.' : 
-                 language === 'de' ? 'Wir sind hier, um zu helfen. Kontaktieren Sie uns bezüglich Ihres Projekts.' : 
-                 'We\'re here to help. Get in touch with us about your project.'}
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <Mail className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-gray-700">info@techprime.com</span>
+        <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-white opacity-90"></div>
+            <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-30"></div>
+            <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-20"></div>
+            <div className="absolute inset-0">
+              {Array.from({ length: 15 }).map((_, i) => (
+                <div 
+                  key={i}
+                  className="absolute rounded-full bg-primary/10"
+                  style={{
+                    width: `${Math.random() * 10 + 5}px`,
+                    height: `${Math.random() * 10 + 5}px`,
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                    animation: `float-around ${Math.random() * 15 + 10}s infinite`,
+                    animationDelay: `${Math.random() * 5}s`
+                  }}
+                ></div>
+              ))}
+            </div>
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
+                  <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                  <span className="text-primary font-medium tracking-wide text-sm">
+                    {language === 'pl' ? 'Kontakt' : language === 'de' ? 'Kontakt' : 'Contact Us'}
+                  </span>
                 </div>
-                <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <Phone className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-gray-700">+48 22 123 45 67</span>
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
+                  {language === 'pl' ? 'Porozmawiajmy' : language === 'de' ? 'Lass uns reden' : 'Let\'s Talk'}
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    {language === 'pl' ? 'o Twoim projekcie' : language === 'de' ? 'über Ihr Projekt' : 'About Your Project'}
+                  </span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 max-w-xl">
+                  {language === 'pl' 
+                    ? 'Jesteśmy tu, aby pomóc. Skontaktuj się z nami, aby omówić jak możemy wspierać Twój biznes.' 
+                    : language === 'de' 
+                      ? 'Wir sind hier, um zu helfen. Kontaktieren Sie uns, um zu besprechen, wie wir Ihr Unternehmen unterstützen können.'
+                      : 'We\'re here to help. Get in touch with us to discuss how we can support your business.'}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+                    <Mail className="h-5 w-5 text-primary mr-2" />
+                    <span className="text-gray-700">info@techprime.com</span>
+                  </div>
+                  <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+                    <Phone className="h-5 w-5 text-primary mr-2" />
+                    <span className="text-gray-700">+48 22 123 45 67</span>
+                  </div>
+                  <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+                    <MapPin className="h-5 w-5 text-primary mr-2" />
+                    <span className="text-gray-700">Warsaw, Poland</span>
+                  </div>
                 </div>
-                <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <MapPin className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-gray-700">Warsaw, Poland</span>
+              </div>
+              <div className="hidden lg:block relative">
+                <div className="relative transition-all duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800&h=500"
+                    alt="Contact us" 
+                    className="relative rounded-2xl shadow-2xl border border-gray-200"
+                  />
+                  <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <div className="text-gray-400 text-sm">Get in Touch</div>
+                        <div className="text-white font-bold text-xl">We respond within 24h</div>
+                      </div>
+                      <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center">
+                        <ArrowUpRight size={18} />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          {/* Background elements */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-            <div className="absolute -top-5 -right-5 w-24 h-24 bg-primary/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 -left-10 w-40 h-40 bg-indigo-300/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+            <span className="text-sm mb-1">Scroll to explore</span>
+            <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
+              <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+            </div>
           </div>
         </section>
 
