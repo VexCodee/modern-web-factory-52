@@ -8,16 +8,20 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from 'embla-carousel-autoplay';
 import { Button } from '@/components/ui/button';
 import ServiceCard from './ServiceCard';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Slider } from '@/components/ui/slider';
 
 const ServiceSection = () => {
   const { t, language } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
-  // Configure autoplay plugin
+  // Configure autoplay plugin with faster transitions for better UX
   const autoplayPlugin = useRef(Autoplay({
-    delay: 4000,
-    stopOnInteraction: false
+    delay: 3000,
+    stopOnInteraction: true,
+    stopOnMouseEnter: true,
+    rootNode: (emblaRoot) => emblaRoot.parentElement,
   }));
 
   // Define services with translation keys, colors and gradients
@@ -119,6 +123,11 @@ const ServiceSection = () => {
                         language === 'en' ? 'Learn more' : 
                         'Mehr erfahren';
 
+  const handleScroll = () => {
+    const showcaseSection = document.getElementById('innovation');
+    showcaseSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="services" ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-white">
       {/* Background with animated gradient */}
@@ -163,16 +172,21 @@ const ServiceSection = () => {
           </p>
         </div>
 
-        {/* Single row carousel with updated styling and fixed heights */}
+        {/* Enhanced carousel with improved UX and interactions */}
         <div className="w-full pt-4">
-          <Carousel className="w-full" opts={{
-            align: "start",
-            loop: true,
-            dragFree: true
-          }} plugins={[autoplayPlugin.current]}>
-            <CarouselContent className="-ml-4">
+          <Carousel 
+            className="w-full" 
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+              containScroll: "trimSnaps"
+            }} 
+            plugins={[autoplayPlugin.current]}
+          >
+            <CarouselContent className="-ml-4 cursor-grab active:cursor-grabbing">
               {services.map((service, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[400px]">
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[400px] transition-opacity duration-300 hover:opacity-100">
                   <div className="h-full service-card opacity-0">
                     <ServiceCard 
                       icon={service.icon} 
@@ -190,8 +204,10 @@ const ServiceSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-6">
-              <CarouselPrevious className="relative static left-0 translate-y-0 mr-4 transition-all duration-300 hover:-translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
+            
+            {/* Navigation controls with improved styling */}
+            <div className="flex items-center justify-center mt-8 gap-4">
+              <CarouselPrevious className="relative static left-0 translate-y-0 mr-2 transition-all duration-300 hover:-translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
               <CarouselNext className="relative static right-0 translate-y-0 transition-all duration-300 hover:translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
             </div>
           </Carousel>
@@ -206,6 +222,30 @@ const ServiceSection = () => {
               <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </Link>
+        </div>
+        
+        {/* Scroll indicator with reduced spacing */}
+        <div className="flex justify-center mt-8 mb-8">
+          <div 
+            className="flex flex-col items-center gap-2 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
+            onClick={handleScroll}
+          >
+            <span className="text-sm text-gray-500">{t('common.scrollDown')}</span>
+            <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center pt-1">
+              <div className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Trusted by section with real logos instead of abstract figures */}
+        <div className="mt-4 text-center">
+          <p className="text-sm font-medium text-gray-500 mb-6">{t('common.trustedBy')}</p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <img src="/lovable-uploads/82a5cc93-14c6-48ec-9d73-5f7c136ef23d.png" alt="Client Logo" className="h-10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="/lovable-uploads/76c04e32-9377-4978-856c-d9faa1c28501.png" alt="Client Logo" className="h-10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="/lovable-uploads/59018bb8-ec3a-4822-bd48-b747a31af280.png" alt="Client Logo" className="h-10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="/lovable-uploads/338eb6dc-d188-4e3d-9c14-b113b150ed9d.png" alt="Client Logo" className="h-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+          </div>
         </div>
       </div>
     </section>

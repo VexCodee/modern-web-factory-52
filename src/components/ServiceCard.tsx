@@ -13,7 +13,7 @@ interface ServiceCardProps {
   dotColor: string;
   buttonBgColor: string;
   delay: number;
-  link?: string; // Add link prop
+  link?: string;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -26,8 +26,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   dotColor,
   buttonBgColor,
   delay,
-  link = '/services' // Default link to services page
+  link = '/services'
 }) => {
+  // Skip rendering if title is "title" (placeholder)
+  if (title === "title") {
+    return null;
+  }
+  
   return (
     <div className="group">
       <div 
