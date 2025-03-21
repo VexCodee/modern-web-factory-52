@@ -1,8 +1,5 @@
-
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 import SolutionCard from '../components/SolutionCard';
@@ -122,13 +119,8 @@ const Solution = () => {
 
   return (
     <Layout>
-      {/* Hero Section with parallax effect */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white pb-20 pt-32">
-        {/* Floating background elements */}
-        <div className="absolute -right-20 top-20 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl"></div>
-        <div className="absolute -left-20 bottom-10 h-64 w-64 rounded-full bg-purple-100/40 blur-3xl"></div>
-        
-        <div className="container relative mx-auto px-6">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-32 pb-16">
+        <div className="container mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
             <span className="animate-fade-in rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               {t('solutions.title')}
@@ -149,14 +141,13 @@ const Solution = () => {
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section ref={solutionsRef} className="py-20">
+      <section ref={solutionsRef} className="py-16 bg-white">
         <div className="container mx-auto px-6">
-          <div className="space-y-16">
+          <div className="grid grid-cols-1 gap-16">
             {solutions.map((solution, index) => (
               <div 
                 key={index} 
-                className="solution-item opacity-0"
+                className="solution-item opacity-0 transition-all duration-500"
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <SolutionCard
@@ -173,30 +164,16 @@ const Solution = () => {
         </div>
       </section>
 
-      {/* Industries Section - Glass Card Design */}
-      <section className="relative py-24 overflow-hidden">
-        {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-indigo-50/30 to-purple-50/20"></div>
-        
-        {/* Animated particles */}
-        <div className="absolute top-20 right-10 h-32 w-32 rounded-full bg-blue-200/30 mix-blend-multiply blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 left-10 h-32 w-32 rounded-full bg-purple-200/30 mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        
-        <div className="container relative mx-auto px-6">
+      <section className="relative py-24 bg-gray-50">
+        <div className="container mx-auto px-6">
           <div className="mb-16 mx-auto max-w-3xl text-center">
-            <span className="animate-fade-in rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+            <span className="rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               {t('solutions.industries.title')}
             </span>
-            <h2 
-              className="mt-6 animate-fade-in text-3xl font-bold md:text-4xl" 
-              style={{ animationDelay: '100ms' }}
-            >
+            <h2 className="mt-6 text-3xl font-bold md:text-4xl">
               {t('solutions.features.title')}
             </h2>
-            <p 
-              className="mt-4 animate-fade-in text-lg text-gray-600" 
-              style={{ animationDelay: '200ms' }}
-            >
+            <p className="mt-4 text-lg text-gray-600">
               {t('solutions.description')}
             </p>
           </div>
@@ -205,14 +182,14 @@ const Solution = () => {
             {industries.map((industry, index) => (
               <div 
                 key={index} 
-                className="transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
               >
-                <div className="group h-full overflow-hidden rounded-2xl bg-white/70 p-8 backdrop-blur-sm shadow-md border border-white/50 dark:bg-gray-800/70 dark:border-gray-700/50">
-                  <div className="mb-6 flex h-16 w-16 transform items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:from-indigo-500/20 group-hover:to-purple-500/20">
+                <div className="h-full overflow-hidden rounded-lg bg-white p-8 shadow-sm border border-gray-100">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-2xl">
                     {industry.icon}
                   </div>
                   <h3 className="mb-4 text-xl font-semibold">{industry.name}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{industry.description}</p>
+                  <p className="text-gray-600">{industry.description}</p>
                 </div>
               </div>
             ))}
