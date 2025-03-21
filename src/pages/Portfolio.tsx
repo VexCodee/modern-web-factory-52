@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -202,7 +201,7 @@ const Portfolio = () => {
                   ? 'Poznaj nasze wyróżnione projekty i zobacz, jak pomogliśmy firmom z różnych branż osiągnąć ich cele dzięki technologii.' 
                   : language === 'de' 
                     ? 'Entdecken Sie unsere herausragenden Projekte und erfahren Sie, wie wir Unternehmen verschiedener Branchen geholfen haben, ihre Ziele durch Technologie zu erreichen.'
-                    : 'Explore our featured projects and see how we've helped businesses across industries achieve their goals through technology.'}
+                    : 'Explore our featured projects and see how we\'ve helped businesses across industries achieve their goals through technology.'}
               </p>
               
               {/* Category filter buttons */}
