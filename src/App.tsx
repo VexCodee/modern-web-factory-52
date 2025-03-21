@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
+import { CookieProvider } from "./context/CookieContext";
+import CookieBanner from "./components/CookieBanner";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Solutions from "./pages/Solutions";
@@ -20,21 +22,24 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="light">
       <LanguageProvider>
-        <TooltipProvider>
-          <BrowserRouter>
-            <Toaster />
-            <Sonner theme="light" />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/solutions" element={<Solutions />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
+        <CookieProvider>
+          <TooltipProvider>
+            <BrowserRouter>
+              <Toaster />
+              <Sonner theme="light" />
+              <CookieBanner />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/solutions" element={<Solutions />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/portfolio" element={<Portfolio />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </CookieProvider>
       </LanguageProvider>
     </ThemeProvider>
   </QueryClientProvider>

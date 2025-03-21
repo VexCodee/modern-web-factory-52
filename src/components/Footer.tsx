@@ -1,11 +1,16 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Map, Phone } from 'lucide-react';
+import LanguageSelector from './LanguageSelector';
+import ThemeToggle from './ThemeToggle';
+import CookieButton from './CookieButton';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-950 text-white pt-20 pb-10">
+    <footer className="bg-slate-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-5">
@@ -75,17 +80,22 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} TechPrime. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-gray-400 text-sm hover:text-white transition-colors">
-              Privacy Policy
+        <div className="border-t border-slate-700/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="text-sm text-slate-400">
+            © {new Date().getFullYear()} TechPrime. {t('footer.rights')}
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="text-xs text-slate-400 hover:text-white transition">
+              {t('footer.privacy')}
             </Link>
-            <Link to="/terms" className="text-gray-400 text-sm hover:text-white transition-colors">
-              Terms of Service
+            <Link to="/terms" className="text-xs text-slate-400 hover:text-white transition">
+              {t('footer.terms')}
             </Link>
+            <CookieButton />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <LanguageSelector />
+            </div>
           </div>
         </div>
       </div>
