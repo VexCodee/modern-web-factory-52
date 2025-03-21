@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, ExternalLink } from 'lucide-react';
+import { Check, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -23,91 +23,53 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   index,
   ctaText,
 }) => {
-  // Using a single color palette to reduce variety
-  const colors = [
-    { primary: 'bg-gray-900 dark:bg-gray-800', secondary: 'bg-gray-50 dark:bg-gray-900', accent: 'border-gray-200 dark:border-gray-700' },
-  ];
-  
-  const colorSet = colors[0]; // Always using the same color set
-  
-  // Alternate alignment for odd/even cards to create visual variety
-  const isEven = index % 2 === 0;
-
   return (
-    <div className="relative">
-      <Card className="group overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-lg transition-all duration-500">
-        <div className={cn(
-          "relative grid grid-cols-1 lg:grid-cols-12 gap-0",
-          isEven ? "lg:grid-flow-row" : "lg:grid-flow-row-dense"
-        )}>
-          {/* Image section */}
-          <div className={cn(
-            "relative overflow-hidden lg:col-span-5",
-            isEven ? "lg:order-1" : "lg:order-2"
-          )}>
-            <div className="relative h-64 lg:h-full">
-              {/* Image with subtle overlay */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url(${image})` }}
-              >
-                <div className="absolute inset-0 bg-black/30"></div>
-              </div>
-              
-              {/* Title overlay */}
-              <div className="absolute text-white p-6 bottom-0 w-full">
-                <div className="backdrop-blur-sm bg-black/40 p-4 rounded-lg">
-                  <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="group">
+      <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
+        
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+          {features.slice(0, 2).map((feature, idx) => (
+            <span 
+              key={idx} 
+              className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
+            >
+              {feature.split(' ')[0]}
+            </span>
+          ))}
+        </div>
+        
+        <div className="absolute top-4 right-4">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+            <ArrowUpRight size={18} />
+          </button>
+        </div>
+        
+        <div className="absolute inset-x-0 bottom-0 p-6">
+          <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
+          <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">{description}</p>
           
-          {/* Content section */}
-          <div className={cn(
-            "p-6 lg:p-8 lg:col-span-7 flex flex-col",
-            isEven ? "lg:order-2" : "lg:order-1",
-            "bg-white dark:bg-gray-900",
-            "rounded-b-lg lg:rounded-none",
-            isEven ? "lg:rounded-r-lg" : "lg:rounded-l-lg"
-          )}>
-            {/* Description */}
-            <p className="mb-6 text-gray-700 dark:text-gray-300">
-              {description}
-            </p>
-            
-            {/* Features list */}
-            <div className="space-y-3 mb-8">
-              {features.map((feature, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex items-center"
-                >
-                  <div className="mr-2 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-200">
-                    <Check size={14} />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">
-                    {feature}
-                  </span>
-                </div>
-              ))}
+          <div className="grid grid-cols-3 gap-4">
+            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1">
+              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">99%</div>
+              <div className="text-xs text-gray-400">Satisfaction</div>
             </div>
-            
-            {/* CTA Button */}
-            <div className="mt-auto">
-              <Button
-                asChild
-                className="w-full bg-gray-900 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 text-white"
-              >
-                <Link to="/contact" className="flex items-center justify-between">
-                  <span>{ctaText}</span>
-                  <ExternalLink size={16} className="ml-2" />
-                </Link>
-              </Button>
+            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-75">
+              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">24/7</div>
+              <div className="text-xs text-gray-400">Support</div>
+            </div>
+            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-150">
+              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">+50%</div>
+              <div className="text-xs text-gray-400">Efficiency</div>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
