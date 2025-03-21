@@ -139,16 +139,16 @@ const Portfolio = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Dark theme styling */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gray-900">
+      {/* Hero Section - Light theme styling */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         {/* Background elements */}
         <div className="absolute inset-0 z-0">
           {/* Background with subtle gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 opacity-90"></div>
+          <div className="absolute inset-0 bg-white opacity-90"></div>
           
           {/* Decorative elements */}
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-900 to-purple-900 mix-blend-multiply blur-3xl opacity-30"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-900 to-blue-900 mix-blend-multiply blur-3xl opacity-20"></div>
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-30"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-20"></div>
           
           {/* Animated particles */}
           <div className="absolute inset-0">
@@ -181,14 +181,14 @@ const Portfolio = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
                 {language === 'pl' ? 'Nasze Prace' : language === 'de' ? 'Unsere Arbeiten' : 'Our Works'}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   {language === 'pl' ? 'i Case Study' : language === 'de' ? '& Fallstudien' : '& Case Studies'}
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8 max-w-xl">
+              <p className="text-xl text-gray-600 mb-8 max-w-xl">
                 {language === 'pl' 
                   ? 'Poznaj nasze wyróżnione projekty i zobacz, jak pomogliśmy firmom z różnych branż osiągnąć ich cele dzięki technologii.' 
                   : language === 'de' 
@@ -199,12 +199,12 @@ const Portfolio = () => {
               {/* Category filter buttons */}
               <div className="mt-8">
                 <Tabs defaultValue="all" onValueChange={setActiveCategory} className="w-full">
-                  <TabsList className="p-1 bg-gray-800 border border-gray-700 rounded-xl h-auto flex flex-wrap max-w-3xl">
+                  <TabsList className="p-1 bg-gray-100 border border-gray-200 rounded-xl h-auto flex flex-wrap max-w-3xl">
                     {categories.map(category => (
                       <TabsTrigger 
                         key={category.id} 
                         value={category.id}
-                        className="rounded-lg px-3 py-2 text-sm data-[state=active]:bg-primary data-[state=active]:text-white transition-all duration-300 flex items-center text-gray-300"
+                        className="rounded-lg px-3 py-2 text-sm data-[state=active]:bg-primary data-[state=active]:text-white transition-all duration-300 flex items-center text-gray-600"
                       >
                         {category.icon}
                         {category.label}
@@ -222,7 +222,7 @@ const Portfolio = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=550"
                   alt="Featured project" 
-                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-gray-700"
+                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-gray-200"
                 />
                 
                 <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
@@ -242,15 +242,15 @@ const Portfolio = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-2">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-1">
+          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Grid - Original dark styling */}
+      {/* Portfolio Grid - Dark styling as per the image */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -315,7 +315,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Company Partners/Clients - Original dark styling */}
+      {/* Company Partners/Clients - Dark styling */}
       <section className="py-16 bg-gray-800">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-lg mx-auto mb-10">
@@ -339,7 +339,7 @@ const Portfolio = () => {
         </div>
       </section>
         
-      {/* Portfolio Highlights Section - Original dark styling */}
+      {/* Portfolio Highlights Section - Dark styling */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
