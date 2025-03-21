@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import { Github, Linkedin, Twitter, MapPin, Globe, Users, Calendar } from 'lucide-react';
@@ -290,8 +291,8 @@ const About = () => {
         </div>
         
         {/* Updated scroll indicator with reduced spacing */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
-          <span className="text-sm mb-2">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+          <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[bounce_2s_ease-in-out_infinite]"></div>
           </div>
@@ -445,7 +446,7 @@ const About = () => {
       </section>
 
       {/* Values Section - Updated to match design of other sections */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block text-sm font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 mb-4">
@@ -466,7 +467,7 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-10 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+            <div className="bg-gray-50 rounded-xl p-10 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
               <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-6 text-indigo-600 group-hover:bg-indigo-200 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -485,10 +486,29 @@ const About = () => {
               <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
             </div>
             
-            <div className="bg-white rounded-xl p-10 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+            <div className="bg-gray-50 rounded-xl p-10 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
               <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-200 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                {language === 'pl' ? "Współpraca" : language === 'de' ? "Zusammenarbeit" : "Collaboration"}
+              </h3>
+              <p className="text-gray-600 mb-6">
+                {language === 'pl' 
+                  ? "Wierzymy w siłę różnorodnych perspektyw i wspólnej pracy nad złożonymi wyzwaniami." 
+                  : language === 'de' 
+                  ? "Wir glauben an die Kraft unterschiedlicher Perspektiven und der gemeinsamen Arbeit an komplexen Herausforderungen."
+                  : "We believe in the power of diverse perspectives and working together on complex challenges."}
+              </p>
+              <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default About;
