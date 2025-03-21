@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { ArrowRight, ArrowUpRight, Bookmark, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
@@ -139,44 +139,124 @@ const Portfolio = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 text-white relative overflow-hidden">
+      {/* Hero Section - Completely Redesigned */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Background elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 to-indigo-900/90 opacity-90"></div>
-          <img 
-            src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80" 
-            alt="Background" 
-            className="w-full h-full object-cover object-center"
-          />
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950"></div>
+          
+          {/* Code background with overlay */}
+          <div className="absolute inset-0 opacity-20 mix-blend-soft-light">
+            <img 
+              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80" 
+              alt="Code background" 
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+          
+          {/* Animated particles */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-indigo-500/20 backdrop-blur-sm floating-dot"
+                style={{
+                  width: `${Math.random() * 10 + 5}px`,
+                  height: `${Math.random() * 10 + 5}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animation: `float-around ${Math.random() * 15 + 10}s infinite`,
+                  animationDelay: `${Math.random() * 5}s`
+                }}
+              ></div>
+            ))}
+          </div>
+          
+          {/* 3D floating shapes */}
+          <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-3xl rotate-12 backdrop-blur-md transform-gpu animate-[float_20s_ease-in-out_infinite]"></div>
+          <div className="absolute top-[15%] left-[5%] w-40 h-40 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-full -rotate-12 backdrop-blur-md transform-gpu animate-[float_15s_ease-in-out_infinite]"></div>
         </div>
         
+        {/* Content container */}
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <div className="inline-block bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-6">
-              {t('portfolio.title')}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left column: Text content */}
+            <div className="text-white">
+              <div className="mb-6 inline-flex items-center rounded-full border border-indigo-400/30 bg-indigo-500/10 backdrop-blur-sm px-4 py-1.5">
+                <span className="mr-2 h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                <span className="text-indigo-300 font-medium tracking-wide text-sm">
+                  {language === 'pl' ? 'Nasze Portfolio' : language === 'de' ? 'Unser Portfolio' : 'Our Portfolio'}
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+                {language === 'pl' ? 'Nasze Prace' : language === 'de' ? 'Unsere Arbeiten' : 'Our Works'}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                  {language === 'pl' ? 'i Case Study' : language === 'de' ? '& Fallstudien' : '& Case Studies'}
+                </span>
+              </h1>
+              
+              <p className="text-xl text-indigo-200/90 mb-8 max-w-xl">
+                {language === 'pl' 
+                  ? 'Poznaj nasze wyróżnione projekty i zobacz, jak pomogliśmy firmom z różnych branż osiągnąć ich cele dzięki technologii.' 
+                  : language === 'de' 
+                    ? 'Entdecken Sie unsere herausragenden Projekte und erfahren Sie, wie wir Unternehmen verschiedener Branchen geholfen haben, ihre Ziele durch Technologie zu erreichen.'
+                    : 'Explore our featured projects and see how we've helped businesses across industries achieve their goals through technology.'}
+              </p>
+              
+              {/* Category filter buttons */}
+              <div className="mt-8">
+                <Tabs defaultValue="all" onValueChange={setActiveCategory} className="w-full">
+                  <TabsList className="p-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl h-auto flex flex-wrap max-w-3xl">
+                    {categories.map(category => (
+                      <TabsTrigger 
+                        key={category.id} 
+                        value={category.id}
+                        className="rounded-lg px-3 py-2 text-sm data-[state=active]:bg-indigo-600 data-[state=active]:text-white transition-all duration-300 flex items-center"
+                      >
+                        {category.icon}
+                        {category.label}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </Tabs>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              {t('portfolio.subtitle')}
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-              {t('portfolio.description')}
-            </p>
             
-            {/* Category Tabs */}
-            <Tabs defaultValue="all" onValueChange={setActiveCategory} className="w-full">
-              <TabsList className="bg-white/10 backdrop-blur-sm p-1 rounded-full h-auto flex flex-wrap mb-4">
-                {categories.map(category => (
-                  <TabsTrigger 
-                    key={category.id} 
-                    value={category.id}
-                    className="rounded-full px-4 py-1.5 text-sm data-[state=active]:bg-white data-[state=active]:text-gray-900 transition-all duration-300 flex items-center"
-                  >
-                    {category.icon}
-                    {category.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            {/* Right column: Featured project preview */}
+            <div className="hidden lg:block relative perspective-1000">
+              <div className="absolute -left-10 -top-10 -bottom-10 -right-10 bg-gradient-to-tr from-indigo-500/20 to-purple-500/0 rounded-3xl transform -rotate-6 animate-pulse"></div>
+              
+              <div className="relative transform transition-all duration-1000 hover:rotate-y-6 hover:rotate-z-3 transform-style-3d">
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20 rounded-2xl transform rotate-3"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=550"
+                  alt="Featured project" 
+                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-white/10"
+                />
+                
+                <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="text-white/70 text-sm">Featured Project</div>
+                      <div className="text-white font-bold text-xl">Modern Web Platform</div>
+                    </div>
+                    <div className="bg-indigo-600 text-white h-10 w-10 rounded-full flex items-center justify-center">
+                      <ArrowUpRight size={18} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+          <span className="text-sm mb-2">Scroll to explore</span>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+            <div className="w-1.5 h-3 bg-white/70 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
           </div>
         </div>
       </section>
