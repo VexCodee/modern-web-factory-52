@@ -1,13 +1,12 @@
 
 import React, { useEffect, useRef } from 'react';
-import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart } from 'lucide-react';
+import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useIsMobile } from '../hooks/use-mobile';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { Button } from '@/components/ui/button';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -16,6 +15,7 @@ interface ServiceCardProps {
   learnMoreText: string;
   iconBgColor: string;
   gradientColors: string;
+  index: number;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -24,43 +24,55 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   description,
   learnMoreText,
   iconBgColor,
-  gradientColors
+  gradientColors,
+  index
 }) => {
   return (
-    <Card className="overflow-hidden border-0 shadow-md transition-all duration-300 h-full hover:shadow-xl group">
-      <CardContent className="p-0 h-full">
-        <div className="flex flex-col h-full">
-          {/* Top gradient header */}
-          <div className={`h-2 w-full ${gradientColors}`}></div>
+    <div className="group">
+      <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+        {/* Background gradient overlay */}
+        <div className={`absolute inset-0 ${gradientColors} opacity-10`}></div>
+        <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
+        
+        {/* Top icon */}
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+          <span 
+            className={`w-10 h-10 flex items-center justify-center rounded-full ${iconBgColor} text-white transition-all duration-300 hover:scale-110`}
+          >
+            {icon}
+          </span>
+        </div>
+        
+        {/* Arrow icon */}
+        <div className="absolute top-4 right-4">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+            <ArrowRight size={18} />
+          </button>
+        </div>
+        
+        {/* Content */}
+        <div className="absolute inset-x-0 bottom-0 p-6">
+          <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
+          <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">{description}</p>
           
-          {/* Card body with icon and content */}
-          <div className="p-6 flex flex-col h-full">
-            {/* Icon with background */}
-            <div className={`${iconBgColor} w-14 h-14 rounded-lg flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 shadow-sm`}>
-              <div className="text-white">
-                {icon}
-              </div>
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4">
+            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1">
+              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">24/7</div>
+              <div className="text-xs text-gray-400">Support</div>
             </div>
-            
-            {/* Title and description */}
-            <h3 className="text-xl font-semibold mb-3 text-gray-800">{title}</h3>
-            <p className="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">{description}</p>
-            
-            {/* Button/link at the bottom */}
-            <div className="pt-2 mt-auto">
-              <Link 
-                to="/services" 
-                className="inline-flex items-center text-primary hover:text-primary/80 font-medium text-sm transition-all duration-300"
-                aria-label={`${learnMoreText} ${title}`}
-              >
-                <ArrowRight className="h-4 w-4 mr-2 transition-all duration-300 group-hover:translate-x-1" />
-                <span>{learnMoreText}</span>
-              </Link>
+            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-75">
+              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">99%</div>
+              <div className="text-xs text-gray-400">Satisfaction</div>
+            </div>
+            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-150">
+              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">+50%</div>
+              <div className="text-xs text-gray-400">Efficiency</div>
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 
@@ -213,7 +225,7 @@ const ServiceSection = () => {
             <CarouselContent>
               {services.map((service, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[340px] pt-2">
-                  <div className="p-1 h-full">
+                  <div className="p-1 h-full service-card">
                     <ServiceCard 
                       icon={service.icon} 
                       title={t(service.titleKey)} 
@@ -221,6 +233,7 @@ const ServiceSection = () => {
                       learnMoreText={learnMoreText}
                       iconBgColor={service.iconBgColor}
                       gradientColors={service.gradientColors}
+                      index={index}
                     />
                   </div>
                 </CarouselItem>

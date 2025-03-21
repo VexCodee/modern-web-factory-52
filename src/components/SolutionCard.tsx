@@ -2,9 +2,6 @@
 import React from 'react';
 import { Check, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 
 interface SolutionCardProps {
   title: string;
