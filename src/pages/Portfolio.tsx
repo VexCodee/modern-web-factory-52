@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ArrowRight, ArrowUpRight, Bookmark, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Portfolio = () => {
   const { t, language } = useLanguage();
@@ -14,13 +15,13 @@ const Portfolio = () => {
   
   // Project categories
   const categories = [
-    { id: 'all', label: t('portfolio.categories.all') },
-    { id: 'fintech', label: 'Fintech' },
-    { id: 'mobile', label: 'Mobile' },
-    { id: 'web', label: t('portfolio.categories.web') },
-    { id: 'design', label: t('portfolio.categories.design') },
-    { id: 'logistics', label: 'Logistics' },
-    { id: 'travel', label: 'Travel & Leisure' }
+    { id: 'all', label: t('portfolio.categories.all'), icon: <LayoutGrid size={16} /> },
+    { id: 'fintech', label: 'Fintech', icon: <Globe size={16} /> },
+    { id: 'mobile', label: 'Mobile', icon: <Smartphone size={16} /> },
+    { id: 'web', label: t('portfolio.categories.web'), icon: <Monitor size={16} /> },
+    { id: 'design', label: t('portfolio.categories.design'), icon: <Image size={16} /> },
+    { id: 'logistics', label: 'Logistics', icon: <ArrowRight size={16} /> },
+    { id: 'travel', label: 'Travel & Leisure', icon: <Bookmark size={16} /> }
   ];
   
   // Portfolio projects data structure
@@ -32,7 +33,7 @@ const Portfolio = () => {
       description: "",
       stats: ["+2M", "99%", "2019"],
       statsLabels: ["Daily users", "Uptime", "Founded"],
-      color: "bg-purple-700",
+      color: "bg-purple-600",
       textColor: "text-white",
       categories: ["mobile", "web"],
       tags: ["Music & Video", "Mobile"],
@@ -46,7 +47,7 @@ const Portfolio = () => {
       description: "",
       stats: ["+500M", "97%", "2019"],
       statsLabels: ["Loan applications processed", "Predictions' accuracy", "Singapore Fintech Awards Finalist"],
-      color: "bg-gray-900",
+      color: "bg-violet-700",
       textColor: "text-white",
       categories: ["fintech", "web"],
       tags: ["Fintech", "Mobile", "Web"],
@@ -59,7 +60,7 @@ const Portfolio = () => {
       description: "",
       stats: ["+100K", "24/7", "2020"],
       statsLabels: ["Active users", "Support", "Launch year"],
-      color: "bg-red-600",
+      color: "bg-indigo-600",
       textColor: "text-white",
       categories: ["mobile", "logistics"],
       tags: ["Logistics", "Mobile"],
@@ -72,7 +73,7 @@ const Portfolio = () => {
       description: "",
       stats: ["+2.5M", "45+", "4.8/5"],
       statsLabels: ["Bookings", "Countries", "App rating"],
-      color: "bg-blue-600",
+      color: "bg-cyan-600",
       textColor: "text-white",
       categories: ["travel", "mobile", "design"],
       tags: ["Travel & Leisure", "Mobile", "Design"],
@@ -85,7 +86,7 @@ const Portfolio = () => {
       description: "",
       stats: ["$3.2B", "12", "2021"],
       statsLabels: ["Assets tracked", "Major banks", "Release"],
-      color: "bg-indigo-600",
+      color: "bg-teal-600",
       textColor: "text-white",
       categories: ["fintech", "web"],
       tags: ["Fintech", "Web", "Design"],
@@ -98,7 +99,7 @@ const Portfolio = () => {
       description: "",
       stats: ["68%", "5hrs", "99.3%"],
       statsLabels: ["Cost reduction", "Time saved/week", "Delivery accuracy"],
-      color: "bg-amber-600",
+      color: "bg-pink-600",
       textColor: "text-white",
       categories: ["logistics", "web"],
       tags: ["Logistics", "Software"],
@@ -111,7 +112,7 @@ const Portfolio = () => {
       description: "",
       stats: ["52", "4.7/5", "2022"],
       statsLabels: ["Countries", "App rating", "Launch year"],
-      color: "bg-cyan-700",
+      color: "bg-blue-600",
       textColor: "text-white",
       categories: ["travel", "mobile"],
       tags: ["Travel", "Mobile"],
@@ -124,7 +125,7 @@ const Portfolio = () => {
       description: "",
       stats: ["128-bit", "0", "24/7"],
       statsLabels: ["Encryption", "Data breaches", "Monitoring"],
-      color: "bg-emerald-700",
+      color: "bg-emerald-600",
       textColor: "text-white",
       categories: ["fintech", "mobile"],
       tags: ["Fintech", "Security"],
@@ -137,45 +138,102 @@ const Portfolio = () => {
     ? projects 
     : projects.filter(project => project.categories.includes(activeCategory));
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gray-900 text-white relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-violet-900 via-indigo-800 to-purple-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-900/90 via-indigo-800/80 to-purple-900/90"></div>
           <img 
             src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80" 
             alt="Background" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center opacity-30 mix-blend-overlay"
           />
+          {/* Abstract patterns */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+            {[...Array(20)].map((_, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-white/5"
+                style={{
+                  width: Math.random() * 300 + 50,
+                  height: Math.random() * 300 + 50,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animation: `float-around ${Math.random() * 15 + 10}s infinite linear`
+                }}
+              />
+            ))}
+          </div>
         </div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto">
-            <div className="inline-block bg-primary/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-block bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-6"
+            >
               {t('portfolio.title')}
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-5xl font-bold mb-6 tracking-tight"
+            >
               {t('portfolio.subtitle')}
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-indigo-100 mb-8 max-w-2xl"
+            >
               {t('portfolio.description')}
-            </p>
+            </motion.p>
             
             {/* Category Tabs */}
-            <Tabs defaultValue="all" onValueChange={setActiveCategory} className="w-full">
-              <TabsList className="bg-white/10 backdrop-blur-sm p-1 rounded-full h-auto flex flex-wrap mb-4">
-                {categories.map(category => (
-                  <TabsTrigger 
-                    key={category.id} 
-                    value={category.id}
-                    className="rounded-full px-4 py-1.5 text-sm data-[state=active]:bg-white data-[state=active]:text-gray-900"
-                  >
-                    {category.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <Tabs defaultValue="all" onValueChange={setActiveCategory} className="w-full">
+                <TabsList className="bg-white/10 backdrop-blur-sm p-1 rounded-full h-auto flex flex-wrap mb-4">
+                  {categories.map(category => (
+                    <TabsTrigger 
+                      key={category.id} 
+                      value={category.id}
+                      className="rounded-full px-4 py-2 text-sm flex items-center gap-2 data-[state=active]:bg-gradient-to-r from-violet-500 to-purple-600 data-[state=active]:text-white"
+                    >
+                      <span>{category.icon}</span>
+                      <span>{category.label}</span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -183,16 +241,26 @@ const Portfolio = () => {
       {/* Portfolio Grid */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          >
             {filteredProjects.map((project) => (
-              <div key={project.id} className="group perspective-1000">
-                <Card className="overflow-hidden border-0 bg-white shadow-lg h-full transform-style-3d hover:rotate-y-7 hover:rotate-x-3 transition-all duration-500">
+              <motion.div 
+                key={project.id} 
+                variants={itemVariants}
+                className="group"
+              >
+                <Card className="overflow-hidden border-0 bg-white shadow-lg h-full hover:shadow-xl transition-all duration-500">
                   <div className={`${project.color} absolute inset-0 z-0`}>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70"></div>
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover object-center opacity-50 mix-blend-overlay"
+                      className="w-full h-full object-cover object-center opacity-50 mix-blend-overlay transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
                   
@@ -200,40 +268,69 @@ const Portfolio = () => {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag, idx) => (
-                        <span 
+                        <motion.span 
                           key={idx} 
                           className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-medium text-white"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           {tag}
-                        </span>
+                        </motion.span>
                       ))}
                       <span className="ml-auto">
-                        <button className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-colors">
+                        <motion.button 
+                          className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-colors"
+                          whileHover={{ 
+                            scale: 1.1,
+                            rotate: 5
+                          }}
+                          whileTap={{ scale: 0.9 }}
+                        >
                           <ArrowUpRight size={16} />
-                        </button>
+                        </motion.button>
                       </span>
                     </div>
                     
                     {/* Logo or Project Title */}
                     <div className="mb-4">
-                      <h2 className={`text-2xl md:text-3xl font-bold ${project.textColor}`}>{project.title}</h2>
-                      <p className={`text-sm md:text-base mt-1 ${project.textColor} opacity-90`}>{project.subtitle}</p>
+                      <motion.h2 
+                        className={`text-2xl md:text-3xl font-bold ${project.textColor}`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                      >
+                        {project.title}
+                      </motion.h2>
+                      <motion.p 
+                        className={`text-sm md:text-base mt-1 ${project.textColor} opacity-90`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                      >
+                        {project.subtitle}
+                      </motion.p>
                     </div>
                     
                     {/* Stats/Metrics */}
                     <div className="mt-auto pt-12 grid grid-cols-3 gap-4">
                       {project.stats.map((stat, idx) => (
-                        <div key={idx} className={`${project.textColor}`}>
+                        <motion.div 
+                          key={idx} 
+                          className={`${project.textColor}`}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4 + (idx * 0.1), duration: 0.5 }}
+                        >
                           <div className="text-xl md:text-2xl font-bold">{stat}</div>
                           <div className="text-xs opacity-80">{project.statsLabels[idx]}</div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -241,7 +338,7 @@ const Portfolio = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-lg mx-auto mb-10">
-            <h2 className="text-2xl font-bold mb-2">
+            <h2 className="text-2xl font-bold mb-2 text-violet-900">
               {language === 'pl' ? 'Zaufali nam' : language === 'de' ? 'Sie vertrauen uns' : 'They trust us'}
             </h2>
             <p className="text-gray-600">
@@ -251,25 +348,40 @@ const Portfolio = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center"
+          >
             {Array(6).fill(0).map((_, i) => (
-              <div key={i} className="w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                <div className="w-16 h-8 bg-gray-300 rounded-md"></div>
-              </div>
+              <motion.div 
+                key={i} 
+                variants={itemVariants}
+                className="w-32 h-16 bg-gray-50 rounded-lg flex items-center justify-center hover:shadow-md transition-shadow"
+              >
+                <div className="w-16 h-8 bg-violet-200 rounded-md"></div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
         
       {/* Portfolio Highlights Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-block bg-primary/10 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-block bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-1 rounded-full text-sm font-medium text-white mb-6">
                 {language === 'pl' ? 'Nasz proces' : language === 'de' ? 'Unser Prozess' : 'Our Process'}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-violet-900">
                 {language === 'pl' ? 'Jak pracujemy nad Twoim projektem' : 
                  language === 'de' ? 'Wie wir an Ihrem Projekt arbeiten' : 
                  'How we approach your project'}
@@ -311,31 +423,52 @@ const Portfolio = () => {
                                  'Building the solution'
                   }
                 ].map((step, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                  <motion.div 
+                    key={idx} 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.2, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="flex items-start"
+                  >
+                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white font-bold">
                       {step.number}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-1">{step.title}</h3>
+                      <h3 className="text-xl font-bold mb-1 text-violet-900">{step.title}</h3>
                       <p className="text-gray-600">{step.description}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
             
-            <div className="relative">
-              <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-primary/5"></div>
-              <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-primary/10"></div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <motion.div 
+                className="absolute inset-0 rounded-2xl transform rotate-6 bg-violet-200"
+                animate={{ rotate: [6, 4, 6] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              ></motion.div>
+              <motion.div 
+                className="absolute inset-0 rounded-2xl transform -rotate-3 bg-indigo-200"
+                animate={{ rotate: [-3, -5, -3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              ></motion.div>
               <img 
                 src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80" 
                 alt="Our process visualization" 
                 className="relative z-10 w-full h-auto rounded-2xl shadow-xl"
               />
               
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-primary to-primary/50 rounded-full filter blur-2xl opacity-20"></div>
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br from-accent to-accent/50 rounded-full filter blur-2xl opacity-20"></div>
-            </div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-violet-600 to-violet-300 rounded-full filter blur-2xl opacity-20"></div>
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br from-indigo-600 to-indigo-300 rounded-full filter blur-2xl opacity-20"></div>
+            </motion.div>
           </div>
         </div>
       </section>
