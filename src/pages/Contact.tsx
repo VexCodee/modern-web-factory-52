@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock, ArrowUpRight, LayoutGrid, Image, Smartphone, Globe, Calendar, Users, CheckCircle, Github, Twitter, Linkedin, Facebook, MessagesSquare, Building, ShieldCheck, Languages } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock, ArrowUpRight, LayoutGrid, Image, Smartphone, Globe, Calendar, Users, CheckCircle, Github, Twitter, Linkedin, Facebook, MessagesSquare, Building, ShieldCheck, Languages, Database } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
