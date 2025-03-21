@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock, ArrowUpRight, Image, Smartphone, Globe, Calendar, Users, CheckCircle, Github, Twitter, Linkedin, Facebook, MessagesSquare, Building, ShieldCheck, Languages, Database } from 'lucide-react';
@@ -638,17 +637,21 @@ const Contact = () => {
                    'Get in touch with us today to discuss your project.'}
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90">
-                    {language === 'pl' ? 'Skontaktuj się z nami' : 
-                     language === 'de' ? 'Kontaktieren Sie uns' : 
-                     'Contact us'}
-                  </Button>
-                  <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
-                    {language === 'pl' ? 'Zobacz naszą ofertę' : 
-                     language === 'de' ? 'Sehen Sie unser Angebot' : 
-                     'View our services'}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
+                  <Link to="/contact">
+                    <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto">
+                      {language === 'pl' ? 'Skontaktuj się z nami' : 
+                       language === 'de' ? 'Kontaktieren Sie uns' : 
+                       'Contact us'}
+                    </Button>
+                  </Link>
+                  <Link to="/services">
+                    <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10 w-full sm:w-auto">
+                      {language === 'pl' ? 'Zobacz naszą ofertę' : 
+                       language === 'de' ? 'Sehen Sie unser Angebot' : 
+                       'View our services'}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

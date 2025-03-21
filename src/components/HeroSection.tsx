@@ -2,28 +2,27 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+
 const HeroSection = () => {
   const blobRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const {
-    t
-  } = useLanguage();
+  const { t } = useLanguage();
+  
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!blobRef.current) return;
-      const {
-        clientX,
-        clientY
-      } = e;
+      const { clientX, clientY } = e;
       const moveX = (clientX - window.innerWidth / 2) * 0.01;
       const moveY = (clientY - window.innerHeight / 2) * 0.01;
       blobRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
     };
+    
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+  
   useEffect(() => {
     if (!heroRef.current) return;
     const elements = heroRef.current.querySelectorAll('.animate-on-scroll');
@@ -37,18 +36,24 @@ const HeroSection = () => {
     }, {
       threshold: 0.1
     });
+    
     elements.forEach(el => observer.observe(el));
     return () => {
       elements.forEach(el => observer.unobserve(el));
     };
   }, []);
+  
   const handleScroll = () => {
     const serviceSection = document.querySelector('#services');
-    serviceSection?.scrollIntoView({
-      behavior: 'smooth'
-    });
+    if (serviceSection) {
+      serviceSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   };
-  return <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white pt-16 md:pt-24 pb-16">
+  
+  return (
+    <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white pt-16 md:pt-24 pb-16">
       {/* Background decorative elements */}
       <div ref={blobRef} className="absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-br from-blue-50 to-purple-50 shape-blob -z-10 opacity-70 blur-3xl"></div>
       <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl -z-10 opacity-60"></div>
@@ -81,13 +86,13 @@ const HeroSection = () => {
               </Link>
             </div>
             
-            {/* Animated scroll indicator */}
-            <div className="hidden md:flex items-center mt-16 space-x-2 text-gray-500 cursor-pointer animate-fade-in animate-on-scroll opacity-0" style={{
-            animationDelay: '800ms'
-          }} onClick={handleScroll}>
-              <span className="text-sm font-medium">Scroll to explore</span>
-              <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
-                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
+            {/* Animated scroll indicator - updated for better visibility */}
+            <div className="hidden md:flex items-center mt-12 justify-center text-gray-500 cursor-pointer animate-fade-in" onClick={handleScroll}>
+              <div className="flex flex-col items-center">
+                <span className="text-sm font-medium mb-2">Scroll to explore</span>
+                <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
+                  <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -191,6 +196,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
