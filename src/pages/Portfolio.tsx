@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -140,27 +139,22 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero Section - Updated to match Home and Services style */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-900">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         {/* Background elements */}
         <div className="absolute inset-0 z-0">
-          {/* Code background with animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 animate-gradient-shift"></div>
+          {/* Background with subtle gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-70"></div>
           
-          {/* Code pattern overlay */}
-          <div className="absolute inset-0 opacity-10">
-            <img 
-              src="/public/lovable-uploads/c4a1f594-eca4-4fcc-a2fe-96ceb162e6ca.png" 
-              alt="Code background" 
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {/* Decorative elements */}
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-60"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-40"></div>
           
           {/* Animated particles */}
           <div className="absolute inset-0">
             {Array.from({ length: 15 }).map((_, i) => (
               <div 
                 key={i}
-                className="absolute rounded-full bg-indigo-500/20 backdrop-blur-sm"
+                className="absolute rounded-full bg-primary/10"
                 style={{
                   width: `${Math.random() * 10 + 5}px`,
                   height: `${Math.random() * 10 + 5}px`,
@@ -178,22 +172,22 @@ const Portfolio = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left column: Text content */}
-            <div className="text-white">
-              <div className="mb-6 inline-flex items-center rounded-full bg-indigo-500/10 backdrop-blur-sm px-4 py-1.5 border border-indigo-400/30">
-                <span className="mr-2 h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                <span className="text-indigo-200 font-medium tracking-wide text-sm">
+            <div>
+              <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
+                <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                <span className="text-primary font-medium tracking-wide text-sm">
                   {language === 'pl' ? 'Nasze Portfolio' : language === 'de' ? 'Unser Portfolio' : 'Our Portfolio'}
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-white text-shadow">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
                 {language === 'pl' ? 'Nasze Prace' : language === 'de' ? 'Unsere Arbeiten' : 'Our Works'}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   {language === 'pl' ? 'i Case Study' : language === 'de' ? '& Fallstudien' : '& Case Studies'}
                 </span>
               </h1>
               
-              <p className="text-xl text-indigo-200/90 mb-8 max-w-xl">
+              <p className="text-xl text-gray-700 mb-8 max-w-xl">
                 {language === 'pl' 
                   ? 'Poznaj nasze wyróżnione projekty i zobacz, jak pomogliśmy firmom z różnych branż osiągnąć ich cele dzięki technologii.' 
                   : language === 'de' 
@@ -204,12 +198,12 @@ const Portfolio = () => {
               {/* Category filter buttons */}
               <div className="mt-8">
                 <Tabs defaultValue="all" onValueChange={setActiveCategory} className="w-full">
-                  <TabsList className="p-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl h-auto flex flex-wrap max-w-3xl">
+                  <TabsList className="p-1 bg-gray-100 border border-gray-200 rounded-xl h-auto flex flex-wrap max-w-3xl">
                     {categories.map(category => (
                       <TabsTrigger 
                         key={category.id} 
                         value={category.id}
-                        className="rounded-lg px-3 py-2 text-sm data-[state=active]:bg-indigo-600 data-[state=active]:text-white transition-all duration-300 flex items-center"
+                        className="rounded-lg px-3 py-2 text-sm data-[state=active]:bg-primary data-[state=active]:text-white transition-all duration-300 flex items-center"
                       >
                         {category.icon}
                         {category.label}
@@ -223,20 +217,20 @@ const Portfolio = () => {
             {/* Right column: Featured project preview */}
             <div className="hidden lg:block relative perspective-1000">
               <div className="relative transform transition-all duration-1000 hover:rotate-y-6 hover:rotate-z-3 transform-style-3d">
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20 rounded-2xl transform rotate-3"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
                 <img 
                   src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=550"
                   alt="Featured project" 
-                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-white/10"
+                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-gray-200"
                 />
                 
-                <div className="absolute bottom-6 left-6 right-6 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-md rounded-xl p-4 border border-gray-200">
                   <div className="flex items-start justify-between">
                     <div>
-                      <div className="text-white/70 text-sm">Featured Project</div>
-                      <div className="text-white font-bold text-xl">Modern Web Platform</div>
+                      <div className="text-gray-600 text-sm">Featured Project</div>
+                      <div className="text-gray-900 font-bold text-xl">Modern Web Platform</div>
                     </div>
-                    <div className="bg-indigo-600 text-white h-10 w-10 rounded-full flex items-center justify-center">
+                    <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center">
                       <ArrowUpRight size={18} />
                     </div>
                   </div>
@@ -247,10 +241,10 @@ const Portfolio = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-600">
           <span className="text-sm mb-2">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
-            <div className="w-1.5 h-3 bg-white/70 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
+            <div className="w-1.5 h-3 bg-gray-500 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
           </div>
         </div>
       </section>
@@ -324,10 +318,10 @@ const Portfolio = () => {
       <section className="py-16 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-lg mx-auto mb-10">
-            <h2 className="text-2xl font-bold mb-2 text-white">
+            <h2 className="text-2xl font-bold mb-2 text-gray-900">
               {language === 'pl' ? 'Zaufali nam' : language === 'de' ? 'Sie vertrauen uns' : 'They trust us'}
             </h2>
-            <p className="text-indigo-200/70">
+            <p className="text-gray-700/70">
               {language === 'pl' ? 'Współpracujemy z wiodącymi markami' : 
                language === 'de' ? 'Wir arbeiten mit führenden Marken zusammen' : 
                'We work with leading brands around the world'}
@@ -352,12 +346,12 @@ const Portfolio = () => {
               <div className="inline-block bg-indigo-500/10 border border-indigo-500/30 px-4 py-1 rounded-full text-sm font-medium text-indigo-300 mb-6">
                 {language === 'pl' ? 'Nasz proces' : language === 'de' ? 'Unser Prozess' : 'Our Process'}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
                 {language === 'pl' ? 'Jak pracujemy nad Twoim projektem' : 
                  language === 'de' ? 'Wie wir an Ihrem Projekt arbeiten' : 
                  'How we approach your project'}
               </h2>
-              <p className="text-lg text-indigo-200/90 mb-8">
+              <p className="text-lg text-gray-700 mb-8">
                 {language === 'pl' ? 'Każdy projekt to indywidualne podejście. Łączymy najlepsze praktyki z innowacyjnymi rozwiązaniami.' : 
                  language === 'de' ? 'Jedes Projekt ist ein individueller Ansatz. Wir kombinieren bewährte Praktiken mit innovativen Lösungen.' : 
                  'Each project gets a custom approach. We combine industry best practices with innovative solutions to deliver exceptional results.'}
@@ -400,7 +394,7 @@ const Portfolio = () => {
                     </div>
                     <div className="transition-all duration-300 group-hover:translate-x-2">
                       <h3 className="text-xl font-bold mb-1 transition-colors duration-300 text-white group-hover:text-indigo-300">{step.title}</h3>
-                      <p className="text-indigo-200/70">{step.description}</p>
+                      <p className="text-gray-700/70">{step.description}</p>
                     </div>
                   </div>
                 ))}
@@ -411,7 +405,7 @@ const Portfolio = () => {
               <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-indigo-500/10"></div>
               <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-indigo-500/5"></div>
               <img 
-                src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80" 
                 alt="Our process visualization" 
                 className="relative z-10 w-full h-auto rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 hover:scale-[1.02] border border-indigo-500/20"
               />
