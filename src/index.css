@@ -472,3 +472,46 @@
 .rotate-x-3 {
   transform: rotateX(3deg);
 }
+
+/* Modern card transitions */
+.diagonal-card-transition {
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.diagonal-card-transition:hover {
+  transform: translateY(-10px);
+}
+
+/* Solution card specific animations */
+.solution-card-overlay {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.solution-card:hover .solution-card-overlay {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Diagonal content reveal animations */
+@keyframes diagonal-reveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.diagonal-reveal {
+  animation: diagonal-reveal 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+/* Perspective animations for buttons */
+.perspective-hover {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.perspective-hover:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
+}

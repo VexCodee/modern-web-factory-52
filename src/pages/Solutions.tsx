@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -119,7 +120,8 @@ const Solution = () => {
 
   return (
     <Layout>
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-32 pb-16">
+      {/* Hero section */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-32 pb-16">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
             <span className="animate-fade-in rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
@@ -132,7 +134,7 @@ const Solution = () => {
               {t('solutions.subtitle')}
             </h1>
             <p 
-              className="mx-auto mt-6 max-w-2xl animate-fade-in text-xl text-gray-600" 
+              className="mx-auto mt-6 max-w-2xl animate-fade-in text-xl text-gray-600 dark:text-gray-300" 
               style={{ animationDelay: '200ms' }}
             >
               {t('solutions.description')}
@@ -141,13 +143,14 @@ const Solution = () => {
         </div>
       </section>
 
-      <section ref={solutionsRef} className="py-16 bg-white">
+      {/* Solutions section with updated spacing for new card design */}
+      <section ref={solutionsRef} className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 gap-16">
+          <div className="grid grid-cols-1 gap-24">
             {solutions.map((solution, index) => (
               <div 
                 key={index} 
-                className="solution-item opacity-0 transition-all duration-500"
+                className="solution-item opacity-0 transition-all duration-700"
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <SolutionCard
