@@ -25,14 +25,14 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   iconBgColor = "bg-indigo-500"
 }) => {
   return (
-    <div className="group">
+    <div className="group transition-all duration-300">
       <div 
         className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-white border border-gray-100"
         style={{ 
           transitionDelay: `${index * 100}ms`,
         }}
       >
-        {/* Subtle background gradient */}
+        {/* Subtle background */}
         <div className={`absolute inset-0 ${iconBgColor} opacity-5`}></div>
         
         {/* Icon */}

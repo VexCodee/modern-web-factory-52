@@ -14,12 +14,14 @@ const Index = () => {
     <Layout>
       <div className="flex flex-col w-full">
         <HeroSection />
-        <ServiceSection />
-        <WhyChooseUs />
-        <InnovationShowcase />
-        <TechnologiesSection />
-        <Testimonials />
-        <CTASection />
+        <div className="flex flex-col items-center">
+          <ServiceSection />
+          <WhyChooseUs />
+          <InnovationShowcase />
+          <TechnologiesSection />
+          <Testimonials />
+          <CTASection />
+        </div>
       </div>
     </Layout>
   );

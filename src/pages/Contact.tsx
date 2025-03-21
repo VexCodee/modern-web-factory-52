@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
@@ -59,7 +59,6 @@ const Contact = () => {
     phone: '+48 22 123 45 67',
     email: 'info@techprime.com',
     hours: language === 'pl' ? 'Pon-Pt: 9:00-17:00' : language === 'de' ? 'Mo-Fr: 9:00-17:00' : 'Mon-Fri: 9:00-17:00',
-    mapUrl: 'https://images.unsplash.com/photo-1563699183-4c3376c8f5a6?auto=format&fit=crop&q=80&w=800&h=400'
   };
 
   // Countries where we operate
@@ -93,65 +92,63 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Hero Section - 3D Animated Effect */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      {/* Hero Section - Redesigned */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-indigo-950">
         {/* Background elements */}
         <div className="absolute inset-0 z-0">
           {/* Gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950"></div>
           
           {/* Abstract pattern overlay */}
-          <div className="absolute inset-0 opacity-10 mix-blend-soft-light">
+          <div className="absolute inset-0 opacity-20">
             <img 
-              src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&q=80" 
-              alt="Abstract pattern" 
+              src="public/lovable-uploads/76c04e32-9377-4978-856c-d9faa1c28501.png" 
+              alt="Hero background" 
               className="w-full h-full object-cover object-center"
             />
           </div>
           
           {/* Animated elements */}
           <div className="absolute inset-0">
-            {Array.from({ length: 12 }).map((_, i) => (
+            {Array.from({ length: 8 }).map((_, i) => (
               <div 
                 key={i}
-                className="absolute rounded-full bg-blue-500/20 backdrop-blur-sm"
+                className="absolute rounded-full bg-blue-500/20"
                 style={{
-                  width: `${Math.random() * 15 + 5}px`,
-                  height: `${Math.random() * 15 + 5}px`,
+                  width: `${Math.random() * 10 + 5}px`,
+                  height: `${Math.random() * 10 + 5}px`,
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
-                  animation: `float ${Math.random() * 15 + 10}s infinite`,
+                  animation: `float ${Math.random() * 10 + 8}s infinite`,
                   animationDelay: `${Math.random() * 5}s`
                 }}
               ></div>
             ))}
           </div>
-          
-          {/* 3D floating shapes */}
-          <div className="absolute bottom-[15%] right-[10%] w-64 h-64 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-3xl rotate-12 backdrop-blur-md transform-gpu animate-[float_20s_ease-in-out_infinite]"></div>
-          <div className="absolute top-[20%] left-[5%] w-40 h-40 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full -rotate-12 backdrop-blur-md transform-gpu animate-[float_15s_ease-in-out_infinite]"></div>
         </div>
         
         {/* Content container */}
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left column: Text content */}
-            <div className="text-white">
-              <div className="mb-6 inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 backdrop-blur-sm px-4 py-1.5">
-                <span className="mr-2 h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
+            <div className="text-white pt-16 pb-8 lg:py-0">
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 mb-6">
+                <span className="mr-2 h-2 w-2 rounded-full bg-blue-400"></span>
                 <span className="text-blue-300 font-medium tracking-wide text-sm">
                   {language === 'pl' ? 'Skontaktuj się z nami' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                {language === 'pl' ? 'Jesteśmy' : language === 'de' ? 'Wir sind' : 'We\'re'} 
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
+              <h1 className="text-6xl font-bold tracking-tight leading-none mb-4">
+                <span className="text-white">
+                  {language === 'pl' ? 'Jesteśmy' : language === 'de' ? 'Wir sind' : 'We\'re'}
+                </span>
+                <span className="block text-blue-400">
                   {language === 'pl' ? 'tutaj dla Ciebie' : language === 'de' ? 'für Sie da' : 'here to help'}
                 </span>
               </h1>
               
-              <p className="text-xl text-blue-200/90 mb-8 max-w-xl">
+              <p className="text-xl text-blue-200 mb-8 max-w-xl">
                 {language === 'pl' 
                   ? 'Masz pytania lub potrzebujesz pomocy? Nasz zespół ekspertów jest gotowy, aby Ci pomóc osiągnąć Twoje cele.' 
                   : language === 'de' 
@@ -201,18 +198,17 @@ const Contact = () => {
               </div>
             </div>
             
-            {/* Right column: 3D Card */}
-            <div className="hidden lg:block relative perspective-1000">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/5 rounded-3xl transform rotate-6 animate-pulse"></div>
-              
-              <Card className="relative bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden shadow-2xl transform transition-all duration-500 hover:rotate-y-6 hover:-translate-y-2">
-                <CardContent className="p-8">
+            {/* Right column: Contact Card */}
+            <div className="relative">
+              <Card className="relative overflow-hidden backdrop-blur-md border border-white/20 bg-white/10 text-white">
+                <div className="absolute inset-0 bg-indigo-600/5 backdrop-blur-sm"></div>
+                <CardContent className="p-8 z-10 relative">
                   <div className="mb-4">
-                    <div className="w-16 h-6 bg-indigo-500/20 backdrop-blur-md rounded-full mb-4"></div>
-                    <h3 className="text-2xl font-bold text-white mb-1">
+                    <div className="w-16 h-1.5 bg-blue-400 mb-4"></div>
+                    <h3 className="text-2xl font-bold text-white mb-2">
                       {language === 'pl' ? 'Skontaktuj się' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
                     </h3>
-                    <p className="text-blue-200/80 text-sm">
+                    <p className="text-blue-200 text-sm">
                       {language === 'pl' ? 'Odpowiemy na wszystkie Twoje pytania' : 
                        language === 'de' ? 'Wir beantworten alle Ihre Fragen' : 
                        'We\'ll answer all your questions'}
@@ -220,7 +216,7 @@ const Contact = () => {
                   </div>
                   
                   <div className="space-y-4 mt-8">
-                    <div className="flex items-center gap-3 text-white">
+                    <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
                         <MapPin size={20} />
                       </div>
@@ -234,7 +230,7 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-3 text-white">
+                    <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
                         <Phone size={20} />
                       </div>
@@ -248,7 +244,7 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-3 text-white">
+                    <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
                         <Mail size={20} />
                       </div>
@@ -265,7 +261,7 @@ const Contact = () => {
                   
                   <div className="mt-8">
                     <Button 
-                      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center justify-center gap-2"
                     >
                       {language === 'pl' ? 'Wyślij wiadomość' : 
                        language === 'de' ? 'Nachricht senden' : 
@@ -280,7 +276,7 @@ const Contact = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
           <span className="text-sm mb-2">
             {language === 'pl' ? 'Przewiń w dół' : 
              language === 'de' ? 'Nach unten scrollen' : 
@@ -292,157 +288,13 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Global Presence Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium">
-              {language === 'pl' ? 'Nasza obecność' : 
-               language === 'de' ? 'Unsere Präsenz' : 
-               'Our Presence'}
-            </span>
-            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold">
-              {language === 'pl' ? 'Działamy globalnie' : 
-               language === 'de' ? 'Wir arbeiten global' : 
-               'We operate globally'}
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              {language === 'pl' ? 'Chociaż mamy siedzibę w Warszawie, świadczymy usługi klientom w wielu krajach' : 
-               language === 'de' ? 'Obwohl wir unseren Sitz in Warschau haben, bieten wir Dienstleistungen für Kunden in vielen Ländern an' : 
-               'While headquartered in Warsaw, we provide services to clients across multiple countries'}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8">
-            {/* Headquarters */}
-            <Card className="overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2 border-blue-200 bg-blue-50/50">
-              <div className="relative h-64 overflow-hidden rounded-t-lg">
-                <img 
-                  src={officeInfo.mapUrl} 
-                  alt={`${officeInfo.city} office location`}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-                <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {language === 'pl' ? 'Główna siedziba' : 
-                   language === 'de' ? 'Hauptsitz' : 
-                   'Headquarters'}
-                </div>
-              </div>
-              
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-4 flex items-center">
-                  <MapPin size={18} className="text-primary mr-2" />
-                  {officeInfo.city}
-                </h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        <MapPin size={16} />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">
-                        {language === 'pl' ? 'Adres' : 
-                         language === 'de' ? 'Adresse' : 
-                         'Address'}
-                      </div>
-                      <div className="font-medium">{officeInfo.address}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        <Phone size={16} />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">
-                        {language === 'pl' ? 'Telefon' : 
-                         language === 'de' ? 'Telefon' : 
-                         'Phone'}
-                      </div>
-                      <div className="font-medium">{officeInfo.phone}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        <Mail size={16} />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Email</div>
-                      <div className="font-medium">{officeInfo.email}</div>
-                    </div>
-                  </div>
-                
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        <Clock size={16} />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">
-                        {language === 'pl' ? 'Godziny pracy' : 
-                         language === 'de' ? 'Öffnungszeiten' : 
-                         'Working hours'}
-                      </div>
-                      <div className="font-medium">{officeInfo.hours}</div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Global Presence */}
-            <div className="mt-12">
-              <h3 className="text-2xl font-display font-bold mb-8 text-center">
-                {language === 'pl' ? 'Kraje, w których działamy' : 
-                 language === 'de' ? 'Länder, in denen wir tätig sind' : 
-                 'Countries where we operate'}
-              </h3>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {operatingCountries.map((country, index) => (
-                  <div 
-                    key={index} 
-                    className={`flex flex-col items-center p-6 rounded-xl transition-all duration-300 hover:shadow-md ${
-                      country.primary ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50 border border-gray-100'
-                    }`}
-                  >
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 ${
-                      country.primary ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
-                    }`}>
-                      <Globe size={20} />
-                    </div>
-                    <h4 className="font-medium text-center">{country.name}</h4>
-                    {country.primary && (
-                      <span className="mt-2 text-xs px-2 py-1 bg-blue-200 text-blue-800 rounded-full">
-                        {language === 'pl' ? 'Centrala' : 
-                         language === 'de' ? 'Hauptsitz' : 
-                         'Headquarters'}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-20 bg-white">
+      {/* Contact Form Section - Redesigned */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column: Form */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
                 {language === 'pl' ? 'Napisz do nas' : 
                  language === 'de' ? 'Schreiben Sie uns' : 
                  'Send us a message'}
@@ -639,13 +491,13 @@ const Contact = () => {
             
             {/* Right Column: FAQ */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
                 {language === 'pl' ? 'Często zadawane pytania' : 
                  language === 'de' ? 'Häufig gestellte Fragen' : 
                  'Frequently asked questions'}
               </h2>
               
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   {
                     question: language === 'pl' ? 'Jak długo trwa realizacja projektu strony internetowej?' : 
@@ -682,15 +534,15 @@ const Contact = () => {
                 ].map((faq, index) => (
                   <div 
                     key={index} 
-                    className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-gray-100/50"
+                    className="bg-gray-50 rounded-xl p-5 hover:shadow-sm transition-all duration-300"
                   >
-                    <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
+                    <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
                     <p className="text-gray-600">{faq.answer}</p>
                   </div>
                 ))}
               </div>
               
-              <div className="mt-8 bg-blue-50 rounded-xl p-6 border border-blue-100">
+              <div className="mt-6 bg-blue-50 rounded-xl p-5 border border-blue-100">
                 <h3 className="text-lg font-semibold mb-2 text-blue-700">
                   {language === 'pl' ? 'Nie znalazłeś odpowiedzi?' : 
                    language === 'de' ? 'Keine Antwort gefunden?' : 
@@ -708,6 +560,54 @@ const Contact = () => {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Presence Section - Simplified */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium">
+              {language === 'pl' ? 'Nasza obecność' : 
+               language === 'de' ? 'Unsere Präsenz' : 
+               'Our Presence'}
+            </span>
+            <h2 className="mt-4 text-3xl font-bold">
+              {language === 'pl' ? 'Działamy globalnie' : 
+               language === 'de' ? 'Wir arbeiten global' : 
+               'We operate globally'}
+            </h2>
+            <p className="mt-3 text-lg text-gray-600">
+              {language === 'pl' ? 'Chociaż mamy siedzibę w Warszawie, świadczymy usługi klientom w wielu krajach' : 
+               language === 'de' ? 'Obwohl wir unseren Sitz in Warschau haben, bieten wir Dienstleistungen für Kunden in vielen Ländern an' : 
+               'While headquartered in Warsaw, we provide services to clients across multiple countries'}
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {operatingCountries.map((country, index) => (
+              <div 
+                key={index} 
+                className={`flex flex-col items-center p-5 rounded-xl transition-all duration-300 hover:shadow-md ${
+                  country.primary ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50 border border-gray-100'
+                }`}
+              >
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 ${
+                  country.primary ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+                }`}>
+                  {country.code}
+                </div>
+                <h4 className="font-medium text-center">{country.name}</h4>
+                {country.primary && (
+                  <span className="mt-2 text-xs px-2 py-1 bg-blue-200 text-blue-800 rounded-full">
+                    {language === 'pl' ? 'Centrala' : 
+                      language === 'de' ? 'Hauptsitz' : 
+                      'Headquarters'}
+                  </span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
