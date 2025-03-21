@@ -166,8 +166,6 @@ const Portfolio = () => {
                   height: `${Math.random() * 10 + 5}px`,
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
-                  animation: `float-around ${Math.random() * 15 + 10}s infinite`,
-                  animationDelay: `${Math.random() * 5}s`
                 }}
               ></div>
             ))}
@@ -221,13 +219,13 @@ const Portfolio = () => {
             </div>
             
             {/* Right column: Featured project preview */}
-            <div className={`hidden lg:block relative perspective-1000 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '200ms' }}>
-              <div className="relative transform transition-all duration-1000 hover:rotate-y-6 hover:rotate-z-3 transform-style-3d">
+            <div className={`hidden lg:block relative transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '200ms' }}>
+              <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
                 <img 
                   src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=550"
                   alt="Featured project" 
-                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-gray-200"
+                  className="relative rounded-2xl shadow-2xl border border-gray-200"
                 />
                 
                 <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
@@ -250,7 +248,7 @@ const Portfolio = () => {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-2">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
-            <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+            <div className="w-1.5 h-3 bg-gray-400 rounded-full"></div>
           </div>
         </div>
       </section>
@@ -259,15 +257,15 @@ const Portfolio = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <div key={project.id} className="group">
-                <Card className="relative overflow-hidden border-none shadow-xl rounded-lg h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl cursor-pointer">
+                <Card className="relative overflow-hidden border-none shadow-xl rounded-lg h-full hover:shadow-2xl cursor-pointer">
                   {/* Full image with overlay */}
                   <div className="absolute inset-0 w-full h-full">
                     <img 
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/40"></div>
                   </div>
@@ -277,7 +275,7 @@ const Portfolio = () => {
                     {project.tags.map((tag, idx) => (
                       <span 
                         key={idx} 
-                        className="px-4 py-1.5 rounded-full bg-gray-800/80 backdrop-blur-sm text-sm font-medium text-white transition-all duration-300 hover:bg-gray-700/90"
+                        className="px-4 py-1.5 rounded-full bg-gray-800/80 backdrop-blur-sm text-sm font-medium text-white hover:bg-gray-700/90"
                       >
                         {tag}
                       </span>
@@ -286,7 +284,7 @@ const Portfolio = () => {
                   
                   {/* Arrow button */}
                   <div className="absolute top-4 right-4 z-10">
-                    <button className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-600/30 transform hover:-translate-y-1">
+                    <button className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-600/30 transform hover:-translate-y-1">
                       <ArrowUpRight size={20} />
                     </button>
                   </div>
@@ -300,7 +298,7 @@ const Portfolio = () => {
                     {/* Stats/Metrics at bottom */}
                     <div className="grid grid-cols-3 gap-4 mt-6">
                       {project.stats.map((stat, idx) => (
-                        <div key={idx} className="transition-all duration-300 hover:translate-y-[-5px]">
+                        <div key={idx}>
                           <div className="text-2xl font-bold text-white">{stat}</div>
                           <div className="text-sm text-gray-400">{project.statsLabels[idx]}</div>
                         </div>
