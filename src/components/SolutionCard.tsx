@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface SolutionCardProps {
   title: string;
@@ -21,69 +22,80 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   index,
   ctaText,
 }) => {
-  // Alternate colors based on index
+  // Color schemes (softer, more professional palette)
   const colors = [
-    { accent: 'from-blue-500 to-indigo-600', light: 'bg-blue-50', icon: 'text-blue-600' },
-    { accent: 'from-indigo-500 to-purple-600', light: 'bg-indigo-50', icon: 'text-indigo-600' },
-    { accent: 'from-purple-500 to-pink-600', light: 'bg-purple-50', icon: 'text-purple-600' },
-    { accent: 'from-emerald-500 to-teal-600', light: 'bg-emerald-50', icon: 'text-emerald-600' },
+    { bg: 'bg-blue-50 dark:bg-blue-950/30', accent: 'bg-blue-500', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-200 dark:border-blue-800', hoverBg: 'group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30' },
+    { bg: 'bg-emerald-50 dark:bg-emerald-950/30', accent: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-200 dark:border-emerald-800', hoverBg: 'group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30' },
+    { bg: 'bg-amber-50 dark:bg-amber-950/30', accent: 'bg-amber-500', text: 'text-amber-600 dark:text-amber-400', border: 'border-amber-200 dark:border-amber-800', hoverBg: 'group-hover:bg-amber-100 dark:group-hover:bg-amber-900/30' },
+    { bg: 'bg-purple-50 dark:bg-purple-950/30', accent: 'bg-purple-500', text: 'text-purple-600 dark:text-purple-400', border: 'border-purple-200 dark:border-purple-800', hoverBg: 'group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30' },
   ];
   
   const colorSet = colors[index % colors.length];
-  
+
   return (
-    <Card className="group relative overflow-hidden border-0 bg-white shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800">
-      {/* Accent top border */}
-      <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${colorSet.accent}`}></div>
+    <Card className={cn(
+      "group relative h-full overflow-hidden border rounded-xl shadow-sm transition-all duration-500", 
+      colorSet.bg, 
+      colorSet.border,
+      "hover:shadow-lg"
+    )}>
+      {/* Image Container - Positioned at the top */}
+      <div className="relative h-48 overflow-hidden">
+        <div 
+          className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+          style={{ backgroundImage: `url(${image})` }}
+        >
+          {/* Gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+        </div>
+        
+        {/* Title overlay on image */}
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-md font-display">
+            {title}
+          </h2>
+        </div>
+      </div>
       
-      <CardContent className="p-0">
-        <div className="flex flex-col lg:flex-row overflow-hidden">
-          {/* Image container with overlay */}
-          <div className="relative h-64 w-full lg:h-auto lg:w-2/5 overflow-hidden">
+      {/* Color accent line */}
+      <div className={`h-1 w-full ${colorSet.accent} transition-all duration-300 group-hover:h-1.5`}></div>
+      
+      <CardContent className="p-5">
+        {/* Description */}
+        <p className="mb-4 text-gray-700 dark:text-gray-300">{description}</p>
+        
+        {/* Features list with animation */}
+        <div className="space-y-2 mb-6">
+          {features.map((feature, idx) => (
             <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-              style={{ backgroundImage: `url(${image})` }}
+              key={idx} 
+              className={`flex items-center opacity-0 animate-fade-in ${colorSet.hoverBg} rounded-lg transition-all duration-300 p-1.5`}
+              style={{ animationDelay: `${300 + idx * 120}ms`, animationFillMode: 'forwards' }}
             >
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className={`mr-3 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${colorSet.accent}`}>
+                <Check size={12} className="text-white" />
+              </div>
+              <span className="text-gray-700 dark:text-gray-200">{feature}</span>
             </div>
-          </div>
-          
-          {/* Content container */}
-          <div className="flex flex-col p-6 lg:w-3/5">
-            <h2 className="mb-4 text-2xl font-display font-bold tracking-tight">{title}</h2>
-            <p className="mb-6 text-gray-600 dark:text-gray-300">{description}</p>
-            
-            {/* Features list with staggered animation */}
-            <div className="space-y-3 mb-8">
-              {features.map((feature, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex items-start transform transition-all duration-300 hover:translate-x-1"
-                  style={{ transitionDelay: `${idx * 50}ms` }}
-                >
-                  <div className={`mr-3 flex h-6 w-6 items-center justify-center rounded-full ${colorSet.light}`}>
-                    <Check size={14} className={colorSet.icon} />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-200">{feature}</span>
-                </div>
-              ))}
-            </div>
-            
-            {/* CTA Button */}
-            <div className="mt-auto">
-              <Link 
-                to="/contact" 
-                className="group inline-flex items-center overflow-hidden rounded-full bg-gradient-to-r px-6 py-3 font-medium text-white transition-all duration-300 hover:shadow-lg"
-                style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }}
-              >
-                <span className={`absolute inset-0 bg-gradient-to-r ${colorSet.accent} transition-all duration-300 group-hover:translate-y-full`}></span>
-                <span className={`absolute inset-0 bg-gradient-to-l ${colorSet.accent} translate-y-full transition-all duration-300 group-hover:translate-y-0`}></span>
-                <span className="relative">{ctaText}</span>
-                <ArrowRight size={16} className="ml-2 relative transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
+          ))}
+        </div>
+        
+        {/* CTA Button */}
+        <div className="mt-auto pt-2">
+          <Link 
+            to="/contact" 
+            className={cn(
+              "group/btn flex w-full items-center justify-center rounded-lg p-3 font-medium text-white transition-all duration-300",
+              colorSet.accent,
+              "hover:shadow-md"
+            )}
+          >
+            <span className="mr-2">{ctaText}</span>
+            <ArrowUpRight 
+              size={16} 
+              className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" 
+            />
+          </Link>
         </div>
       </CardContent>
     </Card>
