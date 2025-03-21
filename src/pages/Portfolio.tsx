@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, AnimatedCard } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ArrowRight, ArrowUpRight, Bookmark, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Portfolio = () => {
@@ -225,7 +224,7 @@ const Portfolio = () => {
                     <TabsTrigger 
                       key={category.id} 
                       value={category.id}
-                      className="rounded-full px-4 py-2 text-sm flex items-center gap-2 data-[state=active]:bg-gradient-to-r from-violet-500 to-purple-600 data-[state=active]:text-white"
+                      className="rounded-full px-4 py-2 text-sm flex items-center gap-2 data-[state=active]:bg-gradient-to-r from-violet-500 to-purple-600 data-[state=active]:text-white transition-all duration-300"
                     >
                       <span>{category.icon}</span>
                       <span>{category.label}</span>
@@ -254,13 +253,15 @@ const Portfolio = () => {
                 variants={itemVariants}
                 className="group"
               >
-                <Card className="overflow-hidden border-0 bg-white shadow-lg h-full hover:shadow-xl transition-all duration-500">
+                <AnimatedCard className="overflow-hidden border-0 bg-white shadow-lg h-full">
                   <div className={`${project.color} absolute inset-0 z-0`}>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70"></div>
-                    <img 
+                    <motion.img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover object-center opacity-50 mix-blend-overlay transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover object-center opacity-50 mix-blend-overlay"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.7 }}
                     />
                   </div>
                   
@@ -327,7 +328,7 @@ const Portfolio = () => {
                       ))}
                     </div>
                   </CardContent>
-                </Card>
+                </AnimatedCard>
               </motion.div>
             ))}
           </motion.div>
@@ -360,6 +361,7 @@ const Portfolio = () => {
                 key={i} 
                 variants={itemVariants}
                 className="w-32 h-16 bg-gray-50 rounded-lg flex items-center justify-center hover:shadow-md transition-shadow"
+                whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }}
               >
                 <div className="w-16 h-8 bg-violet-200 rounded-md"></div>
               </motion.div>
@@ -430,6 +432,7 @@ const Portfolio = () => {
                     transition={{ delay: idx * 0.2, duration: 0.5 }}
                     viewport={{ once: true }}
                     className="flex items-start"
+                    whileHover={{ x: 5 }}
                   >
                     <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white font-bold">
                       {step.number}
