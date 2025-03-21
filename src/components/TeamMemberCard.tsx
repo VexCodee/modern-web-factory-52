@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { Briefcase, MapPin, Heart } from 'lucide-react';
 
 interface TeamMemberCardProps {
   name: string;
@@ -18,64 +18,55 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
   image,
   index,
 }) => {
-  // Alternate alignment for odd/even cards to create visual variety (same as SolutionCard)
-  const isEven = index % 2 === 0;
-
   return (
-    <div className="relative">
-      <Card className="group overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-lg transition-all duration-500">
-        <div className={cn(
-          "relative grid grid-cols-1 lg:grid-cols-12 gap-0",
-          isEven ? "lg:grid-flow-row" : "lg:grid-flow-row-dense"
-        )}>
-          {/* Image section */}
-          <div className={cn(
-            "relative overflow-hidden lg:col-span-5",
-            isEven ? "lg:order-1" : "lg:order-2"
-          )}>
-            <div className="relative h-64 lg:h-full">
-              {/* Image with subtle overlay */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url(${image})` }}
-              >
-                <div className="absolute inset-0 bg-black/30"></div>
-              </div>
-              
-              {/* Name and position overlay */}
-              <div className="absolute text-white p-6 bottom-0 w-full">
-                <div className="backdrop-blur-sm bg-black/40 p-4 rounded-lg">
-                  <h2 className="text-2xl font-bold tracking-tight">{name}</h2>
-                  <p className="text-white/80 mt-1">{position}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <Card className="overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-300">
+      <div className="flex flex-col">
+        {/* Top section with diagonal divider */}
+        <div className="relative h-[240px] bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden">
+          {/* Diagonal divider */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-white dark:bg-gray-900 transform -skew-y-6 translate-y-12"></div>
           
-          {/* Content section */}
-          <div className={cn(
-            "p-6 lg:p-8 lg:col-span-7 flex flex-col",
-            isEven ? "lg:order-2" : "lg:order-1",
-            "bg-white dark:bg-gray-900"
-          )}>
-            {/* Bio */}
-            <p className="mb-6 text-gray-700 dark:text-gray-300">
-              {bio}
-            </p>
-            
-            {/* Additional design element - horizontal line */}
-            <div className="w-16 h-1 bg-gray-900 dark:bg-gray-700 mb-6"></div>
-            
-            {/* Quote about team member - can be customized */}
-            <div className="mt-auto">
-              <blockquote className="italic text-gray-600 dark:text-gray-400 border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
-                "Great teams make great products. It's all about passion and dedication."
-              </blockquote>
+          {/* Image circle */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16 z-10 w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 overflow-hidden shadow-lg">
+            <img 
+              src={image}
+              alt={name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        
+        {/* Content section */}
+        <div className="pt-20 pb-8 px-6 bg-white dark:bg-gray-900 text-center">
+          <h3 className="text-2xl font-bold mb-1">{name}</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-5 font-medium">{position}</p>
+          
+          {/* Divider */}
+          <div className="w-12 h-1 bg-gray-200 dark:bg-gray-700 mx-auto mb-5"></div>
+          
+          {/* Personal information */}
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
+            {bio}
+          </p>
+          
+          {/* Bottom section with icons */}
+          <div className="flex justify-center space-x-8 mt-4">
+            <div className="flex flex-col items-center">
+              <Briefcase size={20} className="text-gray-600 dark:text-gray-400 mb-1" />
+              <span className="text-sm text-gray-500 dark:text-gray-400">5+ years</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <MapPin size={20} className="text-gray-600 dark:text-gray-400 mb-1" />
+              <span className="text-sm text-gray-500 dark:text-gray-400">Remote</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Heart size={20} className="text-gray-600 dark:text-gray-400 mb-1" />
+              <span className="text-sm text-gray-500 dark:text-gray-400">Creative</span>
             </div>
           </div>
         </div>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 };
 

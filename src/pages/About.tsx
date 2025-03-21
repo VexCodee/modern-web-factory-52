@@ -31,94 +31,91 @@ const About = () => {
     }
   ];
 
-  // Multilingual team member descriptions
   const teamMembers = {
     pl: [
       {
         name: "Aleksander Kowalski",
-        position: "Prezes & Założyciel",
+        position: "Pasjonat Innowacji",
         image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-        bio: "Z ponad 15-letnim doświadczeniem w IT i zarządzaniu biznesem, Aleksander założył TechPrime z wizją pomocy firmom w wykorzystaniu technologii do zrównoważonego rozwoju."
+        bio: "Miłośnik technologii i innowacji. Lubi eksperymentować z nowymi rozwiązaniami i wierzy, że technologia powinna służyć ludziom, a nie odwrotnie."
       },
       {
         name: "Sara Nowak",
-        position: "Dyrektor Technologiczna",
+        position: "Strategiczny Wizjoner",
         image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-        bio: "Sara kieruje naszą strategią techniczną i zespołami programistów, wnosząc bogate doświadczenie w architekturze oprogramowania, sztucznej inteligencji i technologiach chmurowych."
+        bio: "Zawsze szuka nowych sposobów na rozwiązywanie problemów. Jej kreatywne podejście i umiejętność patrzenia w przyszłość pomagają firmie wyprzedzać trendy."
       },
       {
         name: "Dawid Lewandowski",
-        position: "Dyrektor Kreatywny",
+        position: "Kreator Doświadczeń",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        bio: "Dawid nadzoruje wszystkie projekty graficzne, dbając o to, aby nasze rozwiązania nie tylko działały bezbłędnie, ale także zapewniały wyjątkowe doświadczenia użytkownika."
+        bio: "Fascynuje się interakcją między człowiekiem a technologią. Dąży do tworzenia rozwiązań, które są nie tylko funkcjonalne, ale także przyjemne w użyciu."
       },
       {
         name: "Renata Tomczyk",
-        position: "Dyrektor Marketingu",
+        position: "Łącznik Społeczności",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-        bio: "Renata opracowuje i wdraża nasze strategie marketingowe, pomagając klientom budować silne tożsamości marek i skuteczne kampanie marketingowe."
+        bio: "Kocha budować mosty między ludźmi i technologią. Jej misją jest tworzenie społeczności wokół naszych produktów i słuchanie potrzeb użytkowników."
       }
     ],
     en: [
       {
         name: "Alexander Smith",
-        position: "CEO & Founder",
+        position: "Innovation Enthusiast",
         image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-        bio: "With over 15 years of experience in IT and business management, Alexander founded TechPrime with a vision to help companies leverage technology for sustainable growth."
+        bio: "A technology lover who enjoys experimenting with new solutions. He believes that technology should serve people, not the other way around."
       },
       {
         name: "Sarah Johnson",
-        position: "Chief Technology Officer",
+        position: "Strategic Visionary",
         image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-        bio: "Sarah leads our technical strategy and development teams, bringing extensive experience in software architecture, artificial intelligence, and cloud technologies."
+        bio: "Always looking for new ways to solve problems. Her creative approach and ability to look to the future help the company stay ahead of trends."
       },
       {
         name: "David Lewis",
-        position: "Creative Director",
+        position: "Experience Creator",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        bio: "David oversees all design projects, ensuring our solutions not only work flawlessly but also provide exceptional user experiences."
+        bio: "Fascinated by the interaction between humans and technology. He strives to create solutions that are not only functional but also enjoyable to use."
       },
       {
         name: "Renata Thompson",
-        position: "Marketing Director",
+        position: "Community Connector",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-        bio: "Renata develops and implements our marketing strategies, helping clients build strong brand identities and effective marketing campaigns."
+        bio: "Loves building bridges between people and technology. Her mission is to create communities around our products and listen to user needs."
       }
     ],
     de: [
       {
         name: "Alexander Schmidt",
-        position: "CEO & Gründer",
+        position: "Innovationsbegeisterter",
         image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-        bio: "Mit über 15 Jahren Erfahrung in IT und Unternehmensführung gründete Alexander TechPrime mit der Vision, Unternehmen dabei zu helfen, Technologie für nachhaltiges Wachstum zu nutzen."
+        bio: "Ein Technologieliebhaber, der gerne mit neuen Lösungen experimentiert. Er glaubt, dass Technologie den Menschen dienen sollte, nicht umgekehrt."
       },
       {
         name: "Sara Wagner",
-        position: "Chief Technology Officer",
+        position: "Strategische Visionärin",
         image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-        bio: "Sara leitet unsere technische Strategie und Entwicklungsteams und bringt umfassende Erfahrung in Softwarearchitektur, künstlicher Intelligenz und Cloud-Technologien mit."
+        bio: "Sucht immer nach neuen Wegen, um Probleme zu lösen. Ihr kreativer Ansatz und ihre Fähigkeit, in die Zukunft zu blicken, helfen dem Unternehmen, Trends vorauszuahnen."
       },
       {
         name: "David Weber",
-        position: "Kreativdirektor",
+        position: "Erlebnisgestalter",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        bio: "David überwacht alle Designprojekte und sorgt dafür, dass unsere Lösungen nicht nur einwandfrei funktionieren, sondern auch außergewöhnliche Benutzererlebnisse bieten."
+        bio: "Fasziniert von der Interaktion zwischen Mensch und Technologie. Er strebt danach, Lösungen zu schaffen, die nicht nur funktional, sondern auch angenehm zu benutzen sind."
       },
       {
         name: "Renata Müller",
-        position: "Marketingdirektorin",
+        position: "Gemeinschaftsverbinder",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-        bio: "Renata entwickelt und implementiert unsere Marketingstrategien und hilft Kunden dabei, starke Markenidentitäten und effektive Marketingkampagnen aufzubauen."
+        bio: "Liebt es, Brücken zwischen Menschen und Technologie zu bauen. Ihre Mission ist es, Gemeinschaften rund um unsere Produkte zu schaffen und auf die Bedürfnisse der Nutzer zu hören."
       }
     ]
   };
 
-  // Get team members based on current language
   const team = teamMembers[language] || teamMembers.en;
 
   return (
     <Layout>
-      {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
         <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
@@ -138,7 +135,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Story */}
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -164,7 +160,6 @@ const About = () => {
                 />
               </div>
               
-              {/* Decorative elements */}
               <div className="absolute -right-5 -top-5 w-24 h-24 bg-primary/10 rounded-full -z-10"></div>
               <div className="absolute -left-5 -bottom-5 w-32 h-32 bg-accent/10 rounded-full -z-10"></div>
             </div>
@@ -172,7 +167,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Values */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -205,8 +199,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Team */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
@@ -216,11 +209,11 @@ const About = () => {
               {t('about.team.description')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {t('whyChooseUs.features.team.description')}
+              Poznaj osoby, które z pasją tworzą przyszłość i łączą innowacyjne pomysły z potrzebami użytkowników.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <div 
                 key={index} 
@@ -240,7 +233,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Statistics */}
       <section className="py-20 bg-gradient-to-r from-primary to-accent text-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
