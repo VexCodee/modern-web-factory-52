@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { 

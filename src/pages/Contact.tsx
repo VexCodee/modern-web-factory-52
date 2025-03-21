@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock, Globe } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
@@ -52,25 +52,42 @@ const Contact = () => {
     }, 1500);
   };
 
-  // Office locations data
-  const officeLocations = [
-    {
-      city: language === 'pl' ? 'Warszawa' : language === 'de' ? 'Warschau' : 'Warsaw',
-      address: 'ul. Biznesowa 123, 00-001',
-      phone: '+48 22 123 45 67',
-      email: 'warszawa@techprime.com',
-      hours: language === 'pl' ? 'Pon-Pt: 9:00-17:00' : language === 'de' ? 'Mo-Fr: 9:00-17:00' : 'Mon-Fri: 9:00-17:00',
-      isHQ: true,
-      mapUrl: 'https://images.unsplash.com/photo-1563699183-4c3376c8f5a6?auto=format&fit=crop&q=80&w=800&h=400'
+  // Office information
+  const officeInfo = {
+    city: language === 'pl' ? 'Warszawa' : language === 'de' ? 'Warschau' : 'Warsaw',
+    address: 'ul. Biznesowa 123, 00-001',
+    phone: '+48 22 123 45 67',
+    email: 'info@techprime.com',
+    hours: language === 'pl' ? 'Pon-Pt: 9:00-17:00' : language === 'de' ? 'Mo-Fr: 9:00-17:00' : 'Mon-Fri: 9:00-17:00',
+    mapUrl: 'https://images.unsplash.com/photo-1563699183-4c3376c8f5a6?auto=format&fit=crop&q=80&w=800&h=400'
+  };
+
+  // Countries where we operate
+  const operatingCountries = [
+    { 
+      name: language === 'pl' ? 'Polska' : language === 'de' ? 'Polen' : 'Poland',
+      code: 'PL',
+      primary: true
     },
-    {
-      city: language === 'pl' ? 'Kraków' : language === 'de' ? 'Krakau' : 'Krakow',
-      address: 'ul. Technologiczna 45, 30-001',
-      phone: '+48 12 987 65 43',
-      email: 'krakow@techprime.com',
-      hours: language === 'pl' ? 'Pon-Pt: 9:00-17:00' : language === 'de' ? 'Mo-Fr: 9:00-17:00' : 'Mon-Fri: 9:00-17:00',
-      isHQ: false,
-      mapUrl: 'https://images.unsplash.com/photo-1617095750496-3f741c361fbd?auto=format&fit=crop&q=80&w=800&h=400'
+    { 
+      name: language === 'pl' ? 'Niemcy' : language === 'de' ? 'Deutschland' : 'Germany',
+      code: 'DE'
+    },
+    { 
+      name: language === 'pl' ? 'Wielka Brytania' : language === 'de' ? 'Großbritannien' : 'United Kingdom',
+      code: 'GB'
+    },
+    { 
+      name: language === 'pl' ? 'Francja' : language === 'de' ? 'Frankreich' : 'France',
+      code: 'FR'
+    },
+    { 
+      name: language === 'pl' ? 'Stany Zjednoczone' : language === 'de' ? 'Vereinigte Staaten' : 'United States',
+      code: 'US'
+    },
+    { 
+      name: language === 'pl' ? 'Szwecja' : language === 'de' ? 'Schweden' : 'Sweden',
+      code: 'SE'
     }
   ];
 
@@ -209,7 +226,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-medium">
-                          {language === 'pl' ? 'Centrala Warsaw' : 
+                          {language === 'pl' ? 'Centrala Warszawa' : 
                            language === 'de' ? 'Hauptsitz Warschau' : 
                            'HQ Warsaw'}
                         </div>
@@ -275,118 +292,146 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Office Locations Section */}
+      {/* Global Presence Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium">
-              {language === 'pl' ? 'Nasze lokalizacje' : 
-               language === 'de' ? 'Unsere Standorte' : 
-               'Our Locations'}
+              {language === 'pl' ? 'Nasza obecność' : 
+               language === 'de' ? 'Unsere Präsenz' : 
+               'Our Presence'}
             </span>
             <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold">
-              {language === 'pl' ? 'Gdzie nas znaleźć' : 
-               language === 'de' ? 'Wo Sie uns finden' : 
-               'Where to find us'}
+              {language === 'pl' ? 'Działamy globalnie' : 
+               language === 'de' ? 'Wir arbeiten global' : 
+               'We operate globally'}
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              {language === 'pl' ? 'Mamy biura w głównych miastach Polski, aby lepiej służyć naszym klientom' : 
-               language === 'de' ? 'Wir haben Büros in den wichtigsten Städten Polens, um unsere Kunden besser zu bedienen' : 
-               'We have offices in major Polish cities to better serve our clients'}
+              {language === 'pl' ? 'Chociaż mamy siedzibę w Warszawie, świadczymy usługi klientom w wielu krajach' : 
+               language === 'de' ? 'Obwohl wir unseren Sitz in Warschau haben, bieten wir Dienstleistungen für Kunden in vielen Ländern an' : 
+               'While headquartered in Warsaw, we provide services to clients across multiple countries'}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {officeLocations.map((office, index) => (
-              <Card 
-                key={index} 
-                className={`overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2 ${office.isHQ ? 'border-blue-200 bg-blue-50/50' : ''}`}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={office.mapUrl} 
-                    alt={`${office.city} office location`}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  {office.isHQ && (
-                    <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                      {language === 'pl' ? 'Centrala' : 
-                       language === 'de' ? 'Hauptsitz' : 
-                       'Headquarters'}
-                    </div>
-                  )}
+          <div className="grid grid-cols-1 gap-8">
+            {/* Headquarters */}
+            <Card className="overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2 border-blue-200 bg-blue-50/50">
+              <div className="relative h-64 overflow-hidden rounded-t-lg">
+                <img 
+                  src={officeInfo.mapUrl} 
+                  alt={`${officeInfo.city} office location`}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  {language === 'pl' ? 'Główna siedziba' : 
+                   language === 'de' ? 'Hauptsitz' : 
+                   'Headquarters'}
                 </div>
+              </div>
+              
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4 flex items-center">
+                  <MapPin size={18} className="text-primary mr-2" />
+                  {officeInfo.city}
+                </h3>
                 
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2 flex items-center">
-                    <MapPin size={18} className="text-primary mr-2" />
-                    {office.city}
-                  </h3>
-                  
-                  <div className="space-y-4 mt-4">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-3 mt-1">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                          <MapPin size={16} />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-500">
-                          {language === 'pl' ? 'Adres' : 
-                           language === 'de' ? 'Adresse' : 
-                           'Address'}
-                        </div>
-                        <div className="font-medium">{office.address}</div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 mr-3 mt-1">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <MapPin size={16} />
                       </div>
                     </div>
-                    
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-3 mt-1">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                          <Phone size={16} />
-                        </div>
+                    <div>
+                      <div className="text-sm text-gray-500">
+                        {language === 'pl' ? 'Adres' : 
+                         language === 'de' ? 'Adresse' : 
+                         'Address'}
                       </div>
-                      <div>
-                        <div className="text-sm text-gray-500">
-                          {language === 'pl' ? 'Telefon' : 
-                           language === 'de' ? 'Telefon' : 
-                           'Phone'}
-                        </div>
-                        <div className="font-medium">{office.phone}</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-3 mt-1">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                          <Mail size={16} />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-500">Email</div>
-                        <div className="font-medium">{office.email}</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-3 mt-1">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                          <Clock size={16} />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-500">
-                          {language === 'pl' ? 'Godziny pracy' : 
-                           language === 'de' ? 'Öffnungszeiten' : 
-                           'Working hours'}
-                        </div>
-                        <div className="font-medium">{office.hours}</div>
-                      </div>
+                      <div className="font-medium">{officeInfo.address}</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 mr-3 mt-1">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <Phone size={16} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-500">
+                        {language === 'pl' ? 'Telefon' : 
+                         language === 'de' ? 'Telefon' : 
+                         'Phone'}
+                      </div>
+                      <div className="font-medium">{officeInfo.phone}</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 mr-3 mt-1">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <Mail size={16} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-500">Email</div>
+                      <div className="font-medium">{officeInfo.email}</div>
+                    </div>
+                  </div>
+                
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 mr-3 mt-1">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <Clock size={16} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-500">
+                        {language === 'pl' ? 'Godziny pracy' : 
+                         language === 'de' ? 'Öffnungszeiten' : 
+                         'Working hours'}
+                      </div>
+                      <div className="font-medium">{officeInfo.hours}</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* Global Presence */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-display font-bold mb-8 text-center">
+                {language === 'pl' ? 'Kraje, w których działamy' : 
+                 language === 'de' ? 'Länder, in denen wir tätig sind' : 
+                 'Countries where we operate'}
+              </h3>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                {operatingCountries.map((country, index) => (
+                  <div 
+                    key={index} 
+                    className={`flex flex-col items-center p-6 rounded-xl transition-all duration-300 hover:shadow-md ${
+                      country.primary ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50 border border-gray-100'
+                    }`}
+                  >
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 ${
+                      country.primary ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+                    }`}>
+                      <Globe size={20} />
+                    </div>
+                    <h4 className="font-medium text-center">{country.name}</h4>
+                    {country.primary && (
+                      <span className="mt-2 text-xs px-2 py-1 bg-blue-200 text-blue-800 rounded-full">
+                        {language === 'pl' ? 'Centrala' : 
+                         language === 'de' ? 'Hauptsitz' : 
+                         'Headquarters'}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
