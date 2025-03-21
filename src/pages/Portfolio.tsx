@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -138,19 +139,19 @@ const Portfolio = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Completely Redesigned */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      {/* Hero Section - Updated to match Home and Services style */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-900">
         {/* Background elements */}
         <div className="absolute inset-0 z-0">
-          {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950"></div>
+          {/* Code background with animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 animate-gradient-shift"></div>
           
-          {/* Code background with overlay */}
-          <div className="absolute inset-0 opacity-20 mix-blend-soft-light">
+          {/* Code pattern overlay */}
+          <div className="absolute inset-0 opacity-10">
             <img 
-              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80" 
+              src="/public/lovable-uploads/c4a1f594-eca4-4fcc-a2fe-96ceb162e6ca.png" 
               alt="Code background" 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover"
             />
           </div>
           
@@ -159,7 +160,7 @@ const Portfolio = () => {
             {Array.from({ length: 15 }).map((_, i) => (
               <div 
                 key={i}
-                className="absolute rounded-full bg-indigo-500/20 backdrop-blur-sm floating-dot"
+                className="absolute rounded-full bg-indigo-500/20 backdrop-blur-sm"
                 style={{
                   width: `${Math.random() * 10 + 5}px`,
                   height: `${Math.random() * 10 + 5}px`,
@@ -171,10 +172,6 @@ const Portfolio = () => {
               ></div>
             ))}
           </div>
-          
-          {/* 3D floating shapes */}
-          <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-3xl rotate-12 backdrop-blur-md transform-gpu animate-[float_20s_ease-in-out_infinite]"></div>
-          <div className="absolute top-[15%] left-[5%] w-40 h-40 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-full -rotate-12 backdrop-blur-md transform-gpu animate-[float_15s_ease-in-out_infinite]"></div>
         </div>
         
         {/* Content container */}
@@ -182,14 +179,14 @@ const Portfolio = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left column: Text content */}
             <div className="text-white">
-              <div className="mb-6 inline-flex items-center rounded-full border border-indigo-400/30 bg-indigo-500/10 backdrop-blur-sm px-4 py-1.5">
+              <div className="mb-6 inline-flex items-center rounded-full bg-indigo-500/10 backdrop-blur-sm px-4 py-1.5 border border-indigo-400/30">
                 <span className="mr-2 h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                <span className="text-indigo-300 font-medium tracking-wide text-sm">
+                <span className="text-indigo-200 font-medium tracking-wide text-sm">
                   {language === 'pl' ? 'Nasze Portfolio' : language === 'de' ? 'Unser Portfolio' : 'Our Portfolio'}
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-white text-shadow">
                 {language === 'pl' ? 'Nasze Prace' : language === 'de' ? 'Unsere Arbeiten' : 'Our Works'}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
                   {language === 'pl' ? 'i Case Study' : language === 'de' ? '& Fallstudien' : '& Case Studies'}
@@ -225,8 +222,6 @@ const Portfolio = () => {
             
             {/* Right column: Featured project preview */}
             <div className="hidden lg:block relative perspective-1000">
-              <div className="absolute -left-10 -top-10 -bottom-10 -right-10 bg-gradient-to-tr from-indigo-500/20 to-purple-500/0 rounded-3xl transform -rotate-6 animate-pulse"></div>
-              
               <div className="relative transform transition-all duration-1000 hover:rotate-y-6 hover:rotate-z-3 transform-style-3d">
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20 rounded-2xl transform rotate-3"></div>
                 <img 
@@ -235,7 +230,7 @@ const Portfolio = () => {
                   className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-white/10"
                 />
                 
-                <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                <div className="absolute bottom-6 left-6 right-6 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="text-white/70 text-sm">Featured Project</div>
@@ -260,8 +255,8 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Portfolio Grid */}
-      <section className="py-16 bg-gray-50">
+      {/* Portfolio Grid - Updated styling */}
+      <section className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {filteredProjects.map((project, index) => (
@@ -274,13 +269,13 @@ const Portfolio = () => {
                   transform: 'translateY(20px)'
                 }}
               >
-                <Card className="overflow-hidden border-0 bg-white hover:shadow-2xl h-full transition-all duration-500 hover:translate-y-[-10px] transform-style-3d hover:rotate-y-2">
-                  <div className={`${project.color} absolute inset-0 z-0 overflow-hidden`}>
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/70 transition-all duration-500 group-hover:from-black/10 group-hover:to-black/60"></div>
+                <Card className="overflow-hidden border-0 bg-slate-800/50 backdrop-blur-md hover:shadow-2xl hover:shadow-indigo-500/10 h-full transition-all duration-500 hover:translate-y-[-10px] transform-style-3d hover:rotate-y-2">
+                  <div className={`absolute inset-0 z-0 overflow-hidden`}>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/90 transition-all duration-500 group-hover:from-black/40 group-hover:to-black/80"></div>
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover object-center opacity-70 mix-blend-overlay transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+                      className="w-full h-full object-cover object-center opacity-50 mix-blend-overlay transition-all duration-500 group-hover:scale-105 group-hover:opacity-60"
                     />
                   </div>
                   
@@ -290,30 +285,30 @@ const Portfolio = () => {
                       {project.tags.map((tag, idx) => (
                         <span 
                           key={idx} 
-                          className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-white/30"
+                          className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-white/20"
                         >
                           {tag}
                         </span>
                       ))}
                       <span className="ml-auto">
-                        <button className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
+                        <button className="w-8 h-8 flex items-center justify-center rounded-full bg-indigo-600/80 backdrop-blur-sm text-white hover:bg-indigo-600 transition-all duration-300 hover:scale-110">
                           <ArrowUpRight size={16} />
                         </button>
                       </span>
                     </div>
                     
-                    {/* Logo or Project Title */}
+                    {/* Project Title */}
                     <div className="mb-4 transform transition-all duration-300 group-hover:translate-y-[-5px]">
-                      <h2 className={`text-2xl md:text-3xl font-bold ${project.textColor} transition-all duration-300`}>{project.title}</h2>
-                      <p className={`text-sm md:text-base mt-1 ${project.textColor} opacity-90 transition-all duration-300 group-hover:opacity-100`}>{project.subtitle}</p>
+                      <h2 className="text-2xl md:text-3xl font-bold text-white transition-all duration-300">{project.title}</h2>
+                      <p className="text-sm md:text-base mt-1 text-white/80 transition-all duration-300 group-hover:text-white">{project.subtitle}</p>
                     </div>
                     
                     {/* Stats/Metrics */}
                     <div className="mt-auto pt-12 grid grid-cols-3 gap-4">
                       {project.stats.map((stat, idx) => (
-                        <div key={idx} className={`${project.textColor} transform transition-all duration-300 hover:scale-105`}>
+                        <div key={idx} className="text-white transform transition-all duration-300 hover:scale-105">
                           <div className="text-xl md:text-2xl font-bold">{stat}</div>
-                          <div className="text-xs opacity-80">{project.statsLabels[idx]}</div>
+                          <div className="text-xs text-white/70">{project.statsLabels[idx]}</div>
                         </div>
                       ))}
                     </div>
@@ -325,14 +320,14 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Company Partners/Clients */}
-      <section className="py-16 bg-white">
+      {/* Company Partners/Clients - Updated styling */}
+      <section className="py-16 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-lg mx-auto mb-10">
-            <h2 className="text-2xl font-bold mb-2">
+            <h2 className="text-2xl font-bold mb-2 text-white">
               {language === 'pl' ? 'Zaufali nam' : language === 'de' ? 'Sie vertrauen uns' : 'They trust us'}
             </h2>
-            <p className="text-gray-600">
+            <p className="text-indigo-200/70">
               {language === 'pl' ? 'Współpracujemy z wiodącymi markami' : 
                language === 'de' ? 'Wir arbeiten mit führenden Marken zusammen' : 
                'We work with leading brands around the world'}
@@ -341,28 +336,28 @@ const Portfolio = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
             {Array(6).fill(0).map((_, i) => (
-              <div key={i} className="w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center hover:shadow-md transition-all duration-300 hover:bg-gray-50">
-                <div className="w-16 h-8 bg-gray-300 rounded-md"></div>
+              <div key={i} className="w-32 h-16 bg-white/5 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white/10 transition-all duration-300 border border-white/10">
+                <div className="w-16 h-8 bg-white/20 rounded-md"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
         
-      {/* Portfolio Highlights Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Portfolio Highlights Section - Updated styling */}
+      <section className="py-20 bg-gradient-to-b from-slate-900 to-indigo-950">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block bg-primary/10 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
+              <div className="inline-block bg-indigo-500/10 border border-indigo-500/30 px-4 py-1 rounded-full text-sm font-medium text-indigo-300 mb-6">
                 {language === 'pl' ? 'Nasz proces' : language === 'de' ? 'Unser Prozess' : 'Our Process'}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-white">
                 {language === 'pl' ? 'Jak pracujemy nad Twoim projektem' : 
                  language === 'de' ? 'Wie wir an Ihrem Projekt arbeiten' : 
                  'How we approach your project'}
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-indigo-200/90 mb-8">
                 {language === 'pl' ? 'Każdy projekt to indywidualne podejście. Łączymy najlepsze praktyki z innowacyjnymi rozwiązaniami.' : 
                  language === 'de' ? 'Jedes Projekt ist ein individueller Ansatz. Wir kombinieren bewährte Praktiken mit innovativen Lösungen.' : 
                  'Each project gets a custom approach. We combine industry best practices with innovative solutions to deliver exceptional results.'}
@@ -400,12 +395,12 @@ const Portfolio = () => {
                   }
                 ].map((step, idx) => (
                   <div key={idx} className="flex items-start group cursor-pointer">
-                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-300 font-bold transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white">
                       {step.number}
                     </div>
                     <div className="transition-all duration-300 group-hover:translate-x-2">
-                      <h3 className="text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-primary">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
+                      <h3 className="text-xl font-bold mb-1 transition-colors duration-300 text-white group-hover:text-indigo-300">{step.title}</h3>
+                      <p className="text-indigo-200/70">{step.description}</p>
                     </div>
                   </div>
                 ))}
@@ -413,16 +408,16 @@ const Portfolio = () => {
             </div>
             
             <div className="relative">
-              <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-primary/5"></div>
-              <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-primary/10"></div>
+              <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-indigo-500/10"></div>
+              <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-indigo-500/5"></div>
               <img 
                 src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80" 
                 alt="Our process visualization" 
-                className="relative z-10 w-full h-auto rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
+                className="relative z-10 w-full h-auto rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 hover:scale-[1.02] border border-indigo-500/20"
               />
               
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-primary to-primary/50 rounded-full filter blur-2xl opacity-20"></div>
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br from-accent to-accent/50 rounded-full filter blur-2xl opacity-20"></div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-indigo-600 to-indigo-600/50 rounded-full filter blur-2xl opacity-20"></div>
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br from-purple-600 to-purple-600/50 rounded-full filter blur-2xl opacity-20"></div>
             </div>
           </div>
         </div>
