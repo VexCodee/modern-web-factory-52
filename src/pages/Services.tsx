@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { ArrowRight, UserPlus, Globe, Palette, Wrench, Bot, BarChart3, Share2, ClipboardList, Code, Zap, Sparkles, FileText, Server, Lightbulb, Truck, CheckCircle2, Database, BookOpen, Monitor } from 'lucide-react';
@@ -7,6 +6,7 @@ import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import ServiceCard from '../components/ServiceCard';
 
 const ServicePage = () => {
   const { t } = useLanguage();
@@ -293,7 +293,7 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Services Section with New Minimalist Design */}
+      {/* Services Section with New Card Design */}
       <section id="services" ref={servicesRef} className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
@@ -308,46 +308,17 @@ const ServicePage = () => {
                 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <Card className="h-full overflow-hidden border shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
-                  <CardContent className="p-0 h-full">
-                    {/* Top border with color */}
-                    <div className={`h-1.5 w-full ${service.borderColor} ${service.iconBgColor}`}></div>
-                    
-                    <div className="p-8 flex flex-col h-full">
-                      {/* Icon with background color */}
-                      <div className={`w-16 h-16 rounded-xl ${service.iconBgColor} flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-sm`}>
-                        <div className="text-white">
-                          {service.icon}
-                        </div>
-                      </div>
-                      
-                      {/* Title and description */}
-                      <h3 className="text-xl font-bold text-slate-800 mb-4">{service.title}</h3>
-                      <p className="text-gray-600 mb-6 text-sm">{service.description}</p>
-                      
-                      {/* Benefits list with subtle bullets */}
-                      <div className="mt-auto space-y-4 mb-8">
-                        {service.benefits.map((benefit, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <div className={`w-5 h-5 rounded-full bg-gray-50 flex-shrink-0 flex items-center justify-center mt-0.5 border ${service.borderColor}`}>
-                              <div className={`w-1.5 h-1.5 rounded-full ${service.dotColor}`}></div>
-                            </div>
-                            <span className="text-sm text-gray-600 font-medium">{benefit}</span>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Button with color matched to the service */}
-                      <Link 
-                        to="/contact" 
-                        className={`mt-auto inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-medium ${service.buttonBgColor} transition-all duration-300 transform group-hover:translate-y-0`}
-                      >
-                        {t('cta.getStarted')}
-                        <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  benefits={service.benefits}
+                  iconBgColor={service.iconBgColor}
+                  borderColor={service.borderColor}
+                  dotColor={service.dotColor}
+                  buttonBgColor={service.buttonBgColor}
+                  delay={service.delay}
+                />
               </div>
             ))}
           </div>
