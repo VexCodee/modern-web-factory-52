@@ -260,15 +260,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={project.id} 
-                className="group"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                  animation: 'fade-in 0.6s ease-out forwards',
-                  opacity: 0,
-                  transform: 'translateY(20px)'
-                }}
-              >
+              <div key={project.id} className="group">
                 <Card className="relative overflow-hidden border-none shadow-xl rounded-lg h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl cursor-pointer">
                   {/* Full image with overlay */}
                   <div className="absolute inset-0 w-full h-full">
