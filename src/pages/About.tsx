@@ -1,9 +1,9 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import { Shield, Users, Target, Award } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
+import TeamMemberCard from '../components/TeamMemberCard';
 
 const About = () => {
   const { t, language } = useLanguage();
@@ -220,25 +220,20 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-16">
             {team.map((member, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover-lift animate-fade-in" 
+                className="animate-fade-in" 
                 style={{ animationDelay: `${300 + index * 100}ms` }}
               >
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-display font-semibold">{member.name}</h3>
-                  <p className="text-primary font-medium mb-4">{member.position}</p>
-                  <p className="text-gray-600 text-sm">{member.bio}</p>
-                </div>
+                <TeamMemberCard
+                  name={member.name}
+                  position={member.position}
+                  bio={member.bio}
+                  image={member.image}
+                  index={index}
+                />
               </div>
             ))}
           </div>
