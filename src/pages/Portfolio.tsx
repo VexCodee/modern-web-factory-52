@@ -1,9 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ArrowRight, ArrowUpRight, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,11 +11,6 @@ import { Link } from 'react-router-dom';
 const Portfolio = () => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   
   // Project categories
   const categories = [
@@ -166,6 +161,8 @@ const Portfolio = () => {
                   height: `${Math.random() * 10 + 5}px`,
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
+                  animation: `float-around ${Math.random() * 15 + 10}s infinite`,
+                  animationDelay: `${Math.random() * 5}s`
                 }}
               ></div>
             ))}
@@ -176,7 +173,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left column: Text content */}
-            <div className={`transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div>
               <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
                 <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
                 <span className="text-primary font-medium tracking-wide text-sm">
@@ -219,13 +216,13 @@ const Portfolio = () => {
             </div>
             
             {/* Right column: Featured project preview */}
-            <div className={`hidden lg:block relative transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '200ms' }}>
-              <div className="relative">
+            <div className="hidden lg:block relative perspective-1000">
+              <div className="relative transform transition-all duration-1000 hover:rotate-y-6 hover:rotate-z-3 transform-style-3d">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
                 <img 
                   src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=550"
                   alt="Featured project" 
-                  className="relative rounded-2xl shadow-2xl border border-gray-200"
+                  className="relative rounded-2xl shadow-2xl animate-[float_6s_ease-in-out_infinite] border border-gray-200"
                 />
                 
                 <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
@@ -248,7 +245,7 @@ const Portfolio = () => {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-2">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
-            <div className="w-1.5 h-3 bg-gray-400 rounded-full"></div>
+            <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
           </div>
         </div>
       </section>
@@ -257,54 +254,63 @@ const Portfolio = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="group">
-                <Card className="relative overflow-hidden border-none shadow-xl rounded-lg h-full hover:shadow-2xl cursor-pointer">
-                  {/* Full image with overlay */}
-                  <div className="absolute inset-0 w-full h-full">
-                    <img 
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/40"></div>
+            {filteredProjects.map((project, index) => (
+              <div key={project.id} 
+                className="group"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                  animation: 'fade-in 0.6s ease-out forwards',
+                  opacity: 0,
+                  transform: 'translateY(20px)'
+                }}
+              >
+                <Card className="overflow-hidden border-none shadow-xl bg-gray-900 rounded-lg h-full">
+                  <div className="relative">
+                    {/* Project image with overlay */}
+                    <div className="relative h-[220px] overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-black/50"></div>
+                    </div>
+                    
+                    {/* Tags positioned at top left */}
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                      {project.tags.map((tag, idx) => (
+                        <span 
+                          key={idx} 
+                          className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Arrow button at top right */}
+                    <div className="absolute top-4 right-4">
+                      <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white">
+                        <ArrowUpRight size={18} />
+                      </button>
+                    </div>
                   </div>
                   
-                  {/* Tags */}
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
-                    {project.tags.map((tag, idx) => (
-                      <span 
-                        key={idx} 
-                        className="px-4 py-1.5 rounded-full bg-gray-800/80 backdrop-blur-sm text-sm font-medium text-white hover:bg-gray-700/90"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Arrow button */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <button className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-600/30 transform hover:-translate-y-1">
-                      <ArrowUpRight size={20} />
-                    </button>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 z-10">
+                  <CardContent className="p-6">
                     {/* Project Title and Subtitle */}
-                    <h2 className="text-3xl font-bold text-white mb-1">{project.title}</h2>
-                    <p className="text-gray-300 mb-6 text-lg">{project.subtitle}</p>
+                    <h2 className="text-2xl font-bold text-white mb-1">{project.title}</h2>
+                    <p className="text-gray-400 mb-6">{project.subtitle}</p>
                     
                     {/* Stats/Metrics at bottom */}
-                    <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="grid grid-cols-3 gap-4 mt-auto">
                       {project.stats.map((stat, idx) => (
                         <div key={idx}>
-                          <div className="text-2xl font-bold text-white">{stat}</div>
-                          <div className="text-sm text-gray-400">{project.statsLabels[idx]}</div>
+                          <div className="text-xl font-bold text-white">{stat}</div>
+                          <div className="text-xs text-gray-400">{project.statsLabels[idx]}</div>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </CardContent>
                 </Card>
               </div>
             ))}
