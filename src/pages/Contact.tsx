@@ -1,12 +1,14 @@
 
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, ArrowRight, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '../context/LanguageContext';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -50,88 +52,364 @@ const Contact = () => {
     }, 1500);
   };
 
+  // Office locations data
+  const officeLocations = [
+    {
+      city: language === 'pl' ? 'Warszawa' : language === 'de' ? 'Warschau' : 'Warsaw',
+      address: 'ul. Biznesowa 123, 00-001',
+      phone: '+48 22 123 45 67',
+      email: 'warszawa@techprime.com',
+      hours: language === 'pl' ? 'Pon-Pt: 9:00-17:00' : language === 'de' ? 'Mo-Fr: 9:00-17:00' : 'Mon-Fri: 9:00-17:00',
+      isHQ: true,
+      mapUrl: 'https://images.unsplash.com/photo-1563699183-4c3376c8f5a6?auto=format&fit=crop&q=80&w=800&h=400'
+    },
+    {
+      city: language === 'pl' ? 'Kraków' : language === 'de' ? 'Krakau' : 'Krakow',
+      address: 'ul. Technologiczna 45, 30-001',
+      phone: '+48 12 987 65 43',
+      email: 'krakow@techprime.com',
+      hours: language === 'pl' ? 'Pon-Pt: 9:00-17:00' : language === 'de' ? 'Mo-Fr: 9:00-17:00' : 'Mon-Fri: 9:00-17:00',
+      isHQ: false,
+      mapUrl: 'https://images.unsplash.com/photo-1617095750496-3f741c361fbd?auto=format&fit=crop&q=80&w=800&h=400'
+    }
+  ];
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
-        <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent/5 rounded-full mix-blend-multiply blur-3xl -z-10"></div>
+      {/* Hero Section - 3D Animated Effect */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 z-0">
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950"></div>
+          
+          {/* Abstract pattern overlay */}
+          <div className="absolute inset-0 opacity-10 mix-blend-soft-light">
+            <img 
+              src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&q=80" 
+              alt="Abstract pattern" 
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+          
+          {/* Animated elements */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-blue-500/20 backdrop-blur-sm"
+                style={{
+                  width: `${Math.random() * 15 + 5}px`,
+                  height: `${Math.random() * 15 + 5}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animation: `float ${Math.random() * 15 + 10}s infinite`,
+                  animationDelay: `${Math.random() * 5}s`
+                }}
+              ></div>
+            ))}
+          </div>
+          
+          {/* 3D floating shapes */}
+          <div className="absolute bottom-[15%] right-[10%] w-64 h-64 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-3xl rotate-12 backdrop-blur-md transform-gpu animate-[float_20s_ease-in-out_infinite]"></div>
+          <div className="absolute top-[20%] left-[5%] w-40 h-40 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full -rotate-12 backdrop-blur-md transform-gpu animate-[float_15s_ease-in-out_infinite]"></div>
+        </div>
         
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              {t('contact.title')}
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
-              {t('contact.subtitle')}
-            </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {t('contact.description')}
-            </p>
+        {/* Content container */}
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left column: Text content */}
+            <div className="text-white">
+              <div className="mb-6 inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 backdrop-blur-sm px-4 py-1.5">
+                <span className="mr-2 h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
+                <span className="text-blue-300 font-medium tracking-wide text-sm">
+                  {language === 'pl' ? 'Skontaktuj się z nami' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+                {language === 'pl' ? 'Jesteśmy' : language === 'de' ? 'Wir sind' : 'We\'re'} 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
+                  {language === 'pl' ? 'tutaj dla Ciebie' : language === 'de' ? 'für Sie da' : 'here to help'}
+                </span>
+              </h1>
+              
+              <p className="text-xl text-blue-200/90 mb-8 max-w-xl">
+                {language === 'pl' 
+                  ? 'Masz pytania lub potrzebujesz pomocy? Nasz zespół ekspertów jest gotowy, aby Ci pomóc osiągnąć Twoje cele.' 
+                  : language === 'de' 
+                    ? 'Haben Sie Fragen oder benötigen Sie Hilfe? Unser Expertenteam steht bereit, um Ihnen bei der Erreichung Ihrer Ziele zu helfen.'
+                    : 'Have questions or need assistance? Our team of experts is ready to help you achieve your technology goals.'}
+              </p>
+              
+              {/* Quick contact links */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <a 
+                  href="mailto:info@techprime.com" 
+                  className="flex items-center gap-3 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+                >
+                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-blue-300">Email us</div>
+                    <div className="font-medium">info@techprime.com</div>
+                  </div>
+                </a>
+                
+                <a 
+                  href="tel:+48221234567" 
+                  className="flex items-center gap-3 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+                >
+                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-blue-300">Call us</div>
+                    <div className="font-medium">+48 22 123 45 67</div>
+                  </div>
+                </a>
+              </div>
+              
+              {/* Business hours */}
+              <div className="flex items-center gap-3 text-white/80">
+                <Clock size={18} className="text-blue-400" />
+                <span>
+                  {language === 'pl' 
+                    ? 'Godziny otwarcia: Pon-Pt 9:00-17:00' 
+                    : language === 'de' 
+                      ? 'Öffnungszeiten: Mo-Fr 9:00-17:00' 
+                      : 'Business hours: Mon-Fri 9:00-17:00'}
+                </span>
+              </div>
+            </div>
+            
+            {/* Right column: 3D Card */}
+            <div className="hidden lg:block relative perspective-1000">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/5 rounded-3xl transform rotate-6 animate-pulse"></div>
+              
+              <Card className="relative bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden shadow-2xl transform transition-all duration-500 hover:rotate-y-6 hover:-translate-y-2">
+                <CardContent className="p-8">
+                  <div className="mb-4">
+                    <div className="w-16 h-6 bg-indigo-500/20 backdrop-blur-md rounded-full mb-4"></div>
+                    <h3 className="text-2xl font-bold text-white mb-1">
+                      {language === 'pl' ? 'Skontaktuj się' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
+                    </h3>
+                    <p className="text-blue-200/80 text-sm">
+                      {language === 'pl' ? 'Odpowiemy na wszystkie Twoje pytania' : 
+                       language === 'de' ? 'Wir beantworten alle Ihre Fragen' : 
+                       'We\'ll answer all your questions'}
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-4 mt-8">
+                    <div className="flex items-center gap-3 text-white">
+                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <MapPin size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium">
+                          {language === 'pl' ? 'Centrala Warsaw' : 
+                           language === 'de' ? 'Hauptsitz Warschau' : 
+                           'HQ Warsaw'}
+                        </div>
+                        <div className="text-sm text-blue-200/70">ul. Biznesowa 123, 00-001</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3 text-white">
+                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <Phone size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium">+48 22 123 45 67</div>
+                        <div className="text-sm text-blue-200/70">
+                          {language === 'pl' ? 'Wsparcie techniczne' : 
+                           language === 'de' ? 'Technischer Support' : 
+                           'Technical support'}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3 text-white">
+                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <Mail size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium">info@techprime.com</div>
+                        <div className="text-sm text-blue-200/70">
+                          {language === 'pl' ? 'Zapytania ogólne' : 
+                           language === 'de' ? 'Allgemeine Anfragen' : 
+                           'General inquiries'}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300"
+                    >
+                      {language === 'pl' ? 'Wyślij wiadomość' : 
+                       language === 'de' ? 'Nachricht senden' : 
+                       'Send message'}
+                      <ArrowRight size={16} />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+          <span className="text-sm mb-2">
+            {language === 'pl' ? 'Przewiń w dół' : 
+             language === 'de' ? 'Nach unten scrollen' : 
+             'Scroll down'}
+          </span>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+            <div className="w-1.5 h-3 bg-white/70 rounded-full animate-[float_2s_ease-in-out_infinite]"></div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20">
+      {/* Office Locations Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium">
+              {language === 'pl' ? 'Nasze lokalizacje' : 
+               language === 'de' ? 'Unsere Standorte' : 
+               'Our Locations'}
+            </span>
+            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold">
+              {language === 'pl' ? 'Gdzie nas znaleźć' : 
+               language === 'de' ? 'Wo Sie uns finden' : 
+               'Where to find us'}
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              {language === 'pl' ? 'Mamy biura w głównych miastach Polski, aby lepiej służyć naszym klientom' : 
+               language === 'de' ? 'Wir haben Büros in den wichtigsten Städten Polens, um unsere Kunden besser zu bedienen' : 
+               'We have offices in major Polish cities to better serve our clients'}
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {officeLocations.map((office, index) => (
+              <Card 
+                key={index} 
+                className={`overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2 ${office.isHQ ? 'border-blue-200 bg-blue-50/50' : ''}`}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={office.mapUrl} 
+                    alt={`${office.city} office location`}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  {office.isHQ && (
+                    <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {language === 'pl' ? 'Centrala' : 
+                       language === 'de' ? 'Hauptsitz' : 
+                       'Headquarters'}
+                    </div>
+                  )}
+                </div>
+                
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-2 flex items-center">
+                    <MapPin size={18} className="text-primary mr-2" />
+                    {office.city}
+                  </h3>
+                  
+                  <div className="space-y-4 mt-4">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3 mt-1">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          <MapPin size={16} />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-500">
+                          {language === 'pl' ? 'Adres' : 
+                           language === 'de' ? 'Adresse' : 
+                           'Address'}
+                        </div>
+                        <div className="font-medium">{office.address}</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3 mt-1">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          <Phone size={16} />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-500">
+                          {language === 'pl' ? 'Telefon' : 
+                           language === 'de' ? 'Telefon' : 
+                           'Phone'}
+                        </div>
+                        <div className="font-medium">{office.phone}</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3 mt-1">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          <Mail size={16} />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-500">Email</div>
+                        <div className="font-medium">{office.email}</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3 mt-1">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          <Clock size={16} />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-500">
+                          {language === 'pl' ? 'Godziny pracy' : 
+                           language === 'de' ? 'Öffnungszeiten' : 
+                           'Working hours'}
+                        </div>
+                        <div className="font-medium">{office.hours}</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-8">{t('contact.info.title')}</h2>
-              
-              <div className="space-y-8 mb-12">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">{t('contact.info.address')}</h3>
-                    <p className="text-gray-600">ul. Biznesowa 123, Dzielnica Technologiczna</p>
-                    <p className="text-gray-600">Warszawa, 00-001</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">{t('contact.form.email')}</h3>
-                    <p className="text-gray-600 mb-1">{t('contact.info.email')}</p>
-                    <p className="text-gray-600">wsparcie@techprime.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">{t('contact.form.phone')}</h3>
-                    <p className="text-gray-600 mb-1">{t('contact.info.phone')}</p>
-                    <p className="text-gray-600">{t('contact.info.hours')}</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="rounded-xl overflow-hidden h-72 shadow-sm">
-                {/* Placeholder for a map - would implement Google Maps or similar in a real project */}
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500">{t('contact.info.map')}</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Contact Form */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 animate-fade-in" style={{ animationDelay: '400ms' }}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">{t('contact.form.submit')}</h2>
+            {/* Left Column: Form */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">
+                {language === 'pl' ? 'Napisz do nas' : 
+                 language === 'de' ? 'Schreiben Sie uns' : 
+                 'Send us a message'}
+              </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('contact.form.name')}
+                      {language === 'pl' ? 'Imię i nazwisko' : 
+                       language === 'de' ? 'Name' : 
+                       'Full name'}
                     </label>
                     <input
                       type="text"
@@ -141,13 +419,17 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      placeholder={t('contact.form.name')}
+                      placeholder={language === 'pl' ? 'Jan Kowalski' : 
+                                  language === 'de' ? 'Max Mustermann' : 
+                                  'John Doe'}
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('contact.form.email')}
+                      {language === 'pl' ? 'Adres email' : 
+                       language === 'de' ? 'E-Mail-Adresse' : 
+                       'Email address'}
                     </label>
                     <input
                       type="email"
@@ -157,7 +439,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      placeholder="twoj.email@przyklad.pl"
+                      placeholder="you@example.com"
                     />
                   </div>
                 </div>
@@ -165,7 +447,9 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('contact.form.phone')}
+                      {language === 'pl' ? 'Numer telefonu' : 
+                       language === 'de' ? 'Telefonnummer' : 
+                       'Phone number'}
                     </label>
                     <input
                       type="tel"
@@ -180,7 +464,9 @@ const Contact = () => {
                   
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('services.title')}
+                      {language === 'pl' ? 'Usługa' : 
+                       language === 'de' ? 'Dienstleistung' : 
+                       'Service'}
                     </label>
                     <select
                       id="service"
@@ -189,23 +475,50 @@ const Contact = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                     >
-                      <option value="default" disabled>{t('contact.form.selectService')}</option>
-                      <option value="outsourcing">{t('services.items.outsourcing.title')}</option>
-                      <option value="webdev">{t('services.items.webDev.title')}</option>
-                      <option value="design">{t('services.items.graphic.title')}</option>
-                      <option value="repair">{t('services.items.hardware.title')}</option>
-                      <option value="ai">{t('services.items.ai.title')}</option>
-                      <option value="marketing">{t('services.items.marketing.title')}</option>
-                      <option value="social">{t('services.items.social.title')}</option>
-                      <option value="project">{t('services.items.project.title')}</option>
-                      <option value="other">{t('contact.form.other')}</option>
+                      <option value="default" disabled>
+                        {language === 'pl' ? 'Wybierz usługę' : 
+                         language === 'de' ? 'Dienstleistung auswählen' : 
+                         'Select a service'}
+                      </option>
+                      <option value="outsourcing">
+                        {language === 'pl' ? 'IT Outsourcing' : 
+                         language === 'de' ? 'IT-Outsourcing' : 
+                         'IT Outsourcing'}
+                      </option>
+                      <option value="webdev">
+                        {language === 'pl' ? 'Tworzenie stron WWW' : 
+                         language === 'de' ? 'Webentwicklung' : 
+                         'Web Development'}
+                      </option>
+                      <option value="design">
+                        {language === 'pl' ? 'Projektowanie graficzne' : 
+                         language === 'de' ? 'Grafikdesign' : 
+                         'Graphic Design'}
+                      </option>
+                      <option value="repair">
+                        {language === 'pl' ? 'Naprawa sprzętu' : 
+                         language === 'de' ? 'Hardware-Reparatur' : 
+                         'Hardware Repair'}
+                      </option>
+                      <option value="ai">
+                        {language === 'pl' ? 'Rozwiązania AI' : 
+                         language === 'de' ? 'KI-Lösungen' : 
+                         'AI Solutions'}
+                      </option>
+                      <option value="other">
+                        {language === 'pl' ? 'Inne' : 
+                         language === 'de' ? 'Andere' : 
+                         'Other'}
+                      </option>
                     </select>
                   </div>
                 </div>
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.subject')}
+                    {language === 'pl' ? 'Temat' : 
+                     language === 'de' ? 'Betreff' : 
+                     'Subject'}
                   </label>
                   <input
                     type="text"
@@ -215,13 +528,17 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                    placeholder={t('contact.form.subject')}
+                    placeholder={language === 'pl' ? 'W czym możemy pomóc?' : 
+                                language === 'de' ? 'Wie können wir helfen?' : 
+                                'How can we help?'}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.message')}
+                    {language === 'pl' ? 'Wiadomość' : 
+                     language === 'de' ? 'Nachricht' : 
+                     'Message'}
                   </label>
                   <textarea
                     id="message"
@@ -231,15 +548,17 @@ const Contact = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                    placeholder={t('contact.form.message')}
+                    placeholder={language === 'pl' ? 'Szczegóły Twojego zapytania...' : 
+                                language === 'de' ? 'Details Ihrer Anfrage...' : 
+                                'Details of your inquiry...'}
                   ></textarea>
                 </div>
                 
                 <div>
-                  <button
+                  <Button
                     type="submit"
                     disabled={isSubmitting || isSubmitted}
-                    className={`w-full flex items-center justify-center bg-primary text-white px-6 py-3 rounded-lg font-medium transition-all ${
+                    className={`w-full bg-primary text-white px-6 py-3 rounded-lg font-medium transition-all ${
                       isSubmitting ? 'opacity-80' : 'hover:bg-primary/90 hover:shadow-md'
                     } ${isSubmitted ? 'bg-green-600' : ''}`}
                   >
@@ -249,75 +568,100 @@ const Contact = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        {t('contact.form.sending')}
+                        {language === 'pl' ? 'Wysyłanie...' : 
+                         language === 'de' ? 'Wird gesendet...' : 
+                         'Sending...'}
                       </span>
                     ) : isSubmitted ? (
                       <span className="flex items-center">
                         <Check size={18} className="mr-2" />
-                        {t('contact.form.success')}
+                        {language === 'pl' ? 'Wysłano!' : 
+                         language === 'de' ? 'Gesendet!' : 
+                         'Sent!'}
                       </span>
                     ) : (
                       <span className="flex items-center">
                         <Send size={18} className="mr-2" />
-                        {t('contact.form.submit')}
+                        {language === 'pl' ? 'Wyślij wiadomość' : 
+                         language === 'de' ? 'Nachricht senden' : 
+                         'Send message'}
                       </span>
                     )}
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium animate-fade-in">
-              FAQ
-            </span>
-            <h2 className="mt-6 text-3xl md:text-4xl font-display font-bold animate-fade-in" style={{ animationDelay: '100ms' }}>
-              {t('contact.faq.title')}
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {t('contact.faq.description')}
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-6">
-              {[
-                {
-                  question: "faq.development.question",
-                  answer: "faq.development.answer"
-                },
-                {
-                  question: "faq.support.question",
-                  answer: "faq.support.answer"
-                },
-                {
-                  question: "faq.pricing.question",
-                  answer: "faq.pricing.answer"
-                },
-                {
-                  question: "faq.industries.question",
-                  answer: "faq.industries.answer"
-                },
-                {
-                  question: "faq.ai.question",
-                  answer: "faq.ai.answer"
-                }
-              ].map((faq, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-xl p-6 shadow-sm animate-fade-in" 
-                  style={{ animationDelay: `${300 + index * 100}ms` }}
-                >
-                  <h3 className="text-lg font-semibold mb-3">{t(faq.question)}</h3>
-                  <p className="text-gray-600">{t(faq.answer)}</p>
-                </div>
-              ))}
+            
+            {/* Right Column: FAQ */}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">
+                {language === 'pl' ? 'Często zadawane pytania' : 
+                 language === 'de' ? 'Häufig gestellte Fragen' : 
+                 'Frequently asked questions'}
+              </h2>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    question: language === 'pl' ? 'Jak długo trwa realizacja projektu strony internetowej?' : 
+                              language === 'de' ? 'Wie lange dauert die Umsetzung eines Webprojekts?' : 
+                              'How long does a website project take to complete?',
+                    answer: language === 'pl' ? 'Czas realizacji zależy od złożoności projektu. Typowy projekt trwa od 4 do 12 tygodni. Przygotowujemy szczegółowy harmonogram na początkowym etapie współpracy.' : 
+                            language === 'de' ? 'Die Umsetzungszeit hängt von der Komplexität des Projekts ab. Ein typisches Projekt dauert 4 bis 12 Wochen. Wir bereiten zu Beginn der Zusammenarbeit einen detaillierten Zeitplan vor.' : 
+                            'The timeline depends on the complexity of the project. A typical project takes 4 to 12 weeks. We prepare a detailed schedule at the initial stage of cooperation.'
+                  },
+                  {
+                    question: language === 'pl' ? 'Jakie wsparcie zapewniacie po wdrożeniu?' : 
+                              language === 'de' ? 'Welchen Support bieten Sie nach der Implementierung?' : 
+                              'What support do you provide after implementation?',
+                    answer: language === 'pl' ? 'Oferujemy różne pakiety wsparcia i utrzymania. Standardowo zapewniamy 30-dniowy okres gwarancyjny, w którym naprawiamy wszelkie błędy bez dodatkowych kosztów.' : 
+                            language === 'de' ? 'Wir bieten verschiedene Support- und Wartungspakete an. Standardmäßig bieten wir eine 30-tägige Garantiezeit, in der wir alle Fehler ohne zusätzliche Kosten beheben.' : 
+                            'We offer various support and maintenance packages. We provide a standard 30-day warranty period in which we fix any bugs at no additional cost.'
+                  },
+                  {
+                    question: language === 'pl' ? 'Jak wygląda proces wyceny?' : 
+                              language === 'de' ? 'Wie sieht der Angebotsprozess aus?' : 
+                              'What does the pricing process look like?',
+                    answer: language === 'pl' ? 'Proces wyceny rozpoczyna się od konsultacji, podczas której poznajemy Twoje potrzeby. Na tej podstawie przygotowujemy szczegółową ofertę uwzględniającą zakres prac, harmonogram i koszty.' : 
+                            language === 'de' ? 'Der Angebotsprozess beginnt mit einer Beratung, bei der wir Ihre Bedürfnisse kennenlernen. Auf dieser Grundlage bereiten wir ein detailliertes Angebot vor, das den Arbeitsumfang, Zeitplan und die Kosten berücksichtigt.' : 
+                            'The pricing process begins with a consultation where we learn about your needs. Based on this, we prepare a detailed offer that includes the scope of work, schedule, and costs.'
+                  },
+                  {
+                    question: language === 'pl' ? 'Czy pracujecie z klientami z zagranicy?' : 
+                              language === 'de' ? 'Arbeiten Sie mit Kunden aus dem Ausland?' : 
+                              'Do you work with international clients?',
+                    answer: language === 'pl' ? 'Tak, współpracujemy z klientami z całego świata. Posługujemy się biegle językiem angielskim, niemieckim i polskim. Możemy dostosować godziny spotkań do różnych stref czasowych.' : 
+                            language === 'de' ? 'Ja, wir arbeiten mit Kunden aus der ganzen Welt zusammen. Wir sprechen fließend Englisch, Deutsch und Polnisch. Wir können Besprechungszeiten an verschiedene Zeitzonen anpassen.' : 
+                            'Yes, we work with clients from around the world. We are fluent in English, German, and Polish. We can adapt meeting hours to different time zones.'
+                  },
+                ].map((faq, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-gray-100/50"
+                  >
+                    <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-8 bg-blue-50 rounded-xl p-6 border border-blue-100">
+                <h3 className="text-lg font-semibold mb-2 text-blue-700">
+                  {language === 'pl' ? 'Nie znalazłeś odpowiedzi?' : 
+                   language === 'de' ? 'Keine Antwort gefunden?' : 
+                   'Didn\'t find your answer?'}
+                </h3>
+                <p className="text-blue-600 mb-4">
+                  {language === 'pl' ? 'Skontaktuj się z nami bezpośrednio, a nasz zespół pomoże Ci rozwiązać wszystkie wątpliwości.' : 
+                   language === 'de' ? 'Kontaktieren Sie uns direkt und unser Team wird Ihnen helfen, alle Ihre Fragen zu beantworten.' : 
+                   'Contact us directly and our team will help you resolve any questions you may have.'}
+                </p>
+                <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-100">
+                  {language === 'pl' ? 'Zadaj pytanie' : 
+                   language === 'de' ? 'Frage stellen' : 
+                   'Ask a question'}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
