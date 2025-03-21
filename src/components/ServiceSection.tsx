@@ -120,12 +120,25 @@ const ServiceSection = () => {
                         'Mehr erfahren';
 
   return (
-    <section id="services" ref={sectionRef} className="py-12 md:py-16 relative overflow-hidden bg-white">
-      {/* Background with simplified gradient */}
+    <section id="services" ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-white">
+      {/* Background with animated gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50"></div>
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent opacity-30"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent opacity-30"></div>
+        
+        {/* Animated floating particles */}
+        <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-blue-200 mix-blend-multiply filter blur-3xl opacity-40 animate-float" style={{
+          animationDuration: '15s'
+        }}></div>
+        <div className="absolute top-40 right-10 w-32 h-32 rounded-full bg-purple-200 mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{
+          animationDuration: '20s',
+          animationDelay: '2s'
+        }}></div>
+        <div className="absolute bottom-10 left-1/3 w-36 h-36 rounded-full bg-indigo-200 mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{
+          animationDuration: '18s',
+          animationDelay: '1s'
+        }}></div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -177,14 +190,14 @@ const ServiceSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-6">
               <CarouselPrevious className="relative static left-0 translate-y-0 mr-4 transition-all duration-300 hover:-translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
               <CarouselNext className="relative static right-0 translate-y-0 transition-all duration-300 hover:translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
             </div>
           </Carousel>
         </div>
 
-        <div className="mt-8 text-center animate-fade-in" style={{
+        <div className="mt-10 text-center animate-fade-in" style={{
           animationDelay: '900ms'
         }}>
           <Link to="/services">
