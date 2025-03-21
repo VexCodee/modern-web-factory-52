@@ -1,78 +1,13 @@
+
 import React, { useEffect, useRef } from 'react';
-import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart, ExternalLink } from 'lucide-react';
+import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useIsMobile } from '../hooks/use-mobile';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { Button } from '@/components/ui/button';
-
-interface ServiceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  learnMoreText: string;
-  iconBgColor: string;
-  gradientColors: string;
-  index: number;
-}
-
-const ServiceCard: React.FC<ServiceCardProps> = ({
-  icon,
-  title,
-  description,
-  learnMoreText,
-  iconBgColor,
-  gradientColors,
-  index
-}) => {
-  return (
-    <div className="group">
-      <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-white border border-gray-100">
-        {/* Subtle background gradient */}
-        <div className={`absolute inset-0 ${gradientColors} opacity-5`}></div>
-        
-        {/* Icon */}
-        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          <span 
-            className={`w-10 h-10 flex items-center justify-center rounded-full ${iconBgColor} text-white transition-all duration-300 hover:scale-110`}
-          >
-            {icon}
-          </span>
-        </div>
-        
-        {/* Arrow icon */}
-        <div className="absolute top-4 right-4">
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
-            <ArrowRight size={18} />
-          </button>
-        </div>
-        
-        {/* Content */}
-        <div className="absolute inset-x-0 bottom-0 p-6">
-          <h2 className="text-2xl font-bold text-slate-800 mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
-          <p className="text-gray-600 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-800">{description}</p>
-          
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4">
-            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1">
-              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">24/7</div>
-              <div className="text-xs text-gray-500">Support</div>
-            </div>
-            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-75">
-              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">99%</div>
-              <div className="text-xs text-gray-500">Satisfaction</div>
-            </div>
-            <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-150">
-              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">+50%</div>
-              <div className="text-xs text-gray-500">Efficiency</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import ServiceCard from './ServiceCard';
 
 const ServiceSection = () => {
   const { t, language } = useLanguage();
@@ -92,49 +27,56 @@ const ServiceSection = () => {
       titleKey: "services.items.outsourcing.title",
       descriptionKey: "services.items.outsourcing.description",
       iconBgColor: "bg-blue-500",
-      gradientColors: "bg-gradient-to-r from-blue-400 to-blue-600"
+      buttonBgColor: "bg-blue-600",
+      benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <Globe size={24} className="text-white" />,
       titleKey: "services.items.webDev.title",
       descriptionKey: "services.items.webDev.description",
       iconBgColor: "bg-indigo-500",
-      gradientColors: "bg-gradient-to-r from-indigo-400 to-indigo-600"
+      buttonBgColor: "bg-indigo-600",
+      benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <Palette size={24} className="text-white" />,
       titleKey: "services.items.graphic.title",
       descriptionKey: "services.items.graphic.description",
       iconBgColor: "bg-purple-500",
-      gradientColors: "bg-gradient-to-r from-purple-400 to-purple-600"
+      buttonBgColor: "bg-purple-600",
+      benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <Wrench size={24} className="text-white" />,
       titleKey: "services.items.hardware.title",
       descriptionKey: "services.items.hardware.description",
       iconBgColor: "bg-orange-500",
-      gradientColors: "bg-gradient-to-r from-orange-400 to-amber-500"
+      buttonBgColor: "bg-orange-600",
+      benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <Lock size={24} className="text-white" />,
       titleKey: "whyChooseUs.features.security.title",
       descriptionKey: "services.items.outsourcing.description",
       iconBgColor: "bg-teal-500",
-      gradientColors: "bg-gradient-to-r from-teal-400 to-teal-600"
+      buttonBgColor: "bg-teal-600",
+      benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <Database size={24} className="text-white" />,
       titleKey: "technologies.cloud.title",
       descriptionKey: "technologies.cloud.description",
       iconBgColor: "bg-emerald-500",
-      gradientColors: "bg-gradient-to-r from-emerald-400 to-emerald-600"
+      buttonBgColor: "bg-emerald-600",
+      benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <LineChart size={24} className="text-white" />,
       titleKey: "services.items.ai.title",
       descriptionKey: "services.items.ai.description",
       iconBgColor: "bg-rose-500",
-      gradientColors: "bg-gradient-to-r from-rose-400 to-rose-600"
+      buttonBgColor: "bg-rose-600",
+      benefits: ["24/7", "99%", "+50%"]
     }
   ];
 
@@ -214,24 +156,45 @@ const ServiceSection = () => {
           </p>
         </div>
 
-        {/* Adding padding-top to prevent cards from being cut off when they hover and transform upwards */}
-        <div className="w-full pt-4">
+        {/* Services grid - desktop view */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-4">
+          {services.map((service, index) => (
+            <div key={index} className="service-card opacity-0 h-full">
+              <ServiceCard 
+                icon={service.icon} 
+                title={t(service.titleKey)} 
+                description={t(service.descriptionKey)}
+                benefits={service.benefits}
+                iconBgColor={service.iconBgColor}
+                borderColor=""
+                dotColor=""
+                buttonBgColor={service.buttonBgColor}
+                delay={index * 50}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile carousel view */}
+        <div className="md:hidden w-full pt-4">
           <Carousel className="w-full" opts={{
             align: "start",
             loop: true
           }} plugins={[autoplayPlugin.current]}>
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[340px] pt-2">
+                <CarouselItem key={index} className="basis-full h-[380px] pt-2">
                   <div className="p-1 h-full service-card">
                     <ServiceCard 
                       icon={service.icon} 
                       title={t(service.titleKey)} 
                       description={t(service.descriptionKey)}
-                      learnMoreText={learnMoreText}
+                      benefits={service.benefits}
                       iconBgColor={service.iconBgColor}
-                      gradientColors={service.gradientColors}
-                      index={index}
+                      borderColor=""
+                      dotColor=""
+                      buttonBgColor={service.buttonBgColor}
+                      delay={index * 50}
                     />
                   </div>
                 </CarouselItem>
