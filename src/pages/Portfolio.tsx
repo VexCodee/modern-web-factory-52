@@ -250,8 +250,8 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Portfolio Grid - Updated with light styling */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-blue-50">
+      {/* Portfolio Grid - Return to original dark styling */}
+      <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {filteredProjects.map((project, index) => (
@@ -264,13 +264,13 @@ const Portfolio = () => {
                   transform: 'translateY(20px)'
                 }}
               >
-                <Card className="overflow-hidden border border-gray-200 bg-white hover:shadow-xl hover:shadow-blue-100/60 h-full transition-all duration-500 hover:translate-y-[-10px] transform-style-3d hover:rotate-y-2">
-                  <div className={`relative overflow-hidden h-48`}>
+                <Card className="overflow-hidden border-none bg-gray-800 hover:shadow-xl hover:shadow-primary/20 h-full transition-all duration-500 hover:translate-y-[-10px] transform-style-3d hover:rotate-y-2">
+                  <div className={`relative overflow-hidden h-48 ${project.color}`}>
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 transition-all duration-500 group-hover:from-transparent group-hover:to-black/20"></div>
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105 opacity-80"
                     />
                   </div>
                   
@@ -280,7 +280,7 @@ const Portfolio = () => {
                       {project.tags.map((tag, idx) => (
                         <span 
                           key={idx} 
-                          className="px-3 py-1 rounded-full bg-blue-50 text-xs font-medium text-blue-700 transition-all duration-300 hover:bg-blue-100"
+                          className="px-3 py-1 rounded-full bg-gray-700 text-xs font-medium text-gray-300 transition-all duration-300 hover:bg-gray-600"
                         >
                           {tag}
                         </span>
@@ -294,16 +294,16 @@ const Portfolio = () => {
                     
                     {/* Project Title */}
                     <div className="mb-4 transform transition-all duration-300 group-hover:translate-y-[-5px]">
-                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 transition-all duration-300">{project.title}</h2>
-                      <p className="text-sm md:text-base mt-1 text-gray-600 transition-all duration-300 group-hover:text-gray-900">{project.subtitle}</p>
+                      <h2 className="text-2xl md:text-3xl font-bold text-white transition-all duration-300">{project.title}</h2>
+                      <p className="text-sm md:text-base mt-1 text-gray-400 transition-all duration-300 group-hover:text-gray-300">{project.subtitle}</p>
                     </div>
                     
                     {/* Stats/Metrics */}
                     <div className="mt-auto pt-6 grid grid-cols-3 gap-4">
                       {project.stats.map((stat, idx) => (
-                        <div key={idx} className="text-gray-900 transform transition-all duration-300 hover:scale-105">
+                        <div key={idx} className="text-white transform transition-all duration-300 hover:scale-105">
                           <div className="text-xl md:text-2xl font-bold text-primary">{stat}</div>
-                          <div className="text-xs text-gray-600">{project.statsLabels[idx]}</div>
+                          <div className="text-xs text-gray-400">{project.statsLabels[idx]}</div>
                         </div>
                       ))}
                     </div>
@@ -315,14 +315,14 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Company Partners/Clients - Updated with light styling */}
-      <section className="py-16 bg-gradient-to-b from-blue-50 to-gray-50">
+      {/* Company Partners/Clients - Return to original dark styling */}
+      <section className="py-16 bg-gray-800">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-lg mx-auto mb-10">
-            <h2 className="text-2xl font-bold mb-2 text-gray-900">
+            <h2 className="text-2xl font-bold mb-2 text-white">
               {language === 'pl' ? 'Zaufali nam' : language === 'de' ? 'Sie vertrauen uns' : 'They trust us'}
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               {language === 'pl' ? 'Współpracujemy z wiodącymi markami' : 
                language === 'de' ? 'Wir arbeiten mit führenden Marken zusammen' : 
                'We work with leading brands around the world'}
@@ -331,28 +331,28 @@ const Portfolio = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
             {Array(6).fill(0).map((_, i) => (
-              <div key={i} className="w-32 h-16 bg-white shadow-sm rounded-lg flex items-center justify-center hover:shadow-md transition-all duration-300 border border-gray-200">
-                <div className="w-16 h-8 bg-gray-200 rounded-md"></div>
+              <div key={i} className="w-32 h-16 bg-gray-700 shadow-md rounded-lg flex items-center justify-center hover:bg-gray-600 transition-all duration-300 border border-gray-600">
+                <div className="w-16 h-8 bg-gray-800 rounded-md"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
         
-      {/* Portfolio Highlights Section - Updated with light styling */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      {/* Portfolio Highlights Section - Return to original dark styling */}
+      <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block bg-primary/10 border border-primary/30 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
+              <div className="inline-block bg-primary/20 border border-primary/30 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
                 {language === 'pl' ? 'Nasz proces' : language === 'de' ? 'Unser Prozess' : 'Our Process'}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-white">
                 {language === 'pl' ? 'Jak pracujemy nad Twoim projektem' : 
                  language === 'de' ? 'Wie wir an Ihrem Projekt arbeiten' : 
                  'How we approach your project'}
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-400 mb-8">
                 {language === 'pl' ? 'Każdy projekt to indywidualne podejście. Łączymy najlepsze praktyki z innowacyjnymi rozwiązaniami.' : 
                  language === 'de' ? 'Jedes Projekt ist ein individueller Ansatz. Wir kombinieren bewährte Praktiken mit innovativen Lösungen.' : 
                  'Each project gets a custom approach. We combine industry best practices with innovative solutions to deliver exceptional results.'}
@@ -390,12 +390,12 @@ const Portfolio = () => {
                   }
                 ].map((step, idx) => (
                   <div key={idx} className="flex items-start group cursor-pointer">
-                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary font-bold transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-gray-800 border border-primary/30 flex items-center justify-center text-primary font-bold transition-all duration-300 group-hover:bg-primary group-hover:text-white">
                       {step.number}
                     </div>
                     <div className="transition-all duration-300 group-hover:translate-x-2">
-                      <h3 className="text-xl font-bold mb-1 transition-colors duration-300 text-gray-900 group-hover:text-primary">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
+                      <h3 className="text-xl font-bold mb-1 transition-colors duration-300 text-white group-hover:text-primary">{step.title}</h3>
+                      <p className="text-gray-400">{step.description}</p>
                     </div>
                   </div>
                 ))}
@@ -403,16 +403,16 @@ const Portfolio = () => {
             </div>
             
             <div className="relative">
-              <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-blue-100/60"></div>
-              <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-blue-100/30"></div>
+              <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-primary/10"></div>
+              <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-primary/5"></div>
               <img 
                 src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80" 
                 alt="Our process visualization" 
-                className="relative z-10 w-full h-auto rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-200 hover:scale-[1.02] border border-gray-200"
+                className="relative z-10 w-full h-auto rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:scale-[1.02] border border-gray-700"
               />
               
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-blue-300/10 rounded-full filter blur-2xl opacity-60"></div>
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br from-purple-300/20 to-purple-300/10 rounded-full filter blur-2xl opacity-60"></div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full filter blur-2xl opacity-60"></div>
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/5 rounded-full filter blur-2xl opacity-60"></div>
             </div>
           </div>
         </div>
