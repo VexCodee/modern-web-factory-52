@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -5,6 +6,13 @@ import { useLanguage } from '../context/LanguageContext';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ArrowRight, ArrowUpRight, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from '@/components/ui/carousel';
 
 const Portfolio = () => {
   const { t, language } = useLanguage();
@@ -132,6 +140,33 @@ const Portfolio = () => {
     ? projects 
     : projects.filter(project => project.categories.includes(activeCategory));
 
+  const clientLogos = [
+    {
+      name: "Nextbank",
+      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=160&h=80",
+    },
+    {
+      name: "TUI",
+      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=160&h=80",
+    },
+    {
+      name: "Orlen",
+      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=160&h=80",
+    },
+    {
+      name: "Dolby",
+      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=160&h=80",
+    },
+    {
+      name: "LogisticPro",
+      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=160&h=80",
+    },
+    {
+      name: "SecureBank",
+      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=160&h=80",
+    },
+  ];
+
   return (
     <Layout>
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
@@ -230,7 +265,11 @@ const Portfolio = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredProjects.map((project, index) => (
-              <div key={project.id} className="group">
+              <Link 
+                key={project.id} 
+                to={`/portfolio/${project.id}`} 
+                className="group block"
+              >
                 <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <img 
                     src={project.image} 
@@ -249,9 +288,9 @@ const Portfolio = () => {
                     ))}
                   </div>
                   <div className="absolute top-4 right-4">
-                    <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
                       <ArrowUpRight size={18} />
-                    </button>
+                    </div>
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{project.title}</h2>
@@ -266,7 +305,7 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -284,13 +323,32 @@ const Portfolio = () => {
                'We work with leading brands around the world'}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
-            {Array(6).fill(0).map((_, i) => (
-              <div key={i} className="w-32 h-16 bg-white shadow-md rounded-lg flex items-center justify-center hover:bg-gray-50 transition-all duration-300 border border-gray-200">
-                <div className="w-16 h-8 bg-gray-100 rounded-md"></div>
-              </div>
-            ))}
-          </div>
+          
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {clientLogos.map((client, index) => (
+                <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/6">
+                  <div className="p-2 h-full">
+                    <div className="h-16 bg-white shadow-md rounded-lg flex items-center justify-center hover:bg-gray-50 transition-all duration-300 border border-gray-200 p-2">
+                      <img 
+                        src={client.logo} 
+                        alt={client.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0 lg:-left-12" />
+            <CarouselNext className="right-0 lg:-right-12" />
+          </Carousel>
         </div>
       </section>
 
