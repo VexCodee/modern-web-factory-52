@@ -1,6 +1,6 @@
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
@@ -77,10 +77,10 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-// Animated variant of the card
+// Animated variant of the card - Fixed the typing to work with motion.div
 const AnimatedCard = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  HTMLMotionProps<"div">
 >(({ className, ...props }, ref) => (
   <motion.div
     ref={ref}
