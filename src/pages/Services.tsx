@@ -7,6 +7,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ServiceCard from '../components/ServiceCard';
+
 const ServicePage = () => {
   const {
     t,
@@ -245,17 +246,20 @@ const ServicePage = () => {
               </a>
             </div>
             
-            {/* Right side image card with overlay */}
+            {/* Right side image card with updated styling similar to other cards */}
             <div className="hidden lg:block relative">
-              <div className="relative shadow-lg rounded-2xl overflow-hidden">
-                <img alt="Hardware Service" className="w-full h-auto object-cover rounded-2xl" src="/lovable-uploads/d4eb3031-c917-4b2c-af9b-63e6d2ab84b6.jpg" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm p-4">
+              <div className="rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-[1.02] group">
+                <div className="relative h-[350px]">
+                  <img alt="Services Showcase" className="w-full h-full object-cover" src="/lovable-uploads/d4eb3031-c917-4b2c-af9b-63e6d2ab84b6.jpg" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/80"></div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 transform transition-all duration-300 translate-y-0 group-hover:-translate-y-1">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-gray-400 text-sm">{language === 'pl' ? 'Nasza Misja' : language === 'de' ? 'Unsere Mission' : 'Our Mission'}</div>
-                      <div className="text-white font-semibold">{language === 'pl' ? 'Tworzymy Przyszłość' : language === 'de' ? 'Wir gestalten die Zukunft' : 'Shaping The Future'}</div>
+                      <div className="text-white/80 text-sm">{language === 'pl' ? 'Nasza Misja' : language === 'de' ? 'Unsere Mission' : 'Our Mission'}</div>
+                      <div className="text-white font-semibold text-lg">{language === 'pl' ? 'Tworzymy Przyszłość' : language === 'de' ? 'Wir gestalten die Zukunft' : 'Shaping The Future'}</div>
                     </div>
-                    <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center">
+                    <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center transform transition-all duration-300 rotate-0 group-hover:rotate-45">
                       <ArrowRight size={20} />
                     </div>
                   </div>
@@ -265,9 +269,9 @@ const ServicePage = () => {
           </div>
         </div>
         
-        {/* Scroll indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
-          <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
+        {/* Scroll indicator with reduced spacing */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+          <span className="text-sm mb-2">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[bounce_2s_ease-in-out_infinite]"></div>
           </div>
@@ -423,4 +427,5 @@ const ServicePage = () => {
       <CTASection />
     </Layout>;
 };
+
 export default ServicePage;
