@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -29,12 +28,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   return (
     <div className="group">
-      <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-        {/* Background gradient overlay */}
-        <div className={`absolute inset-0 ${gradientColors} opacity-10`}></div>
-        <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
+      <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-white border border-gray-100">
+        {/* Subtle background gradient */}
+        <div className={`absolute inset-0 ${gradientColors} opacity-5`}></div>
         
-        {/* Top icon */}
+        {/* Icon */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2">
           <span 
             className={`w-10 h-10 flex items-center justify-center rounded-full ${iconBgColor} text-white transition-all duration-300 hover:scale-110`}
@@ -52,22 +50,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         
         {/* Content */}
         <div className="absolute inset-x-0 bottom-0 p-6">
-          <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
-          <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">{description}</p>
+          <h2 className="text-2xl font-bold text-slate-800 mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
+          <p className="text-gray-600 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-800">{description}</p>
           
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4">
             <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1">
-              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">24/7</div>
-              <div className="text-xs text-gray-400">Support</div>
+              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">24/7</div>
+              <div className="text-xs text-gray-500">Support</div>
             </div>
             <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-75">
-              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">99%</div>
-              <div className="text-xs text-gray-400">Satisfaction</div>
+              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">99%</div>
+              <div className="text-xs text-gray-500">Satisfaction</div>
             </div>
             <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-150">
-              <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">+50%</div>
-              <div className="text-xs text-gray-400">Efficiency</div>
+              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">+50%</div>
+              <div className="text-xs text-gray-500">Efficiency</div>
             </div>
           </div>
         </div>
@@ -173,10 +171,10 @@ const ServiceSection = () => {
                         'Mehr erfahren';
 
   return (
-    <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-neutral-50">
+    <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-white">
       {/* Background with animated gradient */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950/10 dark:to-purple-950/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50"></div>
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent opacity-30"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent opacity-30"></div>
         
@@ -200,7 +198,7 @@ const ServiceSection = () => {
             {t('services.title')}
           </span>
           
-          <h2 className="mt-6 text-3xl md:text-4xl font-bold animate-fade-in relative inline-block dark:text-gray-800" style={{
+          <h2 className="mt-6 text-3xl md:text-4xl font-bold animate-fade-in relative inline-block text-slate-800" style={{
             animationDelay: '100ms'
           }}>
             {t('services.subtitle')}

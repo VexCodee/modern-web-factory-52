@@ -257,9 +257,13 @@ const ServicePage = () => {
 
   return (
     <Layout>
-      {/* Hero Section with Light Theme */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-b from-gray-50/80 via-white to-white">
+      {/* Hero Section with new design to match other pages */}
+      <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-b from-indigo-50/50 via-white to-white">
         <div className="absolute inset-0 -z-10">
+          {/* Background with animated gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50"></div>
+          
+          {/* Decorative elements */}
           <div className="absolute top-1/4 right-10 w-96 h-96 bg-blue-100/30 rounded-full mix-blend-multiply blur-3xl animate-float"></div>
           <div className="absolute bottom-0 left-10 w-96 h-96 bg-indigo-100/30 rounded-full mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
           
@@ -274,12 +278,14 @@ const ServicePage = () => {
         
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-1.5 rounded-full font-medium transition-all hover:scale-105 hover:shadow-sm animate-fade-in">
+            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 rounded-full font-medium transition-all hover:scale-105 hover:shadow-sm animate-fade-in">
               {t('services.title')}
             </Badge>
+            
             <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight text-slate-800 animate-fade-in" style={{ animationDelay: '100ms' }}>
               {t('services.subtitle')}
             </h1>
+            
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
               {t('services.description')}
             </p>
