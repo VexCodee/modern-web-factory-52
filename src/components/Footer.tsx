@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Map, Phone } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Map, Phone, MapPin } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import ThemeToggle from './ThemeToggle';
 import CookieButton from './CookieButton';
