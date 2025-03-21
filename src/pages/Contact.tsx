@@ -92,43 +92,31 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Updated to match Portfolio style */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-indigo-950">
+      {/* Hero Section - Redesigned to match Portfolio style */}
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         <div className="absolute inset-0 z-0">
-          {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950"></div>
-          
-          {/* Abstract pattern overlay */}
-          <div className="absolute inset-0 opacity-20">
-            <img 
-              src="public/lovable-uploads/6a4d001f-1d63-4780-9838-45c6df36ac5e.png" 
-              alt="Hero background" 
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          
-          {/* Animated elements */}
+          <div className="absolute inset-0 bg-white opacity-90"></div>
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-30"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-20"></div>
           <div className="absolute inset-0">
-            {Array.from({ length: 8 }).map((_, i) => (
+            {Array.from({ length: 15 }).map((_, i) => (
               <div 
                 key={i}
-                className="absolute rounded-full bg-blue-500/20"
+                className="absolute rounded-full bg-primary/10"
                 style={{
                   width: `${Math.random() * 10 + 5}px`,
                   height: `${Math.random() * 10 + 5}px`,
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
-                  animation: `float ${Math.random() * 10 + 8}s infinite`,
+                  animation: `float-around ${Math.random() * 15 + 10}s infinite`,
                   animationDelay: `${Math.random() * 5}s`
                 }}
               ></div>
             ))}
           </div>
         </div>
-        
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left column: Text content */}
             <div>
               <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
                 <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
@@ -137,14 +125,14 @@ const Contact = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
                 {language === 'pl' ? 'Jesteśmy' : language === 'de' ? 'Wir sind' : 'We\'re'}
-                <span className="block text-blue-400">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   {language === 'pl' ? 'tutaj dla Ciebie' : language === 'de' ? 'für Sie da' : 'here to help'}
                 </span>
               </h1>
               
-              <p className="text-xl text-blue-200 mb-8 max-w-xl">
+              <p className="text-xl text-gray-600 mb-8 max-w-xl">
                 {language === 'pl' 
                   ? 'Masz pytania lub potrzebujesz pomocy? Nasz zespół ekspertów jest gotowy, aby Ci pomóc osiągnąć Twoje cele.' 
                   : language === 'de' 
@@ -156,34 +144,34 @@ const Contact = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <a 
                   href="mailto:info@techprime.com" 
-                  className="flex items-center gap-3 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+                  className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 hover:bg-gray-100 transition-all"
                 >
-                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                     <Mail size={20} />
                   </div>
                   <div>
-                    <div className="text-sm text-blue-300">Email us</div>
-                    <div className="font-medium text-white">info@techprime.com</div>
+                    <div className="text-sm text-gray-500">Email us</div>
+                    <div className="font-medium text-gray-900">info@techprime.com</div>
                   </div>
                 </a>
                 
                 <a 
                   href="tel:+48221234567" 
-                  className="flex items-center gap-3 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+                  className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 hover:bg-gray-100 transition-all"
                 >
-                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                     <Phone size={20} />
                   </div>
                   <div>
-                    <div className="text-sm text-blue-300">Call us</div>
-                    <div className="font-medium text-white">+48 22 123 45 67</div>
+                    <div className="text-sm text-gray-500">Call us</div>
+                    <div className="font-medium text-gray-900">+48 22 123 45 67</div>
                   </div>
                 </a>
               </div>
               
               {/* Business hours */}
-              <div className="flex items-center gap-3 text-white/80">
-                <Clock size={18} className="text-blue-400" />
+              <div className="flex items-center gap-3 text-gray-600">
+                <Clock size={18} className="text-primary" />
                 <span>
                   {language === 'pl' 
                     ? 'Godziny otwarcia: Pon-Pt 9:00-17:00' 
@@ -196,13 +184,13 @@ const Contact = () => {
             
             {/* Right column: Contact Card */}
             <div className="relative">
-              <Card className="relative overflow-hidden border border-white/20 bg-white/10 text-white rounded-xl">
+              <Card className="relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-xl">
                 <CardContent className="p-8 relative">
-                  <div className="w-16 h-1.5 bg-blue-400 mb-4"></div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <div className="w-16 h-1.5 bg-primary mb-4"></div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {language === 'pl' ? 'Skontaktuj się' : language === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
                   </h3>
-                  <p className="text-blue-200 text-sm mb-8">
+                  <p className="text-gray-500 text-sm mb-8">
                     {language === 'pl' ? 'Odpowiemy na wszystkie Twoje pytania' : 
                      language === 'de' ? 'Wir beantworten alle Ihre Fragen' : 
                      'We\'ll answer all your questions'}
@@ -210,26 +198,26 @@ const Contact = () => {
                   
                   <div className="space-y-4 mb-8">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                         <MapPin size={20} />
                       </div>
                       <div>
-                        <div className="font-medium text-white">
+                        <div className="font-medium text-gray-900">
                           {language === 'pl' ? 'Centrala Warszawa' : 
                            language === 'de' ? 'Hauptsitz Warschau' : 
                            'HQ Warsaw'}
                         </div>
-                        <div className="text-sm text-blue-200/70">ul. Biznesowa 123, 00-001</div>
+                        <div className="text-sm text-gray-500">ul. Biznesowa 123, 00-001</div>
                       </div>
                     </div>
                     
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                         <Phone size={20} />
                       </div>
                       <div>
-                        <div className="font-medium text-white">+48 22 123 45 67</div>
-                        <div className="text-sm text-blue-200/70">
+                        <div className="font-medium text-gray-900">+48 22 123 45 67</div>
+                        <div className="text-sm text-gray-500">
                           {language === 'pl' ? 'Wsparcie techniczne' : 
                            language === 'de' ? 'Technischer Support' : 
                            'Technical support'}
@@ -238,12 +226,12 @@ const Contact = () => {
                     </div>
                     
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                         <Mail size={20} />
                       </div>
                       <div>
-                        <div className="font-medium text-white">info@techprime.com</div>
-                        <div className="text-sm text-blue-200/70">
+                        <div className="font-medium text-gray-900">info@techprime.com</div>
+                        <div className="text-sm text-gray-500">
                           {language === 'pl' ? 'Zapytania ogólne' : 
                            language === 'de' ? 'Allgemeine Anfragen' : 
                            'General inquiries'}
@@ -253,7 +241,7 @@ const Contact = () => {
                   </div>
                   
                   <Button 
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center justify-center gap-2"
+                    className="w-full bg-primary hover:bg-primary/90 text-white font-medium flex items-center justify-center gap-2"
                   >
                     {language === 'pl' ? 'Wyślij wiadomość' : 
                      language === 'de' ? 'Nachricht senden' : 
@@ -267,14 +255,14 @@ const Contact = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
           <span className="text-sm mb-1">
             {language === 'pl' ? 'Przewiń w dół' : 
              language === 'de' ? 'Nach unten scrollen' : 
              'Scroll down'}
           </span>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
-            <div className="w-1.5 h-3 bg-white/70 rounded-full animate-bounce"></div>
+          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
+            <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-bounce"></div>
           </div>
         </div>
       </section>
@@ -607,3 +595,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
