@@ -28,7 +28,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             alt={name}
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
         {/* Tags */}

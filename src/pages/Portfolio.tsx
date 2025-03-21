@@ -250,13 +250,13 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Portfolio Grid - Light styling with dark cards */}
+      {/* Portfolio Grid - Updated to match the provided images */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {filteredProjects.map((project, index) => (
               <div key={project.id} 
-                className="group perspective-1000"
+                className="group"
                 style={{
                   animationDelay: `${index * 100}ms`,
                   animation: 'fade-in 0.6s ease-out forwards',
@@ -264,45 +264,48 @@ const Portfolio = () => {
                   transform: 'translateY(20px)'
                 }}
               >
-                <Card className="overflow-hidden border-none bg-gray-800 hover:shadow-xl hover:shadow-primary/20 h-full transition-all duration-500 hover:translate-y-[-10px] transform-style-3d hover:rotate-y-2">
-                  <div className={`relative overflow-hidden h-48 ${project.color}`}>
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 transition-all duration-500 group-hover:from-transparent group-hover:to-black/20"></div>
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105 opacity-80"
-                    />
-                  </div>
-                  
-                  <CardContent className="p-8 relative z-10 h-full flex flex-col">
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                <Card className="overflow-hidden border-none shadow-xl bg-gray-900 rounded-lg h-full">
+                  <div className="relative">
+                    {/* Project image with overlay */}
+                    <div className="relative h-[220px] overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-black/50"></div>
+                    </div>
+                    
+                    {/* Tags positioned at top left */}
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                       {project.tags.map((tag, idx) => (
                         <span 
                           key={idx} 
-                          className="px-3 py-1 rounded-full bg-gray-700 text-xs font-medium text-gray-300 transition-all duration-300 hover:bg-gray-600"
+                          className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white"
                         >
                           {tag}
                         </span>
                       ))}
-                      <span className="ml-auto">
-                        <button className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/90 text-white hover:bg-primary transition-all duration-300 hover:scale-110">
-                          <ArrowUpRight size={16} />
-                        </button>
-                      </span>
                     </div>
                     
-                    {/* Project Title */}
-                    <div className="mb-4 transform transition-all duration-300 group-hover:translate-y-[-5px]">
-                      <h2 className="text-2xl md:text-3xl font-bold text-white transition-all duration-300">{project.title}</h2>
-                      <p className="text-sm md:text-base mt-1 text-gray-400 transition-all duration-300 group-hover:text-gray-300">{project.subtitle}</p>
+                    {/* Arrow button at top right */}
+                    <div className="absolute top-4 right-4">
+                      <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white">
+                        <ArrowUpRight size={18} />
+                      </button>
                     </div>
+                  </div>
+                  
+                  <CardContent className="p-6">
+                    {/* Project Title and Subtitle */}
+                    <h2 className="text-2xl font-bold text-white mb-1">{project.title}</h2>
+                    <p className="text-gray-400 mb-6">{project.subtitle}</p>
                     
-                    {/* Stats/Metrics */}
-                    <div className="mt-auto pt-6 grid grid-cols-3 gap-4">
+                    {/* Stats/Metrics at bottom */}
+                    <div className="grid grid-cols-3 gap-4 mt-auto">
                       {project.stats.map((stat, idx) => (
-                        <div key={idx} className="text-white transform transition-all duration-300 hover:scale-105">
-                          <div className="text-xl md:text-2xl font-bold text-primary">{stat}</div>
+                        <div key={idx}>
+                          <div className="text-xl font-bold text-white">{stat}</div>
                           <div className="text-xs text-gray-400">{project.statsLabels[idx]}</div>
                         </div>
                       ))}
