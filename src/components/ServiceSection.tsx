@@ -56,16 +56,16 @@ const ServiceSection = () => {
     }, 
     {
       icon: <Lock size={24} className="text-white" />,
-      titleKey: "whyChooseUs.features.security.title",
-      descriptionKey: "services.items.outsourcing.description",
+      titleKey: "services.items.security.title", // Fixed the title key
+      descriptionKey: "services.items.security.description", // Added proper description key
       iconBgColor: "bg-teal-500",
       buttonBgColor: "bg-teal-600",
       benefits: ["24/7", "99%", "+50%"]
     }, 
     {
       icon: <Database size={24} className="text-white" />,
-      titleKey: "technologies.cloud.title",
-      descriptionKey: "technologies.cloud.description",
+      titleKey: "services.items.cloud.title", // Fixed the title key
+      descriptionKey: "services.items.cloud.description", // Added proper description key
       iconBgColor: "bg-emerald-500",
       buttonBgColor: "bg-emerald-600",
       benefits: ["24/7", "99%", "+50%"]
@@ -113,7 +113,7 @@ const ServiceSection = () => {
                         'Mehr erfahren';
 
   return (
-    <section id="services" ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden bg-white">
+    <section id="services" ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-white">
       {/* Background with animated gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50"></div>
@@ -135,7 +135,7 @@ const ServiceSection = () => {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="text-sm rounded-full bg-primary/10 text-primary px-4 py-1.5 font-medium inline-block transform transition-all hover:scale-105 hover:shadow-sm animate-fade-in">
             {t('services.title')}
           </span>
@@ -156,20 +156,21 @@ const ServiceSection = () => {
           </p>
         </div>
 
-        {/* Single row carousel for all screen sizes */}
+        {/* Single row carousel with updated styling and fixed heights */}
         <div className="w-full pt-4">
           <Carousel className="w-full" opts={{
             align: "start",
-            loop: true
+            loop: true,
+            dragFree: true
           }} plugins={[autoplayPlugin.current]}>
-            <CarouselContent>
+            <CarouselContent className="-ml-4">
               {services.map((service, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[380px] pt-2">
-                  <div className="p-1 h-full service-card opacity-0">
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-[400px]">
+                  <div className="h-full service-card opacity-0">
                     <ServiceCard 
                       icon={service.icon} 
-                      title={t(service.titleKey)} 
-                      description={t(service.descriptionKey)}
+                      title={t(service.titleKey) || service.titleKey.split('.').pop() || "Service"} 
+                      description={t(service.descriptionKey) || "Service description"}
                       benefits={service.benefits}
                       iconBgColor={service.iconBgColor}
                       borderColor=""
@@ -181,14 +182,14 @@ const ServiceSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-6">
               <CarouselPrevious className="relative static left-0 translate-y-0 mr-4 transition-all duration-300 hover:-translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
               <CarouselNext className="relative static right-0 translate-y-0 transition-all duration-300 hover:translate-x-1 bg-white hover:bg-gray-50 border border-gray-200" />
             </div>
           </Carousel>
         </div>
 
-        <div className="mt-12 text-center animate-fade-in" style={{
+        <div className="mt-10 text-center animate-fade-in" style={{
           animationDelay: '900ms'
         }}>
           <Link to="/services">

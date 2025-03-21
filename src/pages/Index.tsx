@@ -14,9 +14,7 @@ const Index = () => {
     <Layout>
       <div className="flex flex-col w-full">
         <HeroSection />
-        <div className="pt-0 mt-0"> {/* Reduced spacing */}
-          <ServiceSection />
-        </div>
+        <ServiceSection />
         <WhyChooseUs />
         <InnovationShowcase />
         <TechnologiesSection />
