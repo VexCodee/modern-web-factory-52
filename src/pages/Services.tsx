@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import ServiceCard from '../components/ServiceCard';
 
 const ServicePage = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const servicesRef = useRef<HTMLDivElement>(null);
   const processRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -257,45 +257,93 @@ const ServicePage = () => {
 
   return (
     <Layout>
-      {/* Hero Section with new design to match other pages */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-b from-indigo-50/50 via-white to-white">
-        <div className="absolute inset-0 -z-10">
-          {/* Background with animated gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50"></div>
-          
-          {/* Decorative elements */}
-          <div className="absolute top-1/4 right-10 w-96 h-96 bg-blue-100/30 rounded-full mix-blend-multiply blur-3xl animate-float"></div>
-          <div className="absolute bottom-0 left-10 w-96 h-96 bg-indigo-100/30 rounded-full mix-blend-multiply blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-          
-          {/* Floating dots with enhanced animation */}
-          <div className="absolute top-20 left-20 w-6 h-6 rounded-full bg-blue-200 opacity-50 floating-dot transition-transform duration-700"></div>
-          <div className="absolute top-40 right-40 w-8 h-8 rounded-full bg-indigo-200 opacity-40 floating-dot transition-transform duration-700"></div>
-          <div className="absolute bottom-40 left-1/3 w-7 h-7 rounded-full bg-purple-200 opacity-45 floating-dot transition-transform duration-700"></div>
-          <div className="absolute bottom-20 right-1/4 w-5 h-5 rounded-full bg-teal-200 opacity-40 floating-dot transition-transform duration-700"></div>
-          <div className="absolute top-60 left-1/4 w-4 h-4 rounded-full bg-sky-200 opacity-30 floating-dot transition-transform duration-700"></div>
-          <div className="absolute top-32 right-1/3 w-6 h-6 rounded-full bg-amber-200 opacity-35 floating-dot transition-transform duration-700"></div>
+      {/* Hero Section - Updated to match About Us page */}
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-white opacity-90"></div>
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mix-blend-multiply blur-3xl opacity-30"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 mix-blend-multiply blur-3xl opacity-20"></div>
+          <div className="absolute inset-0">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-primary/10"
+                style={{
+                  width: `${Math.random() * 10 + 5}px`,
+                  height: `${Math.random() * 10 + 5}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animation: `float-around ${Math.random() * 15 + 10}s infinite`,
+                  animationDelay: `${Math.random() * 5}s`
+                }}
+              ></div>
+            ))}
+          </div>
         </div>
         
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 rounded-full font-medium transition-all hover:scale-105 hover:shadow-sm animate-fade-in">
-              {t('services.title')}
-            </Badge>
-            
-            <h1 className="mt-6 text-4xl md:text-5xl font-display font-bold leading-tight text-slate-800 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              {t('services.subtitle')}
-            </h1>
-            
-            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              {t('services.description')}
-            </p>
-            
-            <div className="mt-12 animate-fade-in scroll-down-animation" style={{ animationDelay: '400ms' }}>
-              <a href="#services" className="inline-flex flex-col items-center text-gray-500 hover:text-slate-700 transition-colors">
-                <span className="text-sm mb-2">{t('common.scrollDown')}</span>
-                <ArrowRight className="h-5 w-5 rotate-90" />
-              </a>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 border border-primary/30">
+                <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                <span className="text-primary font-medium tracking-wide text-sm">
+                  {language === 'pl' ? 'Usługi' : language === 'de' ? 'Dienstleistungen' : 'Services'}
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
+                {language === 'pl' ? 'Odkrywając' : language === 'de' ? 'Entdecken' : 'Discovering'} 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                  {language === 'pl' ? 'Nowe Możliwości' : language === 'de' ? 'Neue Möglichkeiten' : 'New Possibilities'}
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 max-w-xl">
+                {language === 'pl' 
+                  ? "Wierzymy w przyszłość, w której technologia harmonijnie integruje się z życiem codziennym, czyniąc je prostszym, bardziej wydajnym i zrównoważonym."
+                  : language === 'de' 
+                  ? "Wir glauben an eine Zukunft, in der Technologie harmonisch in den Alltag integriert ist und ihn einfacher, effizienter und nachhaltiger macht."
+                  : "We believe in a future where technology seamlessly integrates with everyday life, making it simpler, more efficient, and sustainable."}
+              </p>
+              <div className="mt-6">
+                <a 
+                  href="#services" 
+                  className="inline-block bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  {language === 'pl' ? "Poznaj Nasze Usługi" : 
+                   language === 'de' ? "Entdecken Sie Unsere Dienstleistungen" : 
+                   "Discover Our Services"}
+                </a>
+              </div>
             </div>
+            <div className="hidden lg:block relative">
+              <div className="relative transition-all duration-700">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
+                  alt="Services" 
+                  className="relative rounded-2xl shadow-2xl border border-gray-200"
+                />
+                <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="text-gray-400 text-sm">{language === 'pl' ? 'Nasza Misja' : language === 'de' ? 'Unsere Mission' : 'Our Mission'}</div>
+                      <div className="text-white font-bold text-xl">{language === 'pl' ? 'Tworzymy Przyszłość' : language === 'de' ? 'Wir gestalten die Zukunft' : 'Shaping The Future'}</div>
+                    </div>
+                    <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+          <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
+          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
+            <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[bounce_2s_ease-in-out_infinite]"></div>
           </div>
         </div>
       </section>
