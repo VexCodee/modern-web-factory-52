@@ -28,11 +28,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   delay,
   link = '/services'
 }) => {
-  // Skip rendering if title is "title" (placeholder)
-  if (title === "title") {
-    return null;
-  }
-  
+  // Remove this check since we're no longer including empty service cards
+  // in the services array in ServiceSection.tsx
   return (
     <div className="group">
       <div 

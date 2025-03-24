@@ -1,6 +1,5 @@
-
 import React, { useEffect, useRef } from 'react';
-import { UserPlus, Globe, Palette, Wrench, ArrowRight, Lock, Database, LineChart } from 'lucide-react';
+import { UserPlus, Globe, Palette, Wrench, Lock, Database, LineChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useIsMobile } from '../hooks/use-mobile';
