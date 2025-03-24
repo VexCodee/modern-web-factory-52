@@ -32,7 +32,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.outsourcing.description",
       iconBgColor: "bg-blue-500",
       buttonBgColor: "bg-blue-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Profesjonalne wsparcie 24/7", "Obniżenie kosztów o 30%"],
       link: "/services/outsourcing"
     }, 
     {
@@ -41,7 +41,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.webDev.description",
       iconBgColor: "bg-indigo-500",
       buttonBgColor: "bg-indigo-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Responsywne aplikacje webowe", "SEO i wydajność"],
       link: "/services/web-development"
     }, 
     {
@@ -50,7 +50,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.graphic.description",
       iconBgColor: "bg-purple-500",
       buttonBgColor: "bg-purple-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Identyfikacja wizualna", "UX/UI Design"],
       link: "/services/graphic-design"
     }, 
     {
@@ -59,7 +59,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.hardware.description",
       iconBgColor: "bg-orange-500",
       buttonBgColor: "bg-orange-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Serwis sprzętu", "Konsultacje techniczne"],
       link: "/services/hardware"
     }, 
     {
@@ -68,7 +68,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.security.description",
       iconBgColor: "bg-teal-500",
       buttonBgColor: "bg-teal-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Audyty bezpieczeństwa", "Ochrona danych"],
       link: "/services/security"
     }, 
     {
@@ -77,7 +77,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.cloud.description",
       iconBgColor: "bg-emerald-500",
       buttonBgColor: "bg-emerald-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Migracja do chmury", "Skalowalność"],
       link: "/services/cloud"
     }, 
     {
@@ -86,7 +86,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.ai.description",
       iconBgColor: "bg-rose-500",
       buttonBgColor: "bg-rose-600",
-      benefits: ["24/7", "99%", "+50%"],
+      benefits: ["Analiza danych", "Machine Learning"],
       link: "/services/ai"
     }
   ];

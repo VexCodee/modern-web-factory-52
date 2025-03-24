@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
@@ -28,8 +28,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   delay,
   link = '/services'
 }) => {
-  // Remove this check since we're no longer including empty service cards
-  // in the services array in ServiceSection.tsx
   return (
     <div className="group">
       <div 
@@ -38,8 +36,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           transitionDelay: `${delay}ms`,
         }}
       >
-        {/* Subtle background gradient */}
+        {/* Enhanced background with gradient overlay */}
         <div className={`absolute inset-0 ${iconBgColor} opacity-5`}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50/50"></div>
+        
+        {/* Decorative elements */}
+        <div className="absolute top-1/3 right-0 w-20 h-20 rounded-full bg-gray-100/50 -mr-10 opacity-30"></div>
+        <div className="absolute bottom-1/4 left-0 w-16 h-16 rounded-full bg-gray-100/50 -ml-8 opacity-30"></div>
         
         {/* Icon */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2">
@@ -57,13 +60,25 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </Link>
         </div>
         
-        {/* Content with fixed position to prevent overlap - reduced padding */}
-        <div className="absolute inset-x-0 bottom-0 p-4">
+        {/* Content with fixed position to prevent overlap */}
+        <div className="absolute inset-x-0 bottom-0 p-4 z-10">
           {/* Title with enforced visibility */}
           <h2 className="text-xl font-bold text-slate-800 mb-2 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
           
           {/* Description */}
           <p className="text-gray-600 mb-5 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-800">{description}</p>
+          
+          {/* Benefits list - New section */}
+          <div className="mb-4">
+            <div className="flex items-center gap-2 text-sm text-gray-600 mb-1">
+              <CheckCircle2 size={14} className="text-green-500" />
+              <span>{benefits[0] || '24/7 Support'}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <CheckCircle2 size={14} className="text-green-500" />
+              <span>{benefits[1] || '99% Satisfaction'}</span>
+            </div>
+          </div>
           
           {/* Stats - fixed layout with reduced spacing */}
           <div className="grid grid-cols-3 gap-3 border-t border-gray-100 pt-3">
