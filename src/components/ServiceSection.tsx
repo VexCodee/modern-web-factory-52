@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { UserPlus, Globe, Palette, Wrench, Lock, Database, LineChart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -32,7 +31,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.outsourcing.description",
       iconBgColor: "bg-blue-500",
       buttonBgColor: "bg-blue-600",
-      benefits: ["Profesjonalne wsparcie 24/7", "Obniżenie kosztów o 30%"],
+      benefits: ["Profesjonalne wsparcie 24/7", "Indywidualne podejście"],
       link: "/services/outsourcing"
     }, 
     {
@@ -41,7 +40,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.webDev.description",
       iconBgColor: "bg-indigo-500",
       buttonBgColor: "bg-indigo-600",
-      benefits: ["Responsywne aplikacje webowe", "SEO i wydajność"],
+      benefits: ["Responsywne strony", "Optymalizacja SEO"],
       link: "/services/web-development"
     }, 
     {
@@ -59,7 +58,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.hardware.description",
       iconBgColor: "bg-orange-500",
       buttonBgColor: "bg-orange-600",
-      benefits: ["Serwis sprzętu", "Konsultacje techniczne"],
+      benefits: ["Serwis sprzętu", "Diagnostyka problemów"],
       link: "/services/hardware"
     }, 
     {
@@ -77,7 +76,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.cloud.description",
       iconBgColor: "bg-emerald-500",
       buttonBgColor: "bg-emerald-600",
-      benefits: ["Migracja do chmury", "Skalowalność"],
+      benefits: ["Migracja do chmury", "Zarządzanie danymi"],
       link: "/services/cloud"
     }, 
     {
@@ -86,7 +85,7 @@ const ServiceSection = () => {
       descriptionKey: "services.items.ai.description",
       iconBgColor: "bg-rose-500",
       buttonBgColor: "bg-rose-600",
-      benefits: ["Analiza danych", "Machine Learning"],
+      benefits: ["Analiza danych", "Automatyzacja procesów"],
       link: "/services/ai"
     }
   ];
@@ -237,7 +236,7 @@ const ServiceSection = () => {
           </div>
         </div>
         
-        {/* Trusted by section with real logos instead of abstract figures */}
+        {/* Trusted by section updated with VexVision branding */}
         <div className="mt-4 text-center">
           <p className="text-sm font-medium text-gray-500 mb-6">{t('common.trustedBy')}</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">

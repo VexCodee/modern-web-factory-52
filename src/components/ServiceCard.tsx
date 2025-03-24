@@ -86,16 +86,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {/* Stats - fixed layout with reduced spacing */}
           <div className="grid grid-cols-3 gap-3 border-t border-gray-100 pt-3">
             <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1">
-              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">24/7</div>
-              <div className="text-xs text-gray-500">Support</div>
+              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">1</div>
+              <div className="text-xs text-gray-500">Specjalista</div>
             </div>
             <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-75">
-              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">99%</div>
-              <div className="text-xs text-gray-500">Satisfaction</div>
+              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">100%</div>
+              <div className="text-xs text-gray-500">Satysfakcji</div>
             </div>
             <div className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1 delay-150">
-              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">+50%</div>
-              <div className="text-xs text-gray-500">Efficiency</div>
+              <div className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors duration-300">B-B</div>
+              <div className="text-xs text-gray-500">Bielsko-Biała</div>
             </div>
           </div>
         </div>

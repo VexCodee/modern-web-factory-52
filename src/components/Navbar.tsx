@@ -65,9 +65,9 @@ const Navbar = () => {
             className="flex items-center space-x-2"
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
-              <span className="font-bold text-white">IT</span>
+              <span className="font-bold text-white">VX</span>
             </div>
-            <span className="font-display text-xl font-semibold">TechPrime</span>
+            <span className="font-display text-xl font-semibold">VexVision</span>
           </Link>
 
           {/* Desktop Navigation */}

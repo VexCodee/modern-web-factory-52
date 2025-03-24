@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Map, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import ThemeToggle from './ThemeToggle';
 import CookieButton from './CookieButton';
@@ -16,12 +16,12 @@ const Footer = () => {
           <div className="space-y-5">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
-                <span className="font-bold text-white">IT</span>
+                <span className="font-bold text-white">VX</span>
               </div>
-              <span className="font-display text-xl font-semibold">TechPrime</span>
+              <span className="font-display text-xl font-semibold">VexVision</span>
             </div>
             <p className="text-gray-300 mt-4 max-w-xs">
-              Delivering innovative IT solutions that drive business growth and digital transformation.
+              Providing innovative IT solutions from Bielsko-Biała to help transform your digital presence.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-primary transition-colors" aria-label="LinkedIn">
@@ -66,15 +66,15 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <MapPin size={20} className="text-primary mt-1" />
-                <span className="text-gray-300">123 Business Avenue, Tech District, 10001</span>
+                <span className="text-gray-300">Bielsko-Biała, Poland</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={20} className="text-primary" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+48 500 123 456</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={20} className="text-primary" />
-                <span className="text-gray-300">info@techprime.com</span>
+                <span className="text-gray-300">contact@vexvision.com</span>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ const Footer = () => {
 
         <div className="border-t border-slate-700/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm text-slate-400">
-            © {new Date().getFullYear()} TechPrime. {t('footer.rights')}
+            © {new Date().getFullYear()} VexVision. {t('footer.rights')}
           </div>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="text-xs text-slate-400 hover:text-white transition">
