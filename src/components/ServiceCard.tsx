@@ -31,7 +31,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   // Default benefits if none are provided
   const displayedBenefits = benefits && benefits.length > 0 
     ? benefits 
-    : ['Profesjonalne wsparcie 24/7', 'Najwyższa jakość usług'];
+    : ['Profesjonalne wsparcie', 'Najwyższa jakość usług'];
 
   return (
     <div className="group">
