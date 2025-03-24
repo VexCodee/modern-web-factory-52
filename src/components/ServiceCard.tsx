@@ -28,6 +28,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   delay,
   link = '/services'
 }) => {
+  // Default benefits if none are provided
+  const displayedBenefits = benefits && benefits.length > 0 
+    ? benefits 
+    : ['Profesjonalne wsparcie 24/7', 'Najwyższa jakość usług'];
+
   return (
     <div className="group">
       <div 
@@ -68,16 +73,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {/* Description */}
           <p className="text-gray-600 mb-5 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-800">{description}</p>
           
-          {/* Benefits list - New section */}
+          {/* Benefits list - Ensure this section always has content */}
           <div className="mb-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600 mb-1">
-              <CheckCircle2 size={14} className="text-green-500" />
-              <span>{benefits[0] || '24/7 Support'}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <CheckCircle2 size={14} className="text-green-500" />
-              <span>{benefits[1] || '99% Satisfaction'}</span>
-            </div>
+            {displayedBenefits.slice(0, 2).map((benefit, index) => (
+              <div key={index} className="flex items-center gap-2 text-sm text-gray-600 mb-1">
+                <CheckCircle2 size={14} className="text-green-500" />
+                <span>{benefit}</span>
+              </div>
+            ))}
           </div>
           
           {/* Stats - fixed layout with reduced spacing */}
