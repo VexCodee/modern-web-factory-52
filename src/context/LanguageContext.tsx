@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState } from 'react';
 
 // Struktura tłumaczeń dla wszystkich języków
@@ -712,4 +713,487 @@ const englishTranslations: Translations = {
       },
       dataAnalytics: {
         title: 'Data Analytics',
-        description: 'Transform raw data into actionable insights with my comprehensive analytics and business intelligence solutions that support data-driven decision making
+        description: 'Transform raw data into actionable insights with my comprehensive analytics and business intelligence solutions that support data-driven decision making.',
+        features: {
+          warehouse: 'Data warehouse implementation',
+          dashboards: 'Custom dashboard creation',
+          predictive: 'Predictive analytics models',
+          reporting: 'Automated reporting systems',
+          visualization: 'Data visualization tools'
+        }
+      }
+    }
+  },
+  whyChooseUs: {
+    title: 'Why Me',
+    subtitle: 'Your Strategic Partner in Technological Excellence',
+    description: 'At VexVision, I don\'t just provide IT services – I build lasting partnerships with my clients, understanding their business goals and delivering solutions that drive growth and efficiency.',
+    imageAlt: 'Professional approach to clients',
+    features: {
+      expertise: {
+        title: 'Proven Expertise',
+        description: 'With over 10 years of experience, I\'ve built a reputation for reliable service and technical excellence.'
+      },
+      innovative: {
+        title: 'Innovative Approach',
+        description: 'I stay at the forefront of technology trends to deliver cutting-edge solutions that bring real results.'
+      },
+      team: {
+        title: 'Dedicated Service',
+        description: 'I am committed to understanding your unique needs and exceeding your expectations.'
+      },
+      results: {
+        title: 'Measurable Results',
+        description: 'I focus on delivering solutions that provide tangible business value and return on investment.'
+      }
+    },
+    stats: {
+      clients: 'Satisfied Clients',
+      satisfaction: 'Satisfaction',
+      experience: 'Years of Experience'
+    }
+  },
+  testimonials: {
+    title: 'Testimonials',
+    subtitle: 'What My Clients Say',
+    description: 'Don\'t take my word for it. Hear what my satisfied clients have to say about working with VexVision.'
+  },
+  cta: {
+    title: 'Ready to Transform Your Business Through Technology?',
+    description: 'Partner with VexVision to leverage cutting-edge IT solutions that drive growth, efficiency, and innovation in your business.',
+    getStarted: 'Get Started',
+    portfolio: 'View My Portfolio'
+  },
+  footer: {
+    description: 'I provide innovative IT solutions that drive business growth and digital transformation.',
+    services: 'Services',
+    company: 'Company',
+    contact: 'Contact',
+    rights: 'All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service'
+  },
+  notFound: {
+    title: 'Page Not Found',
+    description: 'The page you are looking for doesn\'t exist or has been moved. Let\'s get you back on track.',
+    backHome: 'Back to Home'
+  }
+};
+
+// Tłumaczenia w języku niemieckim
+const germanTranslations: Translations = {
+  navbar: {
+    home: 'Startseite',
+    services: 'Dienstleistungen',
+    solutions: 'Lösungen',
+    aboutUs: 'Über Mich',
+    portfolio: 'Portfolio',
+    contact: 'Kontakt',
+    getStarted: 'Loslegen'
+  },
+  hero: {
+    innovativeIt: 'Innovative IT-Lösungen',
+    transformBusiness: 'Transformieren Sie Ihr Unternehmen durch Technologie',
+    description: 'Ich biete fortschrittliche IT-Dienstleistungen und Lösungen an, die Unternehmen helfen, in der digitalen Welt zu gedeihen. Von der Webentwicklung bis zur KI-Integration bin ich Ihr strategischer Technologiepartner.',
+    getStarted: 'Loslegen',
+    ourServices: 'Meine Dienstleistungen',
+    innovation: 'Innovation',
+    futureReady: 'Zukunftsfähige Lösungen',
+    performance: 'Leistung',
+    optimized: 'Optimierte Prozesse'
+  },
+  technologies: {
+    tag: 'Fortschrittliche Technologien',
+    title: 'Technologie, die Ihr Unternehmen unterstützt',
+    subtitle: 'Meine innovativen Lösungen sind darauf ausgelegt, das Wachstum Ihres Unternehmens zu beschleunigen und Geschäftsprozesse zu optimieren. Durch den Einsatz neuester Technologien helfe ich Ihnen, einen Wettbewerbsvorteil zu erzielen.',
+    cloud: {
+      title: 'Cloud Computing',
+      description: 'Leistungsstarke Cloud-Infrastrukturlösungen, die mit den Anforderungen Ihres Unternehmens skalieren'
+    },
+    ai: {
+      title: 'Künstliche Intelligenz',
+      description: 'Intelligente KI-Lösungen, die Daten in wertvolle Geschäftseinblicke umwandeln'
+    },
+    iot: {
+      title: 'IoT & Edge Computing',
+      description: 'Verbinden und verwalten Sie all Ihre Geräte mit einer fortschrittlichen IoT-Plattform'
+    },
+    sustainable: {
+      title: 'Nachhaltige Technologie',
+      description: 'Umweltfreundliche Technologielösungen mit minimaler Umweltbelastung'
+    },
+    cta: {
+      title: 'Bereit, diese Technologien zu nutzen?',
+      description: 'Lassen Sie uns besprechen, wie mein technisches Fachwissen Ihrem Unternehmen helfen kann, zu wachsen',
+      button: 'Beratungsgespräch vereinbaren'
+    }
+  },
+  innovation: {
+    tag: 'Innovation',
+    title: 'Digitale Transformation',
+    subtitle: 'Innovative Lösungen für moderne Unternehmen',
+    description: 'Durch den Einsatz von künstlicher Intelligenz, Automatisierung und den neuesten technologischen Fortschritten liefere ich Lösungen, die Geschäftsprozesse transformieren und die Wettbewerbsfähigkeit steigern.',
+    heading: 'Technologie, die Ihr Unternehmen unterstützt',
+    innovation: {
+      title: 'Innovation',
+      description: 'Zukunftsfähige Lösungen'
+    },
+    benefits: {
+      automated: 'Automatisierte Geschäftsprozesse',
+      ai: 'Intelligente, KI-gestützte Lösungen',
+      cloud: 'Skalierbare Cloud-Infrastruktur',
+      security: 'Unternehmenssicherheit'
+    },
+    cta: 'Entdecken Sie meine Lösungen',
+    imageAlt: 'Innovative Technologielösungen'
+  },
+  contact: {
+    title: 'Kontakt',
+    subtitle: 'Kontaktieren Sie mich',
+    description: 'Haben Sie Fragen oder möchten Sie Ihr Projekt besprechen? Füllen Sie das untenstehende Formular aus, und ich werde mich so schnell wie möglich bei Ihnen melden.',
+    form: {
+      name: 'Vollständiger Name',
+      email: 'E-Mail-Adresse',
+      phone: 'Telefonnummer',
+      subject: 'Betreff',
+      message: 'Ihre Nachricht',
+      submit: 'Nachricht senden',
+      success: 'Ihre Nachricht wurde erfolgreich gesendet. Ich werde mich in Kürze bei Ihnen melden!',
+      error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es später noch einmal.',
+      sending: 'Senden...',
+      selectService: 'Wählen Sie einen Dienst',
+      other: 'Andere'
+    },
+    info: {
+      title: 'Kontaktinformationen',
+      description: 'Sie können mich über jeden dieser Kanäle erreichen:',
+      address: 'Adresse',
+      email: 'info@vexvision.com',
+      phone: '+48 555 123 456',
+      hours: 'Montag-Freitag, 9:00-18:00',
+      map: 'Standortkarte'
+    },
+    faq: {
+      title: 'Häufig gestellte Fragen',
+      description: 'Antworten auf die häufigsten Fragen'
+    }
+  },
+  faq: {
+    development: {
+      question: 'Wie lange dauert ein typisches Webentwicklungsprojekt?',
+      answer: 'Die Projektzeiten variieren je nach Komplexität und Umfang. Eine einfache Website kann 2-3 Wochen dauern, während komplexere Plattformen 1-2 Monate in Anspruch nehmen können. Bei unserer ersten Beratung werde ich Ihnen einen detaillierten Zeitplan vorlegen, der auf Ihre Projektanforderungen zugeschnitten ist.'
+    },
+    support: {
+      question: 'Bieten Sie nach Abschluss des Projekts laufende Wartung und Support an?',
+      answer: 'Ja, ich biete verschiedene Wartungspakete an, um sicherzustellen, dass Ihre digitalen Produkte sicher, aktuell und optimal bleiben. Meine Supportdienste umfassen regelmäßige Updates, Sicherheitsüberwachung, Inhaltsänderungen und technische Unterstützung.'
+    },
+    pricing: {
+      question: 'Wie funktioniert die Projektpreisgestaltung?',
+      answer: 'Ich erstelle individuelle Angebote auf der Grundlage spezifischer Anforderungen. Faktoren, die den Preis beeinflussen, sind unter anderem die Projektkomplexität, der Zeitplan, die benötigten Funktionen und der Grad der erforderlichen Anpassung. Ich biete sowohl Festpreisverträge als auch zeit- und materialbasierte Abrechnung an.'
+    },
+    industries: {
+      question: 'Auf welche Branchen sind Sie spezialisiert?',
+      answer: 'Ich habe mit Kunden aus verschiedenen Sektoren zusammengearbeitet, darunter Gesundheitswesen, Finanzen, Einzelhandel, Bildung, Fertigung und Gastgewerbe. Ich passe mich schnell an, um branchenspezifische Herausforderungen und Anforderungen zu verstehen.'
+    },
+    ai: {
+      question: 'Können Sie künstliche Intelligenz in unsere bestehenden Systeme integrieren?',
+      answer: 'Ja, ich bin spezialisiert auf die Integration von KI-Lösungen in bestehende Geschäftssysteme. Mein Ansatz konzentriert sich darauf, die wertvollsten KI-Anwendungen für Ihre spezifischen Bedürfnisse zu identifizieren und sie so zu implementieren, dass sie Ihre aktuellen Prozesse ergänzen.'
+    }
+  },
+  about: {
+    title: 'Über Mich',
+    subtitle: 'Wer ich bin',
+    description: 'VexVision ist ein zukunftsorientiertes IT-Unternehmen, das sich darauf konzentriert, Unternehmen dabei zu helfen, Technologie für Wachstum und Innovation zu nutzen.',
+    history: {
+      title: 'Meine Geschichte',
+      description: 'Ich habe VexVision 2012 als kleines Webentwicklungsstudio gegründet und es seitdem zu einem Full-Service-IT-Lösungsanbieter ausgebaut, der Kunden aus verschiedenen Branchen betreut.'
+    },
+    mission: {
+      title: 'Meine Mission',
+      description: 'Unternehmen mit innovativen technologischen Lösungen zu stärken, die Wachstum, Effizienz und Wettbewerbsvorteile fördern.'
+    },
+    values: {
+      title: 'Meine Werte',
+      innovation: 'Innovation',
+      innovationDesc: 'Ich nutze modernste Technologien und kreatives Denken',
+      quality: 'Qualität',
+      qualityDesc: 'Ich liefere Exzellenz in jedem Projekt und jeder Interaktion',
+      integrity: 'Integrität',
+      integrityDesc: 'Ich führe mein Geschäft auf ehrliche und transparente Weise',
+      collaboration: 'Zusammenarbeit',
+      collaborationDesc: 'Ich baue starke Partnerschaften mit meinen Kunden auf'
+    },
+    team: {
+      title: 'Über Mich',
+      description: 'Ich bin ein Profi mit einer Leidenschaft für Technologie und das Lösen von Geschäftsproblemen.'
+    }
+  },
+  portfolio: {
+    title: 'Portfolio',
+    subtitle: 'Meine Arbeit',
+    description: 'Entdecken Sie meine ausgewählten Projekte und sehen Sie, wie ich Unternehmen in verschiedenen Branchen geholfen habe, ihre Ziele durch Technologie zu erreichen.',
+    categories: {
+      all: 'Alle Projekte',
+      web: 'Webentwicklung',
+      mobile: 'Mobile Apps',
+      design: 'Design',
+      ai: 'KI-Lösungen'
+    },
+    viewProject: 'Projekt ansehen',
+    noProjects: 'Keine Projekte in dieser Kategorie gefunden.'
+  },
+  services: {
+    title: 'Meine Dienstleistungen',
+    subtitle: 'Umfassende IT-Lösungen für Ihr Unternehmen',
+    description: 'Ich biete eine breite Palette von Dienstleistungen an, die Unternehmen dabei helfen, Technologie für nachhaltiges Wachstum und Wettbewerbsvorteile zu nutzen.',
+    viewAll: 'Alle Dienstleistungen anzeigen',
+    mainBenefits: 'Hauptvorteile',
+    items: {
+      outsourcing: {
+        title: 'IT-Outsourcing',
+        description: 'Nutzen Sie mein Fachwissen, um Ihre IT-Abläufe zu verwalten, damit Sie sich auf Ihr Kerngeschäft und Ihre Wachstumsstrategie konzentrieren können.',
+        benefits: {
+          cost: 'Kostenreduzierung',
+          expertise: 'Zugang zu Fachwissen',
+          scalability: 'Skalierbare Dienste',
+          focus: 'Fokus auf das Kerngeschäft'
+        }
+      },
+      webDev: {
+        title: 'Webentwicklung',
+        description: 'Maßgeschneiderte Websites und E-Commerce-Lösungen mit beeindruckendem Design, optimierter Leistung und nahtloser Benutzererfahrung.',
+        benefits: {
+          responsive: 'Responsives Design',
+          seo: 'SEO-Optimierung',
+          secure: 'Sichere Transaktionen',
+          custom: 'Maßgeschneiderte Funktionalität'
+        }
+      },
+      graphic: {
+        title: 'Grafikdesign',
+        description: 'Ansprechende visuelle Inhalte, die Ihre Markenidentität stärken und Ihre Botschaft effektiv kommunizieren.',
+        benefits: {
+          brand: 'Markenkonsistenz',
+          user: 'Nutzerzentriertes Design',
+          creative: 'Kreative Konzepte',
+          cross: 'Plattformübergreifende Assets'
+        }
+      },
+      hardware: {
+        title: 'Hardware-Reparatur',
+        description: 'Professionelle Diagnose- und Reparaturdienste für alle IT-Geräte, die Ausfallzeiten für Ihr Unternehmen minimieren.',
+        benefits: {
+          quick: 'Schnelle Bearbeitung',
+          certified: 'Zertifizierter Service',
+          quality: 'Hochwertige Ersatzteile',
+          preventive: 'Vorbeugende Wartung'
+        }
+      },
+      ai: {
+        title: 'KI-Lösungen',
+        description: 'Fortschrittliche Implementierungen künstlicher Intelligenz zur Automatisierung von Prozessen und Gewinnung wertvoller Einblicke aus Daten.',
+        benefits: {
+          automation: 'Prozessautomatisierung',
+          analytics: 'Prädiktive Analytik',
+          nlp: 'Verarbeitung natürlicher Sprache',
+          ml: 'Integration von maschinellem Lernen'
+        }
+      },
+      marketing: {
+        title: 'Marketing',
+        description: 'Strategische digitale Marketingkampagnen, die Traffic generieren, Leads erzeugen und Konversionsraten erhöhen.',
+        benefits: {
+          targeted: 'Gezielte Kampagnen',
+          performance: 'Leistungsverfolgung',
+          content: 'Content-Strategie',
+          conversion: 'Konversionsoptimierung'
+        }
+      },
+      social: {
+        title: 'Social Media Management',
+        description: 'Umfassende Social-Media-Strategien, die Ihre Markenpräsenz aufbauen, Zielgruppen ansprechen und das Geschäftswachstum fördern.',
+        benefits: {
+          calendar: 'Content-Kalender',
+          engagement: 'Community-Engagement',
+          optimization: 'Plattformoptimierung',
+          analytics: 'Leistungsanalyse'
+        }
+      },
+      project: {
+        title: 'Projektmanagement',
+        description: 'Professionelle Planung, Ausführung und Überwachung von Technologieprojekten, die pünktliche Lieferung im Rahmen des Budgets sicherstellen.',
+        benefits: {
+          communication: 'Klare Kommunikation',
+          risk: 'Risikomanagement',
+          resource: 'Ressourcenoptimierung',
+          quality: 'Qualitätssicherung'
+        }
+      }
+    }
+  },
+  solutions: {
+    title: 'Meine Lösungen',
+    subtitle: 'Technologie, die auf Ihre Branche zugeschnitten ist',
+    description: 'Entdecken Sie, wie meine spezialisierten IT-Lösungen die einzigartigen Herausforderungen und Chancen in Ihrer Branche angehen können.',
+    industries: {
+      title: 'Branchen, die ich bediene',
+      finance: 'Finanzdienstleistungen',
+      healthcare: 'Gesundheitswesen',
+      retail: 'Einzelhandel & E-Commerce',
+      manufacturing: 'Fertigung',
+      education: 'Bildung',
+      logistics: 'Logistik & Transport'
+    },
+    industriesDesc: {
+      healthcare: 'Sichere Patientenmanagementsysteme, Telemedizinplattformen und Gesundheitsanalytiklösungen.',
+      finance: 'Sichere Transaktionssysteme, Betrugserkennung und Finanzverwaltungstools für Kunden.',
+      retail: 'Bestandsverwaltung, E-Commerce-Plattformen und Kundenbindungsprogramme.',
+      manufacturing: 'Produktionsoptimierung, Supply-Chain-Management und Qualitätskontrollsysteme.',
+      education: 'Lernmanagementsysteme, Bewertungstools für Studenten und Verwaltungslösungen.',
+      logistics: 'Routenoptimierung, Sendungsverfolgung und Flottenmanagement für Transportunternehmen.'
+    },
+    features: {
+      title: 'Lösungsmerkmale',
+      scalable: 'Skalierbare Infrastruktur',
+      secure: 'Unternehmensklasse-Sicherheit',
+      integrated: 'Nahtlose Integration',
+      support: 'Technischer Support'
+    },
+    items: {
+      digitalTransformation: {
+        title: 'Digitale Transformation',
+        description: 'Umfassende Strategie und Umsetzung der digitalen Transformation für Unternehmen, die ihre Abläufe modernisieren und im digitalen Zeitalter wettbewerbsfähig bleiben wollen.',
+        features: {
+          infrastructure: 'Bewertung und Modernisierung der Technologieinfrastruktur',
+          processes: 'Neugestaltung von Geschäftsprozessen',
+          migration: 'Cloud-Migration und -Optimierung',
+          change: 'Change Management und Mitarbeiterschulung',
+          workflow: 'Implementierung digitaler Arbeitsabläufe'
+        }
+      },
+      aiCustomerExperience: {
+        title: 'KI Kundenerlebnis',
+        description: 'Nutzen Sie künstliche Intelligenz, um Kundeninteraktionen zu transformieren, personalisierte Erlebnisse zu bieten und gleichzeitig die betriebliche Effizienz zu steigern.',
+        features: {
+          chatbots: 'Intelligente Chatbots und virtuelle Assistenten',
+          analytics: 'Prädiktive Kundenanalytik',
+          recommendations: 'Personalisierte Empfehlungssysteme',
+          automation: 'Automatisierte Kundenservice-Workflows',
+          sentiment: 'Stimmungsanalyse und Feedback-Verarbeitung'
+        }
+      },
+      ecommerce: {
+        title: 'E-Commerce-Lösungen',
+        description: 'Umfassende E-Commerce-Lösung, die Ihren Online-Shop nahtlos mit Bestandsverwaltung, Zahlungsabwicklung, Logistik und Kundenmanagementsystemen integriert.',
+        features: {
+          responsive: 'Responsiver und konversionsoptimierter Online-Shop',
+          inventory: 'Integration des Bestandsverwaltungssystems',
+          payment: 'Implementierung einer sicheren Zahlungsabwicklung',
+          fulfillment: 'Auftragsabwicklung und Logistikautomatisierung',
+          crm: 'Kundenbeziehungsmanagement'
+        }
+      },
+      dataAnalytics: {
+        title: 'Datenanalyse',
+        description: 'Transformieren Sie Rohdaten in umsetzbare Erkenntnisse mit meinen umfassenden Analyse- und Business-Intelligence-Lösungen, die datengestützte Entscheidungsfindung unterstützen.',
+        features: {
+          warehouse: 'Implementierung von Data Warehouses',
+          dashboards: 'Erstellung benutzerdefinierter Dashboards',
+          predictive: 'Prädiktive Analysemodelle',
+          reporting: 'Automatisierte Berichtssysteme',
+          visualization: 'Datenvisualisierungstools'
+        }
+      }
+    }
+  },
+  whyChooseUs: {
+    title: 'Warum Ich',
+    subtitle: 'Ihr strategischer Partner für technologische Exzellenz',
+    description: 'Bei VexVision biete ich nicht nur IT-Dienstleistungen an – ich baue dauerhafte Partnerschaften mit meinen Kunden auf, verstehe ihre Geschäftsziele und liefere Lösungen, die Wachstum und Effizienz fördern.',
+    imageAlt: 'Professioneller Ansatz für Kunden',
+    features: {
+      expertise: {
+        title: 'Bewährtes Fachwissen',
+        description: 'Mit über 10 Jahren Erfahrung habe ich mir einen Ruf für zuverlässigen Service und technische Exzellenz aufgebaut.'
+      },
+      innovative: {
+        title: 'Innovativer Ansatz',
+        description: 'Ich bleibe an der Spitze der Technologietrends, um modernste Lösungen zu liefern, die echte Ergebnisse bringen.'
+      },
+      team: {
+        title: 'Engagierter Service',
+        description: 'Ich bin bestrebt, Ihre einzigartigen Bedürfnisse zu verstehen und Ihre Erwartungen zu übertreffen.'
+      },
+      results: {
+        title: 'Messbare Ergebnisse',
+        description: 'Ich konzentriere mich darauf, Lösungen zu liefern, die greifbaren Geschäftswert und Return on Investment bieten.'
+      }
+    },
+    stats: {
+      clients: 'Zufriedene Kunden',
+      satisfaction: 'Zufriedenheit',
+      experience: 'Jahre Erfahrung'
+    }
+  },
+  testimonials: {
+    title: 'Referenzen',
+    subtitle: 'Was meine Kunden sagen',
+    description: 'Nehmen Sie nicht nur mein Wort dafür. Hören Sie, was meine zufriedenen Kunden über die Zusammenarbeit mit VexVision zu sagen haben.'
+  },
+  cta: {
+    title: 'Bereit, Ihr Unternehmen durch Technologie zu transformieren?',
+    description: 'Arbeiten Sie mit VexVision zusammen, um modernste IT-Lösungen zu nutzen, die Wachstum, Effizienz und Innovation in Ihrem Unternehmen vorantreiben.',
+    getStarted: 'Loslegen',
+    portfolio: 'Mein Portfolio anzeigen'
+  },
+  footer: {
+    description: 'Ich biete innovative IT-Lösungen, die Geschäftswachstum und digitale Transformation fördern.',
+    services: 'Dienstleistungen',
+    company: 'Unternehmen',
+    contact: 'Kontakt',
+    rights: 'Alle Rechte vorbehalten.',
+    privacy: 'Datenschutzerklärung',
+    terms: 'Nutzungsbedingungen'
+  },
+  notFound: {
+    title: 'Seite nicht gefunden',
+    description: 'Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. Lassen Sie uns Sie wieder auf den richtigen Weg bringen.',
+    backHome: 'Zurück zur Startseite'
+  }
+};
+
+// Kontekst języka
+const LanguageContext = createContext<LanguageContextType>({
+  language: 'pl',
+  setLanguage: () => {},
+  translations: {
+    pl: polishTranslations,
+    en: englishTranslations,
+    de: germanTranslations
+  }
+});
+
+export const useLanguage = () => useContext(LanguageContext);
+
+// Dostawca kontekstu języka
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<'pl' | 'en' | 'de'>('pl');
+
+  const value = {
+    language,
+    setLanguage,
+    translations: {
+      pl: polishTranslations,
+      en: englishTranslations,
+      de: germanTranslations
+    }
+  };
+
+  return (
+    <LanguageContext.Provider value={value}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+export default LanguageContext;
