@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -60,11 +61,11 @@ const Portfolio = () => {
   }, []);
   
   const categories = [
-    { id: 'all', label: t('portfolio.categories.all'), icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
+    { id: 'all', label: 'All', icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
     { id: 'fintech', label: 'Fintech', icon: <ArrowRight className="mr-2 h-4 w-4" /> },
     { id: 'mobile', label: 'Mobile', icon: <Smartphone className="mr-2 h-4 w-4" /> },
-    { id: 'web', label: t('portfolio.categories.web'), icon: <Globe className="mr-2 h-4 w-4" /> },
-    { id: 'design', label: t('portfolio.categories.design'), icon: <Image className="mr-2 h-4 w-4" /> },
+    { id: 'web', label: 'Web', icon: <Globe className="mr-2 h-4 w-4" /> },
+    { id: 'design', label: 'Design', icon: <Image className="mr-2 h-4 w-4" /> },
     { id: 'logistics', label: 'Logistics', icon: <ArrowRight className="mr-2 h-4 w-4" /> },
     { id: 'travel', label: 'Travel & Leisure', icon: <ArrowRight className="mr-2 h-4 w-4" /> }
   ];
