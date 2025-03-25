@@ -42,7 +42,7 @@ const AvatarGroup = () => {
 };
 
 const InnovationShowcase = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const showcaseRef = useRef<HTMLDivElement>(null);
 
   // Ręcznie zdefiniowane korzyści zamiast korzystania z kluczy tłumaczeń

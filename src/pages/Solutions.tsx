@@ -1,10 +1,9 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 import SolutionCard from '../components/SolutionCard';
-import { ArrowUpRight, Check, Globe, Image, LayoutGrid, Monitor, Smartphone, Code, Users, PenTool, Wrench, Cpu } from 'lucide-react';
+import { ArrowUpRight, Check, Globe, Code, Users, PenTool, Wrench, Cpu, LayoutGrid } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -49,7 +48,7 @@ const Solution = () => {
       statsLabels: ["Konwersja", "Dostępność", "Szybkość"],
       color: "bg-blue-600",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2015&q=80",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Responsywny design' : language === 'de' ? 'Responsives Design' : 'Responsive design',
         language === 'pl' ? 'Optymalizacja SEO' : language === 'de' ? 'SEO-Optimierung' : 'SEO optimization',
@@ -68,7 +67,7 @@ const Solution = () => {
       statsLabels: ["Wydajność", "Dostosowanie", "Koszty"],
       color: "bg-purple-700",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Analiza potrzeb biznesowych' : language === 'de' ? 'Analyse der Geschäftsanforderungen' : 'Business needs analysis',
         language === 'pl' ? 'Projektowanie i rozwój' : language === 'de' ? 'Design und Entwicklung' : 'Design and development',
@@ -87,7 +86,7 @@ const Solution = () => {
       statsLabels: ["Efektywność", "Koszty IT", "Wsparcie"],
       color: "bg-indigo-600",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Zdalne zarządzanie infrastrukturą' : language === 'de' ? 'Remote-Infrastrukturverwaltung' : 'Remote infrastructure management',
         language === 'pl' ? 'Wsparcie techniczne' : language === 'de' ? 'Technischer Support' : 'Technical support',
@@ -106,7 +105,7 @@ const Solution = () => {
       statsLabels: ["Zasięg", "Konwersja", "Zaangażowanie"],
       color: "bg-emerald-600",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Strategia marketingowa' : language === 'de' ? 'Marketingstrategie' : 'Marketing strategy',
         language === 'pl' ? 'Zarządzanie social media' : language === 'de' ? 'Social-Media-Management' : 'Social media management',
@@ -125,7 +124,7 @@ const Solution = () => {
       statsLabels: ["Rozpoznawalność", "Zaangażowanie", "Satysfakcja"],
       color: "bg-pink-600",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80",
+      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Identyfikacja wizualna' : language === 'de' ? 'Corporate Design' : 'Visual identity',
         language === 'pl' ? 'Projektowanie UX/UI' : language === 'de' ? 'UX/UI-Design' : 'UX/UI design',
@@ -144,7 +143,7 @@ const Solution = () => {
       statsLabels: ["Czas reakcji", "Skuteczność", "Gwarancja"],
       color: "bg-amber-600",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Diagnostyka problemów' : language === 'de' ? 'Problemdiagnose' : 'Problem diagnostics',
         language === 'pl' ? 'Naprawa komputerów i laptopów' : language === 'de' ? 'Computer- und Laptop-Reparatur' : 'Computer and laptop repair',
@@ -163,7 +162,7 @@ const Solution = () => {
       statsLabels: ["Wydajność", "Błędy", "Szybkość"],
       color: "bg-cyan-600",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80",
+      image: "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&q=80&w=800&h=500",
       features: [
         language === 'pl' ? 'Automatyzacja procesów biznesowych' : language === 'de' ? 'Automatisierung von Geschäftsprozessen' : 'Business process automation',
         language === 'pl' ? 'Chatboty i asystenci AI' : language === 'de' ? 'Chatbots und KI-Assistenten' : 'Chatbots and AI assistants',
@@ -176,7 +175,7 @@ const Solution = () => {
   ];
 
   const categories = [
-    { id: 'all', label: t('solutions.categories.all'), icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
+    { id: 'all', label: language === 'pl' ? 'Wszystkie' : language === 'de' ? 'Alle' : 'All', icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
     { id: 'web', label: language === 'pl' ? 'Web' : 'Web', icon: <Globe className="mr-2 h-4 w-4" /> },
     { id: 'software', label: language === 'pl' ? 'Software' : 'Software', icon: <Code className="mr-2 h-4 w-4" /> },
     { id: 'outsourcing', label: language === 'pl' ? 'Outsourcing' : 'Outsourcing', icon: <Users className="mr-2 h-4 w-4" /> },
@@ -184,6 +183,10 @@ const Solution = () => {
     { id: 'hardware', label: language === 'pl' ? 'Sprzęt' : language === 'de' ? 'Hardware' : 'Hardware', icon: <Wrench className="mr-2 h-4 w-4" /> },
     { id: 'ai', label: language === 'pl' ? 'AI' : 'AI', icon: <Cpu className="mr-2 h-4 w-4" /> },
   ];
+
+  const filteredSolutions = activeCategory === 'all' 
+    ? solutions 
+    : solutions.filter(sol => sol.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase())));
 
   const industries = [
     {
@@ -217,10 +220,6 @@ const Solution = () => {
       description: t('solutions.industriesDesc.logistics')
     }
   ];
-
-  const filteredSolutions = activeCategory === 'all' 
-    ? solutions 
-    : solutions.filter(sol => sol.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase())));
 
   return (
     <Layout>
@@ -359,49 +358,24 @@ const Solution = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredSolutions.map((solution, index) => (
-              <div key={solution.id} className="group solution-item opacity-0">
-                <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={solution.image} 
-                    alt={solution.title} 
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                    {solution.tags.map((tag, idx) => (
-                      <span 
-                        key={idx} 
-                        className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
-                      <ArrowUpRight size={18} />
-                    </button>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 p-6">
-                    <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{solution.title}</h2>
-                    <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">{solution.subtitle}</p>
-                    <div className="grid grid-cols-3 gap-4">
-                      {solution.stats.map((stat, idx) => (
-                        <div key={idx} className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1" style={{ transitionDelay: `${idx * 75}ms` }}>
-                          <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">{stat}</div>
-                          <div className="text-xs text-gray-400">{solution.statsLabels[idx]}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              <div key={solution.id} className="solution-item opacity-0">
+                <SolutionCard
+                  title={solution.title}
+                  description={solution.description}
+                  features={solution.features}
+                  image={solution.image}
+                  index={index}
+                  tags={solution.tags}
+                  stats={solution.stats}
+                  statsLabels={solution.statsLabels}
+                  subtitle={solution.subtitle}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -481,122 +455,10 @@ const Solution = () => {
         </div>
       </section>
 
-      {/* Industries section with card grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="mb-16 mx-auto max-w-3xl text-center">
             <span className="rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               {language === 'pl' ? 'Branże' : language === 'de' ? 'Branchen' : 'Industries'}
             </span>
-            <h2 className="mt-6 text-3xl font-bold md:text-4xl text-gray-900">
-              {language === 'pl' ? 'Obsługiwane Branże' : language === 'de' ? 'Unterstützte Branchen' : 'Industries I Serve'}
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              {language === 'pl' ? 'Moje rozwiązania są dostosowane do specyficznych potrzeb różnych branż.' : 
-               language === 'de' ? 'Meine Lösungen sind auf die spezifischen Bedürfnisse verschiedener Branchen zugeschnitten.' : 
-               'My solutions are tailored to the specific needs of various industries.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry, index) => (
-              <div 
-                key={index} 
-                className="transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
-              >
-                <div className="h-full overflow-hidden rounded-lg bg-white p-8 shadow-sm border border-gray-100">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-2xl">
-                    {industry.icon}
-                  </div>
-                  <h3 className="mb-4 text-xl font-semibold text-gray-900">{industry.name}</h3>
-                  <p className="text-gray-600">{industry.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Approach section similar to Portfolio page */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-block bg-primary/20 border border-primary/30 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
-                {language === 'pl' ? 'Moje Podejście' : language === 'de' ? 'Mein Ansatz' : 'My Approach'}
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
-                {language === 'pl' ? 'Jak Wdrażam Moje Rozwiązania' : 
-                 language === 'de' ? 'Wie Ich Meine Lösungen Implementiere' : 
-                 'How I Implement My Solutions'}
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                {language === 'pl' ? 'Moje podejście do wdrażania rozwiązań łączy najlepsze praktyki branżowe z innowacyjnymi metodologiami.' : 
-                 language === 'de' ? 'Mein Ansatz zur Implementierung von Lösungen kombiniert Branchenstandards mit innovativen Methoden.' : 
-                 'My approach to solution implementation combines industry best practices with innovative methodologies.'}
-              </p>
-              <div className="space-y-6">
-                {[
-                  {
-                    number: '01',
-                    title: language === 'pl' ? 'Analiza' : language === 'de' ? 'Analyse' : 'Discovery',
-                    description: language === 'pl' ? 'Poznaję Twoje potrzeby i cele biznesowe' : 
-                                 language === 'de' ? 'Ich verstehe Ihre Bedürfnisse und Geschäftsziele' : 
-                                 'Understanding your needs and business goals'
-                  },
-                  {
-                    number: '02',
-                    title: language === 'pl' ? 'Planowanie' : language === 'de' ? 'Planung' : 'Planning',
-                    description: language === 'pl' ? 'Definiowanie zakresu i harmonogramu' : 
-                                 language === 'de' ? 'Definition von Umfang und Zeitplan' : 
-                                 'Defining scope and timeline'
-                  },
-                  {
-                    number: '03',
-                    title: language === 'pl' ? 'Projektowanie' : language === 'de' ? 'Gestaltung' : 'Design',
-                    description: language === 'pl' ? 'Tworzenie architektury rozwiązania' : 
-                                 language === 'de' ? 'Erstellen der Lösungsarchitektur' : 
-                                 'Creating solution architecture'
-                  },
-                  {
-                    number: '04',
-                    title: language === 'pl' ? 'Realizacja' : language === 'de' ? 'Umsetzung' : 'Development',
-                    description: language === 'pl' ? 'Implementacja rozwiązania' : 
-                                 language === 'de' ? 'Implementierung der Lösung' : 
-                                 'Building the solution'
-                  }
-                ].map((step, idx) => (
-                  <div key={idx} className="flex items-start group cursor-pointer">
-                    <div className="flex-shrink-0 mr-4 w-12 h-12 rounded-full bg-gray-100 border border-primary/30 flex items-center justify-center text-primary font-bold transition-all duration-300 group-hover:bg-primary group-hover:text-white">
-                      {step.number}
-                    </div>
-                    <div className="transition-all duration-300 group-hover:translate-x-2">
-                      <h3 className="text-xl font-bold mb-1 transition-colors duration-300 text-gray-900 group-hover:text-primary">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 rounded-2xl transform rotate-6 bg-primary/10"></div>
-              <div className="absolute inset-0 rounded-2xl transform -rotate-3 bg-primary/5"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80" 
-                alt="Our approach visualization" 
-                className="relative z-10 w-full h-auto rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 border border-gray-200"
-              />
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full filter blur-2xl opacity-60"></div>
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/5 rounded-full filter blur-2xl opacity-60"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
-    </Layout>
-  );
-};
-
-export default Solution;
-
+            <h2 className="mt-6 text-
