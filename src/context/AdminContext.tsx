@@ -44,6 +44,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         .single();
 
       if (error) {
+        console.error('Login error:', error);
         return { success: false, message: 'Authentication failed' };
       }
 

@@ -26,7 +26,7 @@ interface Project {
   categories: string[];
   tags: string[];
   image: string;
-  logo: string;
+  logo?: string;
 }
 
 const Portfolio = () => {
@@ -47,15 +47,14 @@ const Portfolio = () => {
           throw error;
         }
         
-        // If there's no data from Supabase, use the default projects
         if (!data || data.length === 0) {
-          setProjects(defaultProjects);
+          setProjects(defaultProjects as Project[]);
         } else {
-          setProjects(data);
+          setProjects(data as Project[]);
         }
       } catch (error) {
         console.error('Error fetching projects:', error);
-        setProjects(defaultProjects);
+        setProjects(defaultProjects as Project[]);
       } finally {
         setLoading(false);
       }
@@ -74,7 +73,7 @@ const Portfolio = () => {
     { id: 'travel', label: 'Travel & Leisure', icon: <ArrowRight className="mr-2 h-4 w-4" /> }
   ];
   
-  const defaultProjects = [
+  const defaultProjects: Project[] = [
     {
       id: 1,
       title: "Dolby.io",
@@ -101,6 +100,7 @@ const Portfolio = () => {
       categories: ["fintech", "web"],
       tags: ["Fintech", "Mobile", "Web"],
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=500",
+      logo: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=500",
     },
     {
       id: 3,
