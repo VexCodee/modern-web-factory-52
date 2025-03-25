@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { CookieProvider } from "./context/CookieContext";
+import { AdminProvider } from "./context/AdminContext";
 import CookieBanner from "./components/CookieBanner";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
@@ -15,6 +16,8 @@ import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,23 +27,27 @@ const App = () => (
     <ThemeProvider defaultTheme="light">
       <LanguageProvider>
         <CookieProvider>
-          <TooltipProvider>
-            <BrowserRouter>
-              <Toaster />
-              <Sonner theme="light" />
-              <CookieBanner />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/solutions" element={<Solutions />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/portfolio/:id" element={<ProjectDetails />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
+          <AdminProvider>
+            <TooltipProvider>
+              <BrowserRouter>
+                <Toaster />
+                <Sonner theme="light" />
+                <CookieBanner />
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/solutions" element={<Solutions />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
+                  <Route path="/portfolio/:id" element={<ProjectDetails />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </BrowserRouter>
+            </TooltipProvider>
+          </AdminProvider>
         </CookieProvider>
       </LanguageProvider>
     </ThemeProvider>

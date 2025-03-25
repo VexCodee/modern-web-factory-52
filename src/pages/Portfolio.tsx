@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
@@ -13,10 +12,57 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
+import { supabase } from '@/integrations/supabase/client';
+
+interface Project {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  stats: string[];
+  stats_labels: string[];
+  color: string;
+  text_color: string;
+  categories: string[];
+  tags: string[];
+  image: string;
+  logo: string;
+}
 
 const Portfolio = () => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('projects')
+          .select('*')
+          .order('created_at', { ascending: false });
+        
+        if (error) {
+          throw error;
+        }
+        
+        // If there's no data from Supabase, use the default projects
+        if (!data || data.length === 0) {
+          setProjects(defaultProjects);
+        } else {
+          setProjects(data);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        setProjects(defaultProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchProjects();
+  }, []);
   
   const categories = [
     { id: 'all', label: t('portfolio.categories.all'), icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
@@ -28,16 +74,16 @@ const Portfolio = () => {
     { id: 'travel', label: 'Travel & Leisure', icon: <ArrowRight className="mr-2 h-4 w-4" /> }
   ];
   
-  const projects = [
+  const defaultProjects = [
     {
       id: 1,
       title: "Dolby.io",
       subtitle: "Streaming & media app development platform",
       description: "",
       stats: ["+2M", "99%", "2019"],
-      statsLabels: ["Daily users", "Uptime", "Founded"],
+      stats_labels: ["Daily users", "Uptime", "Founded"],
       color: "bg-purple-700",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["mobile", "web"],
       tags: ["Music & Video", "Mobile"],
       image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=800&h=500",
@@ -49,9 +95,9 @@ const Portfolio = () => {
       subtitle: "AI-powered credit scoring & loan origination",
       description: "",
       stats: ["+500M", "97%", "2019"],
-      statsLabels: ["Loan applications processed", "Predictions' accuracy", "Singapore Fintech Awards Finalist"],
+      stats_labels: ["Loan applications processed", "Predictions' accuracy", "Singapore Fintech Awards Finalist"],
       color: "bg-gray-900",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["fintech", "web"],
       tags: ["Fintech", "Mobile", "Web"],
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=500",
@@ -62,9 +108,9 @@ const Portfolio = () => {
       subtitle: "Fleet management mobile app",
       description: "",
       stats: ["+100K", "24/7", "2020"],
-      statsLabels: ["Active users", "Support", "Launch year"],
+      stats_labels: ["Active users", "Support", "Launch year"],
       color: "bg-red-600",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["mobile", "logistics"],
       tags: ["Logistics", "Mobile"],
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=500",
@@ -75,9 +121,9 @@ const Portfolio = () => {
       subtitle: "Travel management app for globetrotters",
       description: "",
       stats: ["+2.5M", "45+", "4.8/5"],
-      statsLabels: ["Bookings", "Countries", "App rating"],
+      stats_labels: ["Bookings", "Countries", "App rating"],
       color: "bg-blue-600",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["travel", "mobile", "design"],
       tags: ["Travel & Leisure", "Mobile", "Design"],
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&h=500",
@@ -88,9 +134,9 @@ const Portfolio = () => {
       subtitle: "Data visualization platform for investment banks",
       description: "",
       stats: ["$3.2B", "12", "2021"],
-      statsLabels: ["Assets tracked", "Major banks", "Release"],
+      stats_labels: ["Assets tracked", "Major banks", "Release"],
       color: "bg-indigo-600",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["fintech", "web"],
       tags: ["Fintech", "Web", "Design"],
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=800&h=500",
@@ -101,9 +147,9 @@ const Portfolio = () => {
       subtitle: "End-to-end supply chain management",
       description: "",
       stats: ["68%", "5hrs", "99.3%"],
-      statsLabels: ["Cost reduction", "Time saved/week", "Delivery accuracy"],
+      stats_labels: ["Cost reduction", "Time saved/week", "Delivery accuracy"],
       color: "bg-amber-600",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["logistics", "web"],
       tags: ["Logistics", "Software"],
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800&h=500",
@@ -114,9 +160,9 @@ const Portfolio = () => {
       subtitle: "All-in-one travel companion app",
       description: "",
       stats: ["52", "4.7/5", "2022"],
-      statsLabels: ["Countries", "App rating", "Launch year"],
+      stats_labels: ["Countries", "App rating", "Launch year"],
       color: "bg-cyan-700",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["travel", "mobile"],
       tags: ["Travel", "Mobile"],
       image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800&h=500",
@@ -127,9 +173,9 @@ const Portfolio = () => {
       subtitle: "Digital banking with advanced security",
       description: "",
       stats: ["128-bit", "0", "24/7"],
-      statsLabels: ["Encryption", "Data breaches", "Monitoring"],
+      stats_labels: ["Encryption", "Data breaches", "Monitoring"],
       color: "bg-emerald-700",
-      textColor: "text-white",
+      text_color: "text-white",
       categories: ["fintech", "mobile"],
       tags: ["Fintech", "Security"],
       image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800&h=500",
@@ -263,51 +309,58 @@ const Portfolio = () => {
 
       <section className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredProjects.map((project, index) => (
-              <Link 
-                key={project.id} 
-                to={`/portfolio/${project.id}`} 
-                className="group block"
-              >
-                <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag, idx) => (
-                      <span 
-                        key={idx} 
-                        className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
-                      <ArrowUpRight size={18} />
-                    </div>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 p-6">
-                    <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{project.title}</h2>
-                    <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">{project.subtitle}</p>
-                    <div className="grid grid-cols-3 gap-4">
-                      {project.stats.map((stat, idx) => (
-                        <div key={idx} className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1" style={{ transitionDelay: `${idx * 75}ms` }}>
-                          <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">{stat}</div>
-                          <div className="text-xs text-gray-400">{project.statsLabels[idx]}</div>
-                        </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+              <p className="mt-4 text-lg">Loading projects...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filteredProjects.map((project, index) => (
+                <Link 
+                  key={project.id} 
+                  to={`/portfolio/${project.id}`} 
+                  className="group block"
+                >
+                  <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300"></div>
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                      {project.tags.map((tag, idx) => (
+                        <span 
+                          key={idx} 
+                          className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
+                        >
+                          {tag}
+                        </span>
                       ))}
                     </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+                        <ArrowUpRight size={18} />
+                      </div>
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 p-6">
+                      <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{project.title}</h2>
+                      <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">{project.subtitle}</p>
+                      <div className="grid grid-cols-3 gap-4">
+                        {project.stats.map((stat, idx) => (
+                          <div key={idx} className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1" style={{ transitionDelay: `${idx * 75}ms` }}>
+                            <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">{stat}</div>
+                            <div className="text-xs text-gray-400">{project.stats_labels[idx]}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

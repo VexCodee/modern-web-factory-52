@@ -9,7 +9,75 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          created_at: string
+          id: number
+          password: string
+          username: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          password: string
+          username: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          password?: string
+          username?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          categories: string[] | null
+          color: string | null
+          created_at: string
+          description: string | null
+          id: number
+          image: string
+          logo: string | null
+          stats: string[] | null
+          stats_labels: string[] | null
+          subtitle: string
+          tags: string[] | null
+          text_color: string | null
+          title: string
+        }
+        Insert: {
+          categories?: string[] | null
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: number
+          image: string
+          logo?: string | null
+          stats?: string[] | null
+          stats_labels?: string[] | null
+          subtitle: string
+          tags?: string[] | null
+          text_color?: string | null
+          title: string
+        }
+        Update: {
+          categories?: string[] | null
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: number
+          image?: string
+          logo?: string | null
+          stats?: string[] | null
+          stats_labels?: string[] | null
+          subtitle?: string
+          tags?: string[] | null
+          text_color?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
