@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -20,7 +21,7 @@ interface Project {
   categories: string[];
   tags: string[];
   image: string;
-  logo?: string; // Make logo optional to match database schema
+  logo?: string;
 }
 
 const ProjectDetails = () => {
@@ -101,7 +102,7 @@ const ProjectDetails = () => {
               <p className="text-gray-600 mb-6">{project.subtitle}</p>
 
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.categories.map((category, index) => (
+                {project.categories && project.categories.map((category, index) => (
                   <Badge key={index}>{category}</Badge>
                 ))}
               </div>
@@ -112,10 +113,10 @@ const ProjectDetails = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Key Stats</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {project.stats.map((stat, index) => (
+                    {project.stats && project.stats.map((stat, index) => (
                       <div key={index} className="bg-gray-100 rounded-md p-4">
                         <div className="text-2xl font-bold">{stat}</div>
-                        <div className="text-gray-500">{project.stats_labels[index]}</div>
+                        <div className="text-gray-500">{project.stats_labels && project.stats_labels[index]}</div>
                       </div>
                     ))}
                   </div>
@@ -127,7 +128,7 @@ const ProjectDetails = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-lg w-full"
               />
             </div>
           </div>
@@ -135,7 +136,7 @@ const ProjectDetails = () => {
           <div className="mt-12 py-8 border-t border-gray-200">
             <h2 className="text-2xl font-bold mb-4">Technologies & Tools</h2>
             <div className="flex flex-wrap gap-4">
-              {project.tags.map((tag, index) => (
+              {project.tags && project.tags.map((tag, index) => (
                 <Badge variant="secondary" key={index}>
                   {tag}
                 </Badge>

@@ -54,7 +54,7 @@ const AdminDashboard = () => {
         {
           title: "Dolby.io",
           subtitle: "Streaming & media app development platform",
-          description: "",
+          description: "A comprehensive platform for developers to build streaming and media applications with advanced features and capabilities.",
           stats: ["+2M", "99%", "2019"],
           stats_labels: ["Daily users", "Uptime", "Founded"],
           color: "bg-purple-700",
@@ -67,7 +67,7 @@ const AdminDashboard = () => {
         {
           title: "Nextbank Credit Scoring",
           subtitle: "AI-powered credit scoring & loan origination",
-          description: "",
+          description: "Innovative AI-driven solution for financial institutions to assess creditworthiness and streamline loan processing.",
           stats: ["+500M", "97%", "2019"],
           stats_labels: ["Loan applications processed", "Predictions' accuracy", "Singapore Fintech Awards Finalist"],
           color: "bg-gray-900",
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
         {
           title: "Orlen mFlota",
           subtitle: "Fleet management mobile app",
-          description: "",
+          description: "Comprehensive mobile solution for managing and optimizing commercial vehicle fleets with real-time tracking.",
           stats: ["+100K", "24/7", "2020"],
           stats_labels: ["Active users", "Support", "Launch year"],
           color: "bg-red-600",
@@ -93,7 +93,7 @@ const AdminDashboard = () => {
         {
           title: "TUI",
           subtitle: "Travel management app for globetrotters",
-          description: "",
+          description: "All-in-one travel companion app for planning, booking, and managing travel experiences worldwide.",
           stats: ["+2.5M", "45+", "4.8/5"],
           stats_labels: ["Bookings", "Countries", "App rating"],
           color: "bg-blue-600",
@@ -106,7 +106,7 @@ const AdminDashboard = () => {
         {
           title: "Fintech Dashboard",
           subtitle: "Data visualization platform for investment banks",
-          description: "",
+          description: "Advanced analytics and visualization tool for investment banks to track and analyze financial data.",
           stats: ["$3.2B", "12", "2021"],
           stats_labels: ["Assets tracked", "Major banks", "Release"],
           color: "bg-indigo-600",
@@ -119,7 +119,7 @@ const AdminDashboard = () => {
         {
           title: "Logistic Pro",
           subtitle: "End-to-end supply chain management",
-          description: "",
+          description: "Comprehensive solution for managing and optimizing supply chain operations with real-time insights.",
           stats: ["68%", "5hrs", "99.3%"],
           stats_labels: ["Cost reduction", "Time saved/week", "Delivery accuracy"],
           color: "bg-amber-600",
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
         {
           title: "TravelEase",
           subtitle: "All-in-one travel companion app",
-          description: "",
+          description: "Smart travel app that helps users plan, book, and navigate their journeys with personalized recommendations.",
           stats: ["52", "4.7/5", "2022"],
           stats_labels: ["Countries", "App rating", "Launch year"],
           color: "bg-cyan-700",
@@ -145,7 +145,7 @@ const AdminDashboard = () => {
         {
           title: "SecureBank",
           subtitle: "Digital banking with advanced security",
-          description: "",
+          description: "Next-generation digital banking platform with state-of-the-art security features and user-friendly interface.",
           stats: ["128-bit", "0", "24/7"],
           stats_labels: ["Encryption", "Data breaches", "Monitoring"],
           color: "bg-emerald-700",

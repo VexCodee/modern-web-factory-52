@@ -65,7 +65,7 @@ const ProjectForm = () => {
         categories: data.categories.split(',').map(item => item.trim()),
         tags: data.tags.split(',').map(item => item.trim()),
         image: data.image,
-        logo: data.logo || data.image,
+        logo: data.logo || null,
       };
       
       const { error } = await supabase
