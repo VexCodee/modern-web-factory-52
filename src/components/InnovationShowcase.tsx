@@ -45,12 +45,12 @@ const InnovationShowcase = () => {
   const { t, language } = useLanguage();
   const showcaseRef = useRef<HTMLDivElement>(null);
 
-  // Lista korzyści z tłumaczeniami
+  // Ręcznie zdefiniowane korzyści zamiast korzystania z kluczy tłumaczeń
   const benefits = [
-    t('innovation.benefits.automated'), 
-    t('innovation.benefits.ai'), 
-    t('innovation.benefits.cloud'), 
-    t('innovation.benefits.security')
+    "Zautomatyzowane procesy biznesowe", 
+    "Rozwiązania oparte o sztuczną inteligencję", 
+    "Pełna integracja z usługami chmurowymi", 
+    "Zaawansowane zabezpieczenia danych"
   ];
 
   useEffect(() => {
@@ -125,7 +125,7 @@ const InnovationShowcase = () => {
           <div className="lg:col-span-1 order-1 lg:order-2">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 animate-on-scroll opacity-0 dark:text-white">
-                {t('innovation.heading')}
+                Innowacyjne rozwiązania dopasowane do Twoich potrzeb
               </h2>
               
               <p className="text-lg text-gray-600 mb-8 animate-on-scroll opacity-0 dark:text-gray-300" style={{
@@ -152,7 +152,7 @@ const InnovationShowcase = () => {
               <Link to="/solutions" className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition-all animate-on-scroll opacity-0 dark:bg-indigo-700 dark:hover:bg-indigo-600" style={{
                 animationDelay: '600ms'
               }}>
-                {t('innovation.cta')}
+                Poznaj moje rozwiązania
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -28,6 +29,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   delay,
   link = '/services'
 }) => {
+  const { language } = useLanguage();
+  
   // Default benefits if none are provided
   const displayedBenefits = benefits && benefits.length > 0 
     ? benefits 

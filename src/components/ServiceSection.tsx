@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { UserPlus, Globe, Palette, Wrench, Bot, Database, Code, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -24,7 +23,7 @@ const ServiceSection = () => {
     rootNode: (emblaRoot) => emblaRoot.parentElement,
   }));
 
-  // Define services with translation keys, colors and gradients
+  // Define services with actual content instead of translation keys
   const services = [
     {
       icon: <Globe size={24} className="text-white" />,
@@ -55,11 +54,11 @@ const ServiceSection = () => {
     }, 
     {
       icon: <Palette size={24} className="text-white" />,
-      titleKey: "Marketing i Grafika",
-      descriptionKey: "Identyfikacja wizualna i strategie marketingowe online",
+      titleKey: "Marketing i Social Media",
+      descriptionKey: "Strategie marketingowe online i zarządzanie mediami społecznościowymi",
       iconBgColor: "bg-orange-500",
       buttonBgColor: "bg-orange-600",
-      benefits: ["Branding", "UX/UI Design"],
+      benefits: ["Branding", "Zwiększenie zasięgów"],
       link: "/services"
     }, 
     {
@@ -68,7 +67,7 @@ const ServiceSection = () => {
       descriptionKey: "Serwis i konserwacja komputerów oraz urządzeń peryferyjnych",
       iconBgColor: "bg-teal-500",
       buttonBgColor: "bg-teal-600",
-      benefits: ["Serwis sprzętu", "Diagnostyka problemów"],
+      benefits: ["Szybka diagnostyka", "Wymiana podzespołów"],
       link: "/services"
     }, 
     {
