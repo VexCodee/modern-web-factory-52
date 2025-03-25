@@ -213,34 +213,58 @@ const Solutions = () => {
 
   const industries = [
     {
-      name: t('solutions.industries.healthcare'),
+      name: language === 'pl' ? 'Ochrona zdrowia' : language === 'de' ? 'Gesundheitswesen' : 'Healthcare',
       icon: "🏥",
-      description: t('solutions.industriesDesc.healthcare')
+      description: language === 'pl' 
+        ? 'Rozwiązania IT dla sektora ochrony zdrowia, poprawiające opiekę nad pacjentem i zarządzanie placówką.' 
+        : language === 'de' 
+        ? 'IT-Lösungen für den Gesundheitssektor, die die Patientenversorgung und die Einrichtungsverwaltung verbessern.'
+        : 'IT solutions for the healthcare sector, improving patient care and facility management.'
     },
     {
-      name: t('solutions.industries.finance'),
+      name: language === 'pl' ? 'Finanse' : language === 'de' ? 'Finanzen' : 'Finance',
       icon: "💼",
-      description: t('solutions.industriesDesc.finance')
+      description: language === 'pl' 
+        ? 'Bezpieczne i wydajne rozwiązania dla sektora finansowego, zapewniające ochronę danych i zgodność z przepisami.' 
+        : language === 'de' 
+        ? 'Sichere und effiziente Lösungen für den Finanzsektor, die Datenschutz und Compliance gewährleisten.'
+        : 'Secure and efficient solutions for the financial sector, ensuring data protection and regulatory compliance.'
     },
     {
-      name: t('solutions.industries.retail'),
+      name: language === 'pl' ? 'Handel detaliczny' : language === 'de' ? 'Einzelhandel' : 'Retail',
       icon: "🛍️",
-      description: t('solutions.industriesDesc.retail')
+      description: language === 'pl' 
+        ? 'Innowacyjne rozwiązania dla handlu, zwiększające zaangażowanie klientów i optymalizujące operacje sprzedażowe.' 
+        : language === 'de' 
+        ? 'Innovative Lösungen für den Handel, die das Kundenengagement erhöhen und Verkaufsoperationen optimieren.'
+        : 'Innovative solutions for retail, increasing customer engagement and optimizing sales operations.'
     },
     {
-      name: t('solutions.industries.manufacturing'),
+      name: language === 'pl' ? 'Produkcja' : language === 'de' ? 'Fertigung' : 'Manufacturing',
       icon: "🏭",
-      description: t('solutions.industriesDesc.manufacturing')
+      description: language === 'pl' 
+        ? 'Zaawansowane systemy dla produkcji, poprawiające wydajność, kontrolę jakości i zarządzanie łańcuchem dostaw.' 
+        : language === 'de' 
+        ? 'Fortschrittliche Systeme für die Fertigung, die Effizienz, Qualitätskontrolle und Lieferkettenmanagement verbessern.'
+        : 'Advanced systems for manufacturing, improving efficiency, quality control, and supply chain management.'
     },
     {
-      name: t('solutions.industries.education'),
+      name: language === 'pl' ? 'Edukacja' : language === 'de' ? 'Bildung' : 'Education',
       icon: "🎓",
-      description: t('solutions.industriesDesc.education')
+      description: language === 'pl' 
+        ? 'Rozwiązania edukacyjne wspierające zdalne nauczanie, zaangażowanie uczniów i administrację placówek.' 
+        : language === 'de' 
+        ? 'Bildungslösungen, die Fernunterricht, Schülerengagement und Einrichtungsverwaltung unterstützen.'
+        : 'Educational solutions supporting remote learning, student engagement, and facility administration.'
     },
     {
-      name: t('solutions.industries.logistics'),
+      name: language === 'pl' ? 'Logistyka' : language === 'de' ? 'Logistik' : 'Logistics',
       icon: "🚚",
-      description: t('solutions.industriesDesc.logistics')
+      description: language === 'pl' 
+        ? 'Inteligentne systemy dla branży logistycznej, optymalizujące trasy, zarządzanie magazynem i śledzenie przesyłek.' 
+        : language === 'de' 
+        ? 'Intelligente Systeme für die Logistikbranche, die Routen optimieren, Lagerverwaltung und Sendungsverfolgung.'
+        : 'Intelligent systems for the logistics industry, optimizing routes, warehouse management, and shipment tracking.'
     }
   ];
 
