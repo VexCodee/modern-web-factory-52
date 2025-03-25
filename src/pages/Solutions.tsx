@@ -1,10 +1,10 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
 import { useLanguage } from '../context/LanguageContext';
 import SolutionCard from '../components/SolutionCard';
-import { ArrowUpRight, Check, Globe, Image, LayoutGrid, Monitor, Smartphone } from 'lucide-react';
+import { ArrowUpRight, Check, Globe, Image, LayoutGrid, Monitor, Smartphone, Code, Users, PenTool, Wrench, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 const Solution = () => {
   const { t, language } = useLanguage();
   const solutionsRef = useRef<HTMLDivElement>(null);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   // Set up intersection observer for animations
   useEffect(() => {
@@ -41,88 +42,147 @@ const Solution = () => {
   const solutions = [
     {
       id: 1,
-      title: t('solutions.items.digitalTransformation.title'),
-      subtitle: t('solutions.items.digitalTransformation.description'),
-      description: t('solutions.items.digitalTransformation.description'),
+      title: language === 'pl' ? 'Tworzenie Stron Internetowych' : language === 'de' ? 'Webentwicklung' : 'Web Development',
+      subtitle: language === 'pl' ? 'Nowoczesne, responsywne strony dopasowane do potrzeb' : language === 'de' ? 'Moderne, responsive Webseiten' : 'Modern, responsive websites',
+      description: language === 'pl' ? 'Projektuję i tworzę nowoczesne strony internetowe, które są szybkie, responsywne i przyjazne dla użytkownika.' : language === 'de' ? 'Ich entwerfe und erstelle moderne Websites' : 'I design and create modern websites',
       stats: ["+45%", "99.9%", "60%"],
-      statsLabels: ["Efficiency", "Uptime", "Cost Reduction"],
+      statsLabels: ["Konwersja", "Dostępność", "Szybkość"],
       color: "bg-blue-600",
       textColor: "text-white",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2015&q=80",
       features: [
-        t('solutions.items.digitalTransformation.features.infrastructure'),
-        t('solutions.items.digitalTransformation.features.processes'),
-        t('solutions.items.digitalTransformation.features.migration'),
-        t('solutions.items.digitalTransformation.features.change'),
-        t('solutions.items.digitalTransformation.features.workflow')
+        language === 'pl' ? 'Responsywny design' : language === 'de' ? 'Responsives Design' : 'Responsive design',
+        language === 'pl' ? 'Optymalizacja SEO' : language === 'de' ? 'SEO-Optimierung' : 'SEO optimization',
+        language === 'pl' ? 'Integracja z CMS' : language === 'de' ? 'CMS-Integration' : 'CMS integration',
+        language === 'pl' ? 'Analityka i raportowanie' : language === 'de' ? 'Analytik und Berichterstattung' : 'Analytics and reporting',
+        language === 'pl' ? 'Wsparcie techniczne' : language === 'de' ? 'Technischer Support' : 'Technical support'
       ],
-      tags: ["Digital", "Infrastructure", "Cloud"]
+      tags: ["Web", "Design", "SEO"]
     },
     {
       id: 2,
-      title: t('solutions.items.aiCustomerExperience.title'),
-      subtitle: t('solutions.items.aiCustomerExperience.description'),
-      description: t('solutions.items.aiCustomerExperience.description'),
-      stats: ["+85%", "24/7", "-30%"],
-      statsLabels: ["Customer Satisfaction", "Support", "Response Time"],
+      title: language === 'pl' ? 'Programowanie na Zlecenie' : language === 'de' ? 'Auftragsprogrammierung' : 'Custom Software Development',
+      subtitle: language === 'pl' ? 'Dedykowane rozwiązania programistyczne dla firm' : language === 'de' ? 'Maßgeschneiderte Softwarelösungen' : 'Custom software solutions for businesses',
+      description: language === 'pl' ? 'Tworzę dedykowane oprogramowanie dopasowane do specyficznych potrzeb i procesów Twojej firmy.' : language === 'de' ? 'Ich erstelle maßgeschneiderte Software' : 'I create custom software',
+      stats: ["+75%", "100%", "-30%"],
+      statsLabels: ["Wydajność", "Dostosowanie", "Koszty"],
       color: "bg-purple-700",
       textColor: "text-white",
-      image: "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       features: [
-        t('solutions.items.aiCustomerExperience.features.chatbots'),
-        t('solutions.items.aiCustomerExperience.features.analytics'),
-        t('solutions.items.aiCustomerExperience.features.recommendations'),
-        t('solutions.items.aiCustomerExperience.features.automation'),
-        t('solutions.items.aiCustomerExperience.features.sentiment')
+        language === 'pl' ? 'Analiza potrzeb biznesowych' : language === 'de' ? 'Analyse der Geschäftsanforderungen' : 'Business needs analysis',
+        language === 'pl' ? 'Projektowanie i rozwój' : language === 'de' ? 'Design und Entwicklung' : 'Design and development',
+        language === 'pl' ? 'Testowanie i wdrażanie' : language === 'de' ? 'Testen und Implementieren' : 'Testing and implementation',
+        language === 'pl' ? 'Integracja z istniejącymi systemami' : language === 'de' ? 'Integration mit bestehenden Systemen' : 'Integration with existing systems',
+        language === 'pl' ? 'Długoterminowe wsparcie' : language === 'de' ? 'Langfristige Unterstützung' : 'Long-term support'
       ],
-      tags: ["AI", "Customer Experience", "Analytics"]
+      tags: ["Software", "Development", "Custom"]
     },
     {
       id: 3,
-      title: t('solutions.items.ecommerce.title'),
-      subtitle: t('solutions.items.ecommerce.description'),
-      description: t('solutions.items.ecommerce.description'),
-      stats: ["+120%", "+65%", "99.5%"],
-      statsLabels: ["Sales", "Mobile Conversion", "Order Accuracy"],
+      title: language === 'pl' ? 'IT Outsourcing' : language === 'de' ? 'IT-Outsourcing' : 'IT Outsourcing',
+      subtitle: language === 'pl' ? 'Kompleksowe wsparcie IT dla Twojej firmy' : language === 'de' ? 'Umfassende IT-Unterstützung' : 'Comprehensive IT support for your business',
+      description: language === 'pl' ? 'Oferuję kompleksowe usługi outsourcingu IT, które pozwalają skupić się na rozwoju Twojego biznesu.' : language === 'de' ? 'Ich biete umfassende IT-Outsourcing-Dienste an' : 'I offer comprehensive IT outsourcing services',
+      stats: ["+35%", "-40%", "24/7"],
+      statsLabels: ["Efektywność", "Koszty IT", "Wsparcie"],
       color: "bg-indigo-600",
       textColor: "text-white",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        t('solutions.items.ecommerce.features.responsive'),
-        t('solutions.items.ecommerce.features.inventory'),
-        t('solutions.items.ecommerce.features.payment'),
-        t('solutions.items.ecommerce.features.fulfillment'),
-        t('solutions.items.ecommerce.features.crm')
+        language === 'pl' ? 'Zdalne zarządzanie infrastrukturą' : language === 'de' ? 'Remote-Infrastrukturverwaltung' : 'Remote infrastructure management',
+        language === 'pl' ? 'Wsparcie techniczne' : language === 'de' ? 'Technischer Support' : 'Technical support',
+        language === 'pl' ? 'Bezpieczeństwo IT' : language === 'de' ? 'IT-Sicherheit' : 'IT security',
+        language === 'pl' ? 'Zarządzanie projektami IT' : language === 'de' ? 'IT-Projektmanagement' : 'IT project management',
+        language === 'pl' ? 'Doradztwo technologiczne' : language === 'de' ? 'Technologieberatung' : 'Technology consulting'
       ],
-      tags: ["E-commerce", "Mobile", "Payments"]
+      tags: ["Outsourcing", "Support", "Infrastructure"]
     },
     {
       id: 4,
-      title: t('solutions.items.dataAnalytics.title'),
-      subtitle: t('solutions.items.dataAnalytics.description'),
-      description: t('solutions.items.dataAnalytics.description'),
-      stats: ["+2TB", "95%", "+75%"],
-      statsLabels: ["Data Processed Daily", "Prediction Accuracy", "Decision Speed"],
+      title: language === 'pl' ? 'Marketing i Social Media' : language === 'de' ? 'Marketing und Social Media' : 'Marketing & Social Media',
+      subtitle: language === 'pl' ? 'Kompleksowe usługi marketingowe i zarządzanie mediami społecznościowymi' : language === 'de' ? 'Umfassende Marketingdienstleistungen' : 'Comprehensive marketing services',
+      description: language === 'pl' ? 'Pomagam budować markę i docierać do klientów poprzez efektywne działania marketingowe i obecność w mediach społecznościowych.' : language === 'de' ? 'Ich helfe beim Aufbau Ihrer Marke' : 'I help build your brand',
+      stats: ["+85%", "+65%", "+50%"],
+      statsLabels: ["Zasięg", "Konwersja", "Zaangażowanie"],
       color: "bg-emerald-600",
       textColor: "text-white",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       features: [
-        t('solutions.items.dataAnalytics.features.warehouse'),
-        t('solutions.items.dataAnalytics.features.dashboards'),
-        t('solutions.items.dataAnalytics.features.predictive'),
-        t('solutions.items.dataAnalytics.features.reporting'),
-        t('solutions.items.dataAnalytics.features.visualization')
+        language === 'pl' ? 'Strategia marketingowa' : language === 'de' ? 'Marketingstrategie' : 'Marketing strategy',
+        language === 'pl' ? 'Zarządzanie social media' : language === 'de' ? 'Social-Media-Management' : 'Social media management',
+        language === 'pl' ? 'Content marketing' : language === 'de' ? 'Content-Marketing' : 'Content marketing',
+        language === 'pl' ? 'Email marketing' : language === 'de' ? 'E-Mail-Marketing' : 'Email marketing',
+        language === 'pl' ? 'Analityka i raportowanie' : language === 'de' ? 'Analytik und Berichterstattung' : 'Analytics and reporting'
       ],
-      tags: ["Analytics", "Big Data", "Visualization"]
+      tags: ["Marketing", "Social Media", "Content"]
+    },
+    {
+      id: 5,
+      title: language === 'pl' ? 'Projektowanie Graficzne' : language === 'de' ? 'Grafikdesign' : 'Graphic Design',
+      subtitle: language === 'pl' ? 'Profesjonalne projekty graficzne budujące Twoją markę' : language === 'de' ? 'Professionelles Grafikdesign' : 'Professional graphic design',
+      description: language === 'pl' ? 'Tworzę profesjonalne projekty graficzne, które wyróżniają Twoją markę i przyciągają uwagę klientów.' : language === 'de' ? 'Ich erstelle professionelle Grafikdesigns' : 'I create professional graphic designs',
+      stats: ["+70%", "+60%", "100%"],
+      statsLabels: ["Rozpoznawalność", "Zaangażowanie", "Satysfakcja"],
+      color: "bg-pink-600",
+      textColor: "text-white",
+      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80",
+      features: [
+        language === 'pl' ? 'Identyfikacja wizualna' : language === 'de' ? 'Corporate Design' : 'Visual identity',
+        language === 'pl' ? 'Projektowanie UX/UI' : language === 'de' ? 'UX/UI-Design' : 'UX/UI design',
+        language === 'pl' ? 'Materiały marketingowe' : language === 'de' ? 'Marketingmaterialien' : 'Marketing materials',
+        language === 'pl' ? 'Media społecznościowe' : language === 'de' ? 'Social-Media-Grafiken' : 'Social media graphics',
+        language === 'pl' ? 'Animacje i multimedia' : language === 'de' ? 'Animationen und Multimedia' : 'Animations and multimedia'
+      ],
+      tags: ["Design", "Graphics", "Branding"]
+    },
+    {
+      id: 6,
+      title: language === 'pl' ? 'Naprawa Sprzętu' : language === 'de' ? 'Hardwarereparatur' : 'Hardware Repair',
+      subtitle: language === 'pl' ? 'Profesjonalna naprawa i konserwacja sprzętu komputerowego' : language === 'de' ? 'Professionelle Reparatur und Wartung' : 'Professional repair and maintenance',
+      description: language === 'pl' ? 'Oferuję profesjonalne usługi naprawy i konserwacji sprzętu komputerowego dla firm i klientów indywidualnych.' : language === 'de' ? 'Ich biete professionelle Reparatur- und Wartungsdienste an' : 'I offer professional repair and maintenance services',
+      stats: ["24h", "95%", "+3 lata"],
+      statsLabels: ["Czas reakcji", "Skuteczność", "Gwarancja"],
+      color: "bg-amber-600",
+      textColor: "text-white",
+      image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      features: [
+        language === 'pl' ? 'Diagnostyka problemów' : language === 'de' ? 'Problemdiagnose' : 'Problem diagnostics',
+        language === 'pl' ? 'Naprawa komputerów i laptopów' : language === 'de' ? 'Computer- und Laptop-Reparatur' : 'Computer and laptop repair',
+        language === 'pl' ? 'Aktualizacja sprzętu' : language === 'de' ? 'Hardware-Upgrades' : 'Hardware upgrades',
+        language === 'pl' ? 'Odzyskiwanie danych' : language === 'de' ? 'Datenwiederherstellung' : 'Data recovery',
+        language === 'pl' ? 'Konserwacja i czyszczenie' : language === 'de' ? 'Wartung und Reinigung' : 'Maintenance and cleaning'
+      ],
+      tags: ["Hardware", "Repair", "Support"]
+    },
+    {
+      id: 7,
+      title: language === 'pl' ? 'Automatyzacja i AI' : language === 'de' ? 'Automatisierung und KI' : 'Automation & AI',
+      subtitle: language === 'pl' ? 'Wykorzystanie sztucznej inteligencji do automatyzacji i optymalizacji procesów biznesowych' : language === 'de' ? 'Einsatz künstlicher Intelligenz' : 'Using artificial intelligence',
+      description: language === 'pl' ? 'Implementuję rozwiązania oparte na AI, które automatyzują rutynowe zadania i zwiększają wydajność Twojej firmy.' : language === 'de' ? 'Ich implementiere KI-basierte Lösungen' : 'I implement AI-based solutions',
+      stats: ["+80%", "-50%", "+90%"],
+      statsLabels: ["Wydajność", "Błędy", "Szybkość"],
+      color: "bg-cyan-600",
+      textColor: "text-white",
+      image: "https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80",
+      features: [
+        language === 'pl' ? 'Automatyzacja procesów biznesowych' : language === 'de' ? 'Automatisierung von Geschäftsprozessen' : 'Business process automation',
+        language === 'pl' ? 'Chatboty i asystenci AI' : language === 'de' ? 'Chatbots und KI-Assistenten' : 'Chatbots and AI assistants',
+        language === 'pl' ? 'Analiza danych z użyciem AI' : language === 'de' ? 'KI-gestützte Datenanalyse' : 'AI-powered data analysis',
+        language === 'pl' ? 'Personalizacja i rekomendacje' : language === 'de' ? 'Personalisierung und Empfehlungen' : 'Personalization and recommendations',
+        language === 'pl' ? 'Optymalizacja operacji' : language === 'de' ? 'Betriebsoptimierung' : 'Operations optimization'
+      ],
+      tags: ["AI", "Automation", "Optimization"]
     }
   ];
 
   const categories = [
     { id: 'all', label: t('solutions.categories.all'), icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
-    { id: 'digital', label: 'Digital Transformation', icon: <Monitor className="mr-2 h-4 w-4" /> },
-    { id: 'mobile', label: 'Mobile', icon: <Smartphone className="mr-2 h-4 w-4" /> },
-    { id: 'web', label: t('portfolio.categories.web'), icon: <Globe className="mr-2 h-4 w-4" /> },
-    { id: 'design', label: t('portfolio.categories.design'), icon: <Image className="mr-2 h-4 w-4" /> },
+    { id: 'web', label: language === 'pl' ? 'Web' : 'Web', icon: <Globe className="mr-2 h-4 w-4" /> },
+    { id: 'software', label: language === 'pl' ? 'Software' : 'Software', icon: <Code className="mr-2 h-4 w-4" /> },
+    { id: 'outsourcing', label: language === 'pl' ? 'Outsourcing' : 'Outsourcing', icon: <Users className="mr-2 h-4 w-4" /> },
+    { id: 'design', label: language === 'pl' ? 'Design' : 'Design', icon: <PenTool className="mr-2 h-4 w-4" /> },
+    { id: 'hardware', label: language === 'pl' ? 'Sprzęt' : language === 'de' ? 'Hardware' : 'Hardware', icon: <Wrench className="mr-2 h-4 w-4" /> },
+    { id: 'ai', label: language === 'pl' ? 'AI' : 'AI', icon: <Cpu className="mr-2 h-4 w-4" /> },
   ];
 
   const industries = [
@@ -157,6 +217,10 @@ const Solution = () => {
       description: t('solutions.industriesDesc.logistics')
     }
   ];
+
+  const filteredSolutions = activeCategory === 'all' 
+    ? solutions 
+    : solutions.filter(sol => sol.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase())));
 
   return (
     <Layout>
@@ -193,17 +257,17 @@ const Solution = () => {
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-gray-900">
-                {language === 'pl' ? 'Nasze Rozwiązania' : language === 'de' ? 'Unsere Lösungen' : 'Our Solutions'}
+                {language === 'pl' ? 'Moje Rozwiązania' : language === 'de' ? 'Meine Lösungen' : 'My Solutions'}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   {language === 'pl' ? 'i Możliwości' : language === 'de' ? '& Möglichkeiten' : '& Capabilities'}
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-xl">
                 {language === 'pl' 
-                  ? 'Poznaj nasze wyspecjalizowane rozwiązania IT, które pomagają firmom pokonywać wyzwania i osiągać nowe możliwości.' 
+                  ? 'Oferuję wyspecjalizowane rozwiązania IT, które pomagają firmom pokonywać wyzwania i osiągać nowe możliwości.' 
                   : language === 'de' 
-                    ? 'Entdecken Sie unsere spezialisierten IT-Lösungen, die Unternehmen helfen, Herausforderungen zu bewältigen und neue Möglichkeiten zu erschließen.'
-                    : 'Explore our specialized IT solutions that help businesses overcome challenges and unlock new opportunities across industries.'}
+                    ? 'Ich biete spezialisierte IT-Lösungen an, die Unternehmen helfen, Herausforderungen zu bewältigen und neue Möglichkeiten zu erschließen.'
+                    : 'I offer specialized IT solutions that help businesses overcome challenges and unlock new opportunities across industries.'}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button 
@@ -238,7 +302,7 @@ const Solution = () => {
                 <div className="absolute bottom-6 left-6 right-6 bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
                   <div className="flex items-start justify-between">
                     <div>
-                      <div className="text-gray-400 text-sm">Featured Solution</div>
+                      <div className="text-gray-400 text-sm">{language === 'pl' ? 'Wyróżnione Rozwiązanie' : language === 'de' ? 'Ausgewählte Lösung' : 'Featured Solution'}</div>
                       <div className="text-white font-bold text-xl">{solutions[0].title}</div>
                     </div>
                     <div className="bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center">
@@ -251,7 +315,7 @@ const Solution = () => {
           </div>
         </div>
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
-          <span className="text-sm mb-1">Scroll to explore</span>
+          <span className="text-sm mb-1">{language === 'pl' ? 'Przewiń, aby odkryć więcej' : language === 'de' ? 'Scrollen Sie, um mehr zu entdecken' : 'Scroll to explore'}</span>
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
             <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]"></div>
           </div>
@@ -266,19 +330,35 @@ const Solution = () => {
               {t('solutions.subtitle')}
             </span>
             <h2 className="mt-6 text-3xl font-bold md:text-4xl text-gray-900">
-              {language === 'pl' ? 'Nasze Główne Rozwiązania' : language === 'de' ? 'Unsere Hauptlösungen' : 'Our Core Solutions'}
+              {language === 'pl' ? 'Moje Główne Rozwiązania' : language === 'de' ? 'Meine Hauptlösungen' : 'My Core Solutions'}
             </h2>
             <p className="mt-4 text-lg text-gray-600">
               {language === 'pl' 
-                ? 'Specjalizujemy się w dostarczaniu innowacyjnych rozwiązań cyfrowych, które napędzają sukces biznesowy.'
+                ? 'Specjalizuję się w dostarczaniu innowacyjnych rozwiązań cyfrowych, które napędzają sukces biznesowy.'
                 : language === 'de'
-                ? 'Wir sind spezialisiert auf die Bereitstellung innovativer digitaler Lösungen, die den Geschäftserfolg fördern.'
-                : 'We specialize in delivering innovative digital solutions that drive business success.'}
+                ? 'Ich bin spezialisiert auf die Bereitstellung innovativer digitaler Lösungen, die den Geschäftserfolg fördern.'
+                : 'I specialize in delivering innovative digital solutions that drive business success.'}
             </p>
           </div>
           
+          {/* Category filter buttons */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {categories.map((category) => (
+              <Button
+                key={category.id}
+                variant={activeCategory === category.id ? "default" : "outline"}
+                size="sm"
+                className={`mb-2 ${activeCategory === category.id ? 'bg-primary' : 'bg-white'}`}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                {category.icon}
+                {category.label}
+              </Button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {solutions.map((solution, index) => (
+            {filteredSolutions.map((solution, index) => (
               <div key={solution.id} className="group solution-item opacity-0">
                 <div className="relative h-[260px] sm:h-[280px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <img 
@@ -327,7 +407,7 @@ const Solution = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-block bg-primary/20 border border-primary/30 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
-                {language === 'pl' ? 'Dlaczego My' : language === 'de' ? 'Warum Wir' : 'Why Choose Us'}
+                {language === 'pl' ? 'Dlaczego Ja' : language === 'de' ? 'Warum Ich' : 'Why Me'}
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
                 {language === 'pl' ? 'Rozwiązania Dopasowane do Twoich Potrzeb' : 
@@ -335,9 +415,9 @@ const Solution = () => {
                  'Solutions Tailored to Your Needs'}
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                {language === 'pl' ? 'Nasze rozwiązania są elastyczne, skalowalne i dostosowane do unikalnych wyzwań Twojej branży.' : 
-                 language === 'de' ? 'Unsere Lösungen sind flexibel, skalierbar und auf die einzigartigen Herausforderungen Ihrer Branche zugeschnitten.' : 
-                 'Our solutions are flexible, scalable, and tailored to the unique challenges of your industry.'}
+                {language === 'pl' ? 'Moje rozwiązania są elastyczne, skalowalne i dostosowane do unikalnych wyzwań Twojej branży.' : 
+                 language === 'de' ? 'Meine Lösungen sind flexibel, skalierbar und auf die einzigartigen Herausforderungen Ihrer Branche zugeschnitten.' : 
+                 'My solutions are flexible, scalable, and tailored to the unique challenges of your industry.'}
               </p>
               <div className="space-y-6">
                 {[
@@ -345,9 +425,9 @@ const Solution = () => {
                     title: language === 'pl' ? 'Rozwiązania Oparte na AI' : 
                            language === 'de' ? 'KI-basierte Lösungen' : 
                            'AI-Powered Solutions',
-                    description: language === 'pl' ? 'Wykorzystujemy sztuczną inteligencję do automatyzacji procesów i poprawy doświadczeń klientów.' : 
-                                 language === 'de' ? 'Wir nutzen künstliche Intelligenz, um Prozesse zu automatisieren und das Kundenerlebnis zu verbessern.' : 
-                                 'We leverage artificial intelligence to automate processes and enhance customer experiences.'
+                    description: language === 'pl' ? 'Wykorzystuję sztuczną inteligencję do automatyzacji procesów i poprawy doświadczeń klientów.' : 
+                                 language === 'de' ? 'Ich nutze künstliche Intelligenz, um Prozesse zu automatisieren und das Kundenerlebnis zu verbessern.' : 
+                                 'I leverage artificial intelligence to automate processes and enhance customer experiences.'
                   },
                   {
                     title: language === 'pl' ? 'Skalowalność Cloud' : 
@@ -361,17 +441,17 @@ const Solution = () => {
                     title: language === 'pl' ? 'Integracja Systemów' : 
                            language === 'de' ? 'Systemintegration' : 
                            'Systems Integration',
-                    description: language === 'pl' ? 'Łączymy istniejące systemy w jedną spójną całość, eliminując silosy danych.' : 
-                                 language === 'de' ? 'Wir verbinden bestehende Systeme zu einem kohärenten Ganzen und beseitigen Datensilos.' : 
-                                 'We connect existing systems into one coherent whole, eliminating data silos.'
+                    description: language === 'pl' ? 'Łączę istniejące systemy w jedną spójną całość, eliminując silosy danych.' : 
+                                 language === 'de' ? 'Ich verbinde bestehende Systeme zu einem kohärenten Ganzen und beseitige Datensilos.' : 
+                                 'I connect existing systems into one coherent whole, eliminating data silos.'
                   },
                   {
                     title: language === 'pl' ? 'Analiza Danych' : 
                            language === 'de' ? 'Datenanalyse' : 
                            'Data Analytics',
-                    description: language === 'pl' ? 'Przekształcamy dane w praktyczne spostrzeżenia, które napędzają podejmowanie decyzji.' : 
-                                 language === 'de' ? 'Wir verwandeln Daten in verwertbare Erkenntnisse, die die Entscheidungsfindung vorantreiben.' : 
-                                 'We transform data into actionable insights that drive decision-making.'
+                    description: language === 'pl' ? 'Przekształcam dane w praktyczne spostrzeżenia, które napędzają podejmowanie decyzji.' : 
+                                 language === 'de' ? 'Ich verwandle Daten in verwertbare Erkenntnisse, die die Entscheidungsfindung vorantreiben.' : 
+                                 'I transform data into actionable insights that drive decision-making.'
                   }
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-start group cursor-pointer">
@@ -409,12 +489,12 @@ const Solution = () => {
               {language === 'pl' ? 'Branże' : language === 'de' ? 'Branchen' : 'Industries'}
             </span>
             <h2 className="mt-6 text-3xl font-bold md:text-4xl text-gray-900">
-              {language === 'pl' ? 'Obsługiwane Branże' : language === 'de' ? 'Unterstützte Branchen' : 'Industries We Serve'}
+              {language === 'pl' ? 'Obsługiwane Branże' : language === 'de' ? 'Unterstützte Branchen' : 'Industries I Serve'}
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              {language === 'pl' ? 'Nasze rozwiązania są dostosowane do specyficznych potrzeb różnych branż.' : 
-               language === 'de' ? 'Unsere Lösungen sind auf die spezifischen Bedürfnisse verschiedener Branchen zugeschnitten.' : 
-               'Our solutions are tailored to the specific needs of various industries.'}
+              {language === 'pl' ? 'Moje rozwiązania są dostosowane do specyficznych potrzeb różnych branż.' : 
+               language === 'de' ? 'Meine Lösungen sind auf die spezifischen Bedürfnisse verschiedener Branchen zugeschnitten.' : 
+               'My solutions are tailored to the specific needs of various industries.'}
             </p>
           </div>
 
@@ -443,25 +523,25 @@ const Solution = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-block bg-primary/20 border border-primary/30 px-4 py-1 rounded-full text-sm font-medium text-primary mb-6">
-                {language === 'pl' ? 'Nasze Podejście' : language === 'de' ? 'Unser Ansatz' : 'Our Approach'}
+                {language === 'pl' ? 'Moje Podejście' : language === 'de' ? 'Mein Ansatz' : 'My Approach'}
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
-                {language === 'pl' ? 'Jak Wdrażamy Nasze Rozwiązania' : 
-                 language === 'de' ? 'Wie Wir Unsere Lösungen Implementieren' : 
-                 'How We Implement Our Solutions'}
+                {language === 'pl' ? 'Jak Wdrażam Moje Rozwiązania' : 
+                 language === 'de' ? 'Wie Ich Meine Lösungen Implementiere' : 
+                 'How I Implement My Solutions'}
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                {language === 'pl' ? 'Nasze podejście do wdrażania rozwiązań łączy najlepsze praktyki branżowe z innowacyjnymi metodologiami.' : 
-                 language === 'de' ? 'Unser Ansatz zur Implementierung von Lösungen kombiniert Branchenstandards mit innovativen Methoden.' : 
-                 'Our approach to solution implementation combines industry best practices with innovative methodologies.'}
+                {language === 'pl' ? 'Moje podejście do wdrażania rozwiązań łączy najlepsze praktyki branżowe z innowacyjnymi metodologiami.' : 
+                 language === 'de' ? 'Mein Ansatz zur Implementierung von Lösungen kombiniert Branchenstandards mit innovativen Methoden.' : 
+                 'My approach to solution implementation combines industry best practices with innovative methodologies.'}
               </p>
               <div className="space-y-6">
                 {[
                   {
                     number: '01',
                     title: language === 'pl' ? 'Analiza' : language === 'de' ? 'Analyse' : 'Discovery',
-                    description: language === 'pl' ? 'Poznajemy Twoje potrzeby i cele biznesowe' : 
-                                 language === 'de' ? 'Wir verstehen Ihre Bedürfnisse und Geschäftsziele' : 
+                    description: language === 'pl' ? 'Poznaję Twoje potrzeby i cele biznesowe' : 
+                                 language === 'de' ? 'Ich verstehe Ihre Bedürfnisse und Geschäftsziele' : 
                                  'Understanding your needs and business goals'
                   },
                   {
@@ -519,3 +599,4 @@ const Solution = () => {
 };
 
 export default Solution;
+

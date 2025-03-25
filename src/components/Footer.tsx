@@ -8,7 +8,7 @@ import ThemeToggle from './ThemeToggle';
 import CookieButton from './CookieButton';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <footer className="bg-slate-900 text-white pt-16 pb-8">
@@ -44,8 +44,8 @@ const Footer = () => {
             <h3 className="font-display text-lg font-medium mb-6">Usługi</h3>
             <ul className="space-y-4">
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">IT Outsourcing</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Rozwój Stron WWW</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Projektowanie Graficzne</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Tworzenie Stron WWW</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Marketing i Social Media</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Naprawa Sprzętu</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Rozwiązania AI</Link></li>
             </ul>
@@ -56,6 +56,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">O Mnie</Link></li>
               <li><Link to="/portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</Link></li>
+              <li><Link to="/solutions" className="text-gray-300 hover:text-white transition-colors">Rozwiązania</Link></li>
               <li><Link to="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link></li>
               <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Kontakt</Link></li>
             </ul>

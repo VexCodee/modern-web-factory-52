@@ -42,7 +42,7 @@ const AvatarGroup = () => {
 };
 
 const InnovationShowcase = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const showcaseRef = useRef<HTMLDivElement>(null);
 
   // Lista korzyści z tłumaczeniami
@@ -129,16 +129,16 @@ const InnovationShowcase = () => {
               </h2>
               
               <p className="text-lg text-gray-600 mb-8 animate-on-scroll opacity-0 dark:text-gray-300" style={{
-              animationDelay: '100ms'
-            }}>
+                animationDelay: '100ms'
+              }}>
                 {t('innovation.description')}
               </p>
               
               <ul className="space-y-5 mb-10">
                 {benefits.map((item, index) => (
                   <li key={index} className="flex items-center animate-on-scroll opacity-0 dark:text-white" style={{
-                  animationDelay: `${200 + index * 100}ms`
-                }}>
+                    animationDelay: `${200 + index * 100}ms`
+                  }}>
                     <div className="mr-3">
                       <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 dark:bg-green-900 dark:text-green-300">
                         <Check size={16} />
@@ -149,9 +149,9 @@ const InnovationShowcase = () => {
                 ))}
               </ul>
 
-              <Link to="/services" className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition-all animate-on-scroll opacity-0 dark:bg-indigo-700 dark:hover:bg-indigo-600" style={{
-              animationDelay: '600ms'
-            }}>
+              <Link to="/solutions" className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition-all animate-on-scroll opacity-0 dark:bg-indigo-700 dark:hover:bg-indigo-600" style={{
+                animationDelay: '600ms'
+              }}>
                 {t('innovation.cta')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
