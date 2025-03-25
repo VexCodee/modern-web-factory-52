@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -14,7 +13,6 @@ const Solutions = () => {
   const solutionsRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState('all');
 
-  // Set up intersection observer for animations
   useEffect(() => {
     if (!solutionsRef.current) return;
     
@@ -37,7 +35,7 @@ const Solutions = () => {
         observer.unobserve(item);
       });
     };
-  }, []);
+  }, [activeCategory]);
 
   const solutions = [
     {
@@ -187,7 +185,9 @@ const Solutions = () => {
 
   const filteredSolutions = activeCategory === 'all' 
     ? solutions 
-    : solutions.filter(sol => sol.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase())));
+    : solutions.filter(sol => 
+        sol.tags.some(tag => tag.toLowerCase() === activeCategory.toLowerCase())
+      );
 
   const industries = [
     {
@@ -224,7 +224,6 @@ const Solutions = () => {
 
   return (
     <Layout>
-      {/* Hero section with light background and gradient */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-white opacity-90"></div>
@@ -322,7 +321,6 @@ const Solutions = () => {
         </div>
       </section>
 
-      {/* Solutions section */}
       <section id="solutions-section" ref={solutionsRef} className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center mb-16">
@@ -341,7 +339,6 @@ const Solutions = () => {
             </p>
           </div>
           
-          {/* Category filter buttons */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((category) => (
               <Button
@@ -358,21 +355,33 @@ const Solutions = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredSolutions.map((solution, index) => (
-              <div key={solution.id} className="solution-item opacity-0">
-                <SolutionCard
-                  title={solution.title}
-                  description={solution.description}
-                  features={solution.features}
-                  image={solution.image}
-                  index={index}
-                  tags={solution.tags}
-                  stats={solution.stats}
-                  statsLabels={solution.statsLabels}
-                  subtitle={solution.subtitle}
-                />
+            {filteredSolutions.length > 0 ? (
+              filteredSolutions.map((solution, index) => (
+                <div key={solution.id} className="solution-item opacity-0">
+                  <SolutionCard
+                    title={solution.title}
+                    description={solution.description}
+                    features={solution.features}
+                    image={solution.image}
+                    index={index}
+                    tags={solution.tags}
+                    stats={solution.stats}
+                    statsLabels={solution.statsLabels}
+                    subtitle={solution.subtitle}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="col-span-2 text-center py-10">
+                <p className="text-lg text-gray-500">
+                  {language === 'pl' 
+                    ? 'Nie znaleziono rozwiązań w tej kategorii.' 
+                    : language === 'de' 
+                      ? 'Keine Lösungen in dieser Kategorie gefunden.' 
+                      : 'No solutions found in this category.'}
+                </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -496,3 +505,4 @@ const Solutions = () => {
 };
 
 export default Solutions;
+
