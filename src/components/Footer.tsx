@@ -43,11 +43,11 @@ const Footer = () => {
           <div>
             <h3 className="font-display text-lg font-medium mb-6">Usługi</h3>
             <ul className="space-y-4">
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">IT Outsourcing</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Tworzenie Stron WWW</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Programowanie na Zlecenie</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Outsourcing IT</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Marketing i Social Media</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Naprawa Sprzętu</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Rozwiązania AI</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Automatyzacja AI</Link></li>
             </ul>
           </div>
 

@@ -79,7 +79,7 @@ const InnovationShowcase = () => {
   }, []);
 
   return (
-    <section ref={showcaseRef} className="relative py-24 overflow-hidden">
+    <section ref={showcaseRef} className="relative py-24 overflow-hidden" id="innovation">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 -z-10"></div>
       
@@ -131,7 +131,7 @@ const InnovationShowcase = () => {
               <p className="text-lg text-gray-600 mb-8 animate-on-scroll opacity-0 dark:text-gray-300" style={{
                 animationDelay: '100ms'
               }}>
-                {t('innovation.description')}
+                Wykorzystuję najnowsze technologie, by dostarczać rozwiązania, które nie tylko rozwiązują dzisiejsze problemy biznesowe, ale są również przygotowane na wyzwania przyszłości.
               </p>
               
               <ul className="space-y-5 mb-10">

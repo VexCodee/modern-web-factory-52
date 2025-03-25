@@ -1,5 +1,6 @@
+
 import React, { useEffect, useRef } from 'react';
-import { UserPlus, Globe, Palette, Wrench, Lock, Database, LineChart, ArrowRight } from 'lucide-react';
+import { UserPlus, Globe, Palette, Wrench, Bot, Database, Code, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -26,67 +27,58 @@ const ServiceSection = () => {
   // Define services with translation keys, colors and gradients
   const services = [
     {
-      icon: <UserPlus size={24} className="text-white" />,
-      titleKey: "services.items.outsourcing.title",
-      descriptionKey: "services.items.outsourcing.description",
+      icon: <Globe size={24} className="text-white" />,
+      titleKey: "Tworzenie Stron WWW",
+      descriptionKey: "Nowoczesne i responsywne strony internetowe dostosowane do Twoich potrzeb",
       iconBgColor: "bg-blue-500",
       buttonBgColor: "bg-blue-600",
-      benefits: ["Profesjonalne wsparcie 24/7", "Indywidualne podejście"],
-      link: "/services/outsourcing"
+      benefits: ["Responsywny design", "Optymalizacja SEO"],
+      link: "/services"
     }, 
     {
-      icon: <Globe size={24} className="text-white" />,
-      titleKey: "services.items.webDev.title",
-      descriptionKey: "services.items.webDev.description",
+      icon: <Code size={24} className="text-white" />,
+      titleKey: "Programowanie na Zlecenie",
+      descriptionKey: "Tworzenie dedykowanego oprogramowania dla Twojej firmy",
       iconBgColor: "bg-indigo-500",
       buttonBgColor: "bg-indigo-600",
-      benefits: ["Responsywne strony", "Optymalizacja SEO"],
-      link: "/services/web-development"
+      benefits: ["Indywidualne rozwiązania", "Najnowsze technologie"],
+      link: "/services"
+    }, 
+    {
+      icon: <UserPlus size={24} className="text-white" />,
+      titleKey: "Outsourcing IT",
+      descriptionKey: "Kompleksowe wsparcie informatyczne dla Twojego biznesu",
+      iconBgColor: "bg-purple-500",
+      buttonBgColor: "bg-purple-600",
+      benefits: ["Obniżenie kosztów", "Indywidualne podejście"],
+      link: "/services"
     }, 
     {
       icon: <Palette size={24} className="text-white" />,
-      titleKey: "services.items.graphic.title",
-      descriptionKey: "services.items.graphic.description",
-      iconBgColor: "bg-purple-500",
-      buttonBgColor: "bg-purple-600",
-      benefits: ["Identyfikacja wizualna", "UX/UI Design"],
-      link: "/services/graphic-design"
+      titleKey: "Marketing i Grafika",
+      descriptionKey: "Identyfikacja wizualna i strategie marketingowe online",
+      iconBgColor: "bg-orange-500",
+      buttonBgColor: "bg-orange-600",
+      benefits: ["Branding", "UX/UI Design"],
+      link: "/services"
     }, 
     {
       icon: <Wrench size={24} className="text-white" />,
-      titleKey: "services.items.hardware.title",
-      descriptionKey: "services.items.hardware.description",
-      iconBgColor: "bg-orange-500",
-      buttonBgColor: "bg-orange-600",
-      benefits: ["Serwis sprzętu", "Diagnostyka problemów"],
-      link: "/services/hardware"
-    }, 
-    {
-      icon: <Lock size={24} className="text-white" />,
-      titleKey: "services.items.security.title",
-      descriptionKey: "services.items.security.description",
+      titleKey: "Naprawa Sprzętu",
+      descriptionKey: "Serwis i konserwacja komputerów oraz urządzeń peryferyjnych",
       iconBgColor: "bg-teal-500",
       buttonBgColor: "bg-teal-600",
-      benefits: ["Audyty bezpieczeństwa", "Ochrona danych"],
-      link: "/services/security"
+      benefits: ["Serwis sprzętu", "Diagnostyka problemów"],
+      link: "/services"
     }, 
     {
-      icon: <Database size={24} className="text-white" />,
-      titleKey: "services.items.cloud.title",
-      descriptionKey: "services.items.cloud.description",
+      icon: <Bot size={24} className="text-white" />,
+      titleKey: "Automatyzacja AI",
+      descriptionKey: "Wykorzystanie sztucznej inteligencji w procesach biznesowych",
       iconBgColor: "bg-emerald-500",
       buttonBgColor: "bg-emerald-600",
-      benefits: ["Migracja do chmury", "Zarządzanie danymi"],
-      link: "/services/cloud"
-    }, 
-    {
-      icon: <LineChart size={24} className="text-white" />,
-      titleKey: "services.items.ai.title",
-      descriptionKey: "services.items.ai.description",
-      iconBgColor: "bg-rose-500",
-      buttonBgColor: "bg-rose-600",
-      benefits: ["Analiza danych", "Automatyzacja procesów"],
-      link: "/services/ai"
+      benefits: ["Analityka danych", "Automatyzacja procesów"],
+      link: "/services"
     }
   ];
 
@@ -167,7 +159,7 @@ const ServiceSection = () => {
           <p className="mt-4 text-lg text-gray-600 animate-fade-in" style={{
             animationDelay: '200ms'
           }}>
-            {t('services.description')}
+            Oferuję szeroki zakres usług IT, od tworzenia stron internetowych, przez programowanie na zlecenie, outsourcing IT, aż po marketing, grafikę, naprawę sprzętu i automatyzację procesów z wykorzystaniem AI.
           </p>
         </div>
 
@@ -189,8 +181,8 @@ const ServiceSection = () => {
                   <div className="h-full service-card opacity-0">
                     <ServiceCard 
                       icon={service.icon} 
-                      title={t(service.titleKey) || service.titleKey.split('.').pop() || "Service"} 
-                      description={t(service.descriptionKey) || "Service description"}
+                      title={service.titleKey} 
+                      description={service.descriptionKey}
                       benefits={service.benefits}
                       iconBgColor={service.iconBgColor}
                       borderColor=""
