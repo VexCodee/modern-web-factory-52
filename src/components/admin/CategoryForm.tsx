@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/table";
 import { X } from "lucide-react";
 
-interface Category {
+interface CategoryFormData {
   id: string;
   label: string;
   icon: string;
@@ -31,11 +31,11 @@ interface Category {
 
 const CategoryForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   
-  const form = useForm<Category>({
+  const form = useForm<CategoryFormData>({
     defaultValues: {
       id: '',
       label: '',
@@ -72,7 +72,7 @@ const CategoryForm = () => {
     fetchCategories();
   }, []);
   
-  const onSubmit = async (data: Category) => {
+  const onSubmit = async (data: CategoryFormData) => {
     setIsSubmitting(true);
     
     try {
@@ -157,10 +157,59 @@ const CategoryForm = () => {
     }
   };
   
+  const initializeDefaultCategories = async () => {
+    try {
+      setIsSubmitting(true);
+      
+      const defaultCategories = [
+        { id: 'all', label: 'All', icon: 'layout-grid' },
+        { id: 'fintech', label: 'Fintech', icon: 'arrow-right' },
+        { id: 'mobile', label: 'Mobile', icon: 'smartphone' },
+        { id: 'web', label: 'Web', icon: 'globe' },
+        { id: 'design', label: 'Design', icon: 'image' },
+        { id: 'logistics', label: 'Logistics', icon: 'arrow-right' },
+        { id: 'travel', label: 'Travel & Leisure', icon: 'arrow-right' }
+      ];
+      
+      // Insert all categories using upsert to avoid duplicates
+      const { error } = await supabase
+        .from('categories')
+        .upsert(defaultCategories, { onConflict: 'id' });
+      
+      if (error) {
+        throw error;
+      }
+      
+      toast({
+        title: "Success",
+        description: "Default categories added successfully!",
+      });
+      
+      // Refresh categories
+      fetchCategories();
+    } catch (error) {
+      console.error('Error initializing categories:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add default categories",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Manage Portfolio Categories</h2>
+        <Button 
+          variant="outline" 
+          onClick={initializeDefaultCategories} 
+          disabled={isSubmitting}
+        >
+          Initialize Default Categories
+        </Button>
       </div>
       
       <Form {...form}>
@@ -236,7 +285,7 @@ const CategoryForm = () => {
             ) : categories.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={4} className="text-center py-8">
-                  <p>No categories found. Add a new category.</p>
+                  <p>No categories found. Add a new category or initialize default categories.</p>
                 </TableCell>
               </TableRow>
             ) : (

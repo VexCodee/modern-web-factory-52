@@ -24,51 +24,35 @@ interface Project {
   logo?: string;
 }
 
-interface Category {
-  id: string;
-  label: string;
-  icon: string;
-}
-
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguage();
   const [project, setProject] = useState<Project | null>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProject = async () => {
       try {
-        // Fetch project
-        const { data: projectData, error: projectError } = await supabase
+        const { data, error } = await supabase
           .from('projects')
           .select('*')
           .eq('id', parseInt(id as string))
           .single();
 
-        if (projectError) {
-          throw projectError;
+        if (error) {
+          throw error;
         }
 
-        // Fetch categories
-        const { data: categoriesData, error: categoriesError } = await supabase
-          .from('categories')
-          .select('*');
-        
-        if (categoriesError) throw categoriesError;
-
-        setProject(projectData as Project);
-        setCategories(categoriesData || []);
+        setProject(data as Project);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching project:', error);
       } finally {
         setLoading(false);
       }
     };
 
     if (id) {
-      fetchData();
+      fetchProject();
     }
   }, [id]);
 
@@ -118,14 +102,9 @@ const ProjectDetails = () => {
               <p className="text-gray-600 mb-6">{project.subtitle}</p>
 
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.categories && project.categories.map((categoryId, index) => {
-                  const category = categories.find(cat => cat.id === categoryId);
-                  return (
-                    <Badge key={index}>
-                      {category ? category.label : categoryId}
-                    </Badge>
-                  );
-                })}
+                {project.categories && project.categories.map((category, index) => (
+                  <Badge key={index}>{category}</Badge>
+                ))}
               </div>
 
               <div className="space-y-4">
