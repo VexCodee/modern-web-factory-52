@@ -58,7 +58,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
             tags.map((tag, idx) => (
               <span 
                 key={idx} 
-                className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
+                className="px-4 py-1.5 rounded-full bg-gray-800/80 backdrop-blur-sm text-sm font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
               >
                 {tag}
               </span>
@@ -67,7 +67,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
             features.slice(0, 2).map((feature, idx) => (
               <span 
                 key={idx} 
-                className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-xs font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
+                className="px-4 py-1.5 rounded-full bg-gray-800/80 backdrop-blur-sm text-sm font-medium text-white transition-all duration-300 hover:bg-gray-700/80"
               >
                 {feature.split(' ')[0]}
               </span>
@@ -77,15 +77,15 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
         
         {/* Arrow icon */}
         <div className="absolute top-4 right-4">
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
-            <ArrowRight size={18} />
+          <button className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+            <ArrowRight size={20} />
           </button>
         </div>
         
         {/* Content */}
         <div className="absolute inset-x-0 bottom-0 p-6">
-          <h2 className="text-2xl font-bold text-white mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-primary">{title}</h2>
-          <p className="text-gray-300 mb-4 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">
+          <h2 className="text-3xl font-bold text-blue-400 mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-blue-300">{title}</h2>
+          <p className="text-gray-300 mb-6 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">
             {subtitle || description}
           </p>
           
@@ -97,8 +97,8 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                 className="transform transition-all duration-300 opacity-80 group-hover:opacity-100 translate-y-0 group-hover:-translate-y-1"
                 style={{ transitionDelay: `${idx * 75}ms` }}
               >
-                <div className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">{stat}</div>
-                <div className="text-xs text-gray-400">{statsLabels[idx]}</div>
+                <div className="text-2xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors duration-300">{stat}</div>
+                <div className="text-sm text-gray-400">{statsLabels[idx]}</div>
               </div>
             ))}
           </div>

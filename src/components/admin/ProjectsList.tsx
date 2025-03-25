@@ -20,7 +20,8 @@ import {
   DialogFooter
 } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
-import { Trash, Eye } from 'lucide-react';
+import { Trash, Eye, Tag } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface Project {
   id: number;
@@ -38,7 +39,29 @@ const ProjectsList = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
   const { toast } = useToast();
+
+  const fetchCategoryLabels = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('id, label');
+      
+      if (error) {
+        throw error;
+      }
+      
+      const map: Record<string, string> = {};
+      data?.forEach(cat => {
+        map[cat.id] = cat.label;
+      });
+      
+      setCategoryMap(map);
+    } catch (error) {
+      console.error('Error fetching category labels:', error);
+    }
+  };
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -66,6 +89,7 @@ const ProjectsList = () => {
   };
 
   useEffect(() => {
+    fetchCategoryLabels();
     fetchProjects();
   }, []);
 
@@ -108,6 +132,12 @@ const ProjectsList = () => {
     setDeleteDialogOpen(true);
   };
 
+  // Format category IDs to display their labels
+  const formatCategories = (categoryIds: string[]) => {
+    if (!categoryIds || !categoryIds.length) return '';
+    return categoryIds.map(id => categoryMap[id] || id).join(', ');
+  };
+
   return (
     <div>
       <h2 className="text-2xl font-bold mb-6">Manage Portfolio Projects</h2>
@@ -144,10 +174,23 @@ const ProjectsList = () => {
                   <TableCell className="font-medium">{project.title}</TableCell>
                   <TableCell>{project.subtitle}</TableCell>
                   <TableCell>
-                    {project.categories.join(', ')}
+                    <div className="flex flex-wrap gap-1">
+                      {project.categories?.map((catId, idx) => (
+                        <Badge key={idx} variant="outline" className="bg-primary/10 text-primary">
+                          <Tag className="h-3 w-3 mr-1" />
+                          {categoryMap[catId] || catId}
+                        </Badge>
+                      ))}
+                    </div>
                   </TableCell>
                   <TableCell>
-                    {project.tags.join(', ')}
+                    <div className="flex flex-wrap gap-1">
+                      {project.tags?.map((tag, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-gray-100 text-gray-800">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
                   </TableCell>
                   <TableCell>
                     <div className="flex space-x-2">
