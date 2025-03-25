@@ -36,7 +36,7 @@ const AvatarGroup = () => {
           <AvatarFallback>JD</AvatarFallback>
         </Avatar>
       </div>
-      <span className="text-sm font-medium dark:text-white">6+ happy clients</span>
+      <span className="text-sm font-medium dark:text-white">6+ zadowolonych klientów</span>
     </div>
   );
 };

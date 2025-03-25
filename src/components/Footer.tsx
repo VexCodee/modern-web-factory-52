@@ -22,7 +22,7 @@ const Footer = () => {
               <span className="font-display text-xl font-semibold">VexVision</span>
             </div>
             <p className="text-gray-300 mt-4 max-w-xs">
-              Providing innovative IT solutions from Bielsko-Biała to help transform your digital presence.
+              Oferuję innowacyjne rozwiązania IT z Bielska-Białej, pomagając transformować Twoją cyfrową obecność.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-primary transition-colors" aria-label="LinkedIn">
@@ -41,32 +41,32 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-medium mb-6">Services</h3>
+            <h3 className="font-display text-lg font-medium mb-6">Usługi</h3>
             <ul className="space-y-4">
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">IT Outsourcing</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Web Development</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Graphic Design</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Hardware Repair</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">AI Solutions</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Rozwój Stron WWW</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Projektowanie Graficzne</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Naprawa Sprzętu</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Rozwiązania AI</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-medium mb-6">Company</h3>
+            <h3 className="font-display text-lg font-medium mb-6">Firma</h3>
             <ul className="space-y-4">
-              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Me</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">O Mnie</Link></li>
               <li><Link to="/portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</Link></li>
               <li><Link to="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-medium mb-6">Contact</h3>
+            <h3 className="font-display text-lg font-medium mb-6">Kontakt</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <MapPin size={20} className="text-primary mt-1" />
-                <span className="text-gray-300">Bielsko-Biała, Poland</span>
+                <span className="text-gray-300">Bielsko-Biała, Polska</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={20} className="text-primary" />
@@ -74,7 +74,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={20} className="text-primary" />
-                <span className="text-gray-300">contact@vexvision.com</span>
+                <span className="text-gray-300">kontakt@vexvision.com</span>
               </div>
             </div>
           </div>
