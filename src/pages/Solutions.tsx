@@ -16,6 +16,14 @@ const Solutions = () => {
   useEffect(() => {
     if (!solutionsRef.current) return;
     
+    const items = solutionsRef.current.querySelectorAll('.solution-item');
+    items.forEach(item => {
+      item.classList.remove('animate-fade-in');
+      item.classList.add('opacity-0');
+      
+      void item.offsetWidth;
+    });
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -25,7 +33,6 @@ const Solutions = () => {
       });
     }, { threshold: 0.1 });
     
-    const items = solutionsRef.current.querySelectorAll('.solution-item');
     items.forEach(item => {
       observer.observe(item);
     });
@@ -185,9 +192,22 @@ const Solutions = () => {
 
   const filteredSolutions = activeCategory === 'all' 
     ? solutions 
-    : solutions.filter(sol => 
-        sol.tags.some(tag => tag.toLowerCase() === activeCategory.toLowerCase())
-      );
+    : solutions.filter(sol => {
+        const categoryTagMap: Record<string, string[]> = {
+          'web': ['web'],
+          'software': ['software', 'development', 'custom'],
+          'outsourcing': ['outsourcing', 'support'],
+          'design': ['design', 'graphics', 'branding'],
+          'hardware': ['hardware', 'repair'],
+          'ai': ['ai', 'automation', 'optimization']
+        };
+        
+        const relevantTags = categoryTagMap[activeCategory.toLowerCase()] || [activeCategory.toLowerCase()];
+        
+        return sol.tags.some(tag => 
+          relevantTags.includes(tag.toLowerCase())
+        );
+      });
 
   const industries = [
     {
@@ -505,4 +525,3 @@ const Solutions = () => {
 };
 
 export default Solutions;
-
