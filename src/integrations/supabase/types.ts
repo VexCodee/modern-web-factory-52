@@ -30,6 +30,24 @@ export type Database = {
         }
         Relationships: []
       }
+      categories: {
+        Row: {
+          icon: string | null
+          id: string
+          label: string
+        }
+        Insert: {
+          icon?: string | null
+          id: string
+          label: string
+        }
+        Update: {
+          icon?: string | null
+          id?: string
+          label?: string
+        }
+        Relationships: []
+      }
       projects: {
         Row: {
           categories: string[] | null

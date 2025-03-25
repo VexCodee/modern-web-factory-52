@@ -24,35 +24,51 @@ interface Project {
   logo?: string;
 }
 
+interface Category {
+  id: string;
+  label: string;
+  icon: string;
+}
+
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguage();
   const [project, setProject] = useState<Project | null>(null);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProject = async () => {
+    const fetchData = async () => {
       try {
-        const { data, error } = await supabase
+        // Fetch project
+        const { data: projectData, error: projectError } = await supabase
           .from('projects')
           .select('*')
           .eq('id', parseInt(id as string))
           .single();
 
-        if (error) {
-          throw error;
+        if (projectError) {
+          throw projectError;
         }
 
-        setProject(data as Project);
+        // Fetch categories
+        const { data: categoriesData, error: categoriesError } = await supabase
+          .from('categories')
+          .select('*');
+        
+        if (categoriesError) throw categoriesError;
+
+        setProject(projectData as Project);
+        setCategories(categoriesData || []);
       } catch (error) {
-        console.error('Error fetching project:', error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
     };
 
     if (id) {
-      fetchProject();
+      fetchData();
     }
   }, [id]);
 
@@ -102,9 +118,14 @@ const ProjectDetails = () => {
               <p className="text-gray-600 mb-6">{project.subtitle}</p>
 
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.categories && project.categories.map((category, index) => (
-                  <Badge key={index}>{category}</Badge>
-                ))}
+                {project.categories && project.categories.map((categoryId, index) => {
+                  const category = categories.find(cat => cat.id === categoryId);
+                  return (
+                    <Badge key={index}>
+                      {category ? category.label : categoryId}
+                    </Badge>
+                  );
+                })}
               </div>
 
               <div className="space-y-4">
