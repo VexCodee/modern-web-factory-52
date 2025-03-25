@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -21,7 +22,8 @@ const Solutions = () => {
       item.classList.remove('animate-fade-in');
       item.classList.add('opacity-0');
       
-      void item.offsetWidth;
+      // Fix: Explicitly cast Element to HTMLElement to access offsetWidth
+      void (item as HTMLElement).offsetWidth;
     });
     
     const observer = new IntersectionObserver((entries) => {
