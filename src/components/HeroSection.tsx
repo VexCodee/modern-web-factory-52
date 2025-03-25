@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -149,7 +150,7 @@ const HeroSection = () => {
                       <img src="https://randomuser.me/api/portraits/men/43.jpg" className="w-6 h-6 rounded-full border-2 border-white" alt="User" />
                       <img src="https://randomuser.me/api/portraits/women/48.jpg" className="w-6 h-6 rounded-full border-2 border-white" alt="User" />
                     </div>
-                    <p className="text-xs font-medium">18+ jsoined this week</p>
+                    <p className="text-xs font-medium">18+ joined this week</p>
                   </div>
                 </div>
               </div>

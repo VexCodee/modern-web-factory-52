@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 // Struktura tłumaczeń dla wszystkich języków
@@ -14,6 +13,7 @@ interface LanguageContextType {
     en: Translations;
     de: Translations;
   };
+  t: (key: string) => string; // Add the translation function type
 }
 
 // Tłumaczenia w języku polskim
@@ -1162,6 +1162,21 @@ const germanTranslations: Translations = {
   }
 };
 
+// Helper function to get nested translation by key path
+const getNestedTranslation = (obj: any, path: string): string => {
+  const keys = path.split('.');
+  let current = obj;
+  
+  for (const key of keys) {
+    if (current === undefined || current === null) {
+      return path; // Return the path if any part of the path is undefined
+    }
+    current = current[key];
+  }
+  
+  return typeof current === 'string' ? current : path;
+};
+
 // Kontekst języka
 const LanguageContext = createContext<LanguageContextType>({
   language: 'pl',
@@ -1170,7 +1185,8 @@ const LanguageContext = createContext<LanguageContextType>({
     pl: polishTranslations,
     en: englishTranslations,
     de: germanTranslations
-  }
+  },
+  t: () => '' // Default empty implementation
 });
 
 export const useLanguage = () => useContext(LanguageContext);
@@ -1179,6 +1195,17 @@ export const useLanguage = () => useContext(LanguageContext);
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<'pl' | 'en' | 'de'>('pl');
 
+  // Translation function
+  const t = (key: string): string => {
+    const translations = language === 'pl' 
+      ? polishTranslations 
+      : language === 'en' 
+        ? englishTranslations 
+        : germanTranslations;
+    
+    return getNestedTranslation(translations, key);
+  };
+
   const value = {
     language,
     setLanguage,
@@ -1186,7 +1213,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       pl: polishTranslations,
       en: englishTranslations,
       de: germanTranslations
-    }
+    },
+    t // Add the translation function to the context
   };
 
   return (
