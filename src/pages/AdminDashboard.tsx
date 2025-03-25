@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import ProjectForm from '../components/admin/ProjectForm';
 import ProjectsList from '../components/admin/ProjectsList';
+import CategoryForm from '../components/admin/CategoryForm';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from "@/components/ui/use-toast";
 
@@ -213,6 +214,7 @@ const AdminDashboard = () => {
           <TabsList className="mb-6">
             <TabsTrigger value="add-project">Add New Project</TabsTrigger>
             <TabsTrigger value="manage-projects">Manage Projects</TabsTrigger>
+            <TabsTrigger value="manage-categories">Manage Categories</TabsTrigger>
           </TabsList>
           
           <TabsContent value="add-project" className="p-4 border rounded-lg">
@@ -221,6 +223,10 @@ const AdminDashboard = () => {
           
           <TabsContent value="manage-projects" className="p-4 border rounded-lg">
             <ProjectsList />
+          </TabsContent>
+          
+          <TabsContent value="manage-categories" className="p-4 border rounded-lg">
+            <CategoryForm />
           </TabsContent>
         </Tabs>
       </div>

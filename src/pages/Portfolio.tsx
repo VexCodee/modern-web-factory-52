@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -30,45 +29,102 @@ interface Project {
   logo?: string;
 }
 
+interface Category {
+  id: string;
+  label: string;
+  icon: string;
+}
+
 const Portfolio = () => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
   const [projects, setProjects] = useState<Project[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchData = async () => {
       try {
-        const { data, error } = await supabase
+        setLoading(true);
+        
+        // Fetch projects
+        const { data: projectsData, error: projectsError } = await supabase
           .from('projects')
           .select('*')
           .order('created_at', { ascending: false });
         
-        if (error) {
-          throw error;
+        if (projectsError) {
+          throw projectsError;
         }
         
-        setProjects(data as Project[]);
+        setProjects(projectsData as Project[]);
+        
+        // Fetch categories
+        const { data: categoriesData, error: categoriesError } = await supabase
+          .from('categories')
+          .select('*')
+          .order('id', { ascending: true });
+          
+        if (categoriesError) {
+          throw categoriesError;
+        }
+        
+        if (categoriesData && categoriesData.length > 0) {
+          setCategories(categoriesData as Category[]);
+        } else {
+          // Fallback to default categories if none in the database
+          setCategories([
+            { id: 'all', label: 'All', icon: 'layout-grid' },
+            { id: 'fintech', label: 'Fintech', icon: 'arrow-right' },
+            { id: 'mobile', label: 'Mobile', icon: 'smartphone' },
+            { id: 'web', label: 'Web', icon: 'globe' },
+            { id: 'design', label: 'Design', icon: 'image' },
+            { id: 'logistics', label: 'Logistics', icon: 'arrow-right' },
+            { id: 'travel', label: 'Travel & Leisure', icon: 'arrow-right' }
+          ]);
+        }
       } catch (error) {
-        console.error('Error fetching projects:', error);
+        console.error('Error fetching data:', error);
+        
+        // Fallback to default categories
+        setCategories([
+          { id: 'all', label: 'All', icon: 'layout-grid' },
+          { id: 'fintech', label: 'Fintech', icon: 'arrow-right' },
+          { id: 'mobile', label: 'Mobile', icon: 'smartphone' },
+          { id: 'web', label: 'Web', icon: 'globe' },
+          { id: 'design', label: 'Design', icon: 'image' },
+          { id: 'logistics', label: 'Logistics', icon: 'arrow-right' },
+          { id: 'travel', label: 'Travel & Leisure', icon: 'arrow-right' }
+        ]);
+        
         setProjects([]);
       } finally {
         setLoading(false);
       }
     };
     
-    fetchProjects();
+    fetchData();
   }, []);
   
-  const categories = [
-    { id: 'all', label: 'All', icon: <LayoutGrid className="mr-2 h-4 w-4" /> },
-    { id: 'fintech', label: 'Fintech', icon: <ArrowRight className="mr-2 h-4 w-4" /> },
-    { id: 'mobile', label: 'Mobile', icon: <Smartphone className="mr-2 h-4 w-4" /> },
-    { id: 'web', label: 'Web', icon: <Globe className="mr-2 h-4 w-4" /> },
-    { id: 'design', label: 'Design', icon: <Image className="mr-2 h-4 w-4" /> },
-    { id: 'logistics', label: 'Logistics', icon: <ArrowRight className="mr-2 h-4 w-4" /> },
-    { id: 'travel', label: 'Travel & Leisure', icon: <ArrowRight className="mr-2 h-4 w-4" /> }
-  ];
+  // Helper function to get the appropriate icon component
+  const getIconComponent = (iconName: string, className: string = "mr-2 h-4 w-4") => {
+    switch (iconName) {
+      case 'layout-grid':
+        return <LayoutGrid className={className} />;
+      case 'arrow-right':
+        return <ArrowRight className={className} />;
+      case 'smartphone':
+        return <Smartphone className={className} />;
+      case 'globe':
+        return <Globe className={className} />;
+      case 'image':
+        return <Image className={className} />;
+      case 'monitor':
+        return <Monitor className={className} />;
+      default:
+        return <ArrowRight className={className} />;
+    }
+  };
   
   const filteredProjects = activeCategory === 'all' 
     ? projects 
@@ -158,7 +214,7 @@ const Portfolio = () => {
                         value={category.id}
                         className="rounded-lg px-3 py-2 text-sm data-[state=active]:bg-primary data-[state=active]:text-white transition-all duration-300 flex items-center text-gray-600"
                       >
-                        {category.icon}
+                        {getIconComponent(category.icon)}
                         {category.label}
                       </TabsTrigger>
                     ))}
@@ -380,3 +436,4 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
