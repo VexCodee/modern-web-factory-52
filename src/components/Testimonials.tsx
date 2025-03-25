@@ -19,21 +19,21 @@ const Testimonials = () => {
   
   const testimonials: TestimonialProps[] = [
     {
-      quote: "Usługi tworzenia stron internetowych TechPrime pomogły nam zwiększyć sprzedaż online o 40%. Ich zespół był profesjonalny, responsywny i dostarczył więcej niż oczekiwaliśmy.",
+      quote: "VexVision's web design services helped us increase online sales by 40%. The service was professional, responsive, and delivered more than expected.",
       name: "Sarah Johnson",
       position: t("CEO"),
       company: "Retail Solutions Inc.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     },
     {
-      quote: "Rozwiązanie AI zaimplementowane przez TechPrime zrewolucjonizowało nasze operacje obsługi klienta. Zauważyliśmy niesamowite usprawnienia w czasie reakcji i zadowoleniu klientów.",
+      quote: "The AI solution implemented by VexVision revolutionized our customer service operations. We've seen amazing improvements in response time and customer satisfaction.",
       name: "Michael Chen",
       position: t("CTO"),
       company: "GlobalTech Enterprises",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     },
     {
-      quote: "Ich strategie zarządzania mediami społecznościowymi całkowicie przekształciły obecność naszej marki. Zaobserwowaliśmy 200% wzrost zaangażowania i znaczący wzrost liczby potencjalnych klientów.",
+      quote: "Their social media management strategies completely transformed our brand presence. We observed a 200% increase in engagement and a significant uptick in leads.",
       name: "Emily Rodriguez",
       position: t("Dyrektor Marketingu"),
       company: "Innovate Media",

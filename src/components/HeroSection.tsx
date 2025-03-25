@@ -147,10 +147,8 @@ const HeroSection = () => {
                   <div className="flex items-center space-x-2">
                     <div className="flex -space-x-2">
                       <img src="https://randomuser.me/api/portraits/women/32.jpg" className="w-6 h-6 rounded-full border-2 border-white" alt="User" />
-                      <img src="https://randomuser.me/api/portraits/men/43.jpg" className="w-6 h-6 rounded-full border-2 border-white" alt="User" />
-                      <img src="https://randomuser.me/api/portraits/women/48.jpg" className="w-6 h-6 rounded-full border-2 border-white" alt="User" />
                     </div>
-                    <p className="text-xs font-medium">18+ joined this week</p>
+                    <p className="text-xs font-medium">6+ happy clients this month</p>
                   </div>
                 </div>
               </div>
