@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
@@ -8,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-const Solution = () => {
+const Solutions = () => {
   const { t, language } = useLanguage();
   const solutionsRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -461,4 +462,37 @@ const Solution = () => {
             <span className="rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               {language === 'pl' ? 'Branże' : language === 'de' ? 'Branchen' : 'Industries'}
             </span>
-            <h2 className="mt-6 text-
+            <h2 className="mt-6 text-3xl font-bold md:text-4xl text-gray-900">
+              {language === 'pl' ? 'Obsługiwane Branże' : language === 'de' ? 'Unterstützte Branchen' : 'Industries Served'}
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              {language === 'pl' 
+                ? 'Moje rozwiązania sprawdzają się w różnych branżach, pomagając firmom wykorzystać potencjał technologii.'
+                : language === 'de'
+                ? 'Meine Lösungen bewähren sich in verschiedenen Branchen und helfen Unternehmen, das Potenzial der Technologie zu nutzen.'
+                : 'My solutions work across various industries, helping businesses harness the power of technology.'}
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {industries.map((industry, idx) => (
+              <Card key={idx} className="p-6 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl">{industry.icon}</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{industry.name}</h3>
+                    <p className="text-gray-600">{industry.description}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection />
+    </Layout>
+  );
+};
+
+export default Solutions;
