@@ -59,8 +59,8 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
     } catch (error) {
       console.error('Error fetching project images:', error);
       toast({
-        title: "Error",
-        description: "Failed to load project images",
+        title: "Błąd",
+        description: "Nie udało się załadować obrazów projektu",
         variant: "destructive",
       });
     } finally {
@@ -79,43 +79,67 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
     
     setUploadingImages(true);
     try {
+      // Upewnij się, że ścieżka folderu istnieje
+      try {
+        // Próba utworzenia folderu dla projektu (nie powoduje błędu, jeśli już istnieje)
+        const folderPath = `project_${projectId}/.gitkeep`;
+        await supabase
+          .storage
+          .from('projects')
+          .upload(folderPath, new Blob([''], { type: 'text/plain' }), {
+            upsert: true
+          });
+      } catch (folderError) {
+        console.log('Folder może już istnieć:', folderError);
+        // Ignorujemy ten błąd, kontynuujemy przesyłanie plików
+      }
+      
       const files = Array.from(e.target.files);
       const uploadPromises = files.map(async (file) => {
         const fileName = `${new Date().getTime()}_${file.name}`;
         const filePath = `project_${projectId}/${fileName}`;
         
-        const { error: uploadError } = await supabase
+        console.log('Przesyłanie pliku:', filePath);
+        const { error: uploadError, data } = await supabase
           .storage
           .from('projects')
-          .upload(filePath, file);
+          .upload(filePath, file, {
+            cacheControl: '3600',
+            upsert: false
+          });
         
-        if (uploadError) throw uploadError;
+        if (uploadError) {
+          console.error('Błąd przesyłania pliku:', uploadError);
+          throw uploadError;
+        }
+        
+        console.log('Plik przesłany pomyślnie:', data);
         
         return {
           name: fileName,
-          url: supabase.storage.from('projects').getPublicUrl(filePath).data.publicUrl
+          url: supabase.storage.from('projects').getPublicUrl(`project_${projectId}/${fileName}`).data.publicUrl
         };
       });
       
       const newImages = await Promise.all(uploadPromises);
       
       toast({
-        title: "Success",
-        description: `${newImages.length} image(s) uploaded successfully`,
+        title: "Sukces",
+        description: `Przesłano pomyślnie ${newImages.length} obraz(ów)`,
       });
       
-      // Refresh images
+      // Odśwież listę obrazów
       fetchImages();
     } catch (error) {
-      console.error('Error uploading images:', error);
+      console.error('Błąd podczas przesyłania obrazów:', error);
       toast({
-        title: "Error",
-        description: "Failed to upload images",
+        title: "Błąd",
+        description: "Nie udało się przesłać obrazów. Sprawdź konsolę po więcej szczegółów.",
         variant: "destructive",
       });
     } finally {
       setUploadingImages(false);
-      // Reset the file input
+      // Zresetuj pole input
       if (e.target) e.target.value = '';
     }
   };
@@ -131,18 +155,18 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       
       if (error) throw error;
       
-      // Remove the image from the state
+      // Usuń obraz ze stanu
       setImages(prev => prev.filter(img => img.name !== imageName));
       
       toast({
-        title: "Success",
-        description: "Image deleted successfully",
+        title: "Sukces",
+        description: "Obraz został usunięty pomyślnie",
       });
     } catch (error) {
-      console.error('Error deleting image:', error);
+      console.error('Błąd podczas usuwania obrazu:', error);
       toast({
-        title: "Error",
-        description: "Failed to delete image",
+        title: "Błąd",
+        description: "Nie udało się usunąć obrazu",
         variant: "destructive",
       });
     }
@@ -152,18 +176,18 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
     <Sheet open={open} onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="w-full sm:max-w-xl md:max-w-2xl overflow-y-auto">
         <SheetHeader className="mb-4">
-          <SheetTitle>Project Gallery</SheetTitle>
+          <SheetTitle>Galeria Projektu</SheetTitle>
         </SheetHeader>
         
         {isLoading ? (
           <div className="flex items-center justify-center h-40">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <span className="ml-2">Loading gallery...</span>
+            <span className="ml-2">Ładowanie galerii...</span>
           </div>
         ) : (
           <div className="space-y-6">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium">Images</h3>
+              <h3 className="text-lg font-medium">Obrazy</h3>
               <Button 
                 variant="outline" 
                 size="sm" 
@@ -171,7 +195,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 className="flex items-center gap-2"
               >
                 <RefreshCw className="h-4 w-4" />
-                Refresh
+                Odśwież
               </Button>
             </div>
             
@@ -191,13 +215,13 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 {uploadingImages ? (
                   <div className="flex items-center space-x-2">
                     <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                    <span>Uploading...</span>
+                    <span>Przesyłanie...</span>
                   </div>
                 ) : (
                   <>
                     <Upload className="h-8 w-8 mb-2 text-gray-400" />
-                    <p className="text-sm text-gray-500">Click to upload images or drag and drop</p>
-                    <p className="text-xs text-gray-400 mt-1">PNG, JPG, WEBP up to 5MB</p>
+                    <p className="text-sm text-gray-500">Kliknij aby przesłać obrazy lub przeciągnij i upuść</p>
+                    <p className="text-xs text-gray-400 mt-1">PNG, JPG, WEBP do 5MB</p>
                   </>
                 )}
               </label>
@@ -225,7 +249,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               </div>
             ) : (
               <div className="text-center py-8 text-gray-500">
-                No images found. Upload some images to get started.
+                Nie znaleziono obrazów. Prześlij obrazy, aby rozpocząć.
               </div>
             )}
           </div>
@@ -233,7 +257,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
         
         <SheetFooter className="mt-6">
           <Button onClick={onClose}>
-            Close
+            Zamknij
           </Button>
         </SheetFooter>
       </SheetContent>

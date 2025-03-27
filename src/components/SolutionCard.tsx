@@ -33,7 +33,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   iconBgColor = "bg-indigo-500",
   tags = [],
   stats = ["24/7", "99%", "+50%"],
-  statsLabels = ["Support", "Satisfaction", "Efficiency"],
+  statsLabels = ["Wsparcie", "Satysfakcja", "Wydajność"],
   color = "bg-indigo-600",
   textColor = "text-white",
   subtitle,
