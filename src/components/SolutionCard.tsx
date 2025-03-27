@@ -18,6 +18,7 @@ interface SolutionCardProps {
   color?: string;
   textColor?: string;
   subtitle?: string;
+  id?: number;
 }
 
 const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -34,8 +35,11 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   statsLabels = ["Support", "Satisfaction", "Efficiency"],
   color = "bg-indigo-600",
   textColor = "text-white",
-  subtitle
+  subtitle,
+  id
 }) => {
+  const linkUrl = id ? `/portfolio/${id}` : '#';
+  
   return (
     <div className="group transition-all duration-300">
       <div 
@@ -76,14 +80,14 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
         </div>
         
         {/* Arrow icon */}
-        <div className="absolute top-4 right-4">
-          <button className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
+        <Link to={linkUrl} className="absolute top-4 right-4 z-10">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white transition-all duration-300 hover:bg-indigo-700 transform rotate-0 group-hover:rotate-45">
             <ArrowRight size={20} />
-          </button>
-        </div>
+          </div>
+        </Link>
         
         {/* Content */}
-        <div className="absolute inset-x-0 bottom-0 p-6">
+        <Link to={linkUrl} className="absolute inset-x-0 bottom-0 p-6">
           <h2 className="text-3xl font-bold text-blue-400 mb-1 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-blue-300">{title}</h2>
           <p className="text-gray-300 mb-6 transform translate-y-0 opacity-100 transition-all duration-300 group-hover:text-gray-100">
             {subtitle || description}
@@ -102,7 +106,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
               </div>
             ))}
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

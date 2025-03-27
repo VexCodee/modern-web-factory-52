@@ -13,15 +13,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useToast } from "@/components/ui/use-toast";
 import { CheckIcon } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 interface CategoryType {
   id: string;
@@ -47,6 +40,8 @@ const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const { toast } = useToast();
   
   const form = useForm<ProjectFormData>({
@@ -102,6 +97,58 @@ const ProjectForm = () => {
     });
   };
   
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setImageFile(file);
+      
+      // Create preview
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async (file: File): Promise<string> => {
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+      const filePath = `projects/${fileName}`;
+      
+      // Check if storage bucket exists, create if not
+      const { data: buckets } = await supabase
+        .storage
+        .listBuckets();
+      
+      if (!buckets?.find(bucket => bucket.name === 'projects')) {
+        await supabase
+          .storage
+          .createBucket('projects', {
+            public: true
+          });
+      }
+      
+      const { error: uploadError } = await supabase
+        .storage
+        .from('projects')
+        .upload(filePath, file);
+      
+      if (uploadError) throw uploadError;
+      
+      const { data } = supabase
+        .storage
+        .from('projects')
+        .getPublicUrl(filePath);
+      
+      return data.publicUrl;
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
+  };
+  
   const onSubmit = async (data: ProjectFormData) => {
     setIsSubmitting(true);
     
@@ -116,6 +163,23 @@ const ProjectForm = () => {
         return;
       }
       
+      if (!imageFile && !data.image) {
+        toast({
+          title: "Warning",
+          description: "Please upload an image or provide an image URL",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      let imageUrl = data.image;
+      
+      // Upload image if available
+      if (imageFile) {
+        imageUrl = await uploadImage(imageFile);
+      }
+      
       // Transform comma-separated strings to arrays
       const projectData = {
         title: data.title,
@@ -127,7 +191,7 @@ const ProjectForm = () => {
         text_color: data.textColor,
         categories: selectedCategories,
         tags: data.tags.split(',').map(item => item.trim()),
-        image: data.image,
+        image: imageUrl,
         logo: data.logo || null,
       };
       
@@ -159,6 +223,8 @@ const ProjectForm = () => {
         logo: '',
       });
       setSelectedCategories([]);
+      setImageFile(null);
+      setImagePreview(null);
     } catch (error) {
       console.error('Error adding project:', error);
       toast({
@@ -316,19 +382,42 @@ const ProjectForm = () => {
             />
           </div>
           
-          <FormField
-            control={form.control}
-            name="image"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Image URL*</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter full image URL" required {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="space-y-2">
+            <FormLabel>Project Image*</FormLabel>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm text-gray-500">Image URL (or upload an image)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter full image URL" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <div>
+                <p className="text-sm text-gray-500 mb-2">Or upload an image:</p>
+                <Input 
+                  type="file" 
+                  accept="image/*" 
+                  onChange={handleImageChange}
+                />
+                {imagePreview && (
+                  <div className="mt-2">
+                    <img 
+                      src={imagePreview} 
+                      alt="Image preview" 
+                      className="max-h-32 max-w-full rounded border border-gray-200" 
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
           
           <FormField
             control={form.control}

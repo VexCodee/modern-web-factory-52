@@ -16,12 +16,12 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter
 } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
-import { Trash, Eye, Tag } from 'lucide-react';
+import { Trash, Eye, Tag, Edit, Image, RefreshCw } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import ProjectEdit from './ProjectEdit';
 
 interface Project {
   id: number;
@@ -40,6 +40,9 @@ const ProjectsList = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
+  const [editProjectId, setEditProjectId] = useState<number | null>(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0); // Used to trigger refetch
   const { toast } = useToast();
 
   const fetchCategoryLabels = async () => {
@@ -91,7 +94,7 @@ const ProjectsList = () => {
   useEffect(() => {
     fetchCategoryLabels();
     fetchProjects();
-  }, []);
+  }, [refreshKey]);
 
   const handleDelete = async () => {
     if (!selectedProject) return;
@@ -113,7 +116,7 @@ const ProjectsList = () => {
       });
       
       // Refresh the list
-      fetchProjects();
+      setRefreshKey(prev => prev + 1);
     } catch (error) {
       console.error('Error deleting project:', error);
       toast({
@@ -132,6 +135,20 @@ const ProjectsList = () => {
     setDeleteDialogOpen(true);
   };
 
+  const openEditDialog = (projectId: number) => {
+    setEditProjectId(projectId);
+    setIsEditOpen(true);
+  };
+
+  const handleEditClose = () => {
+    setEditProjectId(null);
+    setIsEditOpen(false);
+  };
+
+  const handleRefresh = () => {
+    setRefreshKey(prev => prev + 1);
+  };
+
   // Format category IDs to display their labels
   const formatCategories = (categoryIds: string[]) => {
     if (!categoryIds || !categoryIds.length) return '';
@@ -140,7 +157,13 @@ const ProjectsList = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">Manage Portfolio Projects</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Manage Portfolio Projects</h2>
+        <Button onClick={handleRefresh} variant="outline" size="sm" className="flex items-center gap-2">
+          <RefreshCw className="h-4 w-4" />
+          Refresh List
+        </Button>
+      </div>
       
       {loading ? (
         <div className="text-center py-8">Loading projects...</div>
@@ -198,15 +221,25 @@ const ProjectsList = () => {
                         variant="outline" 
                         size="sm"
                         onClick={() => window.open(`/portfolio/${project.id}`, '_blank')}
+                        className="flex items-center gap-1"
                       >
-                        <Eye className="h-4 w-4 mr-1" /> View
+                        <Eye className="h-3.5 w-3.5" /> View
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => openEditDialog(project.id)}
+                        className="flex items-center gap-1"
+                      >
+                        <Edit className="h-3.5 w-3.5" /> Edit
                       </Button>
                       <Button 
                         variant="destructive" 
                         size="sm"
                         onClick={() => openDeleteDialog(project)}
+                        className="flex items-center gap-1"
                       >
-                        <Trash className="h-4 w-4 mr-1" /> Delete
+                        <Trash className="h-3.5 w-3.5" /> Delete
                       </Button>
                     </div>
                   </TableCell>
@@ -217,6 +250,7 @@ const ProjectsList = () => {
         </div>
       )}
       
+      {/* Delete confirmation dialog */}
       <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <DialogContent>
           <DialogHeader>
@@ -238,6 +272,14 @@ const ProjectsList = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      
+      {/* Edit Project Sheet */}
+      <ProjectEdit 
+        projectId={editProjectId} 
+        open={isEditOpen} 
+        onClose={handleEditClose}
+        onSaved={() => setRefreshKey(prev => prev + 1)}
+      />
     </div>
   );
 };

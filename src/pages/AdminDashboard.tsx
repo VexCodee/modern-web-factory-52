@@ -10,6 +10,14 @@ import ProjectsList from '../components/admin/ProjectsList';
 import CategoryForm from '../components/admin/CategoryForm';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from "@/components/ui/use-toast";
+import { 
+  PlusCircle, 
+  ListChecks, 
+  Tag as TagIcon, 
+  LogOut, 
+  Database,
+  Settings
+} from 'lucide-react';
 
 const AdminDashboard = () => {
   const { isAuthenticated, logout, loading } = useAdmin();
@@ -201,20 +209,36 @@ const AdminDashboard = () => {
               variant="outline" 
               onClick={initializeDefaultProjects} 
               disabled={initializing}
+              className="flex items-center gap-2"
             >
+              <Database className="h-4 w-4" />
               {initializing ? "Adding..." : "Add Default Projects"}
             </Button>
-            <Button variant="outline" onClick={handleLogout}>
+            <Button variant="outline" onClick={handleLogout} className="flex items-center gap-2">
+              <LogOut className="h-4 w-4" />
               Logout
             </Button>
           </div>
         </div>
 
         <Tabs defaultValue="add-project" className="w-full">
-          <TabsList className="mb-6">
-            <TabsTrigger value="add-project">Add New Project</TabsTrigger>
-            <TabsTrigger value="manage-projects">Manage Projects</TabsTrigger>
-            <TabsTrigger value="manage-categories">Manage Categories</TabsTrigger>
+          <TabsList className="mb-6 bg-gray-100 p-1">
+            <TabsTrigger value="add-project" className="flex items-center gap-2">
+              <PlusCircle className="h-4 w-4" />
+              Add New Project
+            </TabsTrigger>
+            <TabsTrigger value="manage-projects" className="flex items-center gap-2">
+              <ListChecks className="h-4 w-4" />
+              Manage Projects
+            </TabsTrigger>
+            <TabsTrigger value="manage-categories" className="flex items-center gap-2">
+              <TagIcon className="h-4 w-4" />
+              Manage Categories
+            </TabsTrigger>
+            <TabsTrigger value="settings" className="flex items-center gap-2">
+              <Settings className="h-4 w-4" />
+              Settings
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="add-project" className="p-4 border rounded-lg">
@@ -227,6 +251,37 @@ const AdminDashboard = () => {
           
           <TabsContent value="manage-categories" className="p-4 border rounded-lg">
             <CategoryForm />
+          </TabsContent>
+          
+          <TabsContent value="settings" className="p-4 border rounded-lg">
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Admin Settings</h2>
+              <p className="text-gray-600 mb-6">
+                Configure various settings for your portfolio website.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="p-4 border rounded-lg bg-gray-50">
+                  <h3 className="text-lg font-semibold mb-2">Storage Buckets</h3>
+                  <p className="text-gray-600 mb-4">
+                    Project images are stored in the "projects" storage bucket.
+                  </p>
+                  <Button variant="outline" onClick={() => window.open('https://supabase.com/dashboard/project/wlwoiakcrojpvvpuyoqz/storage/buckets', '_blank')}>
+                    Manage Storage Buckets
+                  </Button>
+                </div>
+                
+                <div className="p-4 border rounded-lg bg-gray-50">
+                  <h3 className="text-lg font-semibold mb-2">Admin Users</h3>
+                  <p className="text-gray-600 mb-4">
+                    Manage admin users who can access this dashboard.
+                  </p>
+                  <Button variant="outline" disabled>
+                    Manage Admin Users (Coming Soon)
+                  </Button>
+                </div>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
