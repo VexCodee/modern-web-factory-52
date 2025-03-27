@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import CTASection from '../components/CTASection';
+import ProjectGalleryView from '../components/ProjectGalleryView';
 import { useLanguage } from '../context/LanguageContext';
 import { ExternalLink, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -29,6 +30,7 @@ const ProjectDetails = () => {
   const { language } = useLanguage();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
+  const [hasGallery, setHasGallery] = useState(false);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -44,6 +46,18 @@ const ProjectDetails = () => {
         }
 
         setProject(data as Project);
+        
+        // Sprawdź, czy projekt ma galerię
+        if (data && data.id) {
+          const { data: galleryData, error: galleryError } = await supabase
+            .storage
+            .from('projects')
+            .list(`project_${data.id}`);
+            
+          if (!galleryError && galleryData && galleryData.filter(file => !file.name.includes('.gitkeep')).length > 0) {
+            setHasGallery(true);
+          }
+        }
       } catch (error) {
         console.error('Error fetching project:', error);
       } finally {
@@ -61,7 +75,7 @@ const ProjectDetails = () => {
       <Layout>
         <div className="min-h-[60vh] flex items-center justify-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
-          <p className="ml-4">Loading project...</p>
+          <p className="ml-4">Ładowanie projektu...</p>
         </div>
       </Layout>
     );
@@ -72,10 +86,10 @@ const ProjectDetails = () => {
       <Layout>
         <div className="container mx-auto py-16 px-4">
           <div className="text-center">
-            <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
-            <p className="mb-8">The project you're looking for doesn't exist or has been removed.</p>
+            <h1 className="text-3xl font-bold mb-4">Projekt nie znaleziony</h1>
+            <p className="mb-8">Projekt, którego szukasz, nie istnieje lub został usunięty.</p>
             <Button asChild>
-              <Link to="/portfolio">Back to Portfolio</Link>
+              <Link to="/portfolio">Wróć do Portfolio</Link>
             </Button>
           </div>
         </div>
@@ -91,7 +105,7 @@ const ProjectDetails = () => {
             <Button asChild variant="ghost" size="sm">
               <Link to="/portfolio" className="flex items-center">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Portfolio
+                Wróć do Portfolio
               </Link>
             </Button>
           </div>
@@ -111,7 +125,7 @@ const ProjectDetails = () => {
                 <div className="text-gray-700">{project.description}</div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Key Stats</h3>
+                  <h3 className="text-xl font-semibold mb-2">Kluczowe statystyki</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.stats && project.stats.map((stat, index) => (
                       <div key={index} className="bg-gray-100 rounded-md p-4">
@@ -133,8 +147,11 @@ const ProjectDetails = () => {
             </div>
           </div>
 
+          {/* Sekcja galerii projektu */}
+          {hasGallery && project.id && <ProjectGalleryView projectId={project.id} />}
+
           <div className="mt-12 py-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold mb-4">Technologies & Tools</h2>
+            <h2 className="text-2xl font-bold mb-4">Technologie i narzędzia</h2>
             <div className="flex flex-wrap gap-4">
               {project.tags && project.tags.map((tag, index) => (
                 <Badge variant="secondary" key={index}>
@@ -146,7 +163,7 @@ const ProjectDetails = () => {
 
           {project.logo && (
             <div className="mt-12 py-8 border-t border-gray-200">
-              <h2 className="text-2xl font-bold mb-4">Project Logo</h2>
+              <h2 className="text-2xl font-bold mb-4">Logo projektu</h2>
               <img
                 src={project.logo}
                 alt={`${project.title} Logo`}
@@ -156,9 +173,9 @@ const ProjectDetails = () => {
           )}
 
           <div className="mt-12 py-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold mb-4">Explore this project</h2>
+            <h2 className="text-2xl font-bold mb-4">Sprawdź ten projekt</h2>
             <Button variant="outline" className="gap-2">
-              Visit Website
+              Odwiedź stronę
               <ExternalLink className="h-4 w-4" />
             </Button>
           </div>
