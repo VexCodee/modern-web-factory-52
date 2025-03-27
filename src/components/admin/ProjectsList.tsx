@@ -22,6 +22,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Trash, Eye, Tag, Edit, Image, RefreshCw } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import ProjectEdit from './ProjectEdit';
+import ProjectGallery from './ProjectGallery';
 
 interface Project {
   id: number;
@@ -42,6 +43,8 @@ const ProjectsList = () => {
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
   const [editProjectId, setEditProjectId] = useState<number | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [galleryProjectId, setGalleryProjectId] = useState<number | null>(null);
   const [refreshKey, setRefreshKey] = useState(0); // Used to trigger refetch
   const { toast } = useToast();
 
@@ -140,9 +143,19 @@ const ProjectsList = () => {
     setIsEditOpen(true);
   };
 
+  const openGalleryDialog = (projectId: number) => {
+    setGalleryProjectId(projectId);
+    setIsGalleryOpen(true);
+  };
+
   const handleEditClose = () => {
     setEditProjectId(null);
     setIsEditOpen(false);
+  };
+
+  const handleGalleryClose = () => {
+    setGalleryProjectId(null);
+    setIsGalleryOpen(false);
   };
 
   const handleRefresh = () => {
@@ -234,6 +247,14 @@ const ProjectsList = () => {
                         <Edit className="h-3.5 w-3.5" /> Edit
                       </Button>
                       <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => openGalleryDialog(project.id)}
+                        className="flex items-center gap-1"
+                      >
+                        <Image className="h-3.5 w-3.5" /> Gallery
+                      </Button>
+                      <Button 
                         variant="destructive" 
                         size="sm"
                         onClick={() => openDeleteDialog(project)}
@@ -278,6 +299,14 @@ const ProjectsList = () => {
         projectId={editProjectId} 
         open={isEditOpen} 
         onClose={handleEditClose}
+        onSaved={() => setRefreshKey(prev => prev + 1)}
+      />
+
+      {/* Project Gallery Sheet */}
+      <ProjectGallery
+        projectId={galleryProjectId}
+        open={isGalleryOpen}
+        onClose={handleGalleryClose}
         onSaved={() => setRefreshKey(prev => prev + 1)}
       />
     </div>

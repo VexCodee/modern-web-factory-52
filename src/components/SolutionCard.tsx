@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Image } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface SolutionCardProps {
@@ -19,6 +19,7 @@ interface SolutionCardProps {
   textColor?: string;
   subtitle?: string;
   id?: number;
+  hasGallery?: boolean;
 }
 
 const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -36,7 +37,8 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   color = "bg-indigo-600",
   textColor = "text-white",
   subtitle,
-  id
+  id,
+  hasGallery = false
 }) => {
   const linkUrl = id ? `/portfolio/${id}` : '#';
   
@@ -85,6 +87,15 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
             <ArrowRight size={20} />
           </div>
         </Link>
+        
+        {/* Gallery icon - only show if the project has a gallery */}
+        {hasGallery && (
+          <div className="absolute top-4 right-20 z-10">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600">
+              <Image size={20} />
+            </div>
+          </div>
+        )}
         
         {/* Content */}
         <Link to={linkUrl} className="absolute inset-x-0 bottom-0 p-6">
